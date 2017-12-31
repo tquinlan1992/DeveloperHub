@@ -21,8 +21,8 @@ function Increment(params: { currentIncrement: number; increment: Function; incr
     );
 }
 
-const mapStateToProps = (state: any) => {
-    console.log('state', state);
+const mapStateToProps = (state: any, ownProps: any) => {
+    console.log('ownProps', ownProps);
     return {
         currentIncrement: state.increment.count
     };
