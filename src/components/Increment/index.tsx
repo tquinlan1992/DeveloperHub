@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import actions from '../actions';
+import actions from '../../actions';
+import RaisedButton from 'material-ui/RaisedButton';
 
 function thunkTest() {
     return function (dispatch: any) {
@@ -9,15 +10,13 @@ function thunkTest() {
     };
 }
 
-function Increment(params: { currentIncrement: number; increment: Function; incrementThunk: Function;}) {
+function Increment(params: { currentIncrement: number; increment: Function; incrementThunk: Function; }) {
     return (
-        <h1
-            onClick={() => {
-                //params.incrementThunk();
-                params.increment();
-            }
-            }
-        >{params.currentIncrement} Increment</h1>
+        <RaisedButton label={`${params.currentIncrement} Increment`} onClick={() => {
+            //params.incrementThunk();
+            params.increment();
+        }
+        } />
     );
 }
 
@@ -30,7 +29,7 @@ const mapStateToProps = (state: any, ownProps: any) => {
 
 const mapDispatchToProps = {
     increment: actions.increment,
-        incrementThunk: thunkTest
-    };
+    incrementThunk: thunkTest
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Increment);

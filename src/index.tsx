@@ -7,6 +7,7 @@ import reducers from './reducers';
 import middleware from './middleware';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Switch, Redirect } from 'react-router';
+import Theme from './components/Theme';
 
 const store = createStore(reducers, JSON.parse(localStorage.state || '{}'), applyMiddleware(...middleware));
 
@@ -31,18 +32,20 @@ const render = () => {
     ReactDOM.render(
         <Provider store={store}>
             <Router>
-                <div>
-                    <Switch>
-                        <Route exact path="/" component={App} />
-                        <Route path="/home" component={Home} />
-                        <Route path="/feed" component={Feed} />
-                        <Redirect to='/home' />
-                    </Switch>
-                    <Switch>
-                        <Route path={"/feed/:id"} component={Increment} />
-                        <Route component={Feed} />
-                    </Switch>
-                </div>
+                <Theme>
+                    <div>
+                        <Switch>
+                            <Route exact path="/" component={App} />
+                            <Route path="/home" component={Home} />
+                            <Route path="/feed" component={Feed} />
+                            <Redirect to='/home' />
+                        </Switch>
+                        <Switch>
+                            <Route path={"/feed/:id"} component={Increment} />
+                            <Route component={Feed} />
+                        </Switch>
+                    </div>
+                </Theme>
             </Router>
         </Provider>
         , document.getElementById('app')
