@@ -12,34 +12,13 @@ module.exports = function (env) {
     portfinder.basePort = (env && env.port) || 8080; // the default port to use
 
     return portfinder.getPortPromise().then(port => {
-        const nodeEnv = env && env.prod ? 'production' : 'development';
-        const isProd = nodeEnv === 'production';
 
         const plugins = [
-            new webpack.EnvironmentPlugin({
-                NODE_ENV: nodeEnv
-            }),
             new webpack.NamedModulesPlugin()
         ];
-
-        if (isProd) {
-            plugins.push(
-                new webpack.LoaderOptionsPlugin({
-                    minimize: true,
-                    debug: false
-                }),
-                new webpack.optimize.UglifyJsPlugin({
-                    compress: {
-                        warnings: false,
-                        screw_ie8: true
-                    }
-                })
-            );
-        } else {
             plugins.push(
                 new webpack.HotModuleReplacementPlugin()
             );
-        }
 
         plugins.push(new HtmlWebpackPlugin({
             template: 'index.html',
@@ -51,7 +30,7 @@ module.exports = function (env) {
         }));
 
         return {
-            devtool: isProd ? 'source-map' : 'cheap-module-source-map',
+            devtool: 'cheap-module-source-map',
             context: sourcePath,
 
             entry: [
@@ -96,23 +75,9 @@ module.exports = function (env) {
                 host: '0.0.0.0',
                 disableHostCheck: true,
                 port,
-                compress: isProd,
-                inline: !isProd,
-                hot: !isProd,
-                stats: {
-                    assets: true,
-                    children: false,
-                    chunks: false,
-                    hash: false,
-                    modules: false,
-                    publicPath: false,
-                    timings: true,
-                    version: false,
-                    warnings: true,
-                    colors: {
-                        green: '\u001b[32m'
-                    }
-                },
+                compress: false,
+                inline: true,
+                hot: true,
             }
         };
     })

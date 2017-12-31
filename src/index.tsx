@@ -36,10 +36,11 @@ const render = () => {
                         <Route exact path="/" component={App} />
                         <Route path="/home" component={Home} />
                         <Route path="/feed" component={Feed} />
-                        <Redirect from='/' to='/home' />
+                        <Redirect to='/home' />
                     </Switch>
                     <Switch>
                         <Route path={"/feed/:id"} component={Increment} />
+                        <Route component={Feed} />
                     </Switch>
                 </div>
             </Router>
