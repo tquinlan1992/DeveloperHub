@@ -1,29 +1,18 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import IncrementRedux from './components/Increment';
+import { Provider, } from 'react-redux';
+import Increment from './components/Increment';
+import { createStore, applyMiddleware } from 'redux';
+import reducers from './reducers';
+import middleware from './middleware';
 
-import { createStore } from 'redux';
-
-const reducers = (state = 0, action: any) => {
-    switch (action.type) {
-        case 'INCREMENT':
-            console.log('clicked to increment');
-            return state + 1;
-        case 'DECREMENT':
-            return state - 1;
-        default:
-            return state;
-    }
-};
-
-const store = createStore(reducers);
+const store = createStore(reducers, JSON.parse(localStorage.state || '{}'), applyMiddleware(...middleware));
 
 const render = () => {
     ReactDOM.render(
         <Provider store={store}>
             <div>
-                <IncrementRedux />
+                <Increment />
                 <h1>Testing</h1>
             </div>
         </Provider>
