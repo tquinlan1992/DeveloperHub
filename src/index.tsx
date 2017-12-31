@@ -9,7 +9,11 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Switch, Redirect } from 'react-router';
 import Theme from './components/Theme';
 
-const store = createStore(reducers, JSON.parse(localStorage.state || '{}'), applyMiddleware(...middleware));
+const state = JSON.parse(localStorage.state || '{}');
+
+console.log('state now', state);
+
+const store = createStore(reducers, state, applyMiddleware(...middleware));
 
 function App() {
     return (<div>

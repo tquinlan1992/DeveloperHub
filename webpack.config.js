@@ -14,20 +14,16 @@ module.exports = function (env) {
     return portfinder.getPortPromise().then(port => {
 
         const plugins = [
-            new webpack.NamedModulesPlugin()
+            new webpack.NamedModulesPlugin(),
+            new webpack.HotModuleReplacementPlugin(), new HtmlWebpackPlugin({
+                template: 'index.html',
+                hash: true
+            }), new OpenBrowserPlugin({
+                url: `http://localhost:${port}`
+            }), new TslintPlugin({
+                files: ['src/**/*.ts', 'src/**/*.tsx']
+            })
         ];
-            plugins.push(
-                new webpack.HotModuleReplacementPlugin()
-            );
-
-        plugins.push(new HtmlWebpackPlugin({
-            template: 'index.html',
-            hash: true
-        }), new OpenBrowserPlugin({
-            url: `http://localhost:${port}`
-        }), new TslintPlugin({
-            files: ['src/**/*.ts', 'src/**/*.tsx']
-        }));
 
         return {
             devtool: 'cheap-module-source-map',
@@ -54,7 +50,11 @@ module.exports = function (env) {
                             loader: 'awesome-typescript-loader'
                         }
                     ]
-                }]
+                },
+                    {
+                        test: /\.css$/,
+                        use: ['style-loader', 'css-loader']
+                    }]
             },
 
             resolve: {
@@ -77,7 +77,7 @@ module.exports = function (env) {
                 port,
                 compress: false,
                 inline: true,
-                hot: true,
+                hot: true
             }
         };
     })

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import actions from '../../actions';
 import RaisedButton from 'material-ui/RaisedButton';
+import { TreeViewRedux } from '../TreeView';
 
 function thunkTest() {
     return function (dispatch: any) {
@@ -12,11 +13,14 @@ function thunkTest() {
 
 function Increment(params: { currentIncrement: number; increment: Function; incrementThunk: Function; }) {
     return (
-        <RaisedButton label={`${params.currentIncrement} Increment`} onClick={() => {
-            //params.incrementThunk();
-            params.increment();
-        }
-        } />
+        <div>
+            <TreeViewRedux />
+            <RaisedButton label={`${params.currentIncrement} Increment`} onClick={() => {
+                //params.incrementThunk()
+                params.increment();
+            }
+            } />
+        </div>
     );
 }
 
@@ -27,9 +31,9 @@ const mapStateToProps = (state: any, ownProps: any) => {
     };
 };
 
-const mapDispatchToProps = {
+const mapActionsToProps = {
     increment: actions.increment,
     incrementThunk: thunkTest
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Increment);
+export default connect(mapStateToProps, mapActionsToProps)(Increment);
