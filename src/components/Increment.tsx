@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import actions from '../actions';
 
 function thunkTest() {
     return function (dispatch: any) {
@@ -12,7 +13,7 @@ function Increment(params: { currentIncrement: number; increment: Function; incr
     return (
         <h1
             onClick={() => {
-                params.incrementThunk();
+                //params.incrementThunk();
                 params.increment();
             }
             }
@@ -27,15 +28,9 @@ const mapStateToProps = (state: any) => {
     };
 };
 
-const mapDispatchToProps = (dispatch: any, ownProps: any) => {
-    return {
-        increment: () => {
-            dispatch({ type: 'INCREMENT' });
-        },
-        incrementThunk: () => {
-            dispatch(thunkTest());
-        }
+const mapDispatchToProps = {
+    increment: actions.increment,
+        incrementThunk: thunkTest
     };
-};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Increment);
