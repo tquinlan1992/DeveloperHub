@@ -1,41 +1,6 @@
 import Tree, { TreeNode } from 'rc-tree';
 import * as React from 'react';
-
-export function generateData(x = 3, y = 2, z = 1, gData = []) {
-    // x：每一级下的节点总数。y：每级节点里有y个节点、存在子节点。z：树的level层级数（0表示一级）
-    function _loop(_level: any, _preKey?: any, _tns?: any) {
-        const preKey = _preKey || '0';
-        const tns = _tns || gData;
-
-        const children = [];
-        for (let i = 0; i < x; i++) {
-            const key = `${preKey}-${i}`;
-            tns.push({ title: `${key}-label`, key: `${key}-key` });
-            if (i < y) {
-                children.push(key);
-            }
-        }
-        if (_level < 0) {
-            return tns;
-        }
-        const __level = _level - 1;
-        children.forEach((key, index) => {
-            tns[index].children = [];
-            return _loop(__level, key, tns[index].children);
-        });
-    }
-    _loop(z);
-    return gData;
-}
-export function calcTotal(x = 3, y = 2, z = 1) {
-    /* eslint no-param-reassign:0*/
-    const rec = (n: any): any => n >= 0 ? x * Math.pow(y, n--) + rec(n) : 0;
-    return rec(z + 1);
-}
-console.log('总节点数（单个tree）：', calcTotal());
-// 性能测试：总节点数超过 2000（z要小）明显感觉慢。z 变大时，递归多，会卡死。
-
-export const gData = generateData();
+export const gData = [{ "title": "0-0-label", "key": "0-0-key", "children": [{ "title": "0-0-0-label", "key": "0-0-0-key", "children": [{ "title": "0-0-0-0-label", "key": "0-0-0-0-key" }, { "title": "0-0-0-1-label", "key": "0-0-0-1-key" }, { "title": "0-0-0-2-label", "key": "0-0-0-2-key" }] }, { "title": "0-0-1-label", "key": "0-0-1-key", "children": [{ "title": "0-0-1-0-label", "key": "0-0-1-0-key" }, { "title": "0-0-1-1-label", "key": "0-0-1-1-key" }, { "title": "0-0-1-2-label", "key": "0-0-1-2-key" }] }, { "title": "0-0-2-label", "key": "0-0-2-key" }] }, { "title": "0-1-label", "key": "0-1-key", "children": [{ "title": "0-1-0-label", "key": "0-1-0-key", "children": [{ "title": "0-1-0-0-label", "key": "0-1-0-0-key" }, { "title": "0-1-0-1-label", "key": "0-1-0-1-key" }, { "title": "0-1-0-2-label", "key": "0-1-0-2-key" }] }, { "title": "0-1-1-label", "key": "0-1-1-key", "children": [{ "title": "0-1-1-0-label", "key": "0-1-1-0-key" }, { "title": "0-1-1-1-label", "key": "0-1-1-1-key" }, { "title": "0-1-1-2-label", "key": "0-1-1-2-key" }] }, { "title": "0-1-2-label", "key": "0-1-2-key" }] }, { "title": "0-2-label", "key": "0-2-key" }];
 
 class Demo extends React.Component {
     state = {
@@ -99,6 +64,11 @@ class Demo extends React.Component {
             autoExpandParent: false,
         });
     }
+
+    onCheck(checkedKeys: string[]) {
+        console.log('checkedKeys', checkedKeys);
+    }
+
     render() {
         const loop = (data: any) => {
             return data.map((item: any) => {
@@ -116,6 +86,7 @@ class Demo extends React.Component {
                     expandedKeys={this.state.expandedKeys}
                     onExpand={this.onExpand} autoExpandParent={this.state.autoExpandParent}
                     draggable
+                    onSelect={this.onCheck.bind(this)}
                     onDragStart={this.onDragStart}
                     onDragEnter={this.onDragEnter}
                     onDrop={this.onDrop}
