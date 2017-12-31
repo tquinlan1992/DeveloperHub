@@ -26,7 +26,9 @@ export const dataSource = [
     }
 ];
 
-export default function increment(state = dataSource, action: any) {
+export const gData = [{ "title": "0-0-label", "key": "0-0-key", "children": [{ "title": "0-0-0-label", "key": "0-0-0-key", "children": [{ "title": "0-0-0-0-label", "key": "0-0-0-0-key" }, { "title": "0-0-0-1-label", "key": "0-0-0-1-key" }, { "title": "0-0-0-2-label", "key": "0-0-0-2-key" }] }, { "title": "0-0-1-label", "key": "0-0-1-key", "children": [{ "title": "0-0-1-0-label", "key": "0-0-1-0-key" }, { "title": "0-0-1-1-label", "key": "0-0-1-1-key" }, { "title": "0-0-1-2-label", "key": "0-0-1-2-key" }] }, { "title": "0-0-2-label", "key": "0-0-2-key" }] }, { "title": "0-1-label", "key": "0-1-key", "children": [{ "title": "0-1-0-label", "key": "0-1-0-key", "children": [{ "title": "0-1-0-0-label", "key": "0-1-0-0-key" }, { "title": "0-1-0-1-label", "key": "0-1-0-1-key" }, { "title": "0-1-0-2-label", "key": "0-1-0-2-key" }] }, { "title": "0-1-1-label", "key": "0-1-1-key", "children": [{ "title": "0-1-1-0-label", "key": "0-1-1-0-key" }, { "title": "0-1-1-1-label", "key": "0-1-1-1-key" }, { "title": "0-1-1-2-label", "key": "0-1-1-2-key" }] }, { "title": "0-1-2-label", "key": "0-1-2-key" }] }, { "title": "0-2-label", "key": "0-2-key" }];
+
+export default function increment(state = gData, action: any) {
     console.log('state treeView', state);
     switch (action.type) {
         default:
