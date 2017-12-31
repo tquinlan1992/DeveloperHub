@@ -1,4 +1,7 @@
-import actionTypes from './actionTypes';
+
+export const actionTypes = {
+    increment: 'INCREMENT'
+};
 
 function increment() {
     return { type: actionTypes.increment };
