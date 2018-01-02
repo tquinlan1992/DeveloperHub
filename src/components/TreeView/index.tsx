@@ -1,7 +1,9 @@
-import 'react-treeview/react-treeview.css';
+import 'rc-tree/assets/index.css';
 import { connect } from 'react-redux';
 import Tree, { TreeNode } from 'rc-tree';
 import * as React from 'react';
+import { withRouter } from 'react-router';
+import actions from '../../actions';
 
 class TreeViewCustom extends React.Component<any, any> {
     state = {
@@ -10,16 +12,13 @@ class TreeViewCustom extends React.Component<any, any> {
         expandedKeys: ['0-0-key', '0-0-0-key', '0-0-0-0-key'],
     };
     onDragStart = (info: any) => {
-        console.log('start', info);
     }
     onDragEnter = (info: any) => {
-        console.log('enter', info);
         this.setState({
             expandedKeys: info.expandedKeys,
         });
     }
     onDrop = (info: any) => {
-        console.log('drop', info);
         const dropKey = info.node.props.eventKey;
         const dragKey = info.dragNode.props.eventKey;
         // const dragNodesKeys = info.dragNodesKeys;
@@ -59,15 +58,15 @@ class TreeViewCustom extends React.Component<any, any> {
         });
     }
     onExpand = (expandedKeys: any) => {
-        console.log('onExpand', arguments);
         this.setState({
             expandedKeys,
             autoExpandParent: false,
         });
     }
 
-    onCheck(checkedKeys: string[]) {
+    onSelect(checkedKeys: string[]) {
         console.log('checkedKeys', checkedKeys);
+        this.props.navigateToFeed(this.props.history, checkedKeys[0]);
     }
 
     render() {
@@ -87,7 +86,8 @@ class TreeViewCustom extends React.Component<any, any> {
                     expandedKeys={this.state.expandedKeys}
                     onExpand={this.onExpand} autoExpandParent={this.state.autoExpandParent}
                     draggable
-                    onSelect={this.onCheck.bind(this)}
+                    selectedKeys={['0-0-0-0-label']}
+                    onSelect={this.onSelect.bind(this)}
                     onDragStart={this.onDragStart}
                     onDragEnter={this.onDragEnter}
                     onDrop={this.onDrop}
@@ -99,10 +99,16 @@ class TreeViewCustom extends React.Component<any, any> {
     }
 }
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: any, ownProps: any) => {
+    console.log('ownPropsTree', ownProps);
     return {
-        data: state.treeView
+        data: state.treeView,
+        history: ownProps.history
     };
 };
 
-export const TreeViewRedux = connect(mapStateToProps, {})(TreeViewCustom);
+const mapActionsToProps = {
+    navigateToFeed: actions.navigateToFeed
+};
+
+export const TreeViewRedux = withRouter(connect(mapStateToProps, mapActionsToProps)(TreeViewCustom));

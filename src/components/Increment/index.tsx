@@ -3,21 +3,28 @@ import { connect } from 'react-redux';
 import actions from '../../actions';
 import RaisedButton from 'material-ui/RaisedButton';
 import { TreeViewRedux } from '../TreeView';
+import { withRouter } from 'react-router-dom';
 
 function thunkTest() {
     return function (dispatch: any) {
-        console.log('dispatch tommy', dispatch);
         dispatch({ type: 'INCREMENT' });
     };
 }
 
-function Increment(params: { currentIncrement: number; increment: Function; incrementThunk: Function; }) {
+function Increment(params: { 
+    currentIncrement: 
+    number; 
+    increment: Function; 
+    incrementThunk: Function; 
+    navigateTo: Function;
+    history: any;
+}) {
     return (
         <div>
             <TreeViewRedux />
             <RaisedButton label={`${params.currentIncrement} Increment`} onClick={() => {
-                //params.incrementThunk()
                 params.increment();
+                params.navigateTo(params.history, '/home');
             }
             } />
         </div>
@@ -25,15 +32,16 @@ function Increment(params: { currentIncrement: number; increment: Function; incr
 }
 
 const mapStateToProps = (state: any, ownProps: any) => {
-    console.log('ownProps', ownProps);
     return {
-        currentIncrement: state.increment.count
+        currentIncrement: state.increment.count,
+        history: ownProps.history
     };
 };
 
 const mapActionsToProps = {
     increment: actions.increment,
-    incrementThunk: thunkTest
+    incrementThunk: thunkTest,
+    navigateTo: actions.navigateToFeed
 };
 
-export default connect(mapStateToProps, mapActionsToProps)(Increment);
+export default withRouter(connect(mapStateToProps, mapActionsToProps)(Increment));
