@@ -26,7 +26,7 @@ module.exports = function (env) {
         ];
 
         return {
-            devtool: 'cheap-module-source-map',
+            devtool: 'source-map',
             context: sourcePath,
 
             entry: [
