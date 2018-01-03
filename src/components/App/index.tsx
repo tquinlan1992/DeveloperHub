@@ -5,6 +5,8 @@ import Increment from '../Increment';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Theme from '../Theme';
 import { Switch, Redirect } from 'react-router';
+import DocEditor from '../DocEditor';
+import { TreeViewRedux } from '../TreeView/index';
 
 function App() {
     return (<div>
@@ -35,8 +37,9 @@ export default (store: any) => {
                             <Route path="/feed" component={Feed} />
                             <Redirect to='/home' />
                         </Switch>
+                        <Route path={"/feed"} component={TreeViewRedux} />
                         <Switch>
-                            <Route path={"/feed/:id"} component={Increment} />
+                            <Route path={"/feed/:id"} component={DocEditor} />
                             <Route component={Feed} />
                         </Switch>
                     </div>

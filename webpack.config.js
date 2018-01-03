@@ -7,6 +7,10 @@ const portfinder = require('portfinder');
 
 const sourcePath = path.join(__dirname, './src');
 
+// const openBrowser = new OpenBrowserPlugin({
+//     url: `http://localhost:${port}`
+// });
+
 module.exports = function (env) {
 
     portfinder.basePort = (env && env.port) || 8080; // the default port to use
@@ -18,8 +22,6 @@ module.exports = function (env) {
             new webpack.HotModuleReplacementPlugin(), new HtmlWebpackPlugin({
                 template: 'index.html',
                 hash: true
-            }), new OpenBrowserPlugin({
-                url: `http://localhost:${port}`
             }), new TslintPlugin({
                 files: ['src/**/*.ts', 'src/**/*.tsx']
             })

@@ -1,4 +1,3 @@
-
 export const actionTypes = {
     increment: 'INCREMENT'
 };
@@ -10,3 +9,5 @@ function increment() {
 export default {
     increment
 };
+
+var text = 5;
