@@ -1,13 +1,15 @@
+import { SimpleActionCreator } from './util';
+
 export const actionTypes = {
     increment: 'INCREMENT'
 };
 
-function increment() {
-    return { type: actionTypes.increment };
-}
+const increment = SimpleActionCreator<{}>(actionTypes.increment);
 
-export default {
+export const simpleActions = {
     increment
 };
 
-var text = 5;
+export default {
+    ...simpleActions
+};

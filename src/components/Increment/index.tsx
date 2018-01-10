@@ -2,8 +2,6 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import actions from '../../actions';
 import RaisedButton from 'material-ui/RaisedButton';
-import { TreeViewRedux } from '../TreeView';
-import { withRouter } from 'react-router-dom';
 
 function thunkTest() {
     return function (dispatch: any) {
@@ -11,37 +9,36 @@ function thunkTest() {
     };
 }
 
-function Increment(params: { 
-    currentIncrement: 
-    number; 
-    increment: Function; 
-    incrementThunk: Function; 
-    navigateTo: Function;
-    history: any;
-}) {
-    return (
-        <div>
-            <TreeViewRedux />
-            <RaisedButton label={`${params.currentIncrement} Increment`} onClick={() => {
-                params.increment();
-                params.navigateTo(params.history, '/home');
-            }
-            } />
-        </div>
-    );
+interface IncrementProps {
+    currentIncrement: number;
+}
+
+interface IncrementActions {
+    increment: Function;
+    incrementThunk: Function;
+}
+class Increment extends React.Component<IncrementProps & IncrementActions> {
+
+    render() {
+        return (
+            <div>
+                <RaisedButton label={`${this.props.currentIncrement} a 5asdfasf`} onClick={() => {
+                    this.props.increment();
+                }} />
+            </div>
+        );
+    }
 }
 
 const mapStateToProps = (state: any, ownProps: any) => {
     return {
         currentIncrement: state.increment.count,
-        history: ownProps.history
     };
 };
 
 const mapActionsToProps = {
     increment: actions.increment,
     incrementThunk: thunkTest,
-    navigateTo: actions.navigateToFeed
 };
 
-export default withRouter(connect(mapStateToProps, mapActionsToProps)(Increment));
+export default connect<IncrementProps, IncrementActions>(mapStateToProps, mapActionsToProps)(Increment);
