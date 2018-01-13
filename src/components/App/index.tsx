@@ -30,15 +30,15 @@ export default (store: any) => {
                     <div>
                         <TopAppBar />
                         <div style={{ float: 'left', style: '20%' }}>
-                        <NestedList />
+                            <NestedList />
                         </div>
-                        <div style={{float: 'left'}}>
-                        <Switch>
-                            <Route exact path="/home" component={Home} />
-                            <Route exact path={"/feed"} component={Feed} />
-                            <Route exact path={"/feed/:id"} component={DocEditor} />
-                            <Redirect from='*' to='/home' />
-                        </Switch>
+                        <div style={{ float: 'left' }}>
+                            <Switch>
+                                <Route exact path="/home" component={Home} />
+                                <Route exact path={"/feed"} component={Feed} />
+                                <Route exact path={"/feed/:id"} component={DocEditor} />
+                                <Redirect from='*' to='/home' />
+                            </Switch>
                         </div>
                     </div>
                 </Router>
