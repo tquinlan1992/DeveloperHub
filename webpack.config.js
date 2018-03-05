@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const TslintPlugin = require('tslint-webpack-plugin');
 const portfinder = require('portfinder');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const sourcePath = path.join(__dirname, './src');
 
@@ -24,7 +25,13 @@ module.exports = function (env) {
                 hash: true
             }), new TslintPlugin({
                 files: ['src/**/*.ts', 'src/**/*.tsx']
-            })
+            }),
+            new CopyWebpackPlugin([
+                {
+                    from: '../node_modules/monaco-editor/min/vs',
+                    to: 'vs',
+                }
+            ])
         ];
 
         return {
