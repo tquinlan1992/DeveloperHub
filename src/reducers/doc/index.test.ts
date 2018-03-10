@@ -15,15 +15,4 @@ describe('docReducer', () => {
         });
     });
 
-    it('changeCreateDocValue', () => {
-        const initialState = {
-            create: 'currentValue'
-        } as DocReducerState;
-        const value = 'newValue';
-        const action = actions.changeCreateDocValue({ value });
-        const newState = docReducer(initialState, action);
-        expect(newState).toMatchObject({
-            create: value
-        });
-    });
 });

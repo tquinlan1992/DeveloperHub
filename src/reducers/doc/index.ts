@@ -7,10 +7,6 @@ function handleEditDoc(state: DocReducerState, action: ChangeDocValueParams) {
     return { ...state, edit: action.value };
 }
 
-function handleEditCreateDoc(state: DocReducerState, action: ChangeDocValueParams) {
-    return { ...state, create: action.value };
-}
-
 const initialState = {
     edit: 'defaultEditDoc',
     create: 'defaultCreateDoc'
@@ -20,10 +16,7 @@ export default function docReducer(state: DocReducerState = initialState, action
 
     if (isType(action, simpleActions.changeDocValue)) {
         return handleEditDoc(state, action.payload);
-    } else if (isType(action, simpleActions.changeCreateDocValue)) {
-        return handleEditCreateDoc(state, action.payload);
-    } 
-    else {
+    } else {
         return state;
     }
 }
