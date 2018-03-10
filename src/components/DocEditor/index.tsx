@@ -44,7 +44,7 @@ class DocEditor extends React.Component<{
                     /> 
                 </div>
                 <div>
-                    <ReactMarkdown source={this.props.doc} />
+                        <ReactMarkdown source={this.props.doc} escapeHtml={false} />
                 </div>  
                 </SplitPane>   
             </div>
@@ -53,7 +53,6 @@ class DocEditor extends React.Component<{
 }
 
 const mapStateToProps = (state: any, ownProps: any) => {
-    console.log('state', state);
     return {
         doc: state.doc.edit
     };

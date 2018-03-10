@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Theme from '../Theme';
 import { Switch, Redirect } from 'react-router';
 import DocEditor from '../DocEditor';
-import TopAppBar from '../TopAppBar';
+import TopAppBar from '../TopAppbar';
 import NestedList from '../NestedList';
 
 function Home(params: { match: any }) {
@@ -37,6 +37,8 @@ export default (store: any) => {
                                 <Route exact path="/home" component={Home} />
                                 <Route exact path={"/feed"} component={Feed} />
                                 <Route exact path={"/feed/:id"} component={DocEditor} />
+                                <Route exact path={"/edit/:id"} component={DocEditor} />
+                                <Route exact path={"/create"} component={DocEditor} />
                                 <Redirect from='*' to='/home' />
                             </Switch>
                         </div>
