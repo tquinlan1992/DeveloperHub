@@ -18,10 +18,10 @@ class VoiceToCode extends React.Component<VoiceToCodeProps & VoiceToCodeActions>
 
     matchCreateInterface(text: string) {
         const lowerCaseText = _.lowerCase(text);
-        if (lowerCaseText.search('create an interface') !== -1) {
+        if (_.includes(lowerCaseText, 'create an interface') || _.includes(lowerCaseText, 'creates an interface') || _.includes(lowerCaseText, 'creating an interface') || _.includes(lowerCaseText, 'make an interface') || _.includes(lowerCaseText, 'making an interface')) {
             const startOfName = lowerCaseText.search('named') + 6;
             const name = lowerCaseText.slice(startOfName).split(' ')[0];
-            const startOfProperties = lowerCaseText.search('properties') + 12;
+            const startOfProperties = lowerCaseText.search('properties') + 11;
             const properties = text.slice(startOfProperties).split(' ');
             console.log('properties', properties);
             this.props.createAnInterface({ properties, name});
@@ -45,7 +45,7 @@ class VoiceToCode extends React.Component<VoiceToCodeProps & VoiceToCodeActions>
                 console.log('data', data);
                 Speech.setVoice('Samantha');
             },
-            'rate': 0.3
+            'rate': 0.01
         });
         function onAnythingSaid(text: string) {
             console.log(`Interim text: ${text}`);

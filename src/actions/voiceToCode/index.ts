@@ -15,6 +15,9 @@ export interface changeVoiceToCodeTextParams {
 function getInterfaceText({ properties, name }: CreateAnInterfaceParams) {
     let propertiesText = "";
     properties.forEach((property, index) => {
+        if (!property) {
+            return;
+        }
         const endOfLineCharacters = properties.length - 1 === index ? "" : '\n \t';
         propertiesText = propertiesText + `${property}: string;${endOfLineCharacters}`;
     });
@@ -35,8 +38,8 @@ function getPropertiesTextToSpeak(properties: string[]) {
     return `${ properties.slice(0, properties.length - 1).join(' ') } and ${ properties[properties.length - 1] }`;
 }
 
-const createAnInterface = ({ properties, name }: CreateAnInterfaceParams): ThunkAction<null, AppState, null> => {
-    (dispatch, getState) => {
+function createAnInterface({ properties, name }: CreateAnInterfaceParams): ThunkAction<void, AppState, void> {
+    return (dispatch, getState) => {
         dispatch(changeVoiceToCodeText({ value: 'So... you want to create an interface?' }));
         Speech.speak({
             text: `I've created an interface named ${name} with the properties ${getPropertiesTextToSpeak(properties)}`,
@@ -46,7 +49,7 @@ const createAnInterface = ({ properties, name }: CreateAnInterfaceParams): Thunk
 
         dispatch(docEditorActions.changeDocValue({ value: getInterfaceText({ properties, name }) }));
     };
-};
+}
 
 export const voiceToCodeSimpleActions = {
     changeVoiceToCodeText
