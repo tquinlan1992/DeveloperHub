@@ -2,6 +2,11 @@ export interface Doc {
     edit: string;
 }
 
+export interface VoiceToCode {
+    text: string;
+}
+
 export interface AppState {
-    doc: Doc
+    doc: Doc;
+    voiceToCode: VoiceToCode;
 }

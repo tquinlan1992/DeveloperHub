@@ -8,6 +8,7 @@ import { Switch, Redirect } from 'react-router';
 import DocEditor from '../DocEditor';
 import TopAppBar from '../TopAppbar';
 import NestedList from '../NestedList';
+import VoiceToCode from '../VoiceToCode';
 
 function Home(params: { match: any }) {
     return (
@@ -33,6 +34,7 @@ export default (store: any) => {
                             <NestedList />
                         </div>
                         <div style={{ float: 'left' }}>
+                            <VoiceToCode />
                             <Switch>
                                 <Route exact path="/home" component={Home} />
                                 <Route exact path={"/feed"} component={Feed} />
