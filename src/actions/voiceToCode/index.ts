@@ -40,14 +40,17 @@ function getPropertiesTextToSpeak(properties: string[]) {
 
 function createAnInterface({ properties, name }: CreateAnInterfaceParams): ThunkAction<void, AppState, void> {
     return (dispatch, getState) => {
+        const currentState = getState();
+        const currentCode = currentState.doc.edit;
         dispatch(changeVoiceToCodeText({ value: 'So... you want to create an interface?' }));
         Speech.speak({
             text: `I've created an interface named ${name} with the properties ${getPropertiesTextToSpeak(properties)}`,
             onError: (e: any) => { console.log('sorry an error occurred.', e); }, // optionnal error callback
             onEnd: () => { console.log('your text has successfully been spoken.'); } // optionnal onEnd callback
         });
-
-        dispatch(docEditorActions.changeDocValue({ value: getInterfaceText({ properties, name }) }));
+        const newCode = `${currentCode} \n${getInterfaceText({ properties, name })}`;
+        console.log('neewCodeLines', newCode.split('\n'));
+        dispatch(docEditorActions.changeDocValue({ value: newCode }));
     };
 }
 
