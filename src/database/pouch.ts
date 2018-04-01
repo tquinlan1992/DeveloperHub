@@ -1,8 +1,10 @@
-import * as PouchDB from 'pouchdb-browser';
+import * as PouchDBRaw from 'pouchdb-browser';
 
-const localDB = new PouchDB.default('mylocaldb');
+const PouchDB: typeof PouchDBRaw  = (PouchDBRaw as any).default;
 
-const remoteDB = new PouchDB.default('http://127.0.0.1:5984/test');
+const localDB = new PouchDB('mylocaldb');
+
+const remoteDB = new PouchDB('http://127.0.0.1:5984/test');
 
 localDB.replicate.to(remoteDB, {
     live: true,
@@ -13,7 +15,7 @@ localDB.replicate.to(remoteDB, {
         include_docs: true,
         attachments: true
     }).then(function (result: any) {
-        console.log('result', result)
+        console.log('result', result);
         // handle result
     }).catch(function (err: any) {
         console.log('err all docs', err);
