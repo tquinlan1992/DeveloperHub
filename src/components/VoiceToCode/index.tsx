@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import actions from '../../actions';
 import { AppState, VoiceToCode as VoiceToCodeState } from "../../store/AppState";
 import { pick } from "../../utils";
+import { Table, TableHeader, TableRow, TableHeaderColumn, TableBody, TableRowColumn, TextField } from "material-ui";
 const Speech = require('speak-tts').default;
 
 interface VoiceToCodeProps {
@@ -24,7 +25,7 @@ class VoiceToCode extends React.Component<VoiceToCodeProps & VoiceToCodeActions>
             const startOfProperties = lowerCaseText.search('properties') + 11;
             const properties = text.slice(startOfProperties).split(' ');
             console.log('properties', properties);
-            this.props.createAnInterface({ properties, name});
+            this.props.createAnInterface({ properties, name });
             console.log('got here');
         }
     }
@@ -62,6 +63,37 @@ class VoiceToCode extends React.Component<VoiceToCodeProps & VoiceToCodeActions>
         return (
             <div>
                 <h1>{this.props.voiceToCode.text}</h1>
+                <Table>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHeaderColumn>Ticket</TableHeaderColumn>
+                            <TableHeaderColumn>3/22</TableHeaderColumn>
+                            <TableHeaderColumn>3/23</TableHeaderColumn>
+                            <TableHeaderColumn>3/26</TableHeaderColumn>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        <TableRow>
+                            <TableRowColumn>
+                                <TextField
+                                    defaultValue="OVC-523"
+                                />
+                            </TableRowColumn>
+                            <TableRowColumn><TextField
+                                defaultValue="5"
+                            />
+                            </TableRowColumn>
+                            <TableRowColumn><TextField
+                                defaultValue="3"
+                            />
+                            </TableRowColumn>
+                            <TableRowColumn><TextField
+                                defaultValue="0"
+                            />
+                            </TableRowColumn>
+                        </TableRow>
+                    </TableBody>
+                </Table>
             </div>
         );
     }
