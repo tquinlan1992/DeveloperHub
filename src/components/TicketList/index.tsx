@@ -4,7 +4,7 @@ import actions from '../../actions';
 import { AppState } from "../../store/AppState";
 import { pick } from "../../utils";
 import { Table, RaisedButton, TableHeader, TableRow, TableHeaderColumn, TableBody, TableRowColumn, TextField } from "material-ui";
-import AddTicketDialog from './AddTicketDialog';
+import AddTicketDialog from '../AddTicketDialog';
 
 interface TicketListActions {
     setShowAddTicketDialog: typeof actions.setShowAddTicketDialog;

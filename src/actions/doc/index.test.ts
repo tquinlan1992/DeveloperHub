@@ -1,3 +1,5 @@
+import { mockPouchDB } from '../../utils/testUtils';
+mockPouchDB();
 import docActions, {simpleActions} from './';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';

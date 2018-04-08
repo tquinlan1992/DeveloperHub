@@ -1,3 +1,5 @@
+import { mockPouchDB } from '../../utils/testUtils';
+mockPouchDB();
 import docReducer from './';
 import actions from '../../actions';
 import { Doc as DocReducerState } from '../../store/AppState';
