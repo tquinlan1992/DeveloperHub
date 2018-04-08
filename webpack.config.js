@@ -31,6 +31,12 @@ module.exports = function (env) {
                     from: '../node_modules/monaco-editor/min/vs',
                     to: 'vs',
                 }
+            ]),
+            new CopyWebpackPlugin([
+                {
+                    from: '../static/**/*',
+                    to: 'static',
+                }
             ])
         ];
 

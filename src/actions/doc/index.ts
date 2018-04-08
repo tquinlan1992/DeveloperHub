@@ -13,7 +13,8 @@ const changeDocValue = SimpleActionCreator<ChangeDocValueParams>(actionTypes.onD
 
 function onDocChange(params: { value: string }) {
     return function (dispatch: any) {
-        db.get('74352121d110fb138c491b946a000fe2').then(function (doc: any) {
+        db.get('62fe645a55c2ea2005e589b3dc004870').then(function (doc: any) {
+            console.log('doc', doc);
             db.put({
                 ...doc,
                 value: params.value
