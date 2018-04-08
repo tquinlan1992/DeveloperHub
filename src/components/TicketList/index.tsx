@@ -3,20 +3,31 @@ import { connect } from 'react-redux';
 import actions from '../../actions';
 import { AppState } from "../../store/AppState";
 import { pick } from "../../utils";
-import { Table, TableHeader, TableRow, TableHeaderColumn, TableBody, TableRowColumn, TextField, Dialog } from "material-ui";
+import { Table, RaisedButton, TableHeader, TableRow, TableHeaderColumn, TableBody, TableRowColumn, TextField, Dialog } from "material-ui";
 
-class VoiceToCode extends React.Component<{}> {
+interface TicketListActions {
+    setShowAddTicketDialog: typeof actions.setShowAddTicketDialog;
+}interface TicketListProps {
+    showAddTicketDialog: boolean;
+}
+export class TicketList extends React.Component<TicketListProps & TicketListActions> {
 
     openAddTaskDialog() {
 
     }
-    state = {
-        open: false
-    };
+
+    openAddticketDialog() {
+        this.props.setShowAddTicketDialog({value: true});
+    }
+
+    closeAddticketDialog() {
+        this.props.setShowAddTicketDialog({ value: false });
+    }
 
     render() {
         return (
             <div>
+                <RaisedButton label="Add Ticket" onClick={this.openAddticketDialog.bind(this)} />
                 <Table>
                     <TableHeader>
                         <TableRow>
@@ -51,7 +62,8 @@ class VoiceToCode extends React.Component<{}> {
                 <Dialog
                     title="Dialog With Actions"
                     modal={false}
-                    open={this.state.open}
+                    open={this.props.showAddTicketDialog}
+                    onRequestClose={(this.closeAddticketDialog.bind(this))}
                 >
                     The actions in this window were passed in as an array of React objects.
                 </Dialog>
@@ -62,12 +74,13 @@ class VoiceToCode extends React.Component<{}> {
 
 const mapStateToProps = (state: AppState, ownProps: any) => {
     console.log('state', state);
+    const { ticketList } = state;
     return {
-        voiceToCode: state.voiceToCode
+        showAddTicketDialog: ticketList.showAddTicketDialog
     };
 };
 
 const mapActionsToProps = pick(actions,
-    'createAnInterface');
+    'setShowAddTicketDialog');
 
-export default connect<{}>(mapStateToProps, mapActionsToProps)(VoiceToCode);
+export default connect<TicketListProps, TicketListActions>(mapStateToProps, mapActionsToProps)(TicketList);
