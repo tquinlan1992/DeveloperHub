@@ -59,7 +59,7 @@ describe('when a user', () => {
                 setShowAddTicketDialog: mockActions.setShowAddTicketDialog as typeof actions.setShowAddTicketDialog
             };
             const result = shallow(<TicketList {...props} />);
-            const dialogProps: any = result.find('[title="Dialog With Actions"]').props();
+            const dialogProps: any = result.find('Connect(AddTicketDialog)').props();
             dialogProps.onRequestClose();
             expect(mockActions.setShowAddTicketDialog.mock.calls).toMatchObject([
                 [{ value: false }]

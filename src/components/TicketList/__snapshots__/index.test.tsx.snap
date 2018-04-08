@@ -121,17 +121,10 @@ exports[`describe when the TicketList Component is given showAddTicketDialog as 
       </TableRow>
     </TableBody>
   </Table>
-  <Dialog
-    autoDetectWindowHeight={true}
-    autoScrollBodyContent={false}
-    modal={false}
+  <Connect(AddTicketDialog)
     onRequestClose={[Function]}
     open={false}
-    repositionOnUpdate={true}
-    title="Dialog With Actions"
-  >
-    The actions in this window were passed in as an array of React objects.
-  </Dialog>
+  />
 </div>
 `;
 
@@ -256,16 +249,9 @@ exports[`describe when the TicketList Component is given showAddTicketDialog as 
       </TableRow>
     </TableBody>
   </Table>
-  <Dialog
-    autoDetectWindowHeight={true}
-    autoScrollBodyContent={false}
-    modal={false}
+  <Connect(AddTicketDialog)
     onRequestClose={[Function]}
     open={true}
-    repositionOnUpdate={true}
-    title="Dialog With Actions"
-  >
-    The actions in this window were passed in as an array of React objects.
-  </Dialog>
+  />
 </div>
 `;

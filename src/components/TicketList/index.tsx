@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import actions from '../../actions';
 import { AppState } from "../../store/AppState";
 import { pick } from "../../utils";
-import { Table, RaisedButton, TableHeader, TableRow, TableHeaderColumn, TableBody, TableRowColumn, TextField, Dialog } from "material-ui";
+import { Table, RaisedButton, TableHeader, TableRow, TableHeaderColumn, TableBody, TableRowColumn, TextField } from "material-ui";
+import AddTicketDialog from './AddTicketDialog';
 
 interface TicketListActions {
     setShowAddTicketDialog: typeof actions.setShowAddTicketDialog;
@@ -59,14 +60,10 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
                         </TableRow>
                     </TableBody>
                 </Table>
-                <Dialog
-                    title="Dialog With Actions"
-                    modal={false}
+                <AddTicketDialog
                     open={this.props.showAddTicketDialog}
                     onRequestClose={(this.closeAddticketDialog.bind(this))}
-                >
-                    The actions in this window were passed in as an array of React objects.
-                </Dialog>
+                />
             </div>
         );
     }
