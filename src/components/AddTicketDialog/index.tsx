@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Dialog } from "material-ui";
 import { connect } from 'react-redux';
-import { AppState } from "../../../store/AppState";
+import { AppState } from "../../store/AppState";
 
 interface AddTicketDialogOwnProps {
     onRequestClose: () => void;

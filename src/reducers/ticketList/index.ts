@@ -1,11 +1,16 @@
 import simpleActions from '../../actions/simpleActions';
 import { isType } from 'typescript-fsa';
 import { TicketList as TicketListState } from '../../store/AppState';
-import { SetShowAddTicketDialogParams } from '../../actions/ticketList';
+import { SetShowAddTicketDialogParams, SetTicketsAction } from '../../actions/ticketList';
 
 const initialState = {
-    showAddTicketDialog: false
+    showAddTicketDialog: false,
+    tickets: []
 };
+
+interface HandleState {
+    state: TicketListState;
+}
 
 function handleSetShowAddTicketDialog(state: TicketListState, action: SetShowAddTicketDialogParams) {
     return {
@@ -14,11 +19,25 @@ function handleSetShowAddTicketDialog(state: TicketListState, action: SetShowAdd
     };
 }
 
+interface HandleSetTickets extends HandleState {
+    action: SetTicketsAction;
+}
+
+function handleSetTickets({state, action}: HandleSetTickets) {
+    return {
+        ...state,
+        tickets: action.tickets
+    };
+}
+
 export default function ticketListReducer(state: TicketListState = initialState, action: any) {
 
     if (isType(action, simpleActions.setShowAddTicketDialog)) {
         return handleSetShowAddTicketDialog(state, action.payload);
-    } else {
+    } else if (isType(action, simpleActions.setTickets)) {
+        return handleSetTickets({state, action: action.payload});
+    }
+    else {
         return state;
     }
 }

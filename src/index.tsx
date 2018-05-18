@@ -9,7 +9,6 @@ request
     .end((err, res) => {
         const apiUrl = res.body.value;
         setupPouch(urljoin(apiUrl, '/couchdb/test'));
+        AppStore(store);
         console.log('res', res.body.value);
     });
-
-AppStore(store);

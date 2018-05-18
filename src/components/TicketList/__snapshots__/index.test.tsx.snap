@@ -119,6 +119,70 @@ exports[`describe when the TicketList Component is given showAddTicketDialog as 
           />
         </TableRowColumn>
       </TableRow>
+      <TableRow
+        displayBorder={true}
+        hoverable={false}
+        hovered={false}
+        selectable={true}
+        striped={false}
+      >
+        <TableRowColumn
+          hoverable={false}
+        >
+          <TextField
+            defaultValue="ticketTitle"
+            disabled={false}
+            floatingLabelFixed={false}
+            fullWidth={false}
+            multiLine={false}
+            rows={1}
+            type="text"
+            underlineShow={true}
+          />
+        </TableRowColumn>
+        <TableRowColumn
+          hoverable={false}
+        >
+          <TextField
+            defaultValue="5"
+            disabled={false}
+            floatingLabelFixed={false}
+            fullWidth={false}
+            multiLine={false}
+            rows={1}
+            type="text"
+            underlineShow={true}
+          />
+        </TableRowColumn>
+        <TableRowColumn
+          hoverable={false}
+        >
+          <TextField
+            defaultValue="3"
+            disabled={false}
+            floatingLabelFixed={false}
+            fullWidth={false}
+            multiLine={false}
+            rows={1}
+            type="text"
+            underlineShow={true}
+          />
+        </TableRowColumn>
+        <TableRowColumn
+          hoverable={false}
+        >
+          <TextField
+            defaultValue="0"
+            disabled={false}
+            floatingLabelFixed={false}
+            fullWidth={false}
+            multiLine={false}
+            rows={1}
+            type="text"
+            underlineShow={true}
+          />
+        </TableRowColumn>
+      </TableRow>
     </TableBody>
   </Table>
   <Connect(AddTicketDialog)
@@ -195,6 +259,70 @@ exports[`describe when the TicketList Component is given showAddTicketDialog as 
         >
           <TextField
             defaultValue="OVC-523"
+            disabled={false}
+            floatingLabelFixed={false}
+            fullWidth={false}
+            multiLine={false}
+            rows={1}
+            type="text"
+            underlineShow={true}
+          />
+        </TableRowColumn>
+        <TableRowColumn
+          hoverable={false}
+        >
+          <TextField
+            defaultValue="5"
+            disabled={false}
+            floatingLabelFixed={false}
+            fullWidth={false}
+            multiLine={false}
+            rows={1}
+            type="text"
+            underlineShow={true}
+          />
+        </TableRowColumn>
+        <TableRowColumn
+          hoverable={false}
+        >
+          <TextField
+            defaultValue="3"
+            disabled={false}
+            floatingLabelFixed={false}
+            fullWidth={false}
+            multiLine={false}
+            rows={1}
+            type="text"
+            underlineShow={true}
+          />
+        </TableRowColumn>
+        <TableRowColumn
+          hoverable={false}
+        >
+          <TextField
+            defaultValue="0"
+            disabled={false}
+            floatingLabelFixed={false}
+            fullWidth={false}
+            multiLine={false}
+            rows={1}
+            type="text"
+            underlineShow={true}
+          />
+        </TableRowColumn>
+      </TableRow>
+      <TableRow
+        displayBorder={true}
+        hoverable={false}
+        hovered={false}
+        selectable={true}
+        striped={false}
+      >
+        <TableRowColumn
+          hoverable={false}
+        >
+          <TextField
+            defaultValue="ticketTitle"
             disabled={false}
             floatingLabelFixed={false}
             fullWidth={false}

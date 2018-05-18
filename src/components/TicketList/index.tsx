@@ -1,24 +1,29 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import actions from '../../actions';
-import { AppState } from "../../store/AppState";
+import { AppState, Ticket } from "../../store/AppState";
 import { pick } from "../../utils";
 import { Table, RaisedButton, TableHeader, TableRow, TableHeaderColumn, TableBody, TableRowColumn, TextField } from "material-ui";
 import AddTicketDialog from '../AddTicketDialog';
 
 interface TicketListActions {
     setShowAddTicketDialog: typeof actions.setShowAddTicketDialog;
+    fetchProducts: typeof actions.fetchProducts;
+    addTicket: typeof actions.addTicket;
 }interface TicketListProps {
     showAddTicketDialog: boolean;
+    tickets: Ticket[];
 }
 export class TicketList extends React.Component<TicketListProps & TicketListActions> {
 
-    openAddTaskDialog() {
-
+    componentDidMount() {
+        console.log('got here');
+        this.props.fetchProducts();
     }
 
     openAddticketDialog() {
-        this.props.setShowAddTicketDialog({value: true});
+        this.props.setShowAddTicketDialog({ value: true });
+        this.props.addTicket();
     }
 
     closeAddticketDialog() {
@@ -58,6 +63,27 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
                             />
                             </TableRowColumn>
                         </TableRow>
+                        {this.props.tickets.map(ticket => {
+                            return (<TableRow key={ticket._id}>
+                                <TableRowColumn>
+                                    <TextField
+                                        defaultValue={ticket.title}
+                                    />
+                                </TableRowColumn>
+                                <TableRowColumn><TextField
+                                    defaultValue="5"
+                                />
+                                </TableRowColumn>
+                                <TableRowColumn><TextField
+                                    defaultValue="3"
+                                />
+                                </TableRowColumn>
+                                <TableRowColumn><TextField
+                                    defaultValue="0"
+                                />
+                                </TableRowColumn>
+                            </TableRow>);
+                        })}
                     </TableBody>
                 </Table>
                 <AddTicketDialog
@@ -71,13 +97,16 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
 
 const mapStateToProps = (state: AppState, ownProps: any) => {
     console.log('state', state);
-    const { ticketList } = state;
+    const { showAddTicketDialog, tickets } = state.ticketList;
     return {
-        showAddTicketDialog: ticketList.showAddTicketDialog
+        showAddTicketDialog,
+        tickets
     };
 };
 
 const mapActionsToProps = pick(actions,
-    'setShowAddTicketDialog');
+    'setShowAddTicketDialog',
+    'fetchProducts',
+    'addTicket');
 
 export default connect<TicketListProps, TicketListActions>(mapStateToProps, mapActionsToProps)(TicketList);

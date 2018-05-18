@@ -11,7 +11,9 @@ import * as _ from 'lodash';
 configure({ adapter: new Adapter() });
 
 const mockActions = {
-    setShowAddTicketDialog: getAnyJestFn()
+    setShowAddTicketDialog: getAnyJestFn(),
+    fetchProducts: getAnyJestFn(),
+    addTicket: getAnyJestFn()
 };
 
 function testShowAddTicketDialogValue(showAddTicketDialog: boolean) {
@@ -19,7 +21,10 @@ function testShowAddTicketDialogValue(showAddTicketDialog: boolean) {
         it(`TicketList should show the addTicketDialog open as ${showAddTicketDialog}`, () => {
             const props = {
                 showAddTicketDialog,
-                setShowAddTicketDialog: mockActions.setShowAddTicketDialog as typeof actions.setShowAddTicketDialog
+                setShowAddTicketDialog: mockActions.setShowAddTicketDialog as typeof actions.setShowAddTicketDialog,
+                fetchProducts: mockActions.fetchProducts as typeof actions.fetchProducts,
+                addTicket: mockActions.addTicket as typeof actions.addTicket,
+                tickets: [{ title: 'ticketTitle', _id: 'id1'}]
             };
             const result = shallow(<TicketList {...props} />);
             expect(result).toMatchSnapshot();
@@ -42,7 +47,10 @@ describe('when a user', () => {
         it('setShowAddTicketDialog should be called with true', () => {
             const props = {
                 showAddTicketDialog: false,
-                setShowAddTicketDialog: mockActions.setShowAddTicketDialog as typeof actions.setShowAddTicketDialog
+                setShowAddTicketDialog: mockActions.setShowAddTicketDialog as typeof actions.setShowAddTicketDialog,
+                fetchProducts: mockActions.fetchProducts as typeof actions.fetchProducts,
+                addTicket: mockActions.addTicket as typeof actions.addTicket,
+                tickets: [{ title: 'ticketTitle', _id: 'id1' }]
             };
             const result = shallow(<TicketList {...props} />);
             const elementToClick = result.find('[label="Add Ticket"]');
@@ -56,7 +64,10 @@ describe('when a user', () => {
         it('setShowAddTicketDialog should be called with false', () => {
             const props = {
                 showAddTicketDialog: false,
-                setShowAddTicketDialog: mockActions.setShowAddTicketDialog as typeof actions.setShowAddTicketDialog
+                setShowAddTicketDialog: mockActions.setShowAddTicketDialog as typeof actions.setShowAddTicketDialog,
+                fetchProducts: mockActions.fetchProducts as typeof actions.fetchProducts,
+                addTicket: mockActions.addTicket as typeof actions.addTicket,
+                tickets: [{ title: 'ticketTitle', _id: 'id1' }]
             };
             const result = shallow(<TicketList {...props} />);
             const dialogProps: any = result.find('Connect(AddTicketDialog)').props();

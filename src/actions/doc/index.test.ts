@@ -10,6 +10,12 @@ describe('test docActions', () => {
     const state = {
         doc: {
             edit: 'editDoc',
+        },
+        voiceToCode: {
+            text: 'asdf'
+        },
+        ticketList: {
+            showAddTicketDialog: false
         }
     };
     const store = configureStore<AppState>([thunk])(state);
