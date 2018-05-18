@@ -1,16 +1,23 @@
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import * as React from 'react';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import { createMuiTheme } from '@material-ui/core/styles';
 
-class Theme extends React.Component<any, any> {
-    muiTheme = getMuiTheme({
+class Theme extends React.Component {
+    muiTheme = createMuiTheme({
         palette: {
-            primary1Color: '#FFFFFF',
-            accent1Color: '#00D036',
-            alternateTextColor: '#00D036'
-        },
-        appBar: {
-            height: 50
+            primary: {
+                // light: will be calculated from palette.primary.main,
+                main: '#ff4400',
+                // dark: will be calculated from palette.primary.main,
+                // contrastText: will be calculated to contast with palette.primary.main
+            },
+            secondary: {
+                light: '#0066ff',
+                main: '#0044ff',
+                // dark: will be calculated from palette.secondary.main,
+                contrastText: '#ffcc00',
+            },
+            // error: will use the default color
         }
     });
     constructor(props: any) {
@@ -20,7 +27,7 @@ class Theme extends React.Component<any, any> {
 
     public render() {
         return (
-            <MuiThemeProvider muiTheme={this.muiTheme}>
+            <MuiThemeProvider theme={this.muiTheme}>
                 {this.props.children}
             </MuiThemeProvider>
         );

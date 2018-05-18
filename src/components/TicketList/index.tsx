@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import actions from '../../actions';
 import { AppState, Ticket } from "../../store/AppState";
 import { pick } from "../../utils";
-import { Table, RaisedButton, TableHeader, TableRow, TableHeaderColumn, TableBody, TableRowColumn, TextField } from "material-ui";
+import { Table, Button, TableHead, TableRow, TableBody, TableCell, TextField } from "@material-ui/core";
 import AddTicketDialog from '../AddTicketDialog';
 
 interface TicketListActions {
@@ -23,7 +23,7 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
 
     openAddticketDialog() {
         this.props.setShowAddTicketDialog({ value: true });
-        this.props.addTicket();
+        //this.props.addTicket();
     }
 
     closeAddticketDialog() {
@@ -33,55 +33,55 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
     render() {
         return (
             <div>
-                <RaisedButton label="Add Ticket" onClick={this.openAddticketDialog.bind(this)} />
+                <Button onClick={this.openAddticketDialog.bind(this)}> Add Ticket </Button>
                 <Table>
-                    <TableHeader>
+                    <TableHead>
                         <TableRow>
-                            <TableHeaderColumn>Ticket</TableHeaderColumn>
-                            <TableHeaderColumn>3/22</TableHeaderColumn>
-                            <TableHeaderColumn>3/23</TableHeaderColumn>
-                            <TableHeaderColumn>3/26</TableHeaderColumn>
+                            <TableCell>Ticket</TableCell>
+                            <TableCell>3/22</TableCell>
+                            <TableCell>3/23</TableCell>
+                            <TableCell>3/26</TableCell>
                         </TableRow>
-                    </TableHeader>
+                    </TableHead>
                     <TableBody>
                         <TableRow>
-                            <TableRowColumn>
+                            <TableCell>
                                 <TextField
                                     defaultValue="OVC-523"
                                 />
-                            </TableRowColumn>
-                            <TableRowColumn><TextField
+                            </TableCell>
+                            <TableCell><TextField
                                 defaultValue="5"
                             />
-                            </TableRowColumn>
-                            <TableRowColumn><TextField
+                            </TableCell>
+                            <TableCell><TextField
                                 defaultValue="3"
                             />
-                            </TableRowColumn>
-                            <TableRowColumn><TextField
+                            </TableCell>
+                            <TableCell><TextField
                                 defaultValue="0"
                             />
-                            </TableRowColumn>
+                            </TableCell>
                         </TableRow>
                         {this.props.tickets.map(ticket => {
                             return (<TableRow key={ticket._id}>
-                                <TableRowColumn>
+                                <TableCell>
                                     <TextField
                                         defaultValue={ticket.title}
                                     />
-                                </TableRowColumn>
-                                <TableRowColumn><TextField
+                                </TableCell>
+                                <TableCell><TextField
                                     defaultValue="5"
                                 />
-                                </TableRowColumn>
-                                <TableRowColumn><TextField
+                                </TableCell>
+                                <TableCell><TextField
                                     defaultValue="3"
                                 />
-                                </TableRowColumn>
-                                <TableRowColumn><TextField
+                                </TableCell>
+                                <TableCell><TextField
                                     defaultValue="0"
                                 />
-                                </TableRowColumn>
+                                </TableCell>
                             </TableRow>);
                         })}
                     </TableBody>

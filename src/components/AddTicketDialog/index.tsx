@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dialog } from "material-ui";
+import { Dialog, TextField, DialogTitle, DialogContentText, DialogContent, DialogActions, Button } from "@material-ui/core";
 import { connect } from 'react-redux';
 import { AppState } from "../../store/AppState";
 
@@ -10,16 +10,60 @@ interface AddTicketDialogOwnProps {
 
 export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps> {
 
+    onStoryPointsChange(event: React.FormEvent<HTMLInputElement>) {
+        console.log('a', event.currentTarget.value);
+    }
+
     render() {
         return (
             <Dialog
                 title="Dialog With Actions"
-                modal={false}
                 open={this.props.open}
-                onRequestClose={(this.props.onRequestClose.bind(this))}
+                onExit={(this.props.onRequestClose.bind(this))}
+                fullWidth
             >
-                <h1>Add a Ticket </h1>
-                </Dialog>
+                <DialogTitle id="form-dialog-title">Create a Ticket</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        <TextField
+                            autoFocus
+                            margin="dense"
+                            id="name"
+                            label="Title"
+                            type="text"
+                            fullWidth
+                            required
+                        />
+                        <TextField
+                            id="multiline-flexible"
+                            label="Description"
+                            multiline
+                            //value={this.state.multiline}
+                            //onChange={this.handleChange('multiline')}
+                            //className={classes.textField}
+                            margin="dense"
+                            fullWidth
+                        />
+                        <TextField
+                            autoFocus
+                            margin="dense"
+                            id="name"
+                            label="Title"
+                            type="number"
+                            fullWidth
+                            onChange={this.onStoryPointsChange.bind(this)}
+                        />
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={(this.props.onRequestClose.bind(this))} color="primary">
+                        Cancel
+                    </Button>
+                    <Button color="primary">
+                        Subscribe
+                    </Button>
+                </DialogActions>
+            </Dialog>
         );
     }
 }

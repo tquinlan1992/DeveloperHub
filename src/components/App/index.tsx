@@ -1,19 +1,16 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import Increment from '../Increment';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Theme from '../Theme';
 import { Switch, Redirect } from 'react-router';
 import DocEditor from '../DocEditor';
 import TopAppBar from '../TopAppbar';
-import NestedList from '../NestedList';
 import VoiceToCode from '../VoiceToCode';
 
 function Home(params: { match: any }) {
     return (
         <div>
-            <Increment />
             <h1>Home</h1>
         </div>
     );
@@ -30,8 +27,7 @@ export default (store: any) => {
                 <Router>
                     <div>
                         <TopAppBar />
-                        <div style={{ float: 'left', style: '20%' }}>
-                            <NestedList />
+                        <div style={{ float: 'left'}}>
                         </div>
                         <div style={{ float: 'left' }}>
                             <VoiceToCode />
