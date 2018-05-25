@@ -8,10 +8,10 @@ export interface SetShowAddTicketDialogParams {
 
 export default makeStateTypeActionCreatorWithReducer<SetShowAddTicketDialogParams>(
     'SET_SHOW_ADD_TICKET_DIALOG',
-    (state, action: SetShowAddTicketDialogParams) => {
+    (state, { value }: SetShowAddTicketDialogParams) => {
         return {
             ...state,
-            showAddTicketDialog: action.value
+            showAddTicketDialog: value
         };
     }
 );

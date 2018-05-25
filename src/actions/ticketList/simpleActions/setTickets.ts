@@ -9,10 +9,10 @@ export interface SetTicketsAction {
 
 export default makeStateTypeActionCreatorWithReducer<SetTicketsAction>(
     'SET_TICKETS',
-    (state, action: SetTicketsAction) => {
+    (state, { tickets }: SetTicketsAction) => {
         return {
             ...state,
-            tickets: action.tickets
+            tickets: tickets
         };
     }
 );
