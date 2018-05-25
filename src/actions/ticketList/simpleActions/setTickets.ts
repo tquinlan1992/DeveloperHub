@@ -1,5 +1,5 @@
-import { Ticket } from "../../store/AppState";
-import { getMakeStateTypeActionCreatorWithReducer } from ".";
+import { Ticket } from "../../../store/AppState";
+import { getMakeStateTypeActionCreatorWithReducer } from "../";
 
 const makeStateTypeActionCreatorWithReducer = getMakeStateTypeActionCreatorWithReducer();
 

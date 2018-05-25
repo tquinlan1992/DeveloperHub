@@ -1,8 +1,8 @@
 import { getRemoteDB } from '../../../database/pouch';
 import { ThunkAction } from 'redux-thunk';
 import { AppState } from '../../../store/AppState';
-import { fetchProducts } from '../../../actions/ticketList';
 // import { SimpleActionCreator } from '../../../actions/util';
+import { fetchProducts } from '../../../actions/ticketList/thunkActions/fetchProducts';
 
 export const actionTypes = {
     onStoryPointKeyPress: 'ON_STORY_POINT_KEY_PRESS',

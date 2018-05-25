@@ -1,20 +1,11 @@
 import { createReducer, getGenericActionCreatorWithReducerMethod } from '../util';
-import { AppState, TicketList } from '../../store/AppState';
-import { ThunkAction } from 'redux-thunk';
-import { getRemoteDB } from '../../database/pouch';
-import setTickets from './setTickets';
-import setShowAddTicketDialog from './setShowAddTicketDialog';
+import { TicketList } from '../../store/AppState';
+import setTickets from './simpleActions/setTickets';
+import setShowAddTicketDialog from './simpleActions/setShowAddTicketDialog';
+import { fetchProducts } from './thunkActions/fetchProducts';
 
 export function getMakeStateTypeActionCreatorWithReducer(){ 
     return getGenericActionCreatorWithReducerMethod<TicketList>();
-}
-
-export function fetchProducts(): ThunkAction<void, AppState, void> {
-    return async function (dispatch) {
-        const db = await getRemoteDB();
-        const tickets = await db.getTickets();
-        dispatch(setTickets.actionCreator({ tickets: tickets as any }));
-    };
 }
 
 const initialState = {
@@ -22,15 +13,16 @@ const initialState = {
     tickets: []
 };
 
-export const reducer = createReducer<TicketList>(initialState, [
+const actions = {
     setShowAddTicketDialog,
     setTickets
-]);
+};
+
+export const reducer = createReducer<TicketList>(initialState, actions);
 
 export const simpleActions = {
     setShowAddTicketDialog: setShowAddTicketDialog.actionCreator,
     setTickets: setTickets.actionCreator,
-
 };
 
 export default {

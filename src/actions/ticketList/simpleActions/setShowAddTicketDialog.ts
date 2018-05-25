@@ -1,4 +1,4 @@
-import { getMakeStateTypeActionCreatorWithReducer } from ".";
+import { getMakeStateTypeActionCreatorWithReducer } from "../";
 
 const makeStateTypeActionCreatorWithReducer = getMakeStateTypeActionCreatorWithReducer();
 

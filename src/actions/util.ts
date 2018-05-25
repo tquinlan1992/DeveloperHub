@@ -8,7 +8,11 @@ interface ActionCreatorWithReducer<StateType> {
     reducer: (state: StateType, action: any) => StateType;
 }
 
-export function createReducer<StateType>(initialState: StateType, actions: ActionCreatorWithReducer<StateType>[]) {
+interface ActionCreatorWithReducerGroup<StateType> {
+    [key: string]: ActionCreatorWithReducer<StateType>;
+}
+
+export function createReducer<StateType>(initialState: StateType, actions: ActionCreatorWithReducerGroup<StateType>) {
     return (state: StateType = initialState, incomingAction: Action<AnyAction>) => {
         const actionMatch = _.find(actions, action => {
             return isType(incomingAction, action.actionCreator);
