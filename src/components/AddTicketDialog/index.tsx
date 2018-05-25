@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dialog, TextField, DialogTitle, DialogContentText, DialogContent, DialogActions, Button } from "@material-ui/core";
+import { Dialog, TextField, DialogTitle, DialogContent, DialogActions, Button } from "@material-ui/core";
 import { connect } from 'react-redux';
 import { AppState } from "../../store/AppState";
 
@@ -11,7 +11,9 @@ interface AddTicketDialogOwnProps {
 export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps> {
 
     onStoryPointsChange(event: React.FormEvent<HTMLInputElement>) {
+        event.preventDefault();
         console.log('a', event.currentTarget.value);
+        event.stopPropagation();
     }
 
     render() {
@@ -24,7 +26,6 @@ export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps> {
             >
                 <DialogTitle id="form-dialog-title">Create a Ticket</DialogTitle>
                 <DialogContent>
-                    <DialogContentText>
                         <TextField
                             autoFocus
                             margin="dense"
@@ -48,12 +49,11 @@ export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps> {
                             autoFocus
                             margin="dense"
                             id="name"
-                            label="Title"
+                            label="Story Points"
                             type="number"
                             fullWidth
-                            onChange={this.onStoryPointsChange.bind(this)}
+                        onKeyPress={this.onStoryPointsChange.bind(this)}
                         />
-                    </DialogContentText>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={(this.props.onRequestClose.bind(this))} color="primary">
