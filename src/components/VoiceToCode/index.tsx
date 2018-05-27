@@ -1,4 +1,4 @@
-const SpeechToText = require('speech-to-text').default;
+//const SpeechToText = require('speech-to-text').default;
 import * as _ from "lodash";
 import * as React from 'react';
 import { connect } from 'react-redux';
@@ -48,13 +48,13 @@ class VoiceToCode extends React.Component<VoiceToCodeProps & VoiceToCodeActions>
             },
             'rate': 0.01
         });
-        function onAnythingSaid(text: string) {
-            console.log(`Interim text: ${text}`);
-        }
+        // function onAnythingSaid(text: string) {
+        //     console.log(`Interim text: ${text}`);
+        // }
 
         try {
-            const listener = new SpeechToText(onAnythingSaid, this.onFinalised.bind(this), this.onFinishedListening.bind(this));
-            listener.startListening();
+            // const listener = new SpeechToText(onAnythingSaid, this.onFinalised.bind(this), this.onFinishedListening.bind(this));
+            // listener.startListening();
             console.log('now listening');
         } catch (error) {
             console.log(error);

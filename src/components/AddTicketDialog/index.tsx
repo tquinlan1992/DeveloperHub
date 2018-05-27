@@ -2,18 +2,31 @@ import * as React from 'react';
 import { Dialog, TextField, DialogTitle, DialogContent, DialogActions, Button } from "@material-ui/core";
 import { connect } from 'react-redux';
 import { AppState } from "../../store/AppState";
+import actions from '../../actions';
+import * as _ from 'lodash';
 
 interface AddTicketDialogOwnProps {
     onRequestClose: () => void;
     open: boolean;
 }
 
-export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps> {
+interface StateProps {
+    storyPoint: number | null;
+}
 
-    onStoryPointsChange(event: React.FormEvent<HTMLInputElement>) {
-        event.preventDefault();
-        console.log('a', event.currentTarget.value);
-        event.stopPropagation();
+interface ComponentActions {
+    addTicket: typeof actions.addTicket;
+    setStoryPoint: typeof actions.setStoryPoint;
+}
+
+export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps & ComponentActions & StateProps> {
+
+    onStoryPointsChange(event: React.ChangeEvent<HTMLSelectElement>) {
+        this.props.setStoryPoint({ value: event.currentTarget.value});
+    }
+
+    onCreate() {
+        this.props.addTicket();
     }
 
     render() {
@@ -52,15 +65,16 @@ export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps> {
                             label="Story Points"
                             type="number"
                             fullWidth
-                        onKeyPress={this.onStoryPointsChange.bind(this)}
+                            value={this.props.storyPoint || ''}
+                        onChange={this.onStoryPointsChange.bind(this)}
                         />
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={(this.props.onRequestClose.bind(this))} color="primary">
                         Cancel
                     </Button>
-                    <Button color="primary">
-                        Subscribe
+                    <Button onClick={this.onCreate.bind(this)} color="primary">
+                        Create
                     </Button>
                 </DialogActions>
             </Dialog>
@@ -70,8 +84,14 @@ export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps> {
 
 const mapStateToProps = (state: AppState, ownProps: AddTicketDialogOwnProps) => {
     return {
+        storyPoint: state.addTicket.storyPoint,
         ...ownProps
     };
 };
 
-export default connect<AddTicketDialogOwnProps, void, AddTicketDialogOwnProps>(mapStateToProps)(AddTicketDialog);
+const mapDispatchToProps = _.pick(actions, 
+    'addTicket',
+    'setStoryPoint'
+);
+
+export default connect<AddTicketDialogOwnProps & StateProps, ComponentActions, AddTicketDialogOwnProps>(mapStateToProps, mapDispatchToProps)(AddTicketDialog);

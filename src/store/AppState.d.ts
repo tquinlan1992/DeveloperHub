@@ -11,6 +11,10 @@ export interface Ticket {
     _id: string;
 }
 
+export interface AddTicketState {
+    storyPoint: null | number;
+}
+
 export interface TicketList {
     showAddTicketDialog: boolean;
     tickets: Ticket[];
@@ -20,4 +24,5 @@ export interface AppState {
     doc: Doc;
     voiceToCode: VoiceToCode;
     ticketList: TicketList;
+    addTicket: AddTicketState;
 }

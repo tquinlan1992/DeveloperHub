@@ -13,19 +13,13 @@ const initialState = {
     tickets: []
 };
 
-const actions = {
+export const simpleActions = {
     setShowAddTicketDialog,
     setTickets
 };
 
-export const reducer = createReducer<TicketList>(initialState, actions);
+export const reducer = createReducer<TicketList>(initialState, simpleActions);
 
-export const simpleActions = {
-    setShowAddTicketDialog: setShowAddTicketDialog.actionCreator,
-    setTickets: setTickets.actionCreator,
-};
-
-export default {
-    ...simpleActions,
+export const thunkActions = {
     fetchProducts
 };

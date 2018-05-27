@@ -1,11 +1,8 @@
-import { simpleActions as incrementActions } from './increment';
-import { simpleActions as docActions } from './doc';
-import { voiceToCodeSimpleActions } from './voiceToCode';
-import { simpleActions as ticketListActions } from './ticketList';
+import { simpleActions as ticketListSimpleActions } from './ticketList';
+import addTicketSimpleActions from './addTicket/simpleActions';
+import { getCreators } from './util';
 
-export default {
-    ...incrementActions,
-    ...docActions,
-    ...voiceToCodeSimpleActions,
-    ...ticketListActions
-};
+export default getCreators({
+    ...ticketListSimpleActions,
+    ...addTicketSimpleActions
+});
