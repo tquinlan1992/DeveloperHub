@@ -13,6 +13,8 @@ export interface Ticket {
 
 export interface AddTicketState {
     storyPoint: null | number;
+    description: string;
+    title: string;
 }
 
 export interface TicketList {

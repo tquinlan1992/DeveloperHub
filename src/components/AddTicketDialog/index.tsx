@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dialog, TextField, DialogTitle, DialogContent, DialogActions, Button } from "@material-ui/core";
+import { Dialog, TextField, DialogTitle, DialogContent, DialogActions, Button, InputLabel, Select, MenuItem, FormControl } from "@material-ui/core";
 import { connect } from 'react-redux';
 import { AppState } from "../../store/AppState";
 import actions from '../../actions';
@@ -12,21 +12,33 @@ interface AddTicketDialogOwnProps {
 
 interface StateProps {
     storyPoint: number | null;
+    description: string;
+    title: string;
 }
 
 interface ComponentActions {
     addTicket: typeof actions.addTicket;
     setStoryPoint: typeof actions.setStoryPoint;
+    setDescription: typeof actions.setDescription;
+    setTitle: typeof actions.setTitle;
 }
 
 export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps & ComponentActions & StateProps> {
 
     onStoryPointsChange(event: React.ChangeEvent<HTMLSelectElement>) {
-        this.props.setStoryPoint({ value: event.currentTarget.value});
+        this.props.setStoryPoint({ value: event.target.value });
     }
 
     onCreate() {
         this.props.addTicket();
+    }
+
+    onDescriptionChange(event: React.ChangeEvent<HTMLSelectElement>) {
+        this.props.setDescription({value: event.target.value});
+    }
+    
+    onTitleChange(event: React.ChangeEvent<HTMLSelectElement>) {
+        this.props.setTitle({ value: event.target.value });
     }
 
     render() {
@@ -39,35 +51,58 @@ export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps & C
             >
                 <DialogTitle id="form-dialog-title">Create a Ticket</DialogTitle>
                 <DialogContent>
-                        <TextField
-                            autoFocus
-                            margin="dense"
-                            id="name"
-                            label="Title"
-                            type="text"
-                            fullWidth
-                            required
-                        />
-                        <TextField
-                            id="multiline-flexible"
-                            label="Description"
-                            multiline
-                            //value={this.state.multiline}
-                            //onChange={this.handleChange('multiline')}
-                            //className={classes.textField}
-                            margin="dense"
-                            fullWidth
-                        />
-                        <TextField
-                            autoFocus
-                            margin="dense"
-                            id="name"
-                            label="Story Points"
-                            type="number"
-                            fullWidth
-                            value={this.props.storyPoint || ''}
-                        onChange={this.onStoryPointsChange.bind(this)}
-                        />
+                    <form autoComplete="off">
+                        <FormControl>
+                            <TextField
+                                autoFocus
+                                margin="dense"
+                                id="name"
+                                label="Title"
+                                type="text"
+                                fullWidth
+                                required
+                                value={this.props.title}
+                                onChange={this.onTitleChange.bind(this)}
+                            />
+                        </FormControl>
+                        <FormControl>
+                            <TextField
+                                id="multiline-flexible"
+                                label="Description"
+                                multiline
+                                //value={this.state.multiline}
+                                //onChange={this.handleChange('multiline')}
+                                //className={classes.textField}
+                                margin="dense"
+                                fullWidth
+                                value={this.props.description}
+                                onChange={this.onDescriptionChange.bind(this)}
+                            />
+                        </FormControl>
+                        <FormControl>
+                            <InputLabel htmlFor="age-simple">Story Point</InputLabel>
+                            <Select
+                                value={_.isNumber(this.props.storyPoint) ? this.props.storyPoint : ''}
+                                onChange={this.onStoryPointsChange.bind(this)}
+                                inputProps={{
+                                    name: 'age',
+                                    id: 'age-simple',
+                                }}
+                            >
+                                <MenuItem value="">
+                                    <em>None</em>
+                                </MenuItem>
+                                <MenuItem value={0.1}>0.1</MenuItem>
+                                <MenuItem value={1}>1</MenuItem>
+                                <MenuItem value={2}>2</MenuItem>
+                                <MenuItem value={3}>3</MenuItem>
+                                <MenuItem value={5}>5</MenuItem>
+                                <MenuItem value={8}>8</MenuItem>
+                                <MenuItem value={13}>13</MenuItem>
+                                <MenuItem value={21}>21</MenuItem>
+                            </Select>
+                        </FormControl>
+                    </form>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={(this.props.onRequestClose.bind(this))} color="primary">
@@ -84,14 +119,16 @@ export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps & C
 
 const mapStateToProps = (state: AppState, ownProps: AddTicketDialogOwnProps) => {
     return {
-        storyPoint: state.addTicket.storyPoint,
+        ...state.addTicket,
         ...ownProps
     };
 };
 
-const mapDispatchToProps = _.pick(actions, 
+const mapDispatchToProps = _.pick(actions,
     'addTicket',
-    'setStoryPoint'
+    'setStoryPoint',
+    'setDescription',
+    'setTitle'
 );
 
 export default connect<AddTicketDialogOwnProps & StateProps, ComponentActions, AddTicketDialogOwnProps>(mapStateToProps, mapDispatchToProps)(AddTicketDialog);

@@ -17,7 +17,7 @@ export function getCreators<T extends { [key: string]: ActionCreatorWithReducer<
 }
 
 export function createReducer<StateType>(initialState: StateType, actions: ActionCreatorWithReducerGroup<StateType>) {
-    return (state: StateType = initialState, incomingAction: Action<AnyAction>) => {
+    return (state: StateType = initialState, incomingAction: Action<AnyAction>): StateType => {
         const actionMatch = find(actions, action => {
             return isType(incomingAction, action.actionCreator);
         });
@@ -29,19 +29,19 @@ export function createReducer<StateType>(initialState: StateType, actions: Actio
     };
 }
 
-interface StateTypeReducer<StateType> {
-    (state: StateType, action: any): StateType;
+interface StateTypeReducer<StateType, ActionParams> {
+    (state: StateType, action: ActionParams): StateType;
 }
 
-export function makeActionCreatorWithReducer<StateType, Params>(name: string, reducer: StateTypeReducer<StateType>) {
+export function makeActionCreatorWithReducer<StateType, ActionParams>(name: string, reducer: StateTypeReducer<StateType, ActionParams>) {
     return {
-        actionCreator: SimpleActionCreator<Params>(name),
+        actionCreator: SimpleActionCreator<ActionParams>(name),
         reducer
     };
 }
 
 export function getGenericActionCreatorWithReducerMethod<StateType>() {
-    return <Params>(name: string, reducer: StateTypeReducer<StateType>) => {
-        return makeActionCreatorWithReducer<StateType, Params>(name, reducer);
+    return <ActionParams>(name: string, reducer: StateTypeReducer<StateType, ActionParams>) => {
+        return makeActionCreatorWithReducer<StateType, ActionParams>(name, reducer);
     };
 }
