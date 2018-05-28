@@ -27,9 +27,8 @@ export interface StateTypeReducer<StateType, ActionParams> {
     (state: StateType, action: ActionParams): StateType;
 }
 
-const SimpleActionCreator = actionCreatorFactory();
-
 export function makeActionCreatorWithReducer<StateType, ActionParams>(name: string, reducer: StateTypeReducer<StateType, ActionParams>) {
+    const SimpleActionCreator = actionCreatorFactory();
     return {
         actionCreator: SimpleActionCreator<ActionParams>(name),
         reducer
@@ -38,6 +37,10 @@ export function makeActionCreatorWithReducer<StateType, ActionParams>(name: stri
 
 export function getCreators<T extends { [key: string]: ActionCreatorWithReducer<any> }>(creators: T): { [P in keyof T]: T[P]['actionCreator'] } {
     return mapValues(creators, "actionCreator") as { [P in keyof T]: T[P]['actionCreator'] };
+}
+
+export function makeActionCreatorWithReducerWithPrefix<StateType, ActionParams>(actionName: string, reducer: StateTypeReducer<StateType, ActionParams>) {
+    return (reducerName?: string) => makeActionCreatorWithReducer<StateType, ActionParams>(JSON.stringify({ reducerName, actionName }), reducer);
 }
 
 export default {

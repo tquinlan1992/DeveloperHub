@@ -19,5 +19,9 @@ export declare function getCreators<T extends {
 }>(creators: T): {
     [P in keyof T]: T[P]['actionCreator'];
 };
+export declare function makeActionCreatorWithReducerWithPrefix<StateType, ActionParams>(actionName: string, reducer: StateTypeReducer<StateType, ActionParams>): (reducerName?: string | undefined) => {
+    actionCreator: ActionCreator<ActionParams>;
+    reducer: StateTypeReducer<StateType, ActionParams>;
+};
 declare const _default: {};
 export default _default;

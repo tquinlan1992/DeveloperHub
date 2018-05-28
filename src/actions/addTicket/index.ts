@@ -9,9 +9,11 @@ const initialState = {
     title: ''
 };
 
-export default createReducer<AddTicketState>(initialState, simpleActions);
+const addTicketSimpleActions = simpleActions('ADD_TICKET');
+
+export default createReducer<AddTicketState>(initialState, addTicketSimpleActions);
 
 export const actions = {
-    ...getCreators(simpleActions),
+    ...getCreators(addTicketSimpleActions),
     ...thunkActions
 };

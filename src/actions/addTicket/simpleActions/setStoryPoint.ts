@@ -1,10 +1,10 @@
 import { AddTicketState } from "../../../store/AppState";
-import { makeActionCreatorWithReducer } from "tquinlan1992-typescript-react-redux-utils";
+import { makeActionCreatorWithReducerWithPrefix } from "tquinlan1992-typescript-react-redux-utils";
 export interface SetStoryPointsAction {
     value: string | number;
 }
 
-export default makeActionCreatorWithReducer<AddTicketState, SetStoryPointsAction>(
+export default makeActionCreatorWithReducerWithPrefix<AddTicketState, SetStoryPointsAction>(
     'SET_STORY_POINTS',
     (state, { value }: SetStoryPointsAction) => {
         return {
