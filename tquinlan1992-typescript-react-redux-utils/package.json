@@ -5,17 +5,21 @@
   "main": "./dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "webpack": "webpack"
+    "webpack": "webpack",
+    "test:watch": "node --inspect node_modules/.bin/jest --watch"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/jest": "^22.2.3",
     "@types/lodash": "^4.14.109",
     "awesome-typescript-loader": "^5.0.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-preset-es2015": "^6.24.1",
+    "jest": "^23.0.1",
     "lodash": "^4.17.10",
+    "ts-jest": "^22.4.6",
     "tslint-webpack-plugin": "^1.2.2",
     "typescript-fsa": "^3.0.0-beta-2",
     "webpack": "^4.9.1",
