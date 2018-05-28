@@ -2,8 +2,9 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import actions from '../../actions';
 import { AppState, Ticket } from "../../store/AppState";
-import { Table, Button, TableHead, TableRow, TableBody, TableCell, TextField } from "@material-ui/core";
+import { Table, Button, TableHead, TableRow, TableBody, TableCell, TextField, IconButton } from "@material-ui/core";
 import AddTicketDialog from '../AddTicketDialog';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 interface TicketListActions {
     setShowAddTicketDialog: typeof actions.ticketList.setShowAddTicketDialog;
@@ -28,6 +29,10 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
         this.props.setShowAddTicketDialog({ value: false });
     }
 
+    onClickDelete() {
+        alert('delete ticket');
+    }
+
     render() {
         return (
             <div>
@@ -39,28 +44,10 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
                             <TableCell>3/22</TableCell>
                             <TableCell>3/23</TableCell>
                             <TableCell>3/26</TableCell>
+                            <TableCell></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        <TableRow>
-                            <TableCell>
-                                <TextField
-                                    defaultValue="OVC-523"
-                                />
-                            </TableCell>
-                            <TableCell><TextField
-                                defaultValue="5"
-                            />
-                            </TableCell>
-                            <TableCell><TextField
-                                defaultValue="3"
-                            />
-                            </TableCell>
-                            <TableCell><TextField
-                                defaultValue="0"
-                            />
-                            </TableCell>
-                        </TableRow>
                         {this.props.tickets.map(ticket => {
                             return (<TableRow key={ticket._id}>
                                 <TableCell>
@@ -79,6 +66,11 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
                                 <TableCell><TextField
                                     defaultValue={ticket.storyPoint || ''}
                                 />
+                                </TableCell>
+                                <TableCell>
+                                    <IconButton onClick={this.onClickDelete.bind(this)} color="primary">
+                                        <DeleteIcon />
+                                    </IconButton>
                                 </TableCell>
                             </TableRow>);
                         })}
