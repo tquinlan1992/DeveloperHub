@@ -1,8 +1,8 @@
-import { SimpleActionCreator } from '../util';
 const Speech = require('speak-tts').default;
 import docEditorActions from '../doc';
 import { ThunkAction } from 'redux-thunk';
 import { AppState } from '../../store/AppState';
+import actionCreatorFactory from 'typescript-fsa';
 
 export const actionTypes = {
     changeTextParams: 'CHANGE_VOICE_TO_CODE_TEXT'
@@ -26,6 +26,8 @@ function getInterfaceText({ properties, name }: CreateAnInterfaceParams) {
 }
 `;
 }
+
+const SimpleActionCreator = actionCreatorFactory();
 
 const changeVoiceToCodeText = SimpleActionCreator<changeVoiceToCodeTextParams>(actionTypes.changeTextParams);
 

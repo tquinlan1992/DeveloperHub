@@ -1,5 +1,5 @@
-import { SimpleActionCreator } from '../util';
 import { getRemoteDB } from '../../database/pouch';
+import actionCreatorFactory from 'typescript-fsa';
 
 export const actionTypes = {
     onDocChange: 'ON_DOC_CHANGE'
@@ -8,6 +8,8 @@ export const actionTypes = {
 export interface ChangeDocValueParams {
     value: string;
 }
+
+const SimpleActionCreator = actionCreatorFactory();
 
 const changeDocValue = SimpleActionCreator<ChangeDocValueParams>(actionTypes.onDocChange);
 

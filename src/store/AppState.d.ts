@@ -8,6 +8,8 @@ export interface VoiceToCode {
 
 export interface Ticket {
     title: string;
+    storyPoint: null | number;
+    description: string;
     _id: string;
 }
 

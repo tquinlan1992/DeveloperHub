@@ -1,12 +1,8 @@
-import { createReducer, getGenericActionCreatorWithReducerMethod } from '../util';
 import { TicketList } from '../../store/AppState';
 import setTickets from './simpleActions/setTickets';
 import setShowAddTicketDialog from './simpleActions/setShowAddTicketDialog';
 import { fetchProducts } from './thunkActions/fetchProducts';
-
-export function getMakeStateTypeActionCreatorWithReducer(){ 
-    return getGenericActionCreatorWithReducerMethod<TicketList>();
-}
+import { createReducer } from 'tquinlan1992-typescript-react-redux-utils';
 
 const initialState = {
     showAddTicketDialog: false,

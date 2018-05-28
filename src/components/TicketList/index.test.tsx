@@ -24,7 +24,7 @@ function testShowAddTicketDialogValue(showAddTicketDialog: boolean) {
                 setShowAddTicketDialog: mockActions.setShowAddTicketDialog as typeof actions.setShowAddTicketDialog,
                 fetchProducts: mockActions.fetchProducts as typeof actions.fetchProducts,
                 addTicket: mockActions.addTicket as typeof actions.addTicket,
-                tickets: [{ title: 'ticketTitle', _id: 'id1'}]
+                tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1'}]
             };
             const result = shallow(<TicketList {...props} />);
             expect(result).toMatchSnapshot();
@@ -50,7 +50,7 @@ describe('when a user', () => {
                 setShowAddTicketDialog: mockActions.setShowAddTicketDialog as typeof actions.setShowAddTicketDialog,
                 fetchProducts: mockActions.fetchProducts as typeof actions.fetchProducts,
                 addTicket: mockActions.addTicket as typeof actions.addTicket,
-                tickets: [{ title: 'ticketTitle', _id: 'id1' }]
+                tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1' }]
             };
             const result = shallow(<TicketList {...props} />);
             const elementToClick = result.find('[label="Add Ticket"]');
@@ -67,7 +67,7 @@ describe('when a user', () => {
                 setShowAddTicketDialog: mockActions.setShowAddTicketDialog as typeof actions.setShowAddTicketDialog,
                 fetchProducts: mockActions.fetchProducts as typeof actions.fetchProducts,
                 addTicket: mockActions.addTicket as typeof actions.addTicket,
-                tickets: [{ title: 'ticketTitle', _id: 'id1' }]
+                tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1' }]
             };
             const result = shallow(<TicketList {...props} />);
             const dialogProps: any = result.find('Connect(AddTicketDialog)').props();

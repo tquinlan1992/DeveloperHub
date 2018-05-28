@@ -80,6 +80,7 @@
     "speech-to-text": "^0.7.4",
     "style-loader": "^0.19.1",
     "superagent": "^3.8.3",
+    "tquinlan1992-typescript-react-redux-utils": "file:tquinlan1992-typescript-react-redux-utils",
     "ts-jest": "^22.4.6",
     "tslint": "^5.10.0",
     "tslint-webpack-plugin": "^1.0.0",

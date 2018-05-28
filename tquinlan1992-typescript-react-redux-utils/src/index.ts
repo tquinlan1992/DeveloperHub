@@ -1,21 +1,15 @@
-import actionCreatorFactory, { ActionCreator, Action, AnyAction, isType } from 'typescript-fsa';
-import { find, mapValues} from 'lodash';
+import { find, mapValues } from 'lodash';
+import actionCreatorFactory, { isType, Action, AnyAction, ActionCreator } from "typescript-fsa";
 
-export const SimpleActionCreator = actionCreatorFactory();
-
-interface ActionCreatorWithReducer<StateType> {
+export interface ActionCreatorWithReducer<StateType> {
     actionCreator: ActionCreator<any>;
     reducer: (state: StateType, action: any) => StateType;
 }
 
-interface ActionCreatorWithReducerGroup<StateType> {
+export interface ActionCreatorWithReducerGroup<StateType> {
     [key: string]: ActionCreatorWithReducer<StateType>;
 }
-
-export function getCreators<T extends { [key: string]: ActionCreatorWithReducer<any> }>(creators: T): { [P in keyof T]: T[P]['actionCreator'] } {
-    return mapValues(creators, "actionCreator") as { [P in keyof T]: T[P]['actionCreator'] };
-}
-
+ 
 export function createReducer<StateType>(initialState: StateType, actions: ActionCreatorWithReducerGroup<StateType>) {
     return (state: StateType = initialState, incomingAction: Action<AnyAction>): StateType => {
         const actionMatch = find(actions, action => {
@@ -29,9 +23,11 @@ export function createReducer<StateType>(initialState: StateType, actions: Actio
     };
 }
 
-interface StateTypeReducer<StateType, ActionParams> {
+export interface StateTypeReducer<StateType, ActionParams> {
     (state: StateType, action: ActionParams): StateType;
 }
+
+const SimpleActionCreator = actionCreatorFactory();
 
 export function makeActionCreatorWithReducer<StateType, ActionParams>(name: string, reducer: StateTypeReducer<StateType, ActionParams>) {
     return {
@@ -40,8 +36,10 @@ export function makeActionCreatorWithReducer<StateType, ActionParams>(name: stri
     };
 }
 
-export function getGenericActionCreatorWithReducerMethod<StateType>() {
-    return <ActionParams>(name: string, reducer: StateTypeReducer<StateType, ActionParams>) => {
-        return makeActionCreatorWithReducer<StateType, ActionParams>(name, reducer);
-    };
+export function getCreators<T extends { [key: string]: ActionCreatorWithReducer<any> }>(creators: T): { [P in keyof T]: T[P]['actionCreator'] } {
+    return mapValues(creators, "actionCreator") as { [P in keyof T]: T[P]['actionCreator'] };
 }
+
+export default {
+
+};

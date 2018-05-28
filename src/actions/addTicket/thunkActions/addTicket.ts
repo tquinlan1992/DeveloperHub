@@ -4,9 +4,10 @@ import { getRemoteDB } from "../../../database/pouch";
 import { fetchProducts } from "../../ticketList/thunkActions/fetchProducts";
 
 export default function addTicket(): ThunkAction<void, AppState, void> {
-    return async function (dispatch) {
+    return async function (dispatch, getState) {
         const db = await getRemoteDB();
-        await db.addTicket({ title: 'new ticket' });
+        const state = getState();
+        await db.addTicket(state.addTicket);
         await dispatch(fetchProducts());
     };
 }

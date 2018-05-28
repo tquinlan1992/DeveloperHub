@@ -1,13 +1,11 @@
-import { Ticket } from "../../../store/AppState";
-import { getMakeStateTypeActionCreatorWithReducer } from "../";
-
-const makeStateTypeActionCreatorWithReducer = getMakeStateTypeActionCreatorWithReducer();
+import { Ticket, TicketList } from "../../../store/AppState";
+import { makeActionCreatorWithReducer } from "tquinlan1992-typescript-react-redux-utils";
 
 export interface SetTicketsAction {
     tickets: Ticket[];
 }
 
-export default makeStateTypeActionCreatorWithReducer<SetTicketsAction>(
+export default makeActionCreatorWithReducer<TicketList, SetTicketsAction>(
     'SET_TICKETS',
     (state, { tickets }: SetTicketsAction) => {
         return {

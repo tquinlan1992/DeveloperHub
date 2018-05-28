@@ -71,15 +71,15 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
                                     />
                                 </TableCell>
                                 <TableCell><TextField
-                                    defaultValue="5"
+                                    defaultValue={ticket.storyPoint || ''}
                                 />
                                 </TableCell>
                                 <TableCell><TextField
-                                    defaultValue="3"
+                                    defaultValue={ticket.storyPoint || ''}
                                 />
                                 </TableCell>
                                 <TableCell><TextField
-                                    defaultValue="0"
+                                    defaultValue={ticket.storyPoint || ''}
                                 />
                                 </TableCell>
                             </TableRow>);
