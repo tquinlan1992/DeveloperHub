@@ -21,8 +21,8 @@ function testShowAddTicketDialogValue(showAddTicketDialog: boolean) {
         it(`TicketList should show the addTicketDialog open as ${showAddTicketDialog}`, () => {
             const props = {
                 showAddTicketDialog,
-                setShowAddTicketDialog: mockActions.setShowAddTicketDialog as typeof actions.setShowAddTicketDialog,
-                fetchProducts: mockActions.fetchProducts as typeof actions.fetchProducts,
+                setShowAddTicketDialog: mockActions.setShowAddTicketDialog as typeof actions.ticketList.setShowAddTicketDialog,
+                fetchProducts: mockActions.fetchProducts as typeof actions.ticketList.fetchProducts,
                 addTicket: mockActions.addTicket as typeof actions.addTicket,
                 tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1'}]
             };
@@ -47,8 +47,8 @@ describe('when a user', () => {
         it('setShowAddTicketDialog should be called with true', () => {
             const props = {
                 showAddTicketDialog: false,
-                setShowAddTicketDialog: mockActions.setShowAddTicketDialog as typeof actions.setShowAddTicketDialog,
-                fetchProducts: mockActions.fetchProducts as typeof actions.fetchProducts,
+                setShowAddTicketDialog: mockActions.setShowAddTicketDialog as typeof actions.ticketList.setShowAddTicketDialog,
+                fetchProducts: mockActions.fetchProducts as typeof actions.ticketList.fetchProducts,
                 addTicket: mockActions.addTicket as typeof actions.addTicket,
                 tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1' }]
             };
@@ -64,8 +64,8 @@ describe('when a user', () => {
         it('setShowAddTicketDialog should be called with false', () => {
             const props = {
                 showAddTicketDialog: false,
-                setShowAddTicketDialog: mockActions.setShowAddTicketDialog as typeof actions.setShowAddTicketDialog,
-                fetchProducts: mockActions.fetchProducts as typeof actions.fetchProducts,
+                setShowAddTicketDialog: mockActions.setShowAddTicketDialog as typeof actions.ticketList.setShowAddTicketDialog,
+                fetchProducts: mockActions.fetchProducts as typeof actions.ticketList.fetchProducts,
                 addTicket: mockActions.addTicket as typeof actions.addTicket,
                 tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1' }]
             };

@@ -3,7 +3,7 @@ import { Dialog, TextField, DialogTitle, DialogContent, DialogActions, Button, I
 import { connect } from 'react-redux';
 import { AppState } from "../../store/AppState";
 import actions from '../../actions';
-import * as _ from 'lodash';
+import { isNumber } from 'lodash';
 
 interface AddTicketDialogOwnProps {
     onRequestClose: () => void;
@@ -16,11 +16,10 @@ interface StateProps {
     title: string;
 }
 
-interface ComponentActions {
-    addTicket: typeof actions.addTicket;
-    setStoryPoint: typeof actions.setStoryPoint;
-    setDescription: typeof actions.setDescription;
-    setTitle: typeof actions.setTitle;
+type AddTicketAction = typeof actions.addTicket; 
+
+interface ComponentActions extends AddTicketAction {
+
 }
 
 export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps & ComponentActions & StateProps> {
@@ -34,9 +33,9 @@ export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps & C
     }
 
     onDescriptionChange(event: React.ChangeEvent<HTMLSelectElement>) {
-        this.props.setDescription({value: event.target.value});
+        this.props.setDescription({ value: event.target.value });
     }
-    
+
     onTitleChange(event: React.ChangeEvent<HTMLSelectElement>) {
         this.props.setTitle({ value: event.target.value });
     }
@@ -82,7 +81,7 @@ export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps & C
                         <FormControl>
                             <InputLabel htmlFor="age-simple">Story Point</InputLabel>
                             <Select
-                                value={_.isNumber(this.props.storyPoint) ? this.props.storyPoint : ''}
+                                value={isNumber(this.props.storyPoint) ? this.props.storyPoint : ''}
                                 onChange={this.onStoryPointsChange.bind(this)}
                                 inputProps={{
                                     name: 'age',
@@ -124,11 +123,8 @@ const mapStateToProps = (state: AppState, ownProps: AddTicketDialogOwnProps) => 
     };
 };
 
-const mapDispatchToProps = _.pick(actions,
-    'addTicket',
-    'setStoryPoint',
-    'setDescription',
-    'setTitle'
-);
+const mapDispatchToProps = {
+    ...actions.addTicket
+};
 
 export default connect<AddTicketDialogOwnProps & StateProps, ComponentActions, AddTicketDialogOwnProps>(mapStateToProps, mapDispatchToProps)(AddTicketDialog);

@@ -1,17 +1,24 @@
-import increment from './increment';
-import navigation from './navigation';
-import doc from './doc';
-import voiceToCode from './voiceToCode';
-import simpleActions from './simpleActions';
-import thunkActions from './thunkActions';
+import { combineReducers } from 'redux';
+import { routerReducer } from 'react-router-redux';
+import { AppState } from '../store/AppState';
+import navigationActions from './navigation';
+import addTicketReducer, { actions as addTicketActions } from './addTicket';
+import { reducer as ticketListReducer, actions as ticketListActions } from '../actions/ticketList';
 
 const actions = {
-    ...simpleActions,
-    ...thunkActions,
-    ...increment,
-    ...navigation,
-    ...doc,
-    ...voiceToCode,
+    navigation: navigationActions,
+    addTicket: {
+        ...addTicketActions
+    },
+    ticketList: {
+        ...ticketListActions
+    }
 };
+
+export const reducers = combineReducers<AppState>({
+    router: routerReducer,
+    ticketList: ticketListReducer,
+    addTicket: addTicketReducer
+});
 
 export default actions;

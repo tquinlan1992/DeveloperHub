@@ -2,14 +2,12 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import actions from '../../actions';
 import { AppState, Ticket } from "../../store/AppState";
-import { pick } from "../../utils";
 import { Table, Button, TableHead, TableRow, TableBody, TableCell, TextField } from "@material-ui/core";
 import AddTicketDialog from '../AddTicketDialog';
 
 interface TicketListActions {
-    setShowAddTicketDialog: typeof actions.setShowAddTicketDialog;
-    fetchProducts: typeof actions.fetchProducts;
-    addTicket: typeof actions.addTicket;
+    setShowAddTicketDialog: typeof actions.ticketList.setShowAddTicketDialog;
+    fetchProducts: typeof actions.ticketList.fetchProducts;
 }interface TicketListProps {
     showAddTicketDialog: boolean;
     tickets: Ticket[];
@@ -104,9 +102,6 @@ const mapStateToProps = (state: AppState, ownProps: any) => {
     };
 };
 
-const mapActionsToProps = pick(actions,
-    'setShowAddTicketDialog',
-    'fetchProducts',
-    'addTicket');
+const mapActionsToProps = { ...actions.ticketList };
 
 export default connect<TicketListProps, TicketListActions>(mapStateToProps, mapActionsToProps)(TicketList);
