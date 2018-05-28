@@ -13,7 +13,8 @@ configure({ adapter: new Adapter() });
 const mockActions = {
     setShowAddTicketDialog: getAnyJestFn(),
     fetchProducts: getAnyJestFn(),
-    addTicket: getAnyJestFn()
+    addTicket: getAnyJestFn(),
+    deleteTicket: getAnyJestFn()
 };
 
 function testShowAddTicketDialogValue(showAddTicketDialog: boolean) {
@@ -24,7 +25,8 @@ function testShowAddTicketDialogValue(showAddTicketDialog: boolean) {
                 setShowAddTicketDialog: mockActions.setShowAddTicketDialog as typeof actions.ticketList.setShowAddTicketDialog,
                 fetchProducts: mockActions.fetchProducts as typeof actions.ticketList.fetchProducts,
                 addTicket: mockActions.addTicket as typeof actions.addTicket,
-                tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1'}]
+                deleteTicket: mockActions.addTicket as typeof actions.addTicket.deleteTicket,
+                tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1', deleted: false}]
             };
             const result = shallow(<TicketList {...props} />);
             expect(result).toMatchSnapshot();
@@ -50,7 +52,8 @@ describe('when a user', () => {
                 setShowAddTicketDialog: mockActions.setShowAddTicketDialog as typeof actions.ticketList.setShowAddTicketDialog,
                 fetchProducts: mockActions.fetchProducts as typeof actions.ticketList.fetchProducts,
                 addTicket: mockActions.addTicket as typeof actions.addTicket,
-                tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1' }]
+                deleteTicket: mockActions.addTicket as typeof actions.addTicket.deleteTicket,
+                tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1', deleted: false }]
             };
             const result = shallow(<TicketList {...props} />);
             const elementToClick = result.find('[label="Add Ticket"]');
@@ -67,7 +70,8 @@ describe('when a user', () => {
                 setShowAddTicketDialog: mockActions.setShowAddTicketDialog as typeof actions.ticketList.setShowAddTicketDialog,
                 fetchProducts: mockActions.fetchProducts as typeof actions.ticketList.fetchProducts,
                 addTicket: mockActions.addTicket as typeof actions.addTicket,
-                tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1' }]
+                deleteTicket: mockActions.addTicket as typeof actions.addTicket.deleteTicket,
+                tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1', deleted: false }]
             };
             const result = shallow(<TicketList {...props} />);
             const dialogProps: any = result.find('Connect(AddTicketDialog)').props();

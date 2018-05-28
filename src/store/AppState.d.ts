@@ -10,6 +10,7 @@ export interface Ticket {
     title: string;
     storyPoint: null | number;
     description: string;
+    deleted: boolean;
     _id: string;
 }
 

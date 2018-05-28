@@ -9,6 +9,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 interface TicketListActions {
     setShowAddTicketDialog: typeof actions.ticketList.setShowAddTicketDialog;
     fetchProducts: typeof actions.ticketList.fetchProducts;
+    deleteTicket: typeof actions.addTicket.deleteTicket;
 }interface TicketListProps {
     showAddTicketDialog: boolean;
     tickets: Ticket[];
@@ -29,8 +30,8 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
         this.props.setShowAddTicketDialog({ value: false });
     }
 
-    onClickDelete() {
-        alert('delete ticket');
+    onClickDelete(id: string) {
+        this.props.deleteTicket(id);
     }
 
     render() {
@@ -68,7 +69,7 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
                                 />
                                 </TableCell>
                                 <TableCell>
-                                    <IconButton onClick={this.onClickDelete.bind(this)} color="primary">
+                                    <IconButton onClick={() => this.onClickDelete(ticket._id)} color="primary">
                                         <DeleteIcon />
                                     </IconButton>
                                 </TableCell>
@@ -94,6 +95,6 @@ const mapStateToProps = (state: AppState, ownProps: any) => {
     };
 };
 
-const mapActionsToProps = { ...actions.ticketList };
+const mapActionsToProps = { ...actions.ticketList, deleteTicket: actions.addTicket.deleteTicket };
 
 export default connect<TicketListProps, TicketListActions>(mapStateToProps, mapActionsToProps)(TicketList);

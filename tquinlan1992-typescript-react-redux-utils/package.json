@@ -5,7 +5,7 @@
   "main": "./dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "webpack": "webpack",
+    "start": "webpack",
     "test:watch": "node --inspect node_modules/.bin/jest --watch"
   },
   "author": "",
