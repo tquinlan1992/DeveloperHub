@@ -1,7 +1,7 @@
 import { ThunkAction } from 'redux-thunk';
 
 function navigateToFeed(history: any, urlToNavigateTo: string): ThunkAction<void, any, void> {
-    return function (dispatch: any) {
+    return dispatch => {
         history.push(`/feed/${urlToNavigateTo}`);
     };
 }

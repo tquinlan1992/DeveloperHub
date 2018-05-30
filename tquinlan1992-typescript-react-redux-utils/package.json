@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "typescript redux and react utilities",
   "main": "./dist/index.js",
-  "types": "dist/index.d.ts",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "start": "webpack",
     "test:watch": "node --inspect node_modules/.bin/jest --watch"
