@@ -1,3 +1,5 @@
+import { RouterState } from "react-router-redux";
+
 export interface Doc {
     edit: string;
 }
@@ -26,8 +28,7 @@ export interface TicketList {
 }
 
 export interface AppState {
-    doc: Doc;
-    voiceToCode: VoiceToCode;
+    routing: RouterState,
     ticketList: TicketList;
     addTicket: AddTicketState;
 }

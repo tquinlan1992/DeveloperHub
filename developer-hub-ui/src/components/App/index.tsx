@@ -15,6 +15,10 @@ function Home(params: { match: any }) {
     );
 }
 
+declare module 'redux' {
+  export type GenericStoreEnhancer = any;
+}
+
 export default (store: any) => {
     return ReactDOM.render(
         <Provider store={store}>

@@ -2,7 +2,6 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
-const TslintPlugin = require('tslint-webpack-plugin');
 const portfinder = require('portfinder');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
@@ -23,21 +22,15 @@ module.exports = function (env) {
             new webpack.HotModuleReplacementPlugin(), new HtmlWebpackPlugin({
                 template: 'index.html',
                 hash: true
-            }), new TslintPlugin({
-                files: ['src/**/*.ts', 'src/**/*.tsx']
             }),
-            new CopyWebpackPlugin([
-                {
-                    from: '../node_modules/monaco-editor/min/vs',
-                    to: 'vs',
-                }
-            ]),
-            new CopyWebpackPlugin([
-                {
-                    from: '../static/**/*',
-                    to: 'static',
-                }
-            ])
+            new CopyWebpackPlugin([{
+                from: '../node_modules/monaco-editor/min/vs',
+                to: 'vs',
+            }]),
+            new CopyWebpackPlugin([{
+                from: '../static/**/*',
+                to: 'static',
+            }])
         ];
 
         return {
@@ -56,20 +49,27 @@ module.exports = function (env) {
 
             module: {
                 rules: [{
-                    test: /\.(ts|tsx)$/,
-                    exclude: /node_modules/,
-                    use: [{
-                            loader: 'babel-loader'
-                        },
-                        {
-                            loader: 'awesome-typescript-loader'
-                        }
-                    ]
-                },
+                        test: /\.(ts|tsx)$/,
+                        exclude: /node_modules/,
+                        use: [{
+                                loader: 'babel-loader'
+                            },
+                            {
+                                loader: 'awesome-typescript-loader'
+                            }
+                        ]
+                    },
                     {
                         test: /\.css$/,
                         use: ['style-loader', 'css-loader']
-                    }]
+                    },
+                    {
+                        test: /\.ts$/,
+                        exclude: /node_modules/,
+                        enforce: 'pre',
+                        loader: 'tslint-loader'
+                    }
+                ]
             },
 
             resolve: {

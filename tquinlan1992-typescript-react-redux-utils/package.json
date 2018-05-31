@@ -22,7 +22,7 @@
     "ts-jest": "^22.4.6",
     "ts-lint": "^4.5.1",
     "tslint-webpack-plugin": "^1.2.2",
-    "typescript": "^2.8.4",
+    "typescript": "2.8.3",
     "typescript-fsa": "^3.0.0-beta-2",
     "webpack": "^4.9.1",
     "webpack-cli": "^2.1.4"

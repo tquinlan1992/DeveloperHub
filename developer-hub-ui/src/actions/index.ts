@@ -16,7 +16,7 @@ const actions = {
 };
 
 export const reducers = combineReducers<AppState>({
-    router: routerReducer,
+    routing: routerReducer,
     ticketList: ticketListReducer,
     addTicket: addTicketReducer
 });
