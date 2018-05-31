@@ -1,5 +1,5 @@
 {
-  "name": "developer-hub",
+  "name": "developer-hub-ui",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -48,6 +48,7 @@
     "copy-webpack-plugin": "^4.5.0",
     "cors": "^2.8.4",
     "css-loader": "^0.28.7",
+    "developer-hub-core": "file:../developer-hub-core",
     "enzyme": "^3.3.0",
     "enzyme-to-json": "^3.3.4",
     "history": "^4.7.2",
@@ -80,7 +81,7 @@
     "superagent": "^3.8.3",
     "tquinlan1992-typescript-react-redux-utils": "file:../tquinlan1992-typescript-react-redux-utils",
     "ts-jest": "^22.4.6",
-    "tslint": "^5.10.0",
+    "ts-lint": "^4.5.1",
     "tslint-webpack-plugin": "^1.0.0",
     "typescript": "^2.8.3",
     "url-join": "^4.0.0",
