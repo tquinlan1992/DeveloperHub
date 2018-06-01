@@ -7,6 +7,7 @@ import actions from '../../actions';
 import * as request from 'superagent';
 import { setupPouch } from '../../database/pouch';
 import * as urljoin from 'url-join';
+import CircularProgress from '@material-ui/core/CircularProgress/CircularProgress';
 
 interface StateProps {
     loading: boolean;
@@ -40,6 +41,7 @@ export class AddTicketDialog extends React.Component<StateProps & ComponentActio
         const loading =
             <div>
                 <h1> Loading </h1>
+                <CircularProgress size={50} />
             </div>;
 
         const app =
