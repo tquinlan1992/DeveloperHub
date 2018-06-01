@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-const TslintPlugin = require('tslint-webpack-plugin');
 
 
 module.exports = function (env) {
@@ -7,9 +6,6 @@ module.exports = function (env) {
 
 
         const plugins = [
-            new TslintPlugin({
-                files: ['src/**/*.ts', 'src/**/*.tsx']
-            })
         ];
 
         return {
@@ -35,6 +31,11 @@ module.exports = function (env) {
                             loader: 'awesome-typescript-loader'
                         }
                     ]
+                }, {
+                    test: /\.ts$/,
+                    exclude: /node_modules/,
+                    enforce: 'pre',
+                    loader: 'tslint-loader'
                 }]
             },
 

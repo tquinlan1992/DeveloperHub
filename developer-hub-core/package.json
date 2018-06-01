@@ -5,7 +5,8 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "start": "webpack",
+    "build": "webpack",
+    "start": "webpack --watch",
     "test:watch": "node --inspect node_modules/.bin/jest --watch"
   },
   "author": "",
@@ -21,7 +22,8 @@
     "lodash": "^4.17.10",
     "ts-jest": "^22.4.6",
     "ts-lint": "^4.5.1",
-    "tslint-webpack-plugin": "^1.2.2",
+    "tslint": "^5.10.0",
+    "tslint-loader": "^3.6.0",
     "typescript": "^2.8.4",
     "webpack": "^4.9.1",
     "webpack-cli": "^2.1.4"
