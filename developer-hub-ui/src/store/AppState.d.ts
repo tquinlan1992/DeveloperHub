@@ -27,8 +27,11 @@ export interface TicketList {
     tickets: Ticket[];
 }
 
+export type Loading = boolean;
+
 export interface AppState {
     routing: RouterState,
     ticketList: TicketList;
     addTicket: AddTicketState;
+    loading: Loading;
 }

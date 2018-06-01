@@ -18,7 +18,10 @@ export async function getRemoteDB() {
         pouchDB = new PouchWrapper({
             pouchDB: localDB
         });
-        await localDB.sync(remoteDB).on('complete', function () {
+        await localDB.sync(remoteDB, {
+            live: true,
+            retry: true
+        }).on('complete', function () {
             return pouchDB;
         }).on('error', function (err) {
             // boo, we hit an error!

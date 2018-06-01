@@ -1,3 +1,3 @@
 export function testDeveloperHubCore() {
-    console.log('got here');
+    console.log('got here now');
 }

@@ -2,6 +2,9 @@ import simpleActions from './simpleActions';
 import { AddTicketState } from "../../store/AppState";
 import { createReducer, getCreators } from 'tquinlan1992-typescript-react-redux-utils';
 import thunkActions from './thunkActions';
+import { testDeveloperHubCore } from 'developer-hub-core';
+
+testDeveloperHubCore();
 
 const initialState = {
     storyPoint: null,
