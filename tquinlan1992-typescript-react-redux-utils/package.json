@@ -5,8 +5,8 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "webpack",
-    "start": "webpack --watch",
+    "build": "webpack --mode development",
+    "start": "webpack --watch --mode development",
     "test:watch": "node --inspect node_modules/.bin/jest --watch"
   },
   "author": "",
