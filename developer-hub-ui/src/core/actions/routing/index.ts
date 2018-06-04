@@ -1,5 +1,6 @@
 import { ThunkAction } from 'redux-thunk';
 import { AnyAction } from 'redux';
+import { routerReducer } from 'react-router-redux';
 
 function navigateToFeed(history: any, urlToNavigateTo: string): ThunkAction<void, any, void, AnyAction> {
     return dispatch => {
@@ -8,5 +9,8 @@ function navigateToFeed(history: any, urlToNavigateTo: string): ThunkAction<void
 }
 
 export default {
-    navigateToFeed
+    reducer: routerReducer,
+    actions: {
+        navigateToFeed
+    }
 };

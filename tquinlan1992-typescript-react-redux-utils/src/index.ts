@@ -1,5 +1,6 @@
 import { find, mapValues } from 'lodash';
 import actionCreatorFactory, { isType, Action, AnyAction, ActionCreator } from "typescript-fsa";
+import { Reducer } from 'redux';
 
 export interface ActionCreatorWithReducer<StateType> {
     actionCreator: ActionCreator<any>;
@@ -41,6 +42,23 @@ export function getCreators<T extends { [key: string]: ActionCreatorWithReducer<
 
 export function makeActionCreatorWithReducerWithPrefix<StateType, ActionParams>(actionName: string, reducer: StateTypeReducer<StateType, ActionParams>) {
     return (reducerName?: string) => makeActionCreatorWithReducer<StateType, ActionParams>(JSON.stringify({ reducerName, actionName }), reducer);
+}
+
+export interface SimpleAndThunkActions {
+    [key: string]: any;
+}
+
+export interface ActionsAndReducer {
+    actions?: SimpleAndThunkActions;
+    reducer?: Reducer<any, AnyAction>;
+}
+
+export function getReducersFromCombinedActionReducer<T extends { [key: string]: ActionsAndReducer }>(creators: T): { [P in keyof T]: T[P]['reducer'] } {
+    return mapValues(creators, "reducer") as { [P in keyof T]: T[P]['reducer'] };
+}
+
+export function getActionsFromCombinedActionReducer<T extends { [key: string]: ActionsAndReducer }>(creators: T): { [P in keyof T]: T[P]['actions'] } {
+    return mapValues(creators, "actions") as { [P in keyof T]: T[P]['actions'] };
 }
 
 export default {

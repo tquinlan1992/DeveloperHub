@@ -35,3 +35,7 @@ export interface AppState {
     addTicket: AddTicketState;
     loading: Loading;
 }
+
+export default interface AppStateCore {
+    core: AppState
+}

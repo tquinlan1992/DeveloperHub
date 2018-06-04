@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import actions from '../../actions';
-import { AppState, Ticket } from "../../store/AppState";
+import actions from '../../core/actions';
+import AppState, { Ticket } from "../../core/store/AppState";
 import { Table, Button, TableHead, TableRow, TableBody, TableCell, TextField, IconButton } from "@material-ui/core";
 import AddTicketDialog from '../AddTicketDialog';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 interface TicketListActions {
     setShowAddTicketDialog: typeof actions.ticketList.setShowAddTicketDialog;
-    fetchProducts: typeof actions.ticketList.fetchProducts;
-    deleteTicket: typeof actions.addTicket.deleteTicket;
+    fetchTickets: typeof actions.thunkActions.database.fetchTickets;
+    deleteTicket: typeof actions.thunkActions.database.deleteTicket;
 }interface TicketListProps {
     showAddTicketDialog: boolean;
     tickets: Ticket[];
@@ -18,7 +18,7 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
 
     componentDidMount() {
         console.log('got here');
-        this.props.fetchProducts();
+        this.props.fetchTickets();
     }
 
     openAddticketDialog() {
@@ -86,15 +86,14 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
     }
 }
 
-const mapStateToProps = (state: AppState, ownProps: any) => {
-    console.log('state', state);
-    const { showAddTicketDialog, tickets } = state.ticketList;
+const mapStateToProps = ({ core }: AppState, ownProps: any) => {
+    const { showAddTicketDialog, tickets } = core.ticketList;
     return {
         showAddTicketDialog,
         tickets
     };
 };
 
-const mapActionsToProps = { ...actions.ticketList, deleteTicket: actions.addTicket.deleteTicket };
+const mapActionsToProps = { ...actions.ticketList, deleteTicket: actions.thunkActions.database.deleteTicket, fetchTickets: actions.thunkActions.database.fetchTickets};
 
 export default connect<TicketListProps, TicketListActions>(mapStateToProps, mapActionsToProps)(TicketList);

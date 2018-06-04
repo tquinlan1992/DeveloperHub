@@ -1,5 +1,5 @@
 export function mockPouchDB() {
-    jest.mock('../database/pouch', () => {
+    jest.mock('../database/core/pouch', () => {
         return {};
     });
 }

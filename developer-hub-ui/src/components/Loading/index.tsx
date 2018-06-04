@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { AppState } from "../../store/AppState";
+import AppState from "../../core/store/AppState";
 import { Switch, Route, Redirect } from 'react-router';
 import TicketList from '../TicketList';
-import actions from '../../actions';
+import actions from '../../core/actions';
 import * as request from 'superagent';
-import { setupPouch } from '../../database/pouch';
+import { setupPouch } from '../../core/database/pouch';
 import * as urljoin from 'url-join';
 import CircularProgress from '@material-ui/core/CircularProgress/CircularProgress';
 
@@ -65,9 +65,9 @@ export class AddTicketDialog extends React.Component<StateProps & ComponentActio
     }
 }
 
-const mapStateToProps = ({ loading }: AppState) => {
+const mapStateToProps = ({ core }: AppState) => {
     return {
-        loading
+        loading: core.loading
     };
 };
 

@@ -7,9 +7,10 @@ const initialState = true;
 
 const loadingSimpleActions = simpleActions('Loading');
 
-export default createReducer<Loading>(initialState, loadingSimpleActions);
-
-export const actions = {
-    ...getCreators(loadingSimpleActions),
-    ...thunkActions
+export default {
+    reducer: createReducer<Loading>(initialState, loadingSimpleActions),
+    actions: {
+        ...getCreators(loadingSimpleActions),
+        ...thunkActions
+    }
 };

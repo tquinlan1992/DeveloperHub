@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Dialog, TextField, DialogTitle, DialogContent, DialogActions, Button, InputLabel, Select, MenuItem, FormControl } from "@material-ui/core";
 import { connect } from 'react-redux';
-import { AppState } from "../../store/AppState";
-import actions from '../../actions';
+import AppState from "../../core/store/AppState";
+import actions from '../../core/actions';
 import { isNumber } from 'lodash';
 
 interface AddTicketDialogOwnProps {
@@ -16,11 +16,12 @@ interface StateProps {
     title: string;
 }
 
-type AddTicketAction = typeof actions.addTicket; 
-
-interface ComponentActions extends AddTicketAction {
-
-}
+interface ComponentActions {
+    addTicket: typeof actions.thunkActions.database.addTicket;
+    setDescription: typeof actions.addTicket.setDescription;
+    setTitle: typeof actions.addTicket.setTitle;
+    setStoryPoint: typeof actions.addTicket.setStoryPoint;
+}   
 
 export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps & ComponentActions & StateProps> {
 
@@ -116,15 +117,18 @@ export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps & C
     }
 }
 
-const mapStateToProps = (state: AppState, ownProps: AddTicketDialogOwnProps) => {
+const mapStateToProps = ( { core } : AppState, ownProps: AddTicketDialogOwnProps) => {
     return {
-        ...state.addTicket,
+        ...core.addTicket,
         ...ownProps
     };
 };
 
 const mapDispatchToProps = {
-    ...actions.addTicket
+    addTicket: actions.thunkActions.database.addTicket,
+    setDescription: actions.addTicket.setDescription,
+    setTitle: actions.addTicket.setTitle,
+    setStoryPoint: actions.addTicket.setStoryPoint
 };
 
 export default connect<AddTicketDialogOwnProps & StateProps, ComponentActions, AddTicketDialogOwnProps>(mapStateToProps, mapDispatchToProps)(AddTicketDialog);
