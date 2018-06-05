@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Dialog, TextField, DialogTitle, DialogContent, DialogActions, Button, InputLabel, Select, MenuItem, FormControl } from "@material-ui/core";
 import { connect } from 'react-redux';
-import AppState from "../../core/store/AppState";
+import { AppStateCore } from "core";
 import actions from '../../core/actions';
 import { isNumber } from 'lodash';
 
@@ -117,7 +117,7 @@ export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps & C
     }
 }
 
-const mapStateToProps = ( { core } : AppState, ownProps: AddTicketDialogOwnProps) => {
+const mapStateToProps = ({ core }: AppStateCore, ownProps: AddTicketDialogOwnProps) => {
     return {
         ...core.addTicket,
         ...ownProps

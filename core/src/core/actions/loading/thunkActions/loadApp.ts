@@ -8,13 +8,22 @@ import actionReducer from "../";
 
 export default function loadApp(): ThunkAction<void, AppState, void, AnyAction> {
     return async function (dispatch) {
-        return await request
-            .get('/static/api.json')
-            .end((err, res) => {
-                const apiUrl = res.body.value;
-                setupPouch(urljoin(apiUrl, '/couchdb/test'));
-                console.log('res tommy', res.body.value);
-                dispatch(actionReducer.actions.setValue({ value: false }));
-            });
+        // return request
+        //     .get('/static/api.json')
+        //     .end((err, res) => {
+        //         const apiUrl = res.body.value;
+        //         console.log('got api.json');
+        //         setupPouch(urljoin(apiUrl, '/couchdb/test'));
+        //         console.log('res tommy', res.body.value);
+        //         dispatch(actionReducer.actions.setValue({ value: false }));
+        //     });
+        try {
+            const res = await request.get('/static/api.json');
+            const apiUrl = res.body.value;
+            setupPouch(urljoin(apiUrl, '/couchdb/test'));
+            dispatch(actionReducer.actions.setValue({ value: false }));
+        } catch(e) {
+            console.log('error getting /static/api.json', e);
+        }
     };
 }

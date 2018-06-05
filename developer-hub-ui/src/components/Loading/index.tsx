@@ -1,12 +1,9 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import AppState from "../../core/store/AppState";
+import { AppStateCore } from "core";
 import { Switch, Route, Redirect } from 'react-router';
 import TicketList from '../TicketList';
 import actions from '../../core/actions';
-import * as request from 'superagent';
-import { setupPouch } from '../../core/database/pouch';
-import * as urljoin from 'url-join';
 import CircularProgress from '@material-ui/core/CircularProgress/CircularProgress';
 
 interface StateProps {
@@ -14,7 +11,7 @@ interface StateProps {
 }
 
 interface ComponentActions {
-    setValue: typeof actions.loading.setValue;
+    loadApp: typeof actions.loading.loadApp;
 }
 
 function Home(params: { match: any }) {
@@ -27,14 +24,7 @@ function Home(params: { match: any }) {
 
 export class AddTicketDialog extends React.Component<StateProps & ComponentActions> {
     componentDidMount() {
-        request
-            .get('/static/api.json')
-            .end((err, res) => {
-                const apiUrl = res.body.value;
-                setupPouch(urljoin(apiUrl, '/couchdb/test'));
-                console.log('res', res.body.value);
-                this.props.setValue({ value: false });
-            });
+        this.props.loadApp();
     }
 
     render() {
@@ -65,7 +55,7 @@ export class AddTicketDialog extends React.Component<StateProps & ComponentActio
     }
 }
 
-const mapStateToProps = ({ core }: AppState) => {
+const mapStateToProps = ({ core }: AppStateCore) => {
     return {
         loading: core.loading
     };

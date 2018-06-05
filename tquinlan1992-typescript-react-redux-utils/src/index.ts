@@ -15,7 +15,6 @@ export interface ActionCreatorWithReducerGroup<StateType> {
  
 export function createReducer<StateType>(initialState: StateType, actions: ActionCreatorWithReducerGroup<StateType>) {
     return (state: StateType = initialState, incomingAction: Action<AnyAction>): StateType => {
-        console.log('trying to match');
         const actionMatch = find(actions, action => {
             return isType(incomingAction, action.actionCreator);
         });

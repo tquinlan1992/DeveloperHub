@@ -64,7 +64,7 @@ module.exports =
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "ecf2357ff958718243dc"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "83924620391fd654729f"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -18129,7 +18129,6 @@ function createReducer(initialState, actions) {
         if (state === void 0) {
             state = initialState;
         }
-        console.log('trying to match');
         var actionMatch = Object(lodash__WEBPACK_IMPORTED_MODULE_0__["find"])(actions, function (action) {
             return Object(typescript_fsa__WEBPACK_IMPORTED_MODULE_1__["isType"])(incomingAction, action.actionCreator);
         });
@@ -60134,17 +60133,24 @@ var __generator = undefined && undefined.__generator || function (thisArg, body)
 function loadApp() {
     return function (dispatch) {
         return __awaiter(this, void 0, void 0, function () {
+            var res, apiUrl, e_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        return [4, superagent__WEBPACK_IMPORTED_MODULE_1__["get"]('/static/api.json').end(function (err, res) {
-                            var apiUrl = res.body.value;
-                            Object(_database_pouch__WEBPACK_IMPORTED_MODULE_0__["setupPouch"])(url_join__WEBPACK_IMPORTED_MODULE_2__(apiUrl, '/couchdb/test'));
-                            console.log('res tommy', res.body.value);
-                            dispatch(___WEBPACK_IMPORTED_MODULE_3__["default"].actions.setValue({ value: false }));
-                        })];
+                        _a.trys.push([0, 2,, 3]);
+                        return [4, superagent__WEBPACK_IMPORTED_MODULE_1__["get"]('/static/api.json')];
                     case 1:
-                        return [2, _a.sent()];
+                        res = _a.sent();
+                        apiUrl = res.body.value;
+                        Object(_database_pouch__WEBPACK_IMPORTED_MODULE_0__["setupPouch"])(url_join__WEBPACK_IMPORTED_MODULE_2__(apiUrl, '/couchdb/test'));
+                        dispatch(___WEBPACK_IMPORTED_MODULE_3__["default"].actions.setValue({ value: false }));
+                        return [3, 3];
+                    case 2:
+                        e_1 = _a.sent();
+                        console.log('error getting /static/api.json', e_1);
+                        return [3, 3];
+                    case 3:
+                        return [2];
                 }
             });
         });
@@ -60427,7 +60433,7 @@ function deleteTicket(id) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return fetchTickets; });
 /* harmony import */ var _database_pouch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../database/pouch */ "./core/database/pouch.ts");
-/* harmony import */ var _actions_ticketList_simpleActions_setTickets__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/ticketList/simpleActions/setTickets */ "./core/actions/ticketList/simpleActions/setTickets.ts");
+/* harmony import */ var _ticketList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../ticketList */ "./core/actions/ticketList/index.ts");
 var __awaiter = undefined && undefined.__awaiter || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) {
@@ -60522,7 +60528,7 @@ function fetchTickets() {
                         return [4, db.getTickets()];
                     case 2:
                         tickets = _a.sent();
-                        dispatch(_actions_ticketList_simpleActions_setTickets__WEBPACK_IMPORTED_MODULE_1__["default"].actionCreator({ tickets: tickets }));
+                        dispatch(_ticketList__WEBPACK_IMPORTED_MODULE_1__["default"].actions.setTickets({ tickets: tickets }));
                         return [2];
                 }
             });
@@ -61167,7 +61173,7 @@ var reduxStore = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_acti
 /*!******************!*\
   !*** ./index.ts ***!
   \******************/
-/*! exports provided: addTicketActionsReducers, loadingActionsReducers, routingActionsReducers, ticketListActionsReducers, default */
+/*! exports provided: addTicketActionsReducers, loadingActionsReducers, routingActionsReducers, ticketListActionsReducers, thunkActions, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -61184,6 +61190,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _core_actions_ticketList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./core/actions/ticketList */ "./core/actions/ticketList/index.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ticketListActionsReducers", function() { return _core_actions_ticketList__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+
+/* harmony import */ var _core_actions_thunkActions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./core/actions/thunkActions */ "./core/actions/thunkActions/index.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "thunkActions", function() { return _core_actions_thunkActions__WEBPACK_IMPORTED_MODULE_5__["default"]; });
+
 
 
 

@@ -1,7 +1,8 @@
-import reduxStore from './core/store';
+import reduxStore, { AppStateCore, Ticket, AppState } from './core/store';
 import addTicketActionsReducers from './core/actions/addTicket';
 import loadingActionsReducers from './core/actions/loading';
 import routingActionsReducers from './core/actions/routing';
 import ticketListActionsReducers from './core/actions/ticketList';
-export { addTicketActionsReducers, loadingActionsReducers, routingActionsReducers, ticketListActionsReducers };
+import thunkActions from './core/actions/thunkActions';
+export { addTicketActionsReducers, loadingActionsReducers, routingActionsReducers, ticketListActionsReducers, thunkActions, AppStateCore, Ticket, AppState };
 export default reduxStore;

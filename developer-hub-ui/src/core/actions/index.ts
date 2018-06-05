@@ -1,8 +1,14 @@
 import { combineReducers } from 'redux';
-import CoreAppState, { AppState } from '../store/AppState';
-import { ticketListActionsReducers as ticketList, routingActionsReducers as routing, addTicketActionsReducers as addTicket, loadingActionsReducers as loading } from 'core';
+import { 
+    ticketListActionsReducers as ticketList, 
+    routingActionsReducers as routing, 
+    addTicketActionsReducers as addTicket, 
+    loadingActionsReducers as loading,
+    thunkActions,
+    AppStateCore, 
+    AppState
+} from 'core';
 import { getReducersFromCombinedActionReducer, getActionsFromCombinedActionReducer } from 'tquinlan1992-typescript-react-redux-utils';
-import thunkActions from './thunkActions';
 
 const coreActionsReducersTree = {
     ticketList,
@@ -21,7 +27,7 @@ const appActionReducersTree = {
     }
 };
 
-export const reducers = combineReducers<CoreAppState>(getReducersFromCombinedActionReducer(appActionReducersTree));
+export const reducers = combineReducers<AppStateCore>(getReducersFromCombinedActionReducer(appActionReducersTree));
 
 export default {
     ...coreActions,

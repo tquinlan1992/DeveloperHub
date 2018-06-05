@@ -1,5 +1,5 @@
 import { ThunkAction } from "redux-thunk";
-import AppStateCore from "../../../store/AppState";
+import { AppStateCore } from "../../../store";
 import { getRemoteDB } from "../../../database/pouch";
 import { AnyAction } from "redux";
 import fetchTickets from './fetchTickets';

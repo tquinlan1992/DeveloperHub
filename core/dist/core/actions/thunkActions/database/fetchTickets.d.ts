@@ -1,4 +1,4 @@
 import { ThunkAction } from "redux-thunk";
-import AppState from "../../../store/AppState";
+import { AppStateCore } from "../../../store";
 import { AnyAction } from "redux";
-export default function fetchTickets(): ThunkAction<void, AppState, void, AnyAction>;
+export default function fetchTickets(): ThunkAction<void, AppStateCore, void, AnyAction>;
