@@ -1,6 +1,6 @@
 import { Ticket } from "../store/AppState";
 import { v4 as uuid } from "uuid";
-import { Omit } from "../../utils";
+import { Omit } from "../utils";
 
 export interface TicketsDBConstructorParams {
     pouchDB: PouchDB.Database<{}>;

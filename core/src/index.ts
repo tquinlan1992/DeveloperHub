@@ -1,5 +1,5 @@
-import reduxStore, { AppStateCore, Ticket, AppState } from './core/store';
-import actions from './core/actions';
+import reduxStore, { AppStateCore, Ticket, AppState } from './store';
+import actions from './actions';
 
 export { AppStateCore, Ticket, AppState, actions };
 

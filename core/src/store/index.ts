@@ -5,6 +5,10 @@ import middleware from '../middleware';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { RouterState } from "react-router-redux";
 
+declare module 'redux' {
+    export type GenericStoreEnhancer = any;
+}
+
 export interface Doc {
     edit: string;
 }

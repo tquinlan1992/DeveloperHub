@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const portfinder = require('portfinder');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -19,10 +18,7 @@ module.exports = function (env) {
 
         const plugins = [
             new webpack.NamedModulesPlugin(),
-            new webpack.HotModuleReplacementPlugin(), new HtmlWebpackPlugin({
-                template: 'index.html',
-                hash: true
-            }),
+            new webpack.HotModuleReplacementPlugin(),
             new CopyWebpackPlugin([{
                 from: '../node_modules/monaco-editor/min/vs',
                 to: 'vs',
