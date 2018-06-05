@@ -1,9 +1,6 @@
 import { combineReducers } from 'redux';
 import CoreAppState, { AppState } from '../store/AppState';
-import routing from './routing';
-import addTicket from './addTicket';
-import ticketList from '../actions/ticketList';
-import loading from '../actions/loading';
+import { ticketListActionsReducers as ticketList, routingActionsReducers as routing, addTicketActionsReducers as addTicket, loadingActionsReducers as loading } from 'core';
 import { getReducersFromCombinedActionReducer, getActionsFromCombinedActionReducer } from 'tquinlan1992-typescript-react-redux-utils';
 import thunkActions from './thunkActions';
 

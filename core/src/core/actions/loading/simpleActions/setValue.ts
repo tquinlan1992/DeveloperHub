@@ -1,6 +1,7 @@
-import { Loading } from "../../../store/AppState";
+import { Loading } from "../../../store";
 import { makeActionCreatorWithReducerWithPrefix } from "tquinlan1992-typescript-react-redux-utils";
-
+import * as makeActionCreatorTypes from '../../utils/exportTypes';
+makeActionCreatorTypes;
 export interface SetValueAction {
     value: boolean;
 }

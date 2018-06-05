@@ -1,7 +1,7 @@
 import { ThunkAction } from "redux-thunk";
-import AppState from "../../../store/AppState";
+import { AppState } from "../../../store";
 import { setupPouch } from "../../../database/pouch";
-import { AnyAction } from "redux";
+import { AnyAction } from "tquinlan1992-typescript-react-redux-utils";
 import * as request from 'superagent';
 import * as urljoin from 'url-join';
 import actionReducer from "../";

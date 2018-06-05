@@ -1,6 +1,6 @@
 import { makeActionCreatorWithReducerWithPrefix } from "tquinlan1992-typescript-react-redux-utils";
 import { AddTicketState } from "../../../store";
-import * as makeActionCreatorTypes from '../../utils';
+import * as makeActionCreatorTypes from '../../utils/exportTypes';
 makeActionCreatorTypes;
 
 export interface SetTitleAction {
