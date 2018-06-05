@@ -3,7 +3,6 @@ import { reducers }  from '../actions';
 import { omit } from 'lodash';
 import middleware from '../middleware';
 import { composeWithDevTools } from 'redux-devtools-extension';
-
 import { RouterState } from "react-router-redux";
 
 export interface Doc {

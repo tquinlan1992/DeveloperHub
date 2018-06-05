@@ -1,8 +1,5 @@
 import { 
-    actions,
-    reducers
+    actions
 } from 'core';
-
-export { reducers };
 
 export default actions;

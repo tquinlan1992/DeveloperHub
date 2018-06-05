@@ -1,17 +1,16 @@
-import { ThunkAction } from 'redux-thunk';
-import { AnyAction } from 'redux';
+import { AnyAction } from 'tquinlan1992-typescript-react-redux-utils';
+export { AnyAction };
+import { AnyAction as AnyActionFromRedux } from 'redux';
+export { AnyActionFromRedux };
 import { routerReducer, RouterState } from 'react-router-redux';
 export { RouterState };
-
-function navigateToFeed(history: any, urlToNavigateTo: string): ThunkAction<void, any, void, AnyAction> {
-    return dispatch => {
-        history.push(`/feed/${urlToNavigateTo}`);
-    };
-}
+import thunkActions from './thunkActions';
+import * as exportTypes from '../exportTypes';
+exportTypes;
 
 export default {
     reducer: routerReducer,
     actions: {
-        navigateToFeed
+        ...thunkActions
     }
 };

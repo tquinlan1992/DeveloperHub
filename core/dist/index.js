@@ -64,7 +64,7 @@ module.exports =
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "476238b1836fd1d91e3a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "2861c5622cf42fa99cdf"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -59928,9 +59928,9 @@ var __assign = undefined && undefined.__assign || Object.assign || function (t) 
 _exportTypes__WEBPACK_IMPORTED_MODULE_7__;
 var coreActionsReducersTree = {
     ticketList: _actions_ticketList__WEBPACK_IMPORTED_MODULE_3__["default"],
-    routing: _routing__WEBPACK_IMPORTED_MODULE_1__["default"],
     addTicket: _addTicket__WEBPACK_IMPORTED_MODULE_2__["default"],
-    loading: _actions_loading__WEBPACK_IMPORTED_MODULE_4__["default"]
+    loading: _actions_loading__WEBPACK_IMPORTED_MODULE_4__["default"],
+    routing: _routing__WEBPACK_IMPORTED_MODULE_1__["default"]
 };
 var coreReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])(Object(tquinlan1992_typescript_react_redux_utils__WEBPACK_IMPORTED_MODULE_5__["getReducersFromCombinedActionReducer"])(coreActionsReducersTree));
 var coreActions = Object(tquinlan1992_typescript_react_redux_utils__WEBPACK_IMPORTED_MODULE_5__["getActionsFromCombinedActionReducer"])(coreActionsReducersTree);
@@ -59941,7 +59941,7 @@ var appActionReducersTree = {
     }
 };
 var reducers = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])(Object(tquinlan1992_typescript_react_redux_utils__WEBPACK_IMPORTED_MODULE_5__["getReducersFromCombinedActionReducer"])(appActionReducersTree));
-/* harmony default export */ __webpack_exports__["default"] = (__assign({}, coreActions, { thunkActions: _thunkActions__WEBPACK_IMPORTED_MODULE_6__["default"] }));
+/* harmony default export */ __webpack_exports__["default"] = (__assign({ thunkActions: _thunkActions__WEBPACK_IMPORTED_MODULE_6__["default"] }, coreActions));
 
 /***/ }),
 
@@ -60196,18 +60196,58 @@ function loadApp() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-router-redux */ "../node_modules/react-router-redux/lib/index.js");
 /* harmony import */ var react_router_redux__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_router_redux__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _thunkActions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./thunkActions */ "./core/actions/routing/thunkActions/index.ts");
+/* harmony import */ var _exportTypes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../exportTypes */ "./core/actions/exportTypes.ts");
+var __assign = undefined && undefined.__assign || Object.assign || function (t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+    }
+    return t;
+};
 
+
+
+_exportTypes__WEBPACK_IMPORTED_MODULE_2__;
+/* harmony default export */ __webpack_exports__["default"] = ({
+    reducer: react_router_redux__WEBPACK_IMPORTED_MODULE_0__["routerReducer"],
+    actions: __assign({}, _thunkActions__WEBPACK_IMPORTED_MODULE_1__["default"])
+});
+
+/***/ }),
+
+/***/ "./core/actions/routing/thunkActions/index.ts":
+/*!****************************************************!*\
+  !*** ./core/actions/routing/thunkActions/index.ts ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _navigateToFeed__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./navigateToFeed */ "./core/actions/routing/thunkActions/navigateToFeed.ts");
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    navigateToFeed: _navigateToFeed__WEBPACK_IMPORTED_MODULE_0__["default"]
+});
+
+/***/ }),
+
+/***/ "./core/actions/routing/thunkActions/navigateToFeed.ts":
+/*!*************************************************************!*\
+  !*** ./core/actions/routing/thunkActions/navigateToFeed.ts ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return navigateToFeed; });
 function navigateToFeed(history, urlToNavigateTo) {
     return function (dispatch) {
         history.push("/feed/" + urlToNavigateTo);
     };
 }
-/* harmony default export */ __webpack_exports__["default"] = ({
-    reducer: react_router_redux__WEBPACK_IMPORTED_MODULE_0__["routerReducer"],
-    actions: {
-        navigateToFeed: navigateToFeed
-    }
-});
 
 /***/ }),
 
@@ -61199,36 +61239,14 @@ var reduxStore = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_acti
 /*!******************!*\
   !*** ./index.ts ***!
   \******************/
-/*! exports provided: addTicketActionsReducers, loadingActionsReducers, routingActionsReducers, ticketListActionsReducers, thunkActions, actions, reducers, default */
+/*! exports provided: actions, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _core_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core/store */ "./core/store/index.ts");
-/* harmony import */ var _core_actions_addTicket__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./core/actions/addTicket */ "./core/actions/addTicket/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "addTicketActionsReducers", function() { return _core_actions_addTicket__WEBPACK_IMPORTED_MODULE_1__["default"]; });
-
-/* harmony import */ var _core_actions_loading__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./core/actions/loading */ "./core/actions/loading/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "loadingActionsReducers", function() { return _core_actions_loading__WEBPACK_IMPORTED_MODULE_2__["default"]; });
-
-/* harmony import */ var _core_actions_routing__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./core/actions/routing */ "./core/actions/routing/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "routingActionsReducers", function() { return _core_actions_routing__WEBPACK_IMPORTED_MODULE_3__["default"]; });
-
-/* harmony import */ var _core_actions_ticketList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./core/actions/ticketList */ "./core/actions/ticketList/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ticketListActionsReducers", function() { return _core_actions_ticketList__WEBPACK_IMPORTED_MODULE_4__["default"]; });
-
-/* harmony import */ var _core_actions_thunkActions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./core/actions/thunkActions */ "./core/actions/thunkActions/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "thunkActions", function() { return _core_actions_thunkActions__WEBPACK_IMPORTED_MODULE_5__["default"]; });
-
-/* harmony import */ var _core_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./core/actions */ "./core/actions/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "actions", function() { return _core_actions__WEBPACK_IMPORTED_MODULE_6__["default"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "reducers", function() { return _core_actions__WEBPACK_IMPORTED_MODULE_6__["reducers"]; });
-
-
-
-
-
+/* harmony import */ var _core_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./core/actions */ "./core/actions/index.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "actions", function() { return _core_actions__WEBPACK_IMPORTED_MODULE_1__["default"]; });
 
 
 

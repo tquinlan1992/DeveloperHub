@@ -12,9 +12,9 @@ exportTypes;
 
 const coreActionsReducersTree = {
     ticketList,
-    routing,
     addTicket,
-    loading
+    loading,
+    routing
 };
 
 export const coreReducer = combineReducers<AppState>(getReducersFromCombinedActionReducer(coreActionsReducersTree));
@@ -30,6 +30,6 @@ const appActionReducersTree = {
 export const reducers = combineReducers<AppStateCore>(getReducersFromCombinedActionReducer(appActionReducersTree));
 
 export default {
-    ...coreActions,
-    thunkActions
+    thunkActions,
+    ...coreActions
 };
