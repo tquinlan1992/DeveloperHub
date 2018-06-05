@@ -1,11 +1,12 @@
 {
-  "name": "developer-hub-ui",
+  "name": "core",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "headless app for developer-hub",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "start": "npm run webpack-dev-server -- --mode development",
-    "build": "webpack",
+    "start": "webpack --watch --mode development",
+    "build": "webpack --mode development",
     "webpack-dev-server": "webpack-dev-server",
     "test": "jest --coverage",
     "test:watch": "node --inspect node_modules/.bin/jest --watch"
@@ -45,7 +46,6 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "copy-webpack-plugin": "^4.5.0",
-    "core": "file:../core",
     "cors": "^2.8.4",
     "css-loader": "^0.28.7",
     "enzyme": "^3.3.0",

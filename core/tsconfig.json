@@ -1,7 +1,6 @@
 {
     "compileOnSave": true,
     "compilerOptions": {
-        "allowJs": true,
         "sourceMap": true,
         "target": "es5",
         "jsx": "react",
@@ -9,13 +8,14 @@
         "moduleResolution": "node",
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        "declaration": false,
+        "declaration": true,
+        "declarationDir": "./dist",
         "noUnusedLocals": true,
         "noImplicitAny": true,
         "noImplicitReturns": true,
-        "keyofStringsOnly": true,
         "removeComments": true,
         "strictNullChecks": true,
+        "keyofStringsOnly": true,
         "outDir": "build",
         "watch": true,
         "lib": [
