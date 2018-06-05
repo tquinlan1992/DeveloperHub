@@ -1,4 +1,5 @@
-import { AddTicketState } from "../../../store/AppState";
+import { AddTicketState } from "../../../store";
+import * as makeActionCreatorTypes from '../../utils';
 export interface SetStoryPointsAction {
     value: string | number;
 }
@@ -6,10 +7,10 @@ declare const _default: (reducerName?: string | undefined) => {
     actionCreator: {
         (payload: SetStoryPointsAction, meta?: {
             [key: string]: any;
-        } | null | undefined): import("../../../../../node_modules/tquinlan1992-typescript-react-redux-utils/node_modules/typescript-fsa/lib/index").Action<SetStoryPointsAction>;
+        } | null | undefined): makeActionCreatorTypes.Action<SetStoryPointsAction>;
         type: string;
-        match: (action: import("../../../../../node_modules/tquinlan1992-typescript-react-redux-utils/node_modules/typescript-fsa/lib/index").AnyAction) => action is import("../../../../../node_modules/tquinlan1992-typescript-react-redux-utils/node_modules/typescript-fsa/lib/index").Action<SetStoryPointsAction>;
+        match: (action: makeActionCreatorTypes.AnyAction) => action is makeActionCreatorTypes.Action<SetStoryPointsAction>;
     };
-    reducer: import("../../../../../node_modules/tquinlan1992-typescript-react-redux-utils/dist/index").StateTypeReducer<AddTicketState, SetStoryPointsAction>;
+    reducer: makeActionCreatorTypes.StateTypeReducer<AddTicketState, SetStoryPointsAction>;
 };
 export default _default;

@@ -1,27 +1,28 @@
-import { AddTicketState } from "../../store/AppState";
+import { AddTicketState } from "../../store";
+import * as exports from './exportTypes';
 declare const _default: {
-    reducer: (state: AddTicketState | undefined, incomingAction: import("../../../../node_modules/tquinlan1992-typescript-react-redux-utils/node_modules/typescript-fsa/lib/index").Action<import("../../../../node_modules/tquinlan1992-typescript-react-redux-utils/node_modules/typescript-fsa/lib/index").AnyAction>) => AddTicketState;
+    reducer: (state: AddTicketState | undefined, incomingAction: exports.makeActionCreatorTypes.Action<exports.makeActionCreatorTypes.AnyAction>) => AddTicketState;
     actions: {
         setStoryPoint: {
-            (payload: import("./simpleActions/setStoryPoint").SetStoryPointsAction, meta?: {
+            (payload: exports.SetStoryPointsAction, meta?: {
                 [key: string]: any;
-            } | null | undefined): import("../../../../node_modules/tquinlan1992-typescript-react-redux-utils/node_modules/typescript-fsa/lib/index").Action<import("./simpleActions/setStoryPoint").SetStoryPointsAction>;
+            } | null | undefined): exports.makeActionCreatorTypes.Action<exports.SetStoryPointsAction>;
             type: string;
-            match: (action: import("../../../../node_modules/tquinlan1992-typescript-react-redux-utils/node_modules/typescript-fsa/lib/index").AnyAction) => action is import("../../../../node_modules/tquinlan1992-typescript-react-redux-utils/node_modules/typescript-fsa/lib/index").Action<import("./simpleActions/setStoryPoint").SetStoryPointsAction>;
+            match: (action: exports.makeActionCreatorTypes.AnyAction) => action is exports.makeActionCreatorTypes.Action<exports.SetStoryPointsAction>;
         };
         setDescription: {
-            (payload: import("./simpleActions/setDescription").SetDescriptionAction, meta?: {
+            (payload: exports.SetDescriptionAction, meta?: {
                 [key: string]: any;
-            } | null | undefined): import("../../../../node_modules/tquinlan1992-typescript-react-redux-utils/node_modules/typescript-fsa/lib/index").Action<import("./simpleActions/setDescription").SetDescriptionAction>;
+            } | null | undefined): exports.makeActionCreatorTypes.Action<exports.SetDescriptionAction>;
             type: string;
-            match: (action: import("../../../../node_modules/tquinlan1992-typescript-react-redux-utils/node_modules/typescript-fsa/lib/index").AnyAction) => action is import("../../../../node_modules/tquinlan1992-typescript-react-redux-utils/node_modules/typescript-fsa/lib/index").Action<import("./simpleActions/setDescription").SetDescriptionAction>;
+            match: (action: exports.makeActionCreatorTypes.AnyAction) => action is exports.makeActionCreatorTypes.Action<exports.SetDescriptionAction>;
         };
         setTitle: {
-            (payload: import("./simpleActions/setTitle").SetTitleAction, meta?: {
+            (payload: exports.SetTitleAction, meta?: {
                 [key: string]: any;
-            } | null | undefined): import("../../../../node_modules/tquinlan1992-typescript-react-redux-utils/node_modules/typescript-fsa/lib/index").Action<import("./simpleActions/setTitle").SetTitleAction>;
+            } | null | undefined): exports.makeActionCreatorTypes.Action<exports.SetTitleAction>;
             type: string;
-            match: (action: import("../../../../node_modules/tquinlan1992-typescript-react-redux-utils/node_modules/typescript-fsa/lib/index").AnyAction) => action is import("../../../../node_modules/tquinlan1992-typescript-react-redux-utils/node_modules/typescript-fsa/lib/index").Action<import("./simpleActions/setTitle").SetTitleAction>;
+            match: (action: exports.makeActionCreatorTypes.AnyAction) => action is exports.makeActionCreatorTypes.Action<exports.SetTitleAction>;
         };
     };
 };

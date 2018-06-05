@@ -1,4 +1,5 @@
-import { AddTicketState } from "../../../store/AppState";
+import { AddTicketState } from "../../../store";
+import * as makeActionCreatorTypes from '../../utils';
 export interface SetTitleAction {
     value: string;
 }
@@ -6,10 +7,10 @@ declare const _default: (reducerName?: string | undefined) => {
     actionCreator: {
         (payload: SetTitleAction, meta?: {
             [key: string]: any;
-        } | null | undefined): import("../../../../../node_modules/tquinlan1992-typescript-react-redux-utils/node_modules/typescript-fsa/lib/index").Action<SetTitleAction>;
+        } | null | undefined): makeActionCreatorTypes.Action<SetTitleAction>;
         type: string;
-        match: (action: import("../../../../../node_modules/tquinlan1992-typescript-react-redux-utils/node_modules/typescript-fsa/lib/index").AnyAction) => action is import("../../../../../node_modules/tquinlan1992-typescript-react-redux-utils/node_modules/typescript-fsa/lib/index").Action<SetTitleAction>;
+        match: (action: makeActionCreatorTypes.AnyAction) => action is makeActionCreatorTypes.Action<SetTitleAction>;
     };
-    reducer: import("../../../../../node_modules/tquinlan1992-typescript-react-redux-utils/dist/index").StateTypeReducer<AddTicketState, SetTitleAction>;
+    reducer: makeActionCreatorTypes.StateTypeReducer<AddTicketState, SetTitleAction>;
 };
 export default _default;

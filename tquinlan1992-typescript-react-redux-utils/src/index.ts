@@ -2,6 +2,8 @@ import { find, mapValues } from 'lodash';
 import actionCreatorFactory, { isType, Action, AnyAction, ActionCreator } from "typescript-fsa";
 import { Reducer } from 'redux';
 
+export { Action, AnyAction };
+
 export interface ActionCreatorWithReducer<StateType> {
     actionCreator: ActionCreator<any>;
     reducer: (state: StateType, action: any) => StateType;

@@ -1,33 +1,34 @@
+import * as exports from '../exportTypes';
 declare const _default: (prefix: string) => {
     setStoryPoint: {
         actionCreator: {
-            (payload: import("./setStoryPoint").SetStoryPointsAction, meta?: {
+            (payload: exports.SetStoryPointsAction, meta?: {
                 [key: string]: any;
-            } | null | undefined): import("../../../../../node_modules/tquinlan1992-typescript-react-redux-utils/node_modules/typescript-fsa/lib/index").Action<import("./setStoryPoint").SetStoryPointsAction>;
+            } | null | undefined): exports.makeActionCreatorTypes.Action<exports.SetStoryPointsAction>;
             type: string;
-            match: (action: import("../../../../../node_modules/tquinlan1992-typescript-react-redux-utils/node_modules/typescript-fsa/lib/index").AnyAction) => action is import("../../../../../node_modules/tquinlan1992-typescript-react-redux-utils/node_modules/typescript-fsa/lib/index").Action<import("./setStoryPoint").SetStoryPointsAction>;
+            match: (action: exports.makeActionCreatorTypes.AnyAction) => action is exports.makeActionCreatorTypes.Action<exports.SetStoryPointsAction>;
         };
-        reducer: import("../../../../../node_modules/tquinlan1992-typescript-react-redux-utils/dist/index").StateTypeReducer<import("../../../store/AppState").AddTicketState, import("./setStoryPoint").SetStoryPointsAction>;
+        reducer: exports.makeActionCreatorTypes.StateTypeReducer<exports.AddTicketState, exports.SetStoryPointsAction>;
     };
     setDescription: {
         actionCreator: {
-            (payload: import("./setDescription").SetDescriptionAction, meta?: {
+            (payload: exports.SetDescriptionAction, meta?: {
                 [key: string]: any;
-            } | null | undefined): import("../../../../../node_modules/tquinlan1992-typescript-react-redux-utils/node_modules/typescript-fsa/lib/index").Action<import("./setDescription").SetDescriptionAction>;
+            } | null | undefined): exports.makeActionCreatorTypes.Action<exports.SetDescriptionAction>;
             type: string;
-            match: (action: import("../../../../../node_modules/tquinlan1992-typescript-react-redux-utils/node_modules/typescript-fsa/lib/index").AnyAction) => action is import("../../../../../node_modules/tquinlan1992-typescript-react-redux-utils/node_modules/typescript-fsa/lib/index").Action<import("./setDescription").SetDescriptionAction>;
+            match: (action: exports.makeActionCreatorTypes.AnyAction) => action is exports.makeActionCreatorTypes.Action<exports.SetDescriptionAction>;
         };
-        reducer: import("../../../../../node_modules/tquinlan1992-typescript-react-redux-utils/dist/index").StateTypeReducer<import("../../../store/AppState").AddTicketState, import("./setDescription").SetDescriptionAction>;
+        reducer: exports.makeActionCreatorTypes.StateTypeReducer<exports.AddTicketState, exports.SetDescriptionAction>;
     };
     setTitle: {
         actionCreator: {
-            (payload: import("./setTitle").SetTitleAction, meta?: {
+            (payload: exports.SetTitleAction, meta?: {
                 [key: string]: any;
-            } | null | undefined): import("../../../../../node_modules/tquinlan1992-typescript-react-redux-utils/node_modules/typescript-fsa/lib/index").Action<import("./setTitle").SetTitleAction>;
+            } | null | undefined): exports.makeActionCreatorTypes.Action<exports.SetTitleAction>;
             type: string;
-            match: (action: import("../../../../../node_modules/tquinlan1992-typescript-react-redux-utils/node_modules/typescript-fsa/lib/index").AnyAction) => action is import("../../../../../node_modules/tquinlan1992-typescript-react-redux-utils/node_modules/typescript-fsa/lib/index").Action<import("./setTitle").SetTitleAction>;
+            match: (action: exports.makeActionCreatorTypes.AnyAction) => action is exports.makeActionCreatorTypes.Action<exports.SetTitleAction>;
         };
-        reducer: import("../../../../../node_modules/tquinlan1992-typescript-react-redux-utils/dist/index").StateTypeReducer<import("../../../store/AppState").AddTicketState, import("./setTitle").SetTitleAction>;
+        reducer: exports.makeActionCreatorTypes.StateTypeReducer<exports.AddTicketState, exports.SetTitleAction>;
     };
 };
 export default _default;

@@ -1,6 +1,8 @@
 import simpleActions from './simpleActions';
-import { AddTicketState } from "../../store/AppState";
+import { AddTicketState } from "../../store";
 import { createReducer, getCreators } from 'tquinlan1992-typescript-react-redux-utils';
+import * as exports from './exportTypes';
+exports;
 
 const initialState = {
     storyPoint: null,

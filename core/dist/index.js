@@ -64,7 +64,7 @@ module.exports =
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e3627b474495b2495a49"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "a6f8a0444b08b300ed05"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -59719,6 +59719,22 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./core/actions/addTicket/exportTypes.ts":
+/*!***********************************************!*\
+  !*** ./core/actions/addTicket/exportTypes.ts ***!
+  \***********************************************/
+/*! exports provided: makeActionCreatorTypes */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils */ "./core/actions/utils/index.ts");
+/* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "makeActionCreatorTypes", function() { return _utils__WEBPACK_IMPORTED_MODULE_0__; });
+
+
+
+/***/ }),
+
 /***/ "./core/actions/addTicket/index.ts":
 /*!*****************************************!*\
   !*** ./core/actions/addTicket/index.ts ***!
@@ -59731,6 +59747,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _simpleActions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./simpleActions */ "./core/actions/addTicket/simpleActions/index.ts");
 /* harmony import */ var tquinlan1992_typescript_react_redux_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tquinlan1992-typescript-react-redux-utils */ "../../tquinlan1992-typescript-react-redux-utils/dist/index.js");
 /* harmony import */ var tquinlan1992_typescript_react_redux_utils__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(tquinlan1992_typescript_react_redux_utils__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _exportTypes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./exportTypes */ "./core/actions/addTicket/exportTypes.ts");
 var __assign = undefined && undefined.__assign || Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
         s = arguments[i];
@@ -59740,6 +59757,8 @@ var __assign = undefined && undefined.__assign || Object.assign || function (t) 
 };
 
 
+
+_exportTypes__WEBPACK_IMPORTED_MODULE_2__;
 var initialState = {
     storyPoint: null,
     description: '',
@@ -59765,9 +59784,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _setStoryPoint__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./setStoryPoint */ "./core/actions/addTicket/simpleActions/setStoryPoint.ts");
 /* harmony import */ var _setDescription__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./setDescription */ "./core/actions/addTicket/simpleActions/setDescription.ts");
 /* harmony import */ var _setTitle__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./setTitle */ "./core/actions/addTicket/simpleActions/setTitle.ts");
+/* harmony import */ var _exportTypes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../exportTypes */ "./core/actions/addTicket/exportTypes.ts");
 
 
 
+
+_exportTypes__WEBPACK_IMPORTED_MODULE_3__;
 /* harmony default export */ __webpack_exports__["default"] = (function (prefix) {
     return {
         setStoryPoint: Object(_setStoryPoint__WEBPACK_IMPORTED_MODULE_0__["default"])(prefix),
@@ -59789,6 +59811,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tquinlan1992_typescript_react_redux_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tquinlan1992-typescript-react-redux-utils */ "../../tquinlan1992-typescript-react-redux-utils/dist/index.js");
 /* harmony import */ var tquinlan1992_typescript_react_redux_utils__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tquinlan1992_typescript_react_redux_utils__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils */ "./core/actions/utils/index.ts");
 var __assign = undefined && undefined.__assign || Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
         s = arguments[i];
@@ -59797,6 +59820,8 @@ var __assign = undefined && undefined.__assign || Object.assign || function (t) 
     return t;
 };
 
+
+_utils__WEBPACK_IMPORTED_MODULE_1__;
 /* harmony default export */ __webpack_exports__["default"] = (Object(tquinlan1992_typescript_react_redux_utils__WEBPACK_IMPORTED_MODULE_0__["makeActionCreatorWithReducerWithPrefix"])('SET_DESCRIPTION', function (state, _a) {
     var value = _a.value;
     return __assign({}, state, { description: value });
@@ -59815,6 +59840,7 @@ var __assign = undefined && undefined.__assign || Object.assign || function (t) 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tquinlan1992_typescript_react_redux_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tquinlan1992-typescript-react-redux-utils */ "../../tquinlan1992-typescript-react-redux-utils/dist/index.js");
 /* harmony import */ var tquinlan1992_typescript_react_redux_utils__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tquinlan1992_typescript_react_redux_utils__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils */ "./core/actions/utils/index.ts");
 var __assign = undefined && undefined.__assign || Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
         s = arguments[i];
@@ -59823,6 +59849,8 @@ var __assign = undefined && undefined.__assign || Object.assign || function (t) 
     return t;
 };
 
+
+_utils__WEBPACK_IMPORTED_MODULE_1__;
 /* harmony default export */ __webpack_exports__["default"] = (Object(tquinlan1992_typescript_react_redux_utils__WEBPACK_IMPORTED_MODULE_0__["makeActionCreatorWithReducerWithPrefix"])('SET_STORY_POINTS', function (state, _a) {
     var value = _a.value;
     return __assign({}, state, { storyPoint: Number(value) });
@@ -59841,6 +59869,7 @@ var __assign = undefined && undefined.__assign || Object.assign || function (t) 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tquinlan1992_typescript_react_redux_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tquinlan1992-typescript-react-redux-utils */ "../../tquinlan1992-typescript-react-redux-utils/dist/index.js");
 /* harmony import */ var tquinlan1992_typescript_react_redux_utils__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tquinlan1992_typescript_react_redux_utils__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils */ "./core/actions/utils/index.ts");
 var __assign = undefined && undefined.__assign || Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
         s = arguments[i];
@@ -59849,6 +59878,8 @@ var __assign = undefined && undefined.__assign || Object.assign || function (t) 
     return t;
 };
 
+
+_utils__WEBPACK_IMPORTED_MODULE_1__;
 /* harmony default export */ __webpack_exports__["default"] = (Object(tquinlan1992_typescript_react_redux_utils__WEBPACK_IMPORTED_MODULE_0__["makeActionCreatorWithReducerWithPrefix"])('SET_TITLE', function (state, _a) {
     var value = _a.value;
     return __assign({}, state, { title: value });
@@ -60630,6 +60661,24 @@ var __assign = undefined && undefined.__assign || Object.assign || function (t) 
 
 /***/ }),
 
+/***/ "./core/actions/utils/index.ts":
+/*!*************************************!*\
+  !*** ./core/actions/utils/index.ts ***!
+  \*************************************/
+/*! exports provided: makeActionCreatorWithReducerWithPrefix */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var tquinlan1992_typescript_react_redux_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tquinlan1992-typescript-react-redux-utils */ "../../tquinlan1992-typescript-react-redux-utils/dist/index.js");
+/* harmony import */ var tquinlan1992_typescript_react_redux_utils__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tquinlan1992_typescript_react_redux_utils__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "makeActionCreatorWithReducerWithPrefix", function() { return tquinlan1992_typescript_react_redux_utils__WEBPACK_IMPORTED_MODULE_0__["makeActionCreatorWithReducerWithPrefix"]; });
+
+
+
+
+/***/ }),
+
 /***/ "./core/database/PouchWrapper.ts":
 /*!***************************************!*\
   !*** ./core/database/PouchWrapper.ts ***!
@@ -61071,12 +61120,17 @@ var reduxStore = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_acti
 /*!******************!*\
   !*** ./index.ts ***!
   \******************/
-/*! exports provided: default */
+/*! exports provided: addTicketActionsReducers, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _core_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core/store */ "./core/store/index.ts");
+/* harmony import */ var _core_actions_addTicket__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./core/actions/addTicket */ "./core/actions/addTicket/index.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "addTicketActionsReducers", function() { return _core_actions_addTicket__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = (_core_store__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
