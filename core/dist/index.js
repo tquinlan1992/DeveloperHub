@@ -64,7 +64,7 @@ module.exports =
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "83924620391fd654729f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "476238b1836fd1d91e3a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -59867,6 +59867,29 @@ _utils_exportTypes__WEBPACK_IMPORTED_MODULE_1__;
 
 /***/ }),
 
+/***/ "./core/actions/exportTypes.ts":
+/*!*************************************!*\
+  !*** ./core/actions/exportTypes.ts ***!
+  \*************************************/
+/*! exports provided: makeActionCreatorTypes */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _utils_exportTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils/exportTypes */ "./core/actions/utils/exportTypes.ts");
+/* harmony import */ var _ticketList_exportTypes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ticketList/exportTypes */ "./core/actions/ticketList/exportTypes.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "makeActionCreatorTypes", function() { return _ticketList_exportTypes__WEBPACK_IMPORTED_MODULE_1__["makeActionCreatorTypes"]; });
+
+/* harmony import */ var _loading_exportTypes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./loading/exportTypes */ "./core/actions/loading/exportTypes.ts");
+/* empty/unused harmony star reexport *//* harmony import */ var _addTicket_exportTypes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./addTicket/exportTypes */ "./core/actions/addTicket/exportTypes.ts");
+/* empty/unused harmony star reexport */
+
+
+
+_utils_exportTypes__WEBPACK_IMPORTED_MODULE_0__;
+
+/***/ }),
+
 /***/ "./core/actions/index.ts":
 /*!*******************************!*\
   !*** ./core/actions/index.ts ***!
@@ -59886,6 +59909,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tquinlan1992_typescript_react_redux_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tquinlan1992-typescript-react-redux-utils */ "../../tquinlan1992-typescript-react-redux-utils/dist/index.js");
 /* harmony import */ var tquinlan1992_typescript_react_redux_utils__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(tquinlan1992_typescript_react_redux_utils__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _thunkActions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./thunkActions */ "./core/actions/thunkActions/index.ts");
+/* harmony import */ var _exportTypes__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./exportTypes */ "./core/actions/exportTypes.ts");
 var __assign = undefined && undefined.__assign || Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
         s = arguments[i];
@@ -59900,6 +59924,8 @@ var __assign = undefined && undefined.__assign || Object.assign || function (t) 
 
 
 
+
+_exportTypes__WEBPACK_IMPORTED_MODULE_7__;
 var coreActionsReducersTree = {
     ticketList: _actions_ticketList__WEBPACK_IMPORTED_MODULE_3__["default"],
     routing: _routing__WEBPACK_IMPORTED_MODULE_1__["default"],
@@ -61173,7 +61199,7 @@ var reduxStore = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_acti
 /*!******************!*\
   !*** ./index.ts ***!
   \******************/
-/*! exports provided: addTicketActionsReducers, loadingActionsReducers, routingActionsReducers, ticketListActionsReducers, thunkActions, default */
+/*! exports provided: addTicketActionsReducers, loadingActionsReducers, routingActionsReducers, ticketListActionsReducers, thunkActions, actions, reducers, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -61193,6 +61219,12 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _core_actions_thunkActions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./core/actions/thunkActions */ "./core/actions/thunkActions/index.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "thunkActions", function() { return _core_actions_thunkActions__WEBPACK_IMPORTED_MODULE_5__["default"]; });
+
+/* harmony import */ var _core_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./core/actions */ "./core/actions/index.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "actions", function() { return _core_actions__WEBPACK_IMPORTED_MODULE_6__["default"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "reducers", function() { return _core_actions__WEBPACK_IMPORTED_MODULE_6__["reducers"]; });
+
 
 
 

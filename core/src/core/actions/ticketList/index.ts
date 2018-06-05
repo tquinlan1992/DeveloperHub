@@ -9,24 +9,6 @@ const initialState = {
     tickets: []
 };
 
-// export const simpleActions = {
-//     setShowAddTicketDialog,
-//     setTickets
-// };
-
-// export const reducer = createReducer<TicketList>(initialState, simpleActions);
-
-// export const thunkActions = {
-// };
-
-// export default {
-//     reducer: createReducer<TicketList>(initialState, simpleActions),
-//     actions: {
-//         ...getCreators(simpleActions),
-//         ...thunkActions
-//     }
-// };
-
 const ticketListActions = simpleActions('TicketList');
 
 export default {

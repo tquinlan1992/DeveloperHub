@@ -1,6 +1,9 @@
-import CoreAppState, { AppState } from '../store/AppState';
-export declare const coreReducer: import("../../../node_modules/redux/index").Reducer<AppState, import("../../../node_modules/redux/index").AnyAction>;
-export declare const reducers: import("../../../node_modules/redux/index").Reducer<CoreAppState, import("../../../node_modules/redux/index").AnyAction>;
+import { AnyAction } from 'redux';
+export { AnyAction };
+import { AppStateCore, AppState } from '../store';
+import * as exportTypes from './exportTypes';
+export declare const coreReducer: import("../../../node_modules/redux/index").Reducer<AppState, AnyAction>;
+export declare const reducers: import("../../../node_modules/redux/index").Reducer<AppStateCore, AnyAction>;
 declare const _default: {
     thunkActions: {
         database: {
@@ -10,20 +13,20 @@ declare const _default: {
         };
     };
     ticketList: {
-        setShowAddTicketDialog: import("../../../node_modules/tquinlan1992-typescript-react-redux-utils/node_modules/typescript-fsa/lib/index").ActionCreator<import("./ticketList/simpleActions/setShowAddTicketDialog").SetShowAddTicketDialogParams>;
-        setTickets: import("../../../node_modules/tquinlan1992-typescript-react-redux-utils/node_modules/typescript-fsa/lib/index").ActionCreator<import("./ticketList/simpleActions/setTickets").SetTicketsAction>;
+        setShowAddTicketDialog: exportTypes.ActionCreator<exportTypes.SetShowAddTicketDialogParams>;
+        setTickets: exportTypes.ActionCreator<exportTypes.SetTicketsAction>;
     };
     routing: {
-        navigateToFeed: (history: any, urlToNavigateTo: string) => import("../../../node_modules/redux-thunk/index").ThunkAction<void, any, void, import("../../../node_modules/redux/index").AnyAction>;
+        navigateToFeed: (history: any, urlToNavigateTo: string) => import("../../../node_modules/redux-thunk/index").ThunkAction<void, any, void, AnyAction>;
     };
     addTicket: {
-        setStoryPoint: import("../../../node_modules/tquinlan1992-typescript-react-redux-utils/node_modules/typescript-fsa/lib/index").ActionCreator<import("./addTicket/simpleActions/setStoryPoint").SetStoryPointsAction>;
-        setDescription: import("../../../node_modules/tquinlan1992-typescript-react-redux-utils/node_modules/typescript-fsa/lib/index").ActionCreator<import("./addTicket/simpleActions/setDescription").SetDescriptionAction>;
-        setTitle: import("../../../node_modules/tquinlan1992-typescript-react-redux-utils/node_modules/typescript-fsa/lib/index").ActionCreator<import("./addTicket/simpleActions/setTitle").SetTitleAction>;
+        setStoryPoint: exportTypes.ActionCreator<exportTypes.SetStoryPointsAction>;
+        setDescription: exportTypes.ActionCreator<exportTypes.SetDescriptionAction>;
+        setTitle: exportTypes.ActionCreator<exportTypes.SetTitleAction>;
     };
     loading: {
         loadApp: typeof import("./loading/thunkActions/loadApp").default;
-        setValue: import("../../../node_modules/tquinlan1992-typescript-react-redux-utils/node_modules/typescript-fsa/lib/index").ActionCreator<import("./loading/simpleActions/setValue").SetValueAction>;
+        setValue: exportTypes.ActionCreator<exportTypes.SetValueAction>;
     };
 };
 export default _default;

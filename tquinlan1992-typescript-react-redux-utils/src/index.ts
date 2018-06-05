@@ -2,7 +2,7 @@ import { find, mapValues } from 'lodash';
 import actionCreatorFactory, { isType, Action, AnyAction, ActionCreator } from "typescript-fsa";
 import { Reducer } from 'redux';
 
-export { Action, AnyAction };
+export { Action, AnyAction, ActionCreator };
 
 export interface ActionCreatorWithReducer<StateType> {
     actionCreator: ActionCreator<any>;
