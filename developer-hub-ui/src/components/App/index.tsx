@@ -6,10 +6,6 @@ import Theme from '../Theme';
 // import TopAppBar from '../TopAppbar';
 import Loading from '../Loading';
 
-declare module 'redux' {
-  export type GenericStoreEnhancer = any;
-}
-
 export default (store: any) => {
     return ReactDOM.render(
         <Provider store={store}>

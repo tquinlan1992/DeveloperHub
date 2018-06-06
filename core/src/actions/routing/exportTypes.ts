@@ -1,2 +1,4 @@
 import { RouterState } from 'react-router-redux';
-export { RouterState };
+import * as makeActionCreatorTypes from '../utils/exportTypes'; 
+
+export { RouterState, makeActionCreatorTypes };
