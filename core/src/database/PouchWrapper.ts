@@ -30,7 +30,7 @@ class PouchWrapper {
     async getTickets() {
         try {
             const ticketsResult = await this.db.find({
-                selector: { Type: 0, deleted: false }
+                selector: { Type: 0 }
             });
             return ticketsResult.docs;
         } catch(e) {
@@ -49,9 +49,9 @@ class PouchWrapper {
     async deleteTicket(id: string) {
         try {
             const ticketDoc = await this.db.get(id);
-            this.db.put({
+            return this.db.put({
                 ...ticketDoc,
-                deleted: true
+                _deleted: true
             });
         } catch (e) {
             throw new Error('error deleting ticket');
