@@ -63,6 +63,22 @@ export function getActionsFromCombinedActionReducer<T extends { [key: string]: A
     return mapValues(creators, "actions") as { [P in keyof T]: T[P]['actions'] };
 }
 
+export interface ActionsAndReducerSetup {
+    [key: string]: ActionsAndReducer;
+}
+
+export interface ActionsReducersFromCombinedActionReducer<ActionsReducersInstances extends ActionsAndReducerSetup> {
+    actions: { [P in keyof ActionsReducersInstances]: ActionsReducersInstances[P]['actions'] };
+    reducers: { [P in keyof ActionsReducersInstances]: ActionsReducersInstances[P]['reducer'] };
+}
+
+export function getActionsAndReducersFromCombinedActionReducer<Creators extends ActionsAndReducerSetup>(creators: Creators): ActionsReducersFromCombinedActionReducer<Creators> {
+    return {
+        actions: getActionsFromCombinedActionReducer(creators) as { [P in keyof Creators]: Creators[P]['actions'] },
+        reducers: getReducersFromCombinedActionReducer(creators) as { [P in keyof Creators]: Creators[P]['reducer'] }
+    };
+}
+
 export default {
 
 };

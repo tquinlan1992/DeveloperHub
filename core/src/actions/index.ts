@@ -5,7 +5,7 @@ import routing from './routing';
 import addTicket from './addTicket';
 import ticketList from '../actions/ticketList';
 import loading from '../actions/loading';
-import { getReducersFromCombinedActionReducer, getActionsFromCombinedActionReducer } from 'tquinlan1992-typescript-react-redux-utils';
+import { getReducersFromCombinedActionReducer, getActionsAndReducersFromCombinedActionReducer } from 'tquinlan1992-typescript-react-redux-utils';
 import thunkActions from './thunkActions';
 import * as exportTypes from './exportTypes';
 exportTypes;
@@ -17,8 +17,14 @@ const coreActionsReducersTree = {
     routing
 };
 
-export const coreReducer = combineReducers<AppState>(getReducersFromCombinedActionReducer(coreActionsReducersTree));
-const coreActions = getActionsFromCombinedActionReducer(coreActionsReducersTree);
+// export const coreReducer = combineReducers<AppState>(getReducersFromCombinedActionReducer(coreActionsReducersTree));
+// const coreActions = getActionsFromCombinedActionReducer(coreActionsReducersTree);
+
+const { actions: coreActions, reducers: coreReducerNotCombined } = getActionsAndReducersFromCombinedActionReducer(coreActionsReducersTree);
+
+const coreReducer = combineReducers<AppState>(coreReducerNotCombined);
+
+export { coreReducer };
 
 const appActionReducersTree = {
     core: {
