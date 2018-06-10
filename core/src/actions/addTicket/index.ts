@@ -1,8 +1,9 @@
 import simpleActions from './simpleActions';
-import { AddTicketState } from "../../store";
+import { AddTicketState, AppStateCore } from "../../store";
 import { createReducer, getCreators } from 'tquinlan1992-typescript-react-redux-utils';
-import * as exports from './exportTypes';
-exports;
+import * as exportTypes from './exportTypes';
+import thunkActions from './thunkActions';
+export { exportTypes, AppStateCore };
 
 const initialState = {
     storyPoint: null,
@@ -16,5 +17,6 @@ export default {
     reducer: createReducer<AddTicketState>(initialState, addTicketSimpleActions),
     actions: {
         ...getCreators(addTicketSimpleActions),
+        ...thunkActions
     }
 };

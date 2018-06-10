@@ -1,3 +1,4 @@
-import { makeActionCreatorWithReducerWithPrefix, StateTypeReducer, Action, AnyAction } from "tquinlan1992-typescript-react-redux-utils";
+import { makeActionCreatorWithReducerWithPrefix, StateTypeReducer, Action, AnyAction, ActionCreator } from "tquinlan1992-typescript-react-redux-utils";
 import { ThunkDispatch } from 'redux-thunk';
-export { makeActionCreatorWithReducerWithPrefix, StateTypeReducer, Action, AnyAction, ThunkDispatch };
+import AppStateCore from '../../store';
+export { makeActionCreatorWithReducerWithPrefix, StateTypeReducer, Action, AnyAction, ThunkDispatch, ActionCreator, AppStateCore };

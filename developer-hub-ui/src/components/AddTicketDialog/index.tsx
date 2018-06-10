@@ -17,7 +17,7 @@ interface StateProps {
 }
 
 interface ComponentActions {
-    addTicket: typeof actions.thunkActions.database.addTicket;
+    addTicket: typeof actions.addTicket.addTicket;
     setDescription: typeof actions.addTicket.setDescription;
     setTitle: typeof actions.addTicket.setTitle;
     setStoryPoint: typeof actions.addTicket.setStoryPoint;
@@ -125,10 +125,7 @@ const mapStateToProps = ({ core }: AppStateCore, ownProps: AddTicketDialogOwnPro
 };
 
 const mapDispatchToProps = {
-    addTicket: actions.thunkActions.database.addTicket,
-    setDescription: actions.addTicket.setDescription,
-    setTitle: actions.addTicket.setTitle,
-    setStoryPoint: actions.addTicket.setStoryPoint
+    ...actions.addTicket
 };
 
 export default connect<AddTicketDialogOwnProps & StateProps, ComponentActions, AddTicketDialogOwnProps>(mapStateToProps, mapDispatchToProps)(AddTicketDialog);

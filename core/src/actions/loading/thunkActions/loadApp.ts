@@ -20,7 +20,7 @@ export default function loadApp(): ThunkAction<void, AppState, void, AnyAction> 
         try {
             const res = await request.get('/static/api.json');
             const apiUrl = res.body.value;
-            setupPouch(urljoin(apiUrl, '/couchdb/test'));
+            await setupPouch(urljoin(apiUrl, '/couchdb/test'));
             dispatch(actionReducer.actions.setValue({ value: false }));
         } catch(e) {
             console.log('error getting /static/api.json', e);

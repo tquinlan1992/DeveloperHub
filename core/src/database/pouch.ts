@@ -10,6 +10,7 @@ let remoteUrlExport: null | string = null;
 let pouchDB: null | PouchWrapper;
 
 export async function getRemoteDB() {
+    console.log('get remote db');
     if (!pouchDB) {
         const remoteDB = new PouchDB(remoteUrlExport as string);
         const localDB = new PouchDB('mylocaldb');
@@ -19,15 +20,13 @@ export async function getRemoteDB() {
         await localDB.sync(remoteDB, {
             live: true,
             retry: true
-        }).on('complete', function () {
-            return pouchDB;
-        }).on('error', function (err) {
-            // boo, we hit an error!
         });
+        return pouchDB;
     }
     return pouchDB;
 }
 
 export function setupPouch(remoteUrl: string) {
+    console.log('set up');
     remoteUrlExport = remoteUrl;
 }
