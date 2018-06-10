@@ -2,7 +2,6 @@ import { ThunkAction } from "redux-thunk";
 import { AppStateCore } from "../../../../store";
 import { getRemoteDB } from "../../../../database/pouch";
 import { AnyAction } from "redux";
-import fetchTickets from '../fetchTickets';
 
 export interface AddTicketParams { 
     title: string; 
@@ -12,8 +11,12 @@ export interface AddTicketParams {
 
 export default function addTicket(params: AddTicketParams): ThunkAction<void, AppStateCore, void, AnyAction> {
     return async function (dispatch, getState) {
+        try {
         const db = await getRemoteDB();
         await db.addTicket(params);
-        await dispatch(fetchTickets());
+        } catch(e) {
+            console.log('error adding ticket to db');
+            throw e;
+        }
     };
 }

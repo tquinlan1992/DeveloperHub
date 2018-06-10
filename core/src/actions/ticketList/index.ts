@@ -1,8 +1,12 @@
-import { TicketList } from '../../store';
+import { TicketList, AppStateCore } from '../../store';
 import simpleActions from './simpleActions';
 import { createReducer, getCreators } from 'tquinlan1992-typescript-react-redux-utils';
 import * as exportTypes from './exportTypes';
-exportTypes;
+import thunkActions from './thunkActions';
+
+export {
+    exportTypes, AppStateCore
+};
 
 const initialState = {
     showAddTicketDialog: false,
@@ -15,5 +19,6 @@ export default {
     reducer: createReducer<TicketList>(initialState, ticketListActions),
     actions: {
         ...getCreators(ticketListActions),
+        ...thunkActions
     }
 };

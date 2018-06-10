@@ -8,9 +8,10 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 interface TicketListActions {
     setShowAddTicketDialog: typeof actions.ticketList.setShowAddTicketDialog;
-    fetchTickets: typeof actions.thunkActions.database.fetchTickets;
-    deleteTicket: typeof actions.thunkActions.database.deleteTicket;
-}interface TicketListProps {
+    fetchTickets: typeof actions.ticketList.fetchTickets;
+    deleteTicket: typeof actions.ticketList.deleteTicket;
+}
+interface TicketListProps {
     showAddTicketDialog: boolean;
     tickets: Ticket[];
 }
@@ -94,6 +95,8 @@ const mapStateToProps = ({ core }: AppStateCore, ownProps: any) => {
     };
 };
 
-const mapActionsToProps = { ...actions.ticketList, deleteTicket: actions.thunkActions.database.deleteTicket, fetchTickets: actions.thunkActions.database.fetchTickets};
+const mapActionsToProps = { 
+    ...actions.ticketList, 
+};
 
 export default connect<TicketListProps, TicketListActions>(mapStateToProps, mapActionsToProps)(TicketList);
