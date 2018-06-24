@@ -32,6 +32,6 @@ export function setupPouch(remoteUrl: string, dispatch: ThunkDispatch<AppState, 
             dispatch(actions.loading.setValue({ value: false }));
         }).on('error', () => {
             console.log('error syncing');
-        }) 
+        });
     }
 }

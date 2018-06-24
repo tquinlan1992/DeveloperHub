@@ -49,7 +49,7 @@ export interface AppStateCore {
     core: AppState;
 }
 
-const stateFromLocalStorage = JSON.parse(localStorage.state || '{}') as AppStateCore;
+const stateFromLocalStorage = JSON.parse(localStorage.getItem('state') || '{}') as AppStateCore;
 const coreState = omit(stateFromLocalStorage.core, 'loading');
 
 const state = {

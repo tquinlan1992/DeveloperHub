@@ -1,8 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
-const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const portfinder = require('portfinder');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const nodeExternals = require('webpack-node-externals');
 
 const sourcePath = path.join(__dirname, './src');
 
@@ -19,10 +19,6 @@ module.exports = function (env) {
         const plugins = [
             new webpack.NamedModulesPlugin(),
             new webpack.HotModuleReplacementPlugin(),
-            new CopyWebpackPlugin([{
-                from: '../node_modules/monaco-editor/min/vs',
-                to: 'vs',
-            }]),
             new CopyWebpackPlugin([{
                 from: '../static/**/*',
                 to: 'static',
@@ -41,6 +37,8 @@ module.exports = function (env) {
                 filename: 'index.js',
                 libraryTarget: "commonjs2"
             },
+
+            externals: [nodeExternals()],
 
             module: {
                 rules: [{

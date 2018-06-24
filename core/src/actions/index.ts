@@ -23,9 +23,6 @@ const coreActionsReducersTree = {
 const { actions: coreActions, reducers: coreReducerNotCombined } = getActionsAndReducersFromCombinedActionReducer(coreActionsReducersTree);
 
 const coreReducer = combineReducers<AppState>(coreReducerNotCombined);
-
-export { coreReducer };
-
 const appActionReducersTree = {
     core: {
         reducer: coreReducer,
@@ -33,7 +30,9 @@ const appActionReducersTree = {
     }
 };
 
-export const reducers = combineReducers<AppStateCore>(getReducersFromCombinedActionReducer(appActionReducersTree));
+const reducers = combineReducers<AppStateCore>(getReducersFromCombinedActionReducer(appActionReducersTree));
+
+export { coreReducer, reducers };
 
 export default {
     thunkActions,
