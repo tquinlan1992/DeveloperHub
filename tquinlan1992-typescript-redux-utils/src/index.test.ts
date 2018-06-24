@@ -1,4 +1,4 @@
-import { getCreators, makeActionCreatorWithReducer } from 'tquinlan1992-typescript-react-redux-utils';
+import { getCreators, makeActionCreatorWithReducer } from 'tquinlan1992-typescript-redux-utils';
 
 const JSONStringify = JSON.stringify;
 

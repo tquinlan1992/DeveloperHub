@@ -1,5 +1,5 @@
 import { ThunkAction } from 'redux-thunk';
-import { AnyAction } from 'tquinlan1992-typescript-react-redux-utils';
+import { AnyAction } from 'tquinlan1992-typescript-redux-utils';
 export { AnyAction };
 import { AnyAction as AnyActionFromRedux } from 'redux';
 export { AnyActionFromRedux };

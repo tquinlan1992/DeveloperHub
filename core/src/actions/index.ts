@@ -5,7 +5,7 @@ import routing from './routing';
 import addTicket from './addTicket';
 import ticketList from './ticketList';
 import loading from './loading';
-import { getReducersFromCombinedActionReducer, getActionsAndReducersFromCombinedActionReducer } from 'tquinlan1992-typescript-react-redux-utils';
+import { getReducersFromCombinedActionReducer, getActionsAndReducersFromCombinedActionReducer } from 'tquinlan1992-typescript-redux-utils';
 import thunkActions from './thunkActions';
 import * as exportTypes from './exportTypes';
 exportTypes;
