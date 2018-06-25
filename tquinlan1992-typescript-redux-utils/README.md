@@ -80,7 +80,7 @@ Redux allows you to create simple actions that can be handled by multiple reduce
     declare function getActionsAndReducersFromCombinedActionReducer<Creators extends ActionsAndReducerSetup>(creators: Creators): ActionsReducersFromCombinedActionReducer<Creators>;
     ```
 
-    -usage
+    - usage
     ```typescript
     import { getActionsAndReducersFromCombinedActionReducer } from 'tquinlan1992-typescript-redux-utils';
     import reducerActionsReducer from './reducerActionsReducer';
