@@ -19,6 +19,8 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
+      - run: sudo npm i -g npm
+
       - run: cd tquinlan92-typescript-redux-utils && npm install
       - run: cd tquinlan92-typescript-redux-utils && npm run build
 
