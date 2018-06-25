@@ -10,7 +10,8 @@
     "start": "npm run webpack-dev-server -- --mode development",
     "test": "jest --coverage",
     "test:watch": "node --inspect node_modules/.bin/jest --watch",
-    "webpack-dev-server": "webpack-dev-server"
+    "webpack-dev-server": "webpack-dev-server",
+    "preinstall": "cd ../tquinlan92-typescript-redux-utils && npm ci && npm run build && cd ../core && npm ci && npm run build"
   },
   "devDependencies": {
     "@material-ui/core": "^1.0.0",
