@@ -82,16 +82,19 @@ Redux allows you to create simple actions that can be handled by multiple reduce
 
     - usage
     ```typescript
+    import { ReducerState } from './setValueActionReducer';
     import { getActionsAndReducersFromCombinedActionReducer } from 'tquinlan92-typescript-redux-utils';
     import reducerActionsReducer from './reducerActionsReducer';
 
+    interface AppState {
+        loading: ReducerState;
+    }
+
     const actionsReducersTree = {
-        reducerActionsReducer
+        loading: reducerActionsReducer
     };
 
     const { actions, reducers } = getActionsAndReducersFromCombinedActionReducer(actionsReducersTree);
 
     const rootReducer = combineReducers<AppState>(reducers);
-
-
     ```
