@@ -19,15 +19,15 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: sudo npm i -g npm
+      - run: npm i -g npm
 
-      - run: cd tquinlan92-typescript-redux-utils && npm install
+      - run: cd tquinlan92-typescript-redux-utils && npm ci
       - run: cd tquinlan92-typescript-redux-utils && npm run build
 
-      - run: cd core && npm install
+      - run: cd core && npm ci
       - run: cd core && npm run build
 
-      - run: cd developer-hub-ui && npm install
+      - run: cd developer-hub-ui && npm ci
       - run: cd developer-hub-ui && npm run build
 
       - save_cache:
