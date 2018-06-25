@@ -62,7 +62,7 @@
     "source-map": "^0.6.1",
     "style-loader": "^0.19.1",
     "superagent": "^3.8.3",
-    "tquinlan1992-typescript-redux-utils": "file:../tquinlan1992-typescript-redux-utils",
+    "tquinlan92-typescript-redux-utils": "file:../tquinlan92-typescript-redux-utils",
     "ts-jest": "^22.4.6",
     "ts-lint": "^4.5.1",
     "tslint": "^5.10.0",

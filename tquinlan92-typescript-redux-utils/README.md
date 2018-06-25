@@ -1,4 +1,4 @@
-# tquinlan1992-typescript-redux-utils
+# tquinlan92-typescript-redux-utils
 
 Utility methods to help write cleaner modular redux code
 
@@ -17,7 +17,7 @@ Redux allows you to create simple actions that can be handled by multiple reduce
     - usage
     ```typescript
     /* ./setValueActionReducer.ts */
-    import { makeActionCreatorWithReducerWithPrefix } from "tquinlan1992-typescript-redux-utils";
+    import { makeActionCreatorWithReducerWithPrefix } from "tquinlan92-typescript-redux-utils";
 
     interface ReducerState {
         value: boolean
@@ -50,7 +50,7 @@ Redux allows you to create simple actions that can be handled by multiple reduce
     ```typescript
     /* ./reducerActionsReducer */
     import setValueActionReducer, { ReducerState } from './setValueActionReducer';
-    import { createReducer, getCreators } from 'tquinlan1992-typescript-redux-utils';
+    import { createReducer, getCreators } from 'tquinlan92-typescript-redux-utils';
     import thunkActions from './thunkActions';
 
     const initialState = {
@@ -82,7 +82,7 @@ Redux allows you to create simple actions that can be handled by multiple reduce
 
     - usage
     ```typescript
-    import { getActionsAndReducersFromCombinedActionReducer } from 'tquinlan1992-typescript-redux-utils';
+    import { getActionsAndReducersFromCombinedActionReducer } from 'tquinlan92-typescript-redux-utils';
     import reducerActionsReducer from './reducerActionsReducer';
 
     const actionsReducersTree = {

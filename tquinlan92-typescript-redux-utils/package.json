@@ -1,9 +1,9 @@
 {
-  "name": "tquinlan1992-typescript-redux-utils",
+  "name": "tquinlan92=--typescript-redux-utils",
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tquinlan1992/DeveloperHub/tree/develop/tquinlan1992-typescript-redux-utils"
+    "url": "https://github.com/tquinlan1992/DeveloperHub/tree/develop/tquinlan92-typescript-redux-utils"
   },
   "description": "typescript redux and react utilities",
   "main": "./dist/index.js",

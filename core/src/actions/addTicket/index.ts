@@ -1,6 +1,6 @@
 import simpleActions from './simpleActions';
 import { AddTicketState, AppStateCore } from "../../store";
-import { createReducer, getCreators } from 'tquinlan1992-typescript-redux-utils';
+import { createReducer, getCreators } from 'tquinlan92-typescript-redux-utils';
 import * as exportTypes from './exportTypes';
 import thunkActions from './thunkActions';
 export { exportTypes, AppStateCore };
