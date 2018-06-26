@@ -49,8 +49,3 @@ workflows:
       - deploy:
           requires:
             - build
-          filters:
-            tags:
-              only: /-tquinlan92$/
-            branches:
-              ignore: /.*/
