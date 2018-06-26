@@ -48,15 +48,12 @@ workflows:
   version: 2
   test-deploy:
     jobs:
-      - build:
-          filters:
-            tags:
-              only: /-tquinlan92$/
+      - build
       - deploy:
           requires:
             - build
           filters:
             tags:
-              only: /^v.*/
+              only: /-tquinlan92$/
             branches:
               ignore: /.*/
