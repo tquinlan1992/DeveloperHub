@@ -9,48 +9,48 @@ defaults: &defaults
     - image: circleci/node:8
 
 jobs:
- build:
-  <<: *defaults 
-  steps:
-   - checkout
+  build:
+    <<: *defaults 
+    steps:
+      - checkout
 
-   # Download and cache dependencies
-   - restore_cache:
-    keys:
-    - v1-dependencies-{{ checksum "./developer-hub-ui/package.json" }}-{{ checksum "./core/package.json" }}-{{ checksum "./tquinlan92-typescript-redux-utils/package.json" }}
-    # fallback to using the latest cache if no exact match is found
-    - v1-dependencies-
+    # Download and cache dependencies
+    - restore_cache:
+      keys:
+      - v1-dependencies-{{ checksum "./developer-hub-ui/package.json" }}-{{ checksum "./core/package.json" }}-{{ checksum "./tquinlan92-typescript-redux-utils/package.json" }}
+      # fallback to using the latest cache if no exact match is found
+      - v1-dependencies-
 
-   - run: sudo npm i -g npm
+    - run: sudo npm i -g npm
 
-   - run: cd developer-hub-ui && npm ci
+    - run: cd developer-hub-ui && npm ci
 
-   - save_cache:
-    paths:
-     - tquinlan92-typescript-redux-utils/node_modules
-     - core/node_modules
-     - developer-hub-uti/node_modules
-    key: v1-dependencies-{{ checksum "./developer-hub-ui/package.json" }}-{{ checksum "./core/package.json" }}-{{ checksum "./tquinlan92-typescript-redux-utils/package.json" }}
- deploy:
-  <<: *defaults
-   steps:
-     - run:
-      name: Authenticate with registry
-      command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
-     - run:
-      name: Publish package
-      command: cd tquinlan92-typescript-redux-utils && npm publish
+    - save_cache:
+      paths:
+        - tquinlan92-typescript-redux-utils/node_modules
+        - core/node_modules
+        - developer-hub-uti/node_modules
+      key: v1-dependencies-{{ checksum "./developer-hub-ui/package.json" }}-{{ checksum "./core/package.json" }}-{{ checksum "./tquinlan92-typescript-redux-utils/package.json" }}
+  deploy:
+    <<: *defaults
+    steps:
+      - run:
+        name: Authenticate with registry
+        command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
+      - run:
+        name: Publish package
+        command: cd tquinlan92-typescript-redux-utils && npm publish
 
 workflows:
- version: 2
- test-deploy:
- jobs:
-  - build
-  - deploy:
-   requires:
+  version: 2
+  test-deploy:
+  jobs:
     - build
-     filters:
-      tags:
-       only: /-tquinlan92$/
-      branches:
-      ignore: /.*/
+    - deploy:
+      requires:
+    - build
+      filters:
+        tags:
+          only: /-tquinlan92$/
+        branches:
+          ignore: /.*/
