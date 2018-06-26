@@ -30,7 +30,6 @@ jobs:
             - developer-hub-uti/node_modules
           key: v1-dependencies-{{ checksum "./developer-hub-ui/package.json" }}-{{ checksum "./core/package.json" }}-{{ checksum "./tquinlan92-typescript-redux-utils/package.json" }}
   deploy:
-    <<: *defaults
     steps:
       - attach_workspace:
           at: ~/repo
