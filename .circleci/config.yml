@@ -41,6 +41,7 @@ jobs:
       - run:
           name: Publish package
           command: cd tquinlan92-typescript-redux-utils && npm publish
+
 workflows:
   version: 2
   test-deploy:
