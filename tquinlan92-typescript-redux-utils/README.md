@@ -19,7 +19,7 @@ Redux allows you to create simple actions that can be handled by multiple reduce
     /* ./setValueActionReducer.ts */
     import { makeActionCreatorWithReducerWithPrefix } from "tquinlan92-typescript-redux-utils";
 
-    interface ReducerState {
+    export interface ReducerState {
         value: boolean
     }
 
