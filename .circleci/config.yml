@@ -37,7 +37,7 @@ jobs:
       - checkout
       - run:
           name: Authenticate with registry
-          command: touch tquinlan92-typescript-redux-utils/.npmrc && echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/tquinlan92-typescript-redux-utils/.npmrc
+          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > .npmrc
       - run:
           name: Publish package
           command: cd tquinlan92-typescript-redux-utils && npm publish
