@@ -34,12 +34,13 @@ jobs:
   deploy:
     <<: *defaults
     steps:
+      - checkout
       - run:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN"
       - run:
           name: Publish package
-          command: cd developer-hub-ui
+          command: cd tquinlan92-typescript-redux-utils && npm publish
 
 workflows:
   version: 2
