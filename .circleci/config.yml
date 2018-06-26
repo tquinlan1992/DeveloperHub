@@ -55,3 +55,4 @@ workflows:
               only: /^v.*/
             branches:
               ignore: /.*/
+              
