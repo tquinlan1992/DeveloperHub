@@ -39,7 +39,7 @@ jobs:
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN"
       - run:
           name: Publish package
-          command: cd tquinlan92-typescript-redux-utils && npm publish
+          command: ls && cd tquinlan92-typescript-redux-utils && npm publish
 
 workflows:
   version: 2
