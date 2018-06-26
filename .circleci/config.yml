@@ -16,7 +16,7 @@ jobs:
 
    # Download and cache dependencies
    - restore_cache:
-   keys:
+    keys:
      - v1-dependencies-{{ checksum "./developer-hub-ui/package.json" }}-{{ checksum "./core/package.json" }}-{{ checksum "./tquinlan92-typescript-redux-utils/package.json" }}
      # fallback to using the latest cache if no exact match is found
      - v1-dependencies-
