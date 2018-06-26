@@ -50,5 +50,7 @@ workflows:
     jobs:
       - build
       - deploy:
+          filters: 
+            only: /-tquinlan92$/
           requires: 
             - build
