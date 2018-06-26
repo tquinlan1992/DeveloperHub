@@ -43,7 +43,7 @@ workflows:
   version: 2
   test-deploy:
     jobs:
-      - jobs:
+      - build:
           filters:
             tags:
               only: /-tquinlan92$/
