@@ -33,7 +33,7 @@ jobs:
           key: v1-dependencies-{{ checksum "./developer-hub-ui/package.json" }}-{{ checksum "./core/package.json" }}-{{ checksum "./tquinlan92-typescript-redux-utils/package.json" }}
   deploy:
     <<: *defaults
-    working_directory: ~/DeveloperHub/tquinlan92-typescript-redux-utils
+    working_directory: ~/tquinlan92-typescript-redux-utils
     steps:
       - run:
           name: Authenticate with registry
