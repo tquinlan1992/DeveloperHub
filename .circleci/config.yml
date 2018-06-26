@@ -29,4 +29,30 @@ jobs:
             - core/node_modules
             - developer-hub-uti/node_modules
           key: v1-dependencies-{{ checksum "./developer-hub-ui/package.json" }}-{{ checksum "./core/package.json" }}-{{ checksum "./tquinlan92-typescript-redux-utils/package.json" }}
-
+  deploy:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
+      - run:
+          name: Publish package
+          command: cd tquinlan92-typescript-redux-utils && npm publish
+workflows:
+  version: 2
+  test-deploy:
+    jobs:
+      - test:
+          filters:
+            tags:
+              only: /-tquinlan92$/
+      - deploy:
+          requires:
+            - test
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
