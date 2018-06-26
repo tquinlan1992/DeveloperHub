@@ -25,6 +25,8 @@ jobs:
 
       - run: cd developer-hub-ui && npm ci
 
+      - run: cd developer-hub-ui && npm run build
+
       - save_cache:
           paths:
             - tquinlan92-typescript-redux-utils/node_modules
@@ -48,7 +50,5 @@ workflows:
     jobs:
       - build
       - deploy:
-          tags: 
-            only: /-tquinlan92$/
           requires: 
             - build
