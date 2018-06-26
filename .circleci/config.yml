@@ -3,11 +3,15 @@
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
 version: 2
+
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:8
+
 jobs:
   build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/node:8
+    <<: *defaults 
 
     steps:
       - checkout
@@ -30,6 +34,7 @@ jobs:
             - developer-hub-uti/node_modules
           key: v1-dependencies-{{ checksum "./developer-hub-ui/package.json" }}-{{ checksum "./core/package.json" }}-{{ checksum "./tquinlan92-typescript-redux-utils/package.json" }}
   deploy:
+     <<: *defaults
     steps:
       - attach_workspace:
           at: ~/repo
