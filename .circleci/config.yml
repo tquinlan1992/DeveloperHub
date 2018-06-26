@@ -51,6 +51,7 @@ workflows:
       - build
       - deploy:
           filters: 
-            only: /-tquinlan92$/
+            tags:
+              only: /-tquinlan92$/
           requires: 
             - build
