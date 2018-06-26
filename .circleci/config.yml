@@ -12,7 +12,6 @@ defaults: &defaults
 jobs:
   build:
     <<: *defaults 
-
     steps:
       - checkout
 
