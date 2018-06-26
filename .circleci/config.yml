@@ -33,13 +33,14 @@ jobs:
           key: v1-dependencies-{{ checksum "./developer-hub-ui/package.json" }}-{{ checksum "./core/package.json" }}-{{ checksum "./tquinlan92-typescript-redux-utils/package.json" }}
   deploy:
     <<: *defaults
+    working_directory: ~/DeveloperHub/tquinlan92-typescript-redux-utils
     steps:
       - run:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN"
       - run:
           name: Publish package
-          command: cd tquinlan92-typescript-redux-utils && npm publish
+          command: npm publish
 
 workflows:
   version: 2
