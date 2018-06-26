@@ -65,7 +65,7 @@ Redux allows you to create simple actions that can be handled by multiple reduce
 
     const namedActionReducers = actionReducers('reducerNameSample');
 
-    /* Thus structure is important for the next the method described */
+    /* This structure is important for the next the method described */
     export default {
         reducer: createReducer<ReducerState>(initialState, namedActionReducers),
         actions: {
