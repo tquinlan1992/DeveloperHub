@@ -9,7 +9,7 @@ defaults: &defaults
     - image: circleci/node:8
 
 jobs:
-  build:
+  test:
     <<: *defaults 
     steps:
       - checkout
@@ -45,10 +45,10 @@ workflows:
   version: 2
   test-deploy:
     jobs:
-      - build
+      - test
       - deploy:
           requires:
-            - build
+            - test
           filters:
             tags:
               only: /-tquinlan92$/
