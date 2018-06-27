@@ -8,6 +8,12 @@ defaults: &defaults
   docker:
     - image: circleci/node:8
 
+npmLogin: &npmLogin
+  - checkout
+  - run:
+      name: Authenticate with registry
+      command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > tquinlan92-typescript-redux-utils/.npmrc
+
 jobs:
   build:
     <<: *defaults 
@@ -24,9 +30,7 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - run:
-          name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > tquinlan92-typescript-redux-utils/.npmrc
+      <<: *npmLogin 
       - run:
           name: Publish package
           command: cd tquinlan92-typescript-redux-utils && npm publish
@@ -34,9 +38,7 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - run:
-          name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > developer-hub-headless/.npmrc
+      <<: *npmLogin
       - run:
           name: Publish package
           command: cd developer-hub-headless && npm publish
