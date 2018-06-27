@@ -48,12 +48,18 @@ workflows:
       - build
       - deployTquinla92TypescriptReduxUtils:
           filters: 
+            branches:
+              only: 
+                - master
             tags:
               only: /-tquinlan92$/
           requires: 
             - build
       - deployDeveloperHubHeadless:
           filters: 
+            branches:
+              only: 
+                - master
             tags:
               only: /-developerHubHeadless$/
           requires: 
