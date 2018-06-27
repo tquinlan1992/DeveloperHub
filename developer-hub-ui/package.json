@@ -11,7 +11,7 @@
     "test": "jest --coverage",
     "test:watch": "node --inspect node_modules/.bin/jest --watch",
     "webpack-dev-server": "webpack-dev-server",
-    "preinstall": "cd ../tquinlan92-typescript-redux-utils && npm ci && npm run build && cd ../developer-hub-core && npm ci && npm run build"
+    "preinstall": "cd ../tquinlan92-typescript-redux-utils && npm ci && npm run build && cd ../developer-hub-headless && npm ci && npm run build"
   },
   "devDependencies": {
     "@material-ui/core": "^1.0.0",
@@ -38,7 +38,7 @@
     "copy-webpack-plugin": "^4.5.0",
     "cors": "^2.8.4",
     "css-loader": "^0.28.7",
-    "developer-hub-core": "file:../developer-hub-core",
+    "developer-hub-headless": "file:../developer-hub-headless",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.4",

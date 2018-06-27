@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import actions from '../../core/actions';
-import { AppStateCore, Ticket } from "developer-hub-core";
+import { AppStateCore, Ticket } from "developer-hub-headless";
 import { Table, Button, TableHead, TableRow, TableBody, TableCell, TextField, IconButton } from "@material-ui/core";
 import AddTicketDialog from '../AddTicketDialog';
 import DeleteIcon from '@material-ui/icons/Delete';

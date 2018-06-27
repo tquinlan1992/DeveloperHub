@@ -1,4 +1,4 @@
 import { 
     actions
-} from 'developer-hub-core';
+} from 'developer-hub-headless';
 export default actions;
