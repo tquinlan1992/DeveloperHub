@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { AppStateCore } from "core";
+import { AppStateCore } from "developer-hub-core";
 import { Switch, Route, Redirect } from 'react-router';
 import TicketList from '../TicketList';
 import actions from '../../core/actions';
