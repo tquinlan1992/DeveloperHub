@@ -5,6 +5,10 @@ import { AnyAction } from "tquinlan92-typescript-redux-utils";
 import * as request from 'superagent';
 import * as urljoin from 'url-join';
 
+interface APIConfig {
+    cloudant: string;
+}
+
 export default function loadApp(): ThunkAction<void, AppState, void, AnyAction> {
     return async function (dispatch) {
         // return request
@@ -18,8 +22,8 @@ export default function loadApp(): ThunkAction<void, AppState, void, AnyAction> 
         //     });
         try {
             const res = await request.get('/static/api.json');
-            const apiUrl = res.body.value;
-            setupPouch(urljoin(apiUrl, '/couchdb/test'), dispatch);
+            const apiConfig = res.body as APIConfig;
+            setupPouch(urljoin(apiConfig.cloudant, '/dev'), dispatch);
         } catch(e) {
             console.log('error getting /static/api.json', e);
         }

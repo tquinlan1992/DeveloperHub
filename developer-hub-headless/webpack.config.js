@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
 const portfinder = require('portfinder');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 
 const sourcePath = path.join(__dirname, './src');
@@ -18,11 +17,7 @@ module.exports = function (env) {
 
         const plugins = [
             new webpack.NamedModulesPlugin(),
-            new webpack.HotModuleReplacementPlugin(),
-            new CopyWebpackPlugin([{
-                from: '../static/**/*',
-                to: 'static',
-            }])
+            new webpack.HotModuleReplacementPlugin()
         ];
 
         return {
