@@ -1,0 +1,12 @@
+[{
+        "type": "lambda",
+        "function": "ExampleFunction",
+        "handler": "lambda.handler",
+        "path": "/new"
+    },
+    {
+        "type": "proxy",
+        "path": "/lambdas",
+        "target": "http: //127.0.0.1:3000"
+    }
+]
