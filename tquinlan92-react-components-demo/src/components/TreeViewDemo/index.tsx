@@ -13,7 +13,7 @@ interface Actions {
     onTagSelectionChange: typeof actions.tagPicker.onTagSelectionChange;
 }
 
-class TreeViewDemo extends React.Component<Props & Actions> {
+export class TreeViewDemo extends React.Component<Props & Actions> {
     onTagSelectionChange: (selectedTags: string[]) => void;
 
     constructor(props: any) {

@@ -12,8 +12,9 @@ describe('when OnTagSelectionChange Action is called', () => {
     describe('with an array length of 1 containing 1 string', () => {
         it('the new state should contain the same array', ()  => {
             const tagsToSelect = ['tag1'];
+            const initialState = { selectedTags: [], tags: [] };
             const newState = tagPickerTestRunner(
-                {selectedTags: []}, 
+                initialState, 
                 actions.onTagSelectionChange({selectedTags: cloneDeep(tagsToSelect) })
             );
             expect(newState).toMatchObject({

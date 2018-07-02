@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TreeView should render when given valid props 1`] = `
+<div>
+  <WithStyles(List) />
+  <TreeView
+    onTagSelectionChange={[Function]}
+    selectedTags={Array []}
+    tags={Array []}
+  />
+</div>
+`;
