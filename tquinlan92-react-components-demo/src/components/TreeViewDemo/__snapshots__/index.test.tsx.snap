@@ -14,7 +14,7 @@ exports[`TreeView should render when given valid props 1`] = `
   <TreeView
     onTagSelectionChange={[Function]}
     selectedTags={Array []}
-    tags={Array []}
+    tagsFolders={Array []}
   />
 </div>
 `;
