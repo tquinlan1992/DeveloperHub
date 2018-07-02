@@ -15,7 +15,7 @@ const mockActions = {
 
 it('TreeView should render when given valid props', () => {
     const props = {
-        tags: [],
+        tagsFolders: [],
         selectedTags: [],
         onTagSelectionChange: mockActions.onTagSelectionChange,
     };

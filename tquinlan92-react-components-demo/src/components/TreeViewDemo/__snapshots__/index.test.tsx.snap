@@ -2,7 +2,15 @@
 
 exports[`TreeView should render when given valid props 1`] = `
 <div>
-  <WithStyles(List) />
+  <WithStyles(List)
+    subheader={
+      <WithStyles(ListSubheader)
+        component="div"
+      >
+        Selected Tags:
+      </WithStyles(ListSubheader)>
+    }
+  />
   <TreeView
     onTagSelectionChange={[Function]}
     selectedTags={Array []}

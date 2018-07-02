@@ -8,9 +8,6 @@ export default (store: any) => {
     return ReactDOM.render(
         <Provider store={store}>
             <Theme>
-                <h1>
-                    Tom
-                </h1>
                 <TreeViewDemo />
             </Theme>
         </Provider>

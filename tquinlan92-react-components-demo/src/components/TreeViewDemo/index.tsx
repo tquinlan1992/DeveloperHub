@@ -3,9 +3,9 @@ import { TreeView } from 'tquinlan92-react-components';
 import actions from '../../actions';
 import AppState from "../../store/AppState";
 import { connect } from "react-redux";
-import { List, ListItem, ListItemText } from "@material-ui/core";
+import { List, ListItem, ListItemText, ListSubheader } from "@material-ui/core";
 interface Props {
-    tags: any[];
+    tagsFolders: any[];
     selectedTags: string[];
 }
 
@@ -32,15 +32,19 @@ export class TreeViewDemo extends React.Component<Props & Actions> {
         const tagListItems = this.props.selectedTags.map(tag => {
             return (
                 <ListItem>
-                    <ListItemText
+                    <ListItemText inset
                         primary={tag}
                     />
                 </ListItem>
             );
         });
+        const subheader =
+            <ListSubheader component = "div">
+                Selected Tags:
+            </ListSubheader>;
         return (
             <div>
-                <List>
+                <List subheader={subheader}>
                     {tagListItems}
                 </List>
                 <TreeView {...TreeViewProps} />
