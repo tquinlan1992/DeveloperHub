@@ -136,7 +136,9 @@ function getFolderListItem(folder) {
 function getTagListItem(tag) {
     return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["ListItem"], { key: tag._id, button: true }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["Checkbox"], { checked: true, tabIndex: -1, disableRipple: true }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["ListItemText"], { primary: "Checked" }));
 }
-function getListForTagsFolders(tagsFolders) {
+function getListForTagsFolders(_a) {
+    var tagsFolders = _a.tagsFolders,
+        parent = _a.parent;
     var folders = tagsFolders.filter(function (tagFolder) {
         return tagFolder.isFolder;
     });
@@ -150,7 +152,8 @@ function getListForTagsFolders(tagsFolders) {
     var tagListItems = tags.map(function (tag) {
         return getTagListItem(tag);
     });
-    var subheader = react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["ListSubheader"], { component: "div" }, "Root:");
+    var subheaderText = parent ? parent : 'Root:';
+    var subheader = react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["ListSubheader"], { component: "div" }, subheaderText);
     return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["List"], { component: "nav", subheader: subheader }, folderListItems, tagListItems);
 }
 var TreeView = function (_super) {
@@ -158,13 +161,14 @@ var TreeView = function (_super) {
     function TreeView(props) {
         var _this = _super.call(this, props) || this;
         _this.currentTagsFolder = getTagsFolderAtLevel({ tagsFolders: _this.props.tagsFolders, parent: null });
+        _this.currentParent = null;
         return _this;
     }
     TreeView.prototype.render = function () {
         var _this = this;
         return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["Button"], { onClick: function () {
                 return _this.props.onTagSelectionChange(["tag1", "tag2"]);
-            } }, "Test Button"), getListForTagsFolders(this.props.tagsFolders));
+            } }, "Test Button"), getListForTagsFolders({ tagsFolders: this.currentTagsFolder, parent: this.currentParent }));
     };
     return TreeView;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);

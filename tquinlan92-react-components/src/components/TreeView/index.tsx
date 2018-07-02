@@ -72,7 +72,12 @@ function getTagListItem(tag: Tag) {
     );
 }
 
-function getListForTagsFolders(tagsFolders: TagsFolders) {
+interface GetListForTagsFolders {
+    tagsFolders: TagsFolders;
+    parent: string | null;
+}
+
+function getListForTagsFolders({ tagsFolders, parent }: GetListForTagsFolders) {
     const folders = tagsFolders.filter(tagFolder => {
         return tagFolder.isFolder;
     }) as Folder[];
@@ -86,9 +91,10 @@ function getListForTagsFolders(tagsFolders: TagsFolders) {
     const tagListItems = tags.map(tag => {
         return getTagListItem(tag);
     });
+    const subheaderText = parent ? parent : 'Root:';
     const subheader =
         <ListSubheader component="div">
-            Root:
+            {subheaderText}
             </ListSubheader>;
     return (
         <List component="nav" subheader={subheader}>
@@ -100,10 +106,12 @@ function getListForTagsFolders(tagsFolders: TagsFolders) {
 
 export class TreeView extends React.Component<TreeViewProps> {
     currentTagsFolder: TagsFolders;
+    currentParent: string | null;
 
     constructor(props: any) {
         super(props);
         this.currentTagsFolder = getTagsFolderAtLevel({ tagsFolders: this.props.tagsFolders, parent: null });
+        this.currentParent = null;
     }
     render() {
         return (
@@ -111,7 +119,7 @@ export class TreeView extends React.Component<TreeViewProps> {
                 <Button onClick={() => this.props.onTagSelectionChange(["tag1", "tag2"])}>
                     Test Button
                 </Button>
-                {getListForTagsFolders(this.props.tagsFolders)}
+                {getListForTagsFolders({ tagsFolders: this.currentTagsFolder, parent: this.currentParent })}
             </div>
         );
     }

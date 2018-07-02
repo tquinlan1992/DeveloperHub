@@ -23,6 +23,7 @@ export interface TreeViewProps {
 }
 export declare class TreeView extends React.Component<TreeViewProps> {
     currentTagsFolder: TagsFolders;
+    currentParent: string | null;
     constructor(props: any);
     render(): JSX.Element;
 }

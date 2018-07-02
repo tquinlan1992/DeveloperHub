@@ -2,7 +2,7 @@ import simpleActions from './simpleActions';
 import { TagPicker } from '../../store/AppState';
 import { createReducer, getCreators as getActions } from 'tquinlan92-typescript-redux-utils';
 
-const tagsFolders = [{
+const rootLevel = [{
     _id: 'id1',
     name: 'folder1',
     isFolder: true,
@@ -10,12 +10,27 @@ const tagsFolders = [{
     ancestors: []
 },
     {
-        _id: 'id1',
-        name: 'folder1',
+        _id: 'id2',
+        name: 'tag2',
         isFolder: false,
         parent: null,
         ancestors: []
     }];
+
+const folder1 = [
+    {
+        _id: 'id3',
+        name: 'tag3',
+        isFolder: false,
+        parent: 'folder1',
+        ancestors: ['folder1']
+    }
+];
+
+const tagsFolders = [
+    ...rootLevel,
+    ...folder1
+];
 
 const initialState = {
     selectedTags: [],
