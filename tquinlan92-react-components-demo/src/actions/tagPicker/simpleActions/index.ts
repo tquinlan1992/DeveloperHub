@@ -2,6 +2,6 @@ import onTagSelectionChange from "./onTagSelectionChange";
 
 export default (reducerName: string) => {
     return {
-        setStoryPoint: onTagSelectionChange(reducerName)
+        onTagSelectionChange: onTagSelectionChange(reducerName)
     };
 };

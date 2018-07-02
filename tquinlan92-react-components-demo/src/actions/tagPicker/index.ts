@@ -1,15 +1,16 @@
 import simpleActions from './simpleActions';
 import { TagPicker } from '../../store/AppState';
-import { createReducer, getCreators } from 'tquinlan92-typescript-redux-utils';
+import { createReducer, getCreators as getActions } from 'tquinlan92-typescript-redux-utils';
 
 const initialState = {
+    selectedTags: []
 };
 
-const namedActions = simpleActions('TAG-PICKER');
+const namedActionReducers = simpleActions('TAG-PICKER');
 
 export default {
-    reducer: createReducer<TagPicker>(initialState, namedActions),
+    reducer: createReducer<TagPicker>(initialState, namedActionReducers),
     actions: {
-        ...getCreators(namedActions),
+        ...getActions(namedActionReducers),
     }
 };

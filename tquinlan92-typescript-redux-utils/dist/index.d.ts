@@ -54,5 +54,6 @@ export interface ActionsReducersFromCombinedActionReducer<ActionsReducersInstanc
     };
 }
 export declare function getActionsAndReducersFromCombinedActionReducer<Creators extends ActionsAndReducerSetup>(creators: Creators): ActionsReducersFromCombinedActionReducer<Creators>;
+export declare function testRunner<ReducerState>(reducer: Reducer): (initalState: ReducerState, action: AnyAction) => any;
 declare const _default: {};
 export default _default;

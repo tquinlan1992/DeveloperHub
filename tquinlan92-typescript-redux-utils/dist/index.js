@@ -91,7 +91,7 @@ module.exports =
 /*!**********************!*\
   !*** ./src/index.ts ***!
   \**********************/
-/*! exports provided: createReducer, makeActionCreatorWithReducer, getCreators, makeActionCreatorWithReducerWithPrefix, getReducersFromCombinedActionReducer, getActionsFromCombinedActionReducer, getActionsAndReducersFromCombinedActionReducer, default */
+/*! exports provided: createReducer, makeActionCreatorWithReducer, getCreators, makeActionCreatorWithReducerWithPrefix, getReducersFromCombinedActionReducer, getActionsFromCombinedActionReducer, getActionsAndReducersFromCombinedActionReducer, testRunner, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -103,6 +103,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getReducersFromCombinedActionReducer", function() { return getReducersFromCombinedActionReducer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getActionsFromCombinedActionReducer", function() { return getActionsFromCombinedActionReducer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getActionsAndReducersFromCombinedActionReducer", function() { return getActionsAndReducersFromCombinedActionReducer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "testRunner", function() { return testRunner; });
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "lodash");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var typescript_fsa__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! typescript-fsa */ "typescript-fsa");
@@ -149,6 +150,11 @@ function getActionsAndReducersFromCombinedActionReducer(creators) {
     return {
         actions: getActionsFromCombinedActionReducer(creators),
         reducers: getReducersFromCombinedActionReducer(creators)
+    };
+}
+function testRunner(reducer) {
+    return function (initalState, action) {
+        return reducer(initalState, action);
     };
 }
 /* harmony default export */ __webpack_exports__["default"] = ({});

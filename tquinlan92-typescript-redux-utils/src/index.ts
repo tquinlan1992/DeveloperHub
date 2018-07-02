@@ -79,6 +79,12 @@ export function getActionsAndReducersFromCombinedActionReducer<Creators extends 
     };
 }
 
+export function testRunner<ReducerState>(reducer: Reducer) {
+    return (initalState: ReducerState, action: AnyAction) => {
+        return reducer(initalState, action);
+    };
+}
+
 export default {
 
 };
