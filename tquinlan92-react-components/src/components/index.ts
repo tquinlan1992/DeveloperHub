@@ -1,5 +1,1 @@
-import TreeView from './TreeView';
-
-export {
-    TreeView
-};
+export * from './TreeView';

@@ -8,7 +8,7 @@ export interface OnTagSelectionChangeAction {
 export default makeActionCreatorWithReducerWithPrefix<TagPicker, OnTagSelectionChangeAction>(
     'ON-TAG-SELECTION-CHANGE-ACTION',
     (state, { selectedTags }): TagPicker => {
-        
+        console.log('selectedTags', selectedTags);
         return {
             ...state,
             selectedTags

@@ -91,13 +91,16 @@ module.exports =
 /*!*******************************************!*\
   !*** ./src/components/TreeView/index.tsx ***!
   \*******************************************/
-/*! exports provided: default */
+/*! exports provided: TreeView */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TreeView", function() { return TreeView; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core */ "@material-ui/core");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__);
 var __extends = undefined && undefined.__extends || function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {
@@ -116,17 +119,21 @@ var __extends = undefined && undefined.__extends || function () {
     };
 }();
 
+
 var TreeView = function (_super) {
     __extends(TreeView, _super);
     function TreeView() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     TreeView.prototype.render = function () {
-        return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h1", null, "Tree View");
+        var _this = this;
+        return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["Button"], { onClick: function () {
+                return _this.props.onTagSelectionChange(["tag1"]);
+            } }, "Test Button"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h1", null, "Tree View"));
     };
     return TreeView;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-/* harmony default export */ __webpack_exports__["default"] = (TreeView);
+
 
 /***/ }),
 
@@ -140,8 +147,7 @@ var TreeView = function (_super) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _TreeView__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TreeView */ "./src/components/TreeView/index.tsx");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TreeView", function() { return _TreeView__WEBPACK_IMPORTED_MODULE_0__["default"]; });
-
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TreeView", function() { return _TreeView__WEBPACK_IMPORTED_MODULE_0__["TreeView"]; });
 
 
 
@@ -172,6 +178,17 @@ __webpack_require__.r(__webpack_exports__);
 
 module.exports = __webpack_require__(/*! ./src/index.ts */"./src/index.ts");
 
+
+/***/ }),
+
+/***/ "@material-ui/core":
+/*!************************************!*\
+  !*** external "@material-ui/core" ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core");
 
 /***/ }),
 

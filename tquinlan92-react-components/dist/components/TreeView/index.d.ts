@@ -1,4 +1,12 @@
 import * as React from "react";
-export default class TreeView extends React.Component {
+interface SelectedTags extends Array<string> {
+}
+export interface TreeViewProps {
+    tags: any[];
+    selectedTags: SelectedTags;
+    onTagSelectionChange: (selectedTags: SelectedTags) => void;
+}
+export declare class TreeView extends React.Component<TreeViewProps> {
     render(): JSX.Element;
 }
+export {};

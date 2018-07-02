@@ -3,7 +3,8 @@ import { TagPicker } from '../../store/AppState';
 import { createReducer, getCreators as getActions } from 'tquinlan92-typescript-redux-utils';
 
 const initialState = {
-    selectedTags: []
+    selectedTags: [],
+    tags: []
 };
 
 const namedActionReducers = simpleActions('TAG-PICKER');
