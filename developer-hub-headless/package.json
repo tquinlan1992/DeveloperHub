@@ -59,7 +59,7 @@
     "ts-lint": "^4.5.1",
     "tslint": "^5.10.0",
     "tslint-loader": "^3.6.0",
-    "typescript": "https://github.com/weswigham/TypeScript.git#why-is-case-so-hard",
+    "typescript": "^3.0.0-dev.20180630",
     "url-join": "^4.0.0",
     "uuid": "^3.2.1",
     "webpack": "^4.10.2",
