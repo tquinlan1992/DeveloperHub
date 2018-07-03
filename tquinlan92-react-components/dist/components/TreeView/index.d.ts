@@ -25,6 +25,7 @@ interface TreeViewState {
     currentlySelectedTags: string[];
     currentParent: string | null;
     currentTagsFolder: TagsFolders;
+    path: string[];
 }
 interface OnTagClick {
     _id: string;
@@ -38,6 +39,7 @@ export declare class TreeView extends React.Component<TreeViewProps, TreeViewSta
     constructor(props: any);
     onTagClick({ _id, checked }: OnTagClick): void;
     onParentClick({ _id }: OnFolderClick): void;
+    onBackClick(): void;
     render(): JSX.Element;
 }
 export {};

@@ -31,7 +31,7 @@ export class TreeViewDemo extends React.Component<Props & Actions> {
 
         const tagListItems = this.props.selectedTags.map(tag => {
             return (
-                <ListItem>
+                <ListItem key={tag}>
                     <ListItemText inset
                         primary={tag}
                     />

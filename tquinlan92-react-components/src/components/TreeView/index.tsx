@@ -1,6 +1,7 @@
 import * as React from "react";
-import { List, ListItem, ListItemIcon, ListItemText, ListSubheader, Checkbox } from "@material-ui/core";
+import { List, ListItem, ListItemIcon, ListItemText, ListSubheader, Checkbox, Button } from "@material-ui/core";
 import FolderIcon from '@material-ui/icons/Folder';
+import { tail, head } from 'lodash';
 
 interface SelectedTags extends Array<string> {
 
@@ -49,7 +50,7 @@ interface GetFolderListItem {
 
 function getFolderListItem({ folder, onParentClick }: GetFolderListItem) {
     return (
-        <ListItem key={folder._id} onClick={() => onParentClick({_id: folder._id})}>
+        <ListItem key={folder._id} onClick={() => onParentClick({ _id: folder._id })}>
             <ListItemIcon>
                 <FolderIcon />
             </ListItemIcon>
@@ -62,7 +63,7 @@ function getFolderListItem({ folder, onParentClick }: GetFolderListItem) {
 
 interface GetTagListItem {
     tag: Tag;
-    onTagClick: (params: OnTagClick) => void; 
+    onTagClick: (params: OnTagClick) => void;
     checked: boolean;
 }
 
@@ -96,7 +97,7 @@ function getListForTagsFolders({ tagsFolders, parent, onTagClick, currentlySelec
         return tagFolder.isFolder;
     }) as Folder[];
     const folderListItems = folders.map(folder => {
-        return getFolderListItem({ folder, onParentClick});
+        return getFolderListItem({ folder, onParentClick });
     });
     const tags = tagsFolders.filter(tagFolder => {
         return !tagFolder.isFolder;
@@ -104,13 +105,13 @@ function getListForTagsFolders({ tagsFolders, parent, onTagClick, currentlySelec
     console.log('folders', folders);
     const tagListItems = tags.map(tag => {
         const checked = currentlySelectedTags.includes(tag._id);
-        return getTagListItem({ tag, onTagClick, checked});
+        return getTagListItem({ tag, onTagClick, checked });
     });
     const subheaderText = parent ? parent : 'Root:';
     const subheader =
         <ListSubheader component="div">
             {subheaderText}
-            </ListSubheader>;
+        </ListSubheader>;
     return (
         <List component="nav" subheader={subheader}>
             {folderListItems}
@@ -123,6 +124,7 @@ interface TreeViewState {
     currentlySelectedTags: string[];
     currentParent: string | null;
     currentTagsFolder: TagsFolders;
+    path: string[];
 }
 
 interface OnTagClick {
@@ -141,11 +143,12 @@ export class TreeView extends React.Component<TreeViewProps, TreeViewState> {
         this.state = {
             currentlySelectedTags: this.props.selectedTags,
             currentParent: null,
-            currentTagsFolder: getTagsFolderAtLevel({ tagsFolders: this.props.tagsFolders, parent: null })
+            currentTagsFolder: getTagsFolderAtLevel({ tagsFolders: this.props.tagsFolders, parent: null }),
+            path: []
         };
     }
 
-    onTagClick({ _id, checked}: OnTagClick) {
+    onTagClick({ _id, checked }: OnTagClick) {
         if (checked && !this.state.currentlySelectedTags.includes(_id)) {
             const newCurrentlySelectedTags = [...this.state.currentlySelectedTags, _id];
             this.setState({
@@ -166,20 +169,36 @@ export class TreeView extends React.Component<TreeViewProps, TreeViewState> {
     onParentClick({ _id }: OnFolderClick) {
         this.setState({
             currentParent: _id,
-            currentTagsFolder: getTagsFolderAtLevel({ tagsFolders: this.props.tagsFolders, parent: _id })
+            currentTagsFolder: getTagsFolderAtLevel({ tagsFolders: this.props.tagsFolders, parent: _id }),
+            path: [_id, ...this.state.path]
+        });
+    }
+
+    onBackClick() {
+        const newPath = tail(this.state.path);
+        const newParent = head(newPath) || null;
+        this.setState({
+            currentParent: newParent,
+            currentTagsFolder: getTagsFolderAtLevel({ tagsFolders: this.props.tagsFolders, parent: newParent }),
+            path: newPath
         });
     }
 
     render() {
+        const backButton = !this.state.currentParent ? null :
+            <Button onClick={this.onBackClick.bind(this)}>
+                Back
+            </Button>;
         return (
             <div>
-                {getListForTagsFolders({ 
-                    tagsFolders: this.state.currentTagsFolder, 
-                    parent: this.state.currentParent, 
-                    onTagClick: this.onTagClick.bind(this), 
+                {backButton}
+                {getListForTagsFolders({
+                    tagsFolders: this.state.currentTagsFolder,
+                    parent: this.state.currentParent,
+                    onTagClick: this.onTagClick.bind(this),
                     onParentClick: this.onParentClick.bind(this),
                     currentlySelectedTags: this.state.currentlySelectedTags
-                    })}
+                })}
             </div>
         );
     }
