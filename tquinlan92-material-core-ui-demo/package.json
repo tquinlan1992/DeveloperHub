@@ -8,7 +8,7 @@
   "scripts": {
     "build": "webpack",
     "start": "npm run webpack-dev-server -- --mode development",
-    "test": "jest --coverage",
+    "test": "jest",
     "test:watch": "node --inspect node_modules/.bin/jest --watch",
     "webpack-dev-server": "webpack-dev-server",
     "preinstall": "cd ../tquinlan92-material-core-ui && npm ci && npm run build"

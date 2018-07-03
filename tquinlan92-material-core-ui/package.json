@@ -11,7 +11,7 @@
   "scripts": {
     "build": "webpack --mode development",
     "start": "webpack --watch --mode development",
-    "test": "jest --coverage",
+    "test": "jest",
     "test:watch": "node --inspect node_modules/.bin/jest --watch"
   },
   "author": "",
