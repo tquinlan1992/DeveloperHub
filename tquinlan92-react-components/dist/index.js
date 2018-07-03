@@ -87,11 +87,28 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/components/TreeView/exportTypes.ts":
+/*!************************************************!*\
+  !*** ./src/components/TreeView/exportTypes.ts ***!
+  \************************************************/
+/*! exports provided: TreeViewTypes */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./types */ "./src/components/TreeView/types.ts");
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_types__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "TreeViewTypes", function() { return _types__WEBPACK_IMPORTED_MODULE_0__; });
+
+
+
+/***/ }),
+
 /***/ "./src/components/TreeView/index.tsx":
 /*!*******************************************!*\
   !*** ./src/components/TreeView/index.tsx ***!
   \*******************************************/
-/*! exports provided: TreeView */
+/*! exports provided: exportTypes, TreeView */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -103,8 +120,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _material_ui_icons_Folder__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/icons/Folder */ "@material-ui/icons/Folder");
 /* harmony import */ var _material_ui_icons_Folder__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Folder__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash */ "lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reducer */ "./src/components/TreeView/reducer.ts");
+/* harmony import */ var _exportTypes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./exportTypes */ "./src/components/TreeView/exportTypes.ts");
+/* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "exportTypes", function() { return _exportTypes__WEBPACK_IMPORTED_MODULE_4__; });
 var __extends = undefined && undefined.__extends || function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {
@@ -126,13 +144,8 @@ var __extends = undefined && undefined.__extends || function () {
 
 
 
-function getTagsFolderAtLevel(_a) {
-    var tagsFolders = _a.tagsFolders,
-        parent = _a.parent;
-    return tagsFolders.filter(function (tagFolder) {
-        return tagFolder.parent === parent;
-    });
-}
+
+
 function getFolderListItem(_a) {
     var folder = _a.folder,
         onParentClick = _a.onParentClick;
@@ -148,26 +161,36 @@ function getTagListItem(_a) {
             return onTagClick({ _id: tag._id, checked: checked });
         } }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["ListItemText"], { primary: "Checked" }));
 }
+function getTagListItems(_a) {
+    var tagsFolders = _a.tagsFolders,
+        currentlySelectedTags = _a.currentlySelectedTags,
+        onTagClick = _a.onTagClick;
+    var tags = tagsFolders.filter(function (tagFolder) {
+        return !tagFolder.isFolder;
+    });
+    return tags.map(function (tag) {
+        var checked = currentlySelectedTags.includes(tag._id);
+        return getTagListItem({ tag: tag, onTagClick: onTagClick, checked: checked });
+    });
+}
+function getFolderListItems(_a) {
+    var tagsFolders = _a.tagsFolders,
+        onParentClick = _a.onParentClick;
+    var folders = tagsFolders.filter(function (tagFolder) {
+        return tagFolder.isFolder;
+    });
+    return folders.map(function (folder) {
+        return getFolderListItem({ folder: folder, onParentClick: onParentClick });
+    });
+}
 function getListForTagsFolders(_a) {
     var tagsFolders = _a.tagsFolders,
         parent = _a.parent,
         onTagClick = _a.onTagClick,
         currentlySelectedTags = _a.currentlySelectedTags,
         onParentClick = _a.onParentClick;
-    var folders = tagsFolders.filter(function (tagFolder) {
-        return tagFolder.isFolder;
-    });
-    var folderListItems = folders.map(function (folder) {
-        return getFolderListItem({ folder: folder, onParentClick: onParentClick });
-    });
-    var tags = tagsFolders.filter(function (tagFolder) {
-        return !tagFolder.isFolder;
-    });
-    console.log('folders', folders);
-    var tagListItems = tags.map(function (tag) {
-        var checked = currentlySelectedTags.includes(tag._id);
-        return getTagListItem({ tag: tag, onTagClick: onTagClick, checked: checked });
-    });
+    var folderListItems = getFolderListItems({ tagsFolders: tagsFolders, onParentClick: onParentClick });
+    var tagListItems = getTagListItems({ tagsFolders: tagsFolders, currentlySelectedTags: currentlySelectedTags, onTagClick: onTagClick });
     var subheaderText = parent ? parent : 'Root:';
     var subheader = react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["ListSubheader"], { component: "div" }, subheaderText);
     return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["List"], { component: "nav", subheader: subheader }, folderListItems, tagListItems);
@@ -176,49 +199,29 @@ var TreeView = function (_super) {
     __extends(TreeView, _super);
     function TreeView(props) {
         var _this = _super.call(this, props) || this;
-        _this.state = {
-            currentlySelectedTags: _this.props.selectedTags,
-            currentParent: null,
-            currentTagsFolder: getTagsFolderAtLevel({ tagsFolders: _this.props.tagsFolders, parent: null }),
-            path: []
-        };
+        var action = _reducer__WEBPACK_IMPORTED_MODULE_3__["setRootStateActionReducer"].actionCreator({ tagsFolders: _this.props.tagsFolders, selectedTags: _this.props.selectedTags }).payload;
+        var newState = _reducer__WEBPACK_IMPORTED_MODULE_3__["setRootStateActionReducer"].reducer(null, action);
+        _this.state = newState;
         return _this;
     }
     TreeView.prototype.onTagClick = function (_a) {
         var _id = _a._id,
             checked = _a.checked;
-        if (checked && !this.state.currentlySelectedTags.includes(_id)) {
-            var newCurrentlySelectedTags = this.state.currentlySelectedTags.concat([_id]);
-            this.setState({
-                currentlySelectedTags: this.state.currentlySelectedTags.concat([_id])
-            });
-            this.props.onTagSelectionChange(newCurrentlySelectedTags);
-        } else if (!checked) {
-            var newCurrentlySelectedTags = this.state.currentlySelectedTags.filter(function (tag) {
-                return tag !== _id;
-            });
-            this.props.onTagSelectionChange(newCurrentlySelectedTags);
-            this.setState({
-                currentlySelectedTags: newCurrentlySelectedTags
-            });
-        }
+        var action = _reducer__WEBPACK_IMPORTED_MODULE_3__["onTagClickActionReducer"].actionCreator({ _id: _id, checked: checked }).payload;
+        var newState = _reducer__WEBPACK_IMPORTED_MODULE_3__["onTagClickActionReducer"].reducer(this.state, action);
+        this.props.onTagSelectionChange(newState.currentlySelectedTags);
+        this.setState(newState);
     };
     TreeView.prototype.onParentClick = function (_a) {
         var _id = _a._id;
-        this.setState({
-            currentParent: _id,
-            currentTagsFolder: getTagsFolderAtLevel({ tagsFolders: this.props.tagsFolders, parent: _id }),
-            path: [_id].concat(this.state.path)
-        });
+        var action = _reducer__WEBPACK_IMPORTED_MODULE_3__["onParentClickActionReducer"].actionCreator({ _id: _id, tagsFolders: this.props.tagsFolders }).payload;
+        var newState = _reducer__WEBPACK_IMPORTED_MODULE_3__["onParentClickActionReducer"].reducer(this.state, action);
+        this.setState(newState);
     };
     TreeView.prototype.onBackClick = function () {
-        var newPath = Object(lodash__WEBPACK_IMPORTED_MODULE_3__["tail"])(this.state.path);
-        var newParent = Object(lodash__WEBPACK_IMPORTED_MODULE_3__["head"])(newPath) || null;
-        this.setState({
-            currentParent: newParent,
-            currentTagsFolder: getTagsFolderAtLevel({ tagsFolders: this.props.tagsFolders, parent: newParent }),
-            path: newPath
-        });
+        var action = _reducer__WEBPACK_IMPORTED_MODULE_3__["onBackClickActionReducer"].actionCreator({ tagsFolders: this.props.tagsFolders }).payload;
+        var newState = _reducer__WEBPACK_IMPORTED_MODULE_3__["onBackClickActionReducer"].reducer(this.state, action);
+        this.setState(newState);
     };
     TreeView.prototype.render = function () {
         var backButton = !this.state.currentParent ? null : react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["Button"], { onClick: this.onBackClick.bind(this) }, "Back");
@@ -236,16 +239,119 @@ var TreeView = function (_super) {
 
 /***/ }),
 
+/***/ "./src/components/TreeView/reducer.ts":
+/*!********************************************!*\
+  !*** ./src/components/TreeView/reducer.ts ***!
+  \********************************************/
+/*! exports provided: onParentClickActionReducer, onBackClickActionReducer, onTagClickActionReducer, setRootStateActionReducer */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onParentClickActionReducer", function() { return onParentClickActionReducer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onBackClickActionReducer", function() { return onBackClickActionReducer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onTagClickActionReducer", function() { return onTagClickActionReducer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setRootStateActionReducer", function() { return setRootStateActionReducer; });
+/* harmony import */ var tquinlan92_typescript_redux_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tquinlan92-typescript-redux-utils */ "tquinlan92-typescript-redux-utils");
+/* harmony import */ var tquinlan92_typescript_redux_utils__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tquinlan92_typescript_redux_utils__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils */ "./src/components/TreeView/utils.ts");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
+var __assign = undefined && undefined.__assign || function () {
+    __assign = Object.assign || function (t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
+
+
+var onParentClickActionReducer = Object(tquinlan92_typescript_redux_utils__WEBPACK_IMPORTED_MODULE_0__["makeActionCreatorWithReducer"])('ON_PARENT_CLICK', function (state, _a) {
+    var _id = _a._id,
+        tagsFolders = _a.tagsFolders;
+    return __assign({}, state, { currentParent: _id, currentTagsFolder: Object(_utils__WEBPACK_IMPORTED_MODULE_1__["getTagsFolderAtLevel"])({ tagsFolders: tagsFolders, parent: _id }), path: [_id].concat(state.path) });
+});
+var onBackClickActionReducer = Object(tquinlan92_typescript_redux_utils__WEBPACK_IMPORTED_MODULE_0__["makeActionCreatorWithReducer"])('ON_BACK_CLICK', function (state, _a) {
+    var tagsFolders = _a.tagsFolders;
+    var newPath = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["tail"])(state.path);
+    var newParent = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["head"])(newPath) || null;
+    return __assign({}, state, { currentParent: newParent, currentTagsFolder: Object(_utils__WEBPACK_IMPORTED_MODULE_1__["getTagsFolderAtLevel"])({ tagsFolders: tagsFolders, parent: newParent }), path: newPath });
+});
+var onTagClickActionReducer = Object(tquinlan92_typescript_redux_utils__WEBPACK_IMPORTED_MODULE_0__["makeActionCreatorWithReducer"])('ON_TAG_CLICK', function (state, _a) {
+    var _id = _a._id,
+        checked = _a.checked;
+    if (checked && !state.currentlySelectedTags.includes(_id)) {
+        var newCurrentlySelectedTags = state.currentlySelectedTags.concat([_id]);
+        return __assign({}, state, { currentlySelectedTags: newCurrentlySelectedTags });
+    } else if (!checked) {
+        var newCurrentlySelectedTags = state.currentlySelectedTags.filter(function (tag) {
+            return tag !== _id;
+        });
+        return __assign({}, state, { currentlySelectedTags: newCurrentlySelectedTags });
+    } else {
+        return state;
+    }
+});
+var setRootStateActionReducer = Object(tquinlan92_typescript_redux_utils__WEBPACK_IMPORTED_MODULE_0__["makeActionCreatorWithReducer"])('SET_ROOT_STATE', function (state, _a) {
+    var tagsFolders = _a.tagsFolders,
+        selectedTags = _a.selectedTags;
+    return {
+        currentlySelectedTags: selectedTags,
+        currentParent: null,
+        currentTagsFolder: Object(_utils__WEBPACK_IMPORTED_MODULE_1__["getTagsFolderAtLevel"])({ tagsFolders: tagsFolders, parent: null }),
+        path: []
+    };
+});
+
+/***/ }),
+
+/***/ "./src/components/TreeView/types.ts":
+/*!******************************************!*\
+  !*** ./src/components/TreeView/types.ts ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./src/components/TreeView/utils.ts":
+/*!******************************************!*\
+  !*** ./src/components/TreeView/utils.ts ***!
+  \******************************************/
+/*! exports provided: getTagsFolderAtLevel */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTagsFolderAtLevel", function() { return getTagsFolderAtLevel; });
+function getTagsFolderAtLevel(_a) {
+    var tagsFolders = _a.tagsFolders,
+        parent = _a.parent;
+    return tagsFolders.filter(function (tagFolder) {
+        return tagFolder.parent === parent;
+    });
+}
+
+/***/ }),
+
 /***/ "./src/components/index.ts":
 /*!*********************************!*\
   !*** ./src/components/index.ts ***!
   \*********************************/
-/*! exports provided: TreeView */
+/*! exports provided: exportTypes, TreeView */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _TreeView__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TreeView */ "./src/components/TreeView/index.tsx");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "exportTypes", function() { return _TreeView__WEBPACK_IMPORTED_MODULE_0__["exportTypes"]; });
+
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TreeView", function() { return _TreeView__WEBPACK_IMPORTED_MODULE_0__["TreeView"]; });
 
 
@@ -256,12 +362,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************!*\
   !*** ./src/index.ts ***!
   \**********************/
-/*! exports provided: TreeView */
+/*! exports provided: exportTypes, TreeView */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components */ "./src/components/index.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "exportTypes", function() { return _components__WEBPACK_IMPORTED_MODULE_0__["exportTypes"]; });
+
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TreeView", function() { return _components__WEBPACK_IMPORTED_MODULE_0__["TreeView"]; });
 
 
@@ -321,6 +429,17 @@ module.exports = require("lodash");
 /***/ (function(module, exports) {
 
 module.exports = require("react");
+
+/***/ }),
+
+/***/ "tquinlan92-typescript-redux-utils":
+/*!****************************************************!*\
+  !*** external "tquinlan92-typescript-redux-utils" ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("tquinlan92-typescript-redux-utils");
 
 /***/ })
 

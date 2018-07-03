@@ -47,6 +47,7 @@
     "react-test-renderer": "^16.4.1",
     "source-map": "^0.7.3",
     "style-loader": "^0.21.0",
+    "tquinlan92-typescript-redux-utils": "file:../tquinlan92-typescript-redux-utils",
     "ts-jest": "^22.4.6",
     "ts-loader": "^4.3.0",
     "tslint": "^5.10.0",
