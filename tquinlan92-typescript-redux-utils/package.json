@@ -33,12 +33,11 @@
     "lodash": "^4.17.10",
     "redux": "^4.0.0",
     "ts-jest": "^22.4.6",
-    "ts-lint": "^4.5.1",
     "ts-loader": "^4.3.0",
     "tslint": "^5.10.0",
     "tslint-loader": "^3.6.0",
     "tslint-webpack-plugin": "^1.2.2",
-    "typescript": "https://github.com/weswigham/TypeScript.git#why-is-case-so-hard",
+    "typescript": "^2.9.2",
     "typescript-fsa": "^2.5.0",
     "webpack": "^4.9.1",
     "webpack-cli": "^2.1.4"

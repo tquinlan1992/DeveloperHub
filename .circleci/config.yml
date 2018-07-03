@@ -16,9 +16,11 @@ jobs:
 
       - run: sudo npm i -g npm
 
-      - run: cd developer-hub-ui && npm ci
+      - run: cd developer-hub-ui && npm ci && npm run build
 
-      - run: cd developer-hub-ui && npm run build
+      - run: cd tquinlan92-material-core-ui && npm ci && npm run build && npm test
+
+      - run: cd tquinlan92-material-core-ui-demo && npm ci && npm run build && npm test
 
   deployTquinla92TypescriptReduxUtils:
     <<: *defaults
@@ -40,6 +42,16 @@ jobs:
       - run:
           name: Publish package
           command: cd developer-hub-headless && npm publish
+  deployTquinlan92MaterialCoreUi:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > tquinlan92-material-core-ui/.npmrc
+      - run:
+          name: Publish package
+          command: cd tquinlan92-material-core-ui && npm publish
 
 workflows:
   version: 2
@@ -52,7 +64,7 @@ workflows:
               only: 
                 - master
             tags:
-              only: /-tquinlan92$/
+              only: /-Tquinla92TypescriptReduxUtils$/
           requires: 
             - build
       - deployDeveloperHubHeadless:
@@ -62,5 +74,14 @@ workflows:
                 - master
             tags:
               only: /-developerHubHeadless$/
+          requires: 
+            - build
+      - deployTquinlan92MaterialCoreUi:
+          filters: 
+            branches:
+              only: 
+                - master
+            tags:
+              only: /-Tquinlan92MaterialCoreUi$/
           requires: 
             - build
