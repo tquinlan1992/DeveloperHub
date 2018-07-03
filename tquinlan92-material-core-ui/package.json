@@ -10,6 +10,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "webpack --mode development",
+    "preinstall": "cd ../tquinlan92-typescript-redux-utils && npm ci && npm run build",
     "start": "webpack --watch --mode development",
     "test": "jest",
     "test:watch": "node --inspect node_modules/.bin/jest --watch"
