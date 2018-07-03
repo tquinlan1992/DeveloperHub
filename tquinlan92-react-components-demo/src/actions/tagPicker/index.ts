@@ -9,21 +9,21 @@ const rootLevel = [{
     parent: null,
     ancestors: []
 },
-    {
-        _id: 'id2',
-        name: 'tag2',
-        isFolder: false,
-        parent: null,
-        ancestors: []
-    }];
+{
+    _id: 'id2',
+    name: 'tag2',
+    isFolder: false,
+    parent: null,
+    ancestors: []
+}];
 
 const folder1 = [
     {
         _id: 'id3',
         name: 'tag3',
         isFolder: false,
-        parent: 'folder1',
-        ancestors: ['folder1']
+        parent: 'id1',
+        ancestors: ['id1']
     }
 ];
 

@@ -42,9 +42,14 @@ function getTagsFolderAtLevel({ tagsFolders, parent }: GetTagsFolderForParent) {
     });
 }
 
-function getFolderListItem(folder: Folder) {
+interface GetFolderListItem {
+    folder: Folder;
+    onParentClick: (params: OnFolderClick) => void;
+}
+
+function getFolderListItem({ folder, onParentClick }: GetFolderListItem) {
     return (
-        <ListItem key={folder._id}>
+        <ListItem key={folder._id} onClick={() => onParentClick({_id: folder._id})}>
             <ListItemIcon>
                 <FolderIcon />
             </ListItemIcon>
@@ -83,14 +88,15 @@ interface GetListForTagsFolders {
     parent: string | null;
     onTagClick: (params: OnTagClick) => void;
     currentlySelectedTags: string[];
+    onParentClick: (params: OnFolderClick) => void;
 }
 
-function getListForTagsFolders({ tagsFolders, parent, onTagClick, currentlySelectedTags }: GetListForTagsFolders) {
+function getListForTagsFolders({ tagsFolders, parent, onTagClick, currentlySelectedTags, onParentClick }: GetListForTagsFolders) {
     const folders = tagsFolders.filter(tagFolder => {
         return tagFolder.isFolder;
     }) as Folder[];
     const folderListItems = folders.map(folder => {
-        return getFolderListItem(folder);
+        return getFolderListItem({ folder, onParentClick});
     });
     const tags = tagsFolders.filter(tagFolder => {
         return !tagFolder.isFolder;
@@ -115,6 +121,8 @@ function getListForTagsFolders({ tagsFolders, parent, onTagClick, currentlySelec
 
 interface TreeViewState {
     currentlySelectedTags: string[];
+    currentParent: string | null;
+    currentTagsFolder: TagsFolders;
 }
 
 interface OnTagClick {
@@ -122,16 +130,18 @@ interface OnTagClick {
     checked: boolean;
 }
 
+interface OnFolderClick {
+    _id: string;
+}
 export class TreeView extends React.Component<TreeViewProps, TreeViewState> {
-    currentTagsFolder: TagsFolders;
     currentParent: string | null;
 
     constructor(props: any) {
         super(props);
-        this.currentTagsFolder = getTagsFolderAtLevel({ tagsFolders: this.props.tagsFolders, parent: null });
-        this.currentParent = null;
         this.state = {
-            currentlySelectedTags: this.props.selectedTags
+            currentlySelectedTags: this.props.selectedTags,
+            currentParent: null,
+            currentTagsFolder: getTagsFolderAtLevel({ tagsFolders: this.props.tagsFolders, parent: null })
         };
     }
 
@@ -153,10 +163,23 @@ export class TreeView extends React.Component<TreeViewProps, TreeViewState> {
         }
     }
 
+    onParentClick({ _id }: OnFolderClick) {
+        this.setState({
+            currentParent: _id,
+            currentTagsFolder: getTagsFolderAtLevel({ tagsFolders: this.props.tagsFolders, parent: _id })
+        });
+    }
+
     render() {
         return (
             <div>
-                {getListForTagsFolders({ tagsFolders: this.currentTagsFolder, parent: this.currentParent, onTagClick: this.onTagClick.bind(this), currentlySelectedTags: this.state.currentlySelectedTags })}
+                {getListForTagsFolders({ 
+                    tagsFolders: this.state.currentTagsFolder, 
+                    parent: this.state.currentParent, 
+                    onTagClick: this.onTagClick.bind(this), 
+                    onParentClick: this.onParentClick.bind(this),
+                    currentlySelectedTags: this.state.currentlySelectedTags
+                    })}
             </div>
         );
     }

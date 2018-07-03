@@ -23,16 +23,21 @@ export interface TreeViewProps {
 }
 interface TreeViewState {
     currentlySelectedTags: string[];
+    currentParent: string | null;
+    currentTagsFolder: TagsFolders;
 }
 interface OnTagClick {
     _id: string;
     checked: boolean;
 }
+interface OnFolderClick {
+    _id: string;
+}
 export declare class TreeView extends React.Component<TreeViewProps, TreeViewState> {
-    currentTagsFolder: TagsFolders;
     currentParent: string | null;
     constructor(props: any);
     onTagClick({ _id, checked }: OnTagClick): void;
+    onParentClick({ _id }: OnFolderClick): void;
     render(): JSX.Element;
 }
 export {};

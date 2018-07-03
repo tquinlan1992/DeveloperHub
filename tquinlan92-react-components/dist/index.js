@@ -130,8 +130,12 @@ function getTagsFolderAtLevel(_a) {
         return tagFolder.parent === parent;
     });
 }
-function getFolderListItem(folder) {
-    return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["ListItem"], { key: folder._id }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["ListItemIcon"], null, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_icons_Folder__WEBPACK_IMPORTED_MODULE_2___default.a, null)), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["ListItemText"], { primary: "Single-line item" }));
+function getFolderListItem(_a) {
+    var folder = _a.folder,
+        onParentClick = _a.onParentClick;
+    return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["ListItem"], { key: folder._id, onClick: function () {
+            return onParentClick({ _id: folder._id });
+        } }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["ListItemIcon"], null, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_icons_Folder__WEBPACK_IMPORTED_MODULE_2___default.a, null)), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["ListItemText"], { primary: "Single-line item" }));
 }
 function getTagListItem(_a) {
     var tag = _a.tag,
@@ -145,12 +149,13 @@ function getListForTagsFolders(_a) {
     var tagsFolders = _a.tagsFolders,
         parent = _a.parent,
         onTagClick = _a.onTagClick,
-        currentlySelectedTags = _a.currentlySelectedTags;
+        currentlySelectedTags = _a.currentlySelectedTags,
+        onParentClick = _a.onParentClick;
     var folders = tagsFolders.filter(function (tagFolder) {
         return tagFolder.isFolder;
     });
     var folderListItems = folders.map(function (folder) {
-        return getFolderListItem(folder);
+        return getFolderListItem({ folder: folder, onParentClick: onParentClick });
     });
     var tags = tagsFolders.filter(function (tagFolder) {
         return !tagFolder.isFolder;
@@ -168,10 +173,10 @@ var TreeView = function (_super) {
     __extends(TreeView, _super);
     function TreeView(props) {
         var _this = _super.call(this, props) || this;
-        _this.currentTagsFolder = getTagsFolderAtLevel({ tagsFolders: _this.props.tagsFolders, parent: null });
-        _this.currentParent = null;
         _this.state = {
-            currentlySelectedTags: _this.props.selectedTags
+            currentlySelectedTags: _this.props.selectedTags,
+            currentParent: null,
+            currentTagsFolder: getTagsFolderAtLevel({ tagsFolders: _this.props.tagsFolders, parent: null })
         };
         return _this;
     }
@@ -194,8 +199,21 @@ var TreeView = function (_super) {
             });
         }
     };
+    TreeView.prototype.onParentClick = function (_a) {
+        var _id = _a._id;
+        this.setState({
+            currentParent: _id,
+            currentTagsFolder: getTagsFolderAtLevel({ tagsFolders: this.props.tagsFolders, parent: _id })
+        });
+    };
     TreeView.prototype.render = function () {
-        return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, getListForTagsFolders({ tagsFolders: this.currentTagsFolder, parent: this.currentParent, onTagClick: this.onTagClick.bind(this), currentlySelectedTags: this.state.currentlySelectedTags }));
+        return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, getListForTagsFolders({
+            tagsFolders: this.state.currentTagsFolder,
+            parent: this.state.currentParent,
+            onTagClick: this.onTagClick.bind(this),
+            onParentClick: this.onParentClick.bind(this),
+            currentlySelectedTags: this.state.currentlySelectedTags
+        }));
     };
     return TreeView;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
