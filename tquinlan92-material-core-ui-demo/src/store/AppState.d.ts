@@ -13,6 +13,7 @@ interface Tag {
     isFolder: false;
 }
 export interface TagPicker {
+    displaySelectedTags: boolean;
     selectedTags: string[];
     tagsFolders: BaseFolderTag[];
 }

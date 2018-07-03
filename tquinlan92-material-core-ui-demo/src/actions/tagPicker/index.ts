@@ -24,17 +24,43 @@ const folder1 = [
         isFolder: false,
         parent: 'id1',
         ancestors: ['id1']
+    },
+    {
+        _id: 'id4',
+        name: 'folder4',
+        isFolder: true,
+        parent: 'id1',
+        ancestors: ['id1']
+    },
+    {
+        _id: 'id5',
+        name: 'folder5',
+        isFolder: true,
+        parent: 'id1',
+        ancestors: ['id1']
+    }
+];
+
+const folder5 = [
+    {
+        _id: 'id6',
+        name: 'tag7',
+        isFolder: false,
+        parent: 'id5',
+        ancestors: ['id5', 'id1']
     }
 ];
 
 const tagsFolders = [
     ...rootLevel,
-    ...folder1
+    ...folder1,
+    ...folder5
 ];
 
 const initialState = {
     selectedTags: [],
-    tagsFolders
+    tagsFolders,
+    displaySelectedTags: false
 };
 
 const namedActionReducers = simpleActions('TAG-PICKER');

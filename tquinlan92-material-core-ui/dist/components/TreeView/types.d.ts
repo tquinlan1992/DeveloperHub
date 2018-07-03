@@ -15,6 +15,10 @@ export interface TagsFolders extends Array<Tag | Folder> {
 }
 export interface SelectedTags extends Array<string> {
 }
+export interface GetParentInfo {
+    tagsFolders: TagsFolders;
+    parent: string | null;
+}
 export interface OnTagClick {
     _id: string;
     checked: boolean;

@@ -3,14 +3,16 @@ import { TreeView } from 'tquinlan92-material-core-ui';
 import actions from '../../actions';
 import AppState from "../../store/AppState";
 import { connect } from "react-redux";
-import { List, ListItem, ListItemText, ListSubheader } from "@material-ui/core";
+import { List, ListItem, ListItemText, ListSubheader, Button } from "@material-ui/core";
 interface Props {
     tagsFolders: any[];
     selectedTags: string[];
+    displaySelectedTags: boolean;
 }
 
 interface Actions {
     onTagSelectionChange: typeof actions.tagPicker.onTagSelectionChange;
+    setDisplaySelectedTags: typeof actions.tagPicker.setDisplaySelectedTags;
 }
 
 export class TreeViewDemo extends React.Component<Props & Actions> {
@@ -21,6 +23,10 @@ export class TreeViewDemo extends React.Component<Props & Actions> {
         this.onTagSelectionChange = (selectedTags: string[]) => {
             this.props.onTagSelectionChange({ selectedTags });
         };
+    }
+
+    onToggleDisplaySelectedTags() {
+        this.props.setDisplaySelectedTags({value: !this.props.displaySelectedTags });
     }
 
     render() {
@@ -39,14 +45,19 @@ export class TreeViewDemo extends React.Component<Props & Actions> {
             );
         });
         const subheader =
-            <ListSubheader component = "div">
+            <ListSubheader component="div">
                 Selected Tags:
             </ListSubheader>;
+        const selectedTagList = !this.props.displaySelectedTags ? null : 
+        <List subheader={subheader}>
+            {tagListItems}
+        </List>;
         return (
             <div>
-                <List subheader={subheader}>
-                    {tagListItems}
-                </List>
+                <Button onClick={this.onToggleDisplaySelectedTags.bind(this)}>
+                {this.props.displaySelectedTags ? 'Hide Selected Tags' : 'Show Selected Tags'}
+                </Button>
+                {selectedTagList}
                 <TreeView {...TreeViewProps} />
             </div>
         );

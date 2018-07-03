@@ -123,6 +123,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reducer */ "./src/components/TreeView/reducer/index.ts");
 /* harmony import */ var _exportTypes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./exportTypes */ "./src/components/TreeView/exportTypes.ts");
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "exportTypes", function() { return _exportTypes__WEBPACK_IMPORTED_MODULE_4__; });
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_5__);
 var __extends = undefined && undefined.__extends || function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {
@@ -146,12 +148,13 @@ var __extends = undefined && undefined.__extends || function () {
 
 
 
+
 function getFolderListItem(_a) {
     var folder = _a.folder,
         onParentClick = _a.onParentClick;
     return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["ListItem"], { key: folder._id, onClick: function () {
             return onParentClick({ _id: folder._id });
-        } }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["ListItemIcon"], null, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_icons_Folder__WEBPACK_IMPORTED_MODULE_2___default.a, null)), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["ListItemText"], { primary: "Single-line item" }));
+        } }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["ListItemIcon"], null, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_icons_Folder__WEBPACK_IMPORTED_MODULE_2___default.a, null)), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["ListItemText"], { primary: folder.name }));
 }
 function getTagListItem(_a) {
     var tag = _a.tag,
@@ -159,7 +162,7 @@ function getTagListItem(_a) {
         checked = _a.checked;
     return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["ListItem"], { key: tag._id, button: true }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["Checkbox"], { checked: checked, tabIndex: -1, disableRipple: true, onChange: function (event, checked) {
             return onTagClick({ _id: tag._id, checked: checked });
-        } }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["ListItemText"], { primary: "Checked" }));
+        } }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["ListItemText"], { primary: tag.name }));
 }
 function getTagListItems(_a) {
     var tagsFolders = _a.tagsFolders,
@@ -183,6 +186,18 @@ function getFolderListItems(_a) {
         return getFolderListItem({ folder: folder, onParentClick: onParentClick });
     });
 }
+function getParentName(_a) {
+    var tagsFolders = _a.tagsFolders,
+        parent = _a.parent;
+    if (!parent) {
+        return "Root:";
+    }
+    var parentInfo = Object(lodash__WEBPACK_IMPORTED_MODULE_5__["find"])(tagsFolders, function (tagFolder) {
+        return tagFolder._id === parent;
+    });
+    console.log('parentInfo', parentInfo);
+    return parentInfo ? parentInfo.name : "no folder name";
+}
 function getListForTagsFolders(_a) {
     var tagsFolders = _a.tagsFolders,
         parent = _a.parent,
@@ -191,8 +206,7 @@ function getListForTagsFolders(_a) {
         onParentClick = _a.onParentClick;
     var folderListItems = getFolderListItems({ tagsFolders: tagsFolders, onParentClick: onParentClick });
     var tagListItems = getTagListItems({ tagsFolders: tagsFolders, currentlySelectedTags: currentlySelectedTags, onTagClick: onTagClick });
-    var subheaderText = parent ? parent : 'Root:';
-    var subheader = react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["ListSubheader"], { component: "div" }, subheaderText);
+    var subheader = react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["ListSubheader"], { component: "div" }, parent);
     return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["List"], { component: "nav", subheader: subheader }, folderListItems, tagListItems);
 }
 var TreeView = function (_super) {
@@ -225,9 +239,10 @@ var TreeView = function (_super) {
     };
     TreeView.prototype.render = function () {
         var backButton = !this.state.currentParent ? null : react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["Button"], { onClick: this.onBackClick.bind(this) }, "Back");
+        var parent = getParentName({ tagsFolders: this.props.tagsFolders, parent: this.state.currentParent });
         return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, backButton, getListForTagsFolders({
             tagsFolders: this.state.currentTagsFolder,
-            parent: this.state.currentParent,
+            parent: parent,
             onTagClick: this.onTagClick.bind(this),
             onParentClick: this.onParentClick.bind(this),
             currentlySelectedTags: this.state.currentlySelectedTags

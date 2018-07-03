@@ -11,6 +11,7 @@ configure({ adapter: new Adapter() });
 
 const mockActions = {
     onTagSelectionChange: getAnyJestFn(),
+    setDisplaySelectedTags: getAnyJestFn()
 };
 
 it('TreeView should render when given valid props', () => {
@@ -18,6 +19,8 @@ it('TreeView should render when given valid props', () => {
         tagsFolders: [],
         selectedTags: [],
         onTagSelectionChange: mockActions.onTagSelectionChange,
+        displaySelectedTags: false,
+        setDisplaySelectedTags: mockActions.setDisplaySelectedTags
     };
     const result = shallow(<TreeViewDemo {...props} />);
     expect(result).toMatchSnapshot();

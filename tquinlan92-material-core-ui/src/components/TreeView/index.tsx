@@ -13,10 +13,12 @@ import {
     GetFolderListItem, 
     TreeViewProps,
     GetTagListItems,
-    GetFolderListeItems
+    GetFolderListeItems,
+    GetParentInfo
 } from "./types";
 import * as exportTypes from './exportTypes';
 export { exportTypes };
+import { find } from 'lodash';
 
 function getFolderListItem({ folder, onParentClick }: GetFolderListItem) {
     return (
@@ -25,7 +27,7 @@ function getFolderListItem({ folder, onParentClick }: GetFolderListItem) {
                 <FolderIcon />
             </ListItemIcon>
             <ListItemText
-                primary="Single-line item"
+                primary={folder.name}
             />
         </ListItem>
     );
@@ -43,7 +45,7 @@ function getTagListItem({ tag, onTagClick, checked }: GetTagListItem) {
                 disableRipple
                 onChange={(event: any, checked: boolean) => onTagClick({ _id: tag._id, checked })}
             />
-            <ListItemText primary={`Checked`} />
+            <ListItemText primary={tag.name} />
         </ListItem>
     );
 }
@@ -67,16 +69,25 @@ function getFolderListItems({ tagsFolders, onParentClick }: GetFolderListeItems)
     });
 }
 
+function getParentName({ tagsFolders, parent }: GetParentInfo) {
+    if (!parent) {
+        return "Root:";
+    }
+    const parentInfo = find(tagsFolders, tagFolder => {
+        return tagFolder._id === parent;
+    });
+    console.log('parentInfo', parentInfo);
+    return parentInfo ? parentInfo.name : "no folder name";
+}
+
 function getListForTagsFolders({ tagsFolders, parent, onTagClick, currentlySelectedTags, onParentClick }: GetListForTagsFolders) {
 
     const folderListItems = getFolderListItems({tagsFolders, onParentClick});
 
     const tagListItems = getTagListItems({tagsFolders, currentlySelectedTags, onTagClick });
-
-    const subheaderText = parent ? parent : 'Root:';
     const subheader =
         <ListSubheader component="div">
-            {subheaderText}
+            {parent}
         </ListSubheader>;
     return (
         <List component="nav" subheader={subheader}>
@@ -118,12 +129,13 @@ export class TreeView extends React.Component<TreeViewProps, TreeViewState> {
             <Button onClick={this.onBackClick.bind(this)}>
                 Back
             </Button>;
+        const parent = getParentName({ tagsFolders: this.props.tagsFolders, parent: this.state.currentParent });
         return (
             <div>
                 {backButton}
                 {getListForTagsFolders({
                     tagsFolders: this.state.currentTagsFolder,
-                    parent: this.state.currentParent,
+                    parent,
                     onTagClick: this.onTagClick.bind(this),
                     onParentClick: this.onParentClick.bind(this),
                     currentlySelectedTags: this.state.currentlySelectedTags
