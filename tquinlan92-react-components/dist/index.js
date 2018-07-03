@@ -103,8 +103,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _material_ui_icons_Folder__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/icons/Folder */ "@material-ui/icons/Folder");
 /* harmony import */ var _material_ui_icons_Folder__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Folder__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash */ "lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_3__);
 var __extends = undefined && undefined.__extends || function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {
@@ -125,7 +123,6 @@ var __extends = undefined && undefined.__extends || function () {
 
 
 
-
 function getTagsFolderAtLevel(_a) {
     var tagsFolders = _a.tagsFolders,
         parent = _a.parent;
@@ -136,15 +133,19 @@ function getTagsFolderAtLevel(_a) {
 function getFolderListItem(folder) {
     return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["ListItem"], { key: folder._id }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["ListItemIcon"], null, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_icons_Folder__WEBPACK_IMPORTED_MODULE_2___default.a, null)), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["ListItemText"], { primary: "Single-line item" }));
 }
-function getTagListItem(tag, onTagClick) {
-    return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["ListItem"], { key: tag._id, button: true }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["Checkbox"], { checked: false, tabIndex: -1, disableRipple: true, onChange: function (event, checked) {
+function getTagListItem(_a) {
+    var tag = _a.tag,
+        onTagClick = _a.onTagClick,
+        checked = _a.checked;
+    return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["ListItem"], { key: tag._id, button: true }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["Checkbox"], { checked: checked, tabIndex: -1, disableRipple: true, onChange: function (event, checked) {
             return onTagClick({ _id: tag._id, checked: checked });
         } }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["ListItemText"], { primary: "Checked" }));
 }
 function getListForTagsFolders(_a) {
     var tagsFolders = _a.tagsFolders,
         parent = _a.parent,
-        onTagClick = _a.onTagClick;
+        onTagClick = _a.onTagClick,
+        currentlySelectedTags = _a.currentlySelectedTags;
     var folders = tagsFolders.filter(function (tagFolder) {
         return tagFolder.isFolder;
     });
@@ -156,7 +157,8 @@ function getListForTagsFolders(_a) {
     });
     console.log('folders', folders);
     var tagListItems = tags.map(function (tag) {
-        return getTagListItem(tag, onTagClick);
+        var checked = currentlySelectedTags.includes(tag._id);
+        return getTagListItem({ tag: tag, onTagClick: onTagClick, checked: checked });
     });
     var subheaderText = parent ? parent : 'Root:';
     var subheader = react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["ListSubheader"], { component: "div" }, subheaderText);
@@ -183,8 +185,8 @@ var TreeView = function (_super) {
             });
             this.props.onTagSelectionChange(newCurrentlySelectedTags);
         } else if (!checked) {
-            var newCurrentlySelectedTags = Object(lodash__WEBPACK_IMPORTED_MODULE_3__["remove"])(this.state.currentlySelectedTags, function (tag) {
-                return tag === _id;
+            var newCurrentlySelectedTags = this.state.currentlySelectedTags.filter(function (tag) {
+                return tag !== _id;
             });
             this.props.onTagSelectionChange(newCurrentlySelectedTags);
             this.setState({
@@ -193,10 +195,7 @@ var TreeView = function (_super) {
         }
     };
     TreeView.prototype.render = function () {
-        var _this = this;
-        return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["Button"], { onClick: function () {
-                return _this.props.onTagSelectionChange(["tag1", "tag2"]);
-            } }, "Test Button"), getListForTagsFolders({ tagsFolders: this.currentTagsFolder, parent: this.currentParent, onTagClick: this.onTagClick.bind(this) }));
+        return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, getListForTagsFolders({ tagsFolders: this.currentTagsFolder, parent: this.currentParent, onTagClick: this.onTagClick.bind(this), currentlySelectedTags: this.state.currentlySelectedTags }));
     };
     return TreeView;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
@@ -267,17 +266,6 @@ module.exports = require("@material-ui/core");
 /***/ (function(module, exports) {
 
 module.exports = require("@material-ui/icons/Folder");
-
-/***/ }),
-
-/***/ "lodash":
-/*!*************************!*\
-  !*** external "lodash" ***!
-  \*************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("lodash");
 
 /***/ }),
 

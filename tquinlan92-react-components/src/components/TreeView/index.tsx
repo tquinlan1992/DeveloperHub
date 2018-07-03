@@ -1,7 +1,6 @@
 import * as React from "react";
-import { Button, List, ListItem, ListItemIcon, ListItemText, ListSubheader, Checkbox } from "@material-ui/core";
+import { List, ListItem, ListItemIcon, ListItemText, ListSubheader, Checkbox } from "@material-ui/core";
 import FolderIcon from '@material-ui/icons/Folder';
-import { remove } from 'lodash';
 
 interface SelectedTags extends Array<string> {
 
@@ -56,14 +55,20 @@ function getFolderListItem(folder: Folder) {
     );
 }
 
-function getTagListItem(tag: Tag, onTagClick: (params: OnTagClick) => void) {
+interface GetTagListItem {
+    tag: Tag;
+    onTagClick: (params: OnTagClick) => void; 
+    checked: boolean;
+}
+
+function getTagListItem({ tag, onTagClick, checked }: GetTagListItem) {
     return (
         <ListItem
             key={tag._id}
             button
         >
             <Checkbox
-                checked={false}
+                checked={checked}
                 tabIndex={-1}
                 disableRipple
                 onChange={(event: any, checked: boolean) => onTagClick({ _id: tag._id, checked })}
@@ -77,9 +82,10 @@ interface GetListForTagsFolders {
     tagsFolders: TagsFolders;
     parent: string | null;
     onTagClick: (params: OnTagClick) => void;
+    currentlySelectedTags: string[];
 }
 
-function getListForTagsFolders({ tagsFolders, parent, onTagClick }: GetListForTagsFolders) {
+function getListForTagsFolders({ tagsFolders, parent, onTagClick, currentlySelectedTags }: GetListForTagsFolders) {
     const folders = tagsFolders.filter(tagFolder => {
         return tagFolder.isFolder;
     }) as Folder[];
@@ -91,7 +97,8 @@ function getListForTagsFolders({ tagsFolders, parent, onTagClick }: GetListForTa
     }) as Tag[];
     console.log('folders', folders);
     const tagListItems = tags.map(tag => {
-        return getTagListItem(tag, onTagClick);
+        const checked = currentlySelectedTags.includes(tag._id);
+        return getTagListItem({ tag, onTagClick, checked});
     });
     const subheaderText = parent ? parent : 'Root:';
     const subheader =
@@ -136,8 +143,8 @@ export class TreeView extends React.Component<TreeViewProps, TreeViewState> {
             });
             this.props.onTagSelectionChange(newCurrentlySelectedTags);
         } else if (!checked) {
-            const newCurrentlySelectedTags = remove(this.state.currentlySelectedTags, tag => {
-                return tag === _id;
+            const newCurrentlySelectedTags = this.state.currentlySelectedTags.filter(tag => {
+                return tag !== _id;
             });
             this.props.onTagSelectionChange(newCurrentlySelectedTags);
             this.setState({
@@ -149,10 +156,7 @@ export class TreeView extends React.Component<TreeViewProps, TreeViewState> {
     render() {
         return (
             <div>
-                <Button onClick={() => this.props.onTagSelectionChange(["tag1", "tag2"])}>
-                    Test Button
-                </Button>
-                {getListForTagsFolders({ tagsFolders: this.currentTagsFolder, parent: this.currentParent, onTagClick: this.onTagClick.bind(this) })}
+                {getListForTagsFolders({ tagsFolders: this.currentTagsFolder, parent: this.currentParent, onTagClick: this.onTagClick.bind(this), currentlySelectedTags: this.state.currentlySelectedTags })}
             </div>
         );
     }
