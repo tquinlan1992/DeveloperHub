@@ -20,7 +20,7 @@ exports[`when TreeView is given no selectedTags should render with no selected t
         <pure(Folder) />
       </WithStyles(ListItemIcon)>
       <WithStyles(ListItemText)
-        primary="Single-line item"
+        primary="folder1"
       />
     </WithStyles(ListItem)>
     <WithStyles(ListItem)
@@ -34,7 +34,7 @@ exports[`when TreeView is given no selectedTags should render with no selected t
         tabIndex={-1}
       />
       <WithStyles(ListItemText)
-        primary="Checked"
+        primary="tag2"
       />
     </WithStyles(ListItem)>
   </WithStyles(List)>
@@ -61,7 +61,7 @@ exports[`when TreeView is given selectedTags should render with selected tags 1`
         <pure(Folder) />
       </WithStyles(ListItemIcon)>
       <WithStyles(ListItemText)
-        primary="Single-line item"
+        primary="folder1"
       />
     </WithStyles(ListItem)>
     <WithStyles(ListItem)
@@ -75,7 +75,7 @@ exports[`when TreeView is given selectedTags should render with selected tags 1`
         tabIndex={-1}
       />
       <WithStyles(ListItemText)
-        primary="Checked"
+        primary="tag2"
       />
     </WithStyles(ListItem)>
   </WithStyles(List)>

@@ -46,7 +46,7 @@ export class TreeViewDemo extends React.Component<Props & Actions> {
         });
         const subheader =
             <ListSubheader component="div">
-                Selected Tags:
+                {`Selected Tags:(${this.props.selectedTags.length})`}
             </ListSubheader>;
         const selectedTagList = !this.props.displaySelectedTags ? null : 
         <List subheader={subheader}>
@@ -55,7 +55,7 @@ export class TreeViewDemo extends React.Component<Props & Actions> {
         return (
             <div>
                 <Button onClick={this.onToggleDisplaySelectedTags.bind(this)}>
-                {this.props.displaySelectedTags ? 'Hide Selected Tags' : 'Show Selected Tags'}
+                    {this.props.displaySelectedTags ? 'Hide Selected Tags' : 'Show Selected Tags'}({this.props.selectedTags.length})
                 </Button>
                 {selectedTagList}
                 <TreeView {...TreeViewProps} />
