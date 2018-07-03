@@ -11,7 +11,7 @@
     "test": "jest --coverage",
     "test:watch": "node --inspect node_modules/.bin/jest --watch",
     "webpack-dev-server": "webpack-dev-server",
-    "preinstall": "cd ../tquinlan92-react-components && npm ci && npm run build"
+    "preinstall": "cd ../tquinlan92-material-core-ui && npm ci && npm run build"
   },
   "devDependencies": {
     "@material-ui/core": "^1.0.0",
@@ -63,7 +63,7 @@
     "source-map": "^0.6.1",
     "style-loader": "^0.19.1",
     "superagent": "^3.8.3",
-    "tquinlan92-react-components": "file:../tquinlan92-react-components",
+    "tquinlan92-material-core-ui": "file:../tquinlan92-material-core-ui",
     "tquinlan92-typescript-redux-utils": "file:../tquinlan92-typescript-redux-utils",
     "ts-jest": "^22.4.6",
     "ts-lint": "^4.5.1",

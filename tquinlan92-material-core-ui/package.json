@@ -1,5 +1,5 @@
 {
-  "name": "tquinlan92-react-components",
+  "name": "tquinlan92-material-core-ui",
   "version": "0.0.1-beta",
   "repository": {
     "type": "git",
@@ -11,6 +11,7 @@
   "scripts": {
     "build": "webpack --mode development",
     "start": "webpack --watch --mode development",
+    "test": "jest --coverage",
     "test:watch": "node --inspect node_modules/.bin/jest --watch"
   },
   "author": "",

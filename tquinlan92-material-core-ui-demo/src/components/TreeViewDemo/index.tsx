@@ -1,5 +1,5 @@
 import * as React from "react";
-import { TreeView } from 'tquinlan92-react-components';
+import { TreeView } from 'tquinlan92-material-core-ui';
 import actions from '../../actions';
 import AppState from "../../store/AppState";
 import { connect } from "react-redux";

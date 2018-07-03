@@ -9,8 +9,6 @@ describe('when onBackClick is called', () => {
     describe('with the path as length 0', () => {
         it('there should be no changes to the state', () => {
             const state = {
-                selectedTags: [],
-                tags: [],
                 currentlySelectedTags: [],
                 currentParent: null,
                 currentTagsFolder: [],
@@ -25,8 +23,6 @@ describe('when onBackClick is called', () => {
         it('there should be no changes to the state', () => {
             const tagsToSelect = ['tag1'];
             const state = {
-                selectedTags: [],
-                tags: [],
                 currentlySelectedTags: [],
                 currentParent: 'id',
                 currentTagsFolder: folder1,
