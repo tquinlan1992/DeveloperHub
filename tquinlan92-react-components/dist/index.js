@@ -120,7 +120,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _material_ui_icons_Folder__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/icons/Folder */ "@material-ui/icons/Folder");
 /* harmony import */ var _material_ui_icons_Folder__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Folder__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reducer */ "./src/components/TreeView/reducer.ts");
+/* harmony import */ var _reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reducer */ "./src/components/TreeView/reducer/index.ts");
 /* harmony import */ var _exportTypes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./exportTypes */ "./src/components/TreeView/exportTypes.ts");
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "exportTypes", function() { return _exportTypes__WEBPACK_IMPORTED_MODULE_4__; });
 var __extends = undefined && undefined.__extends || function () {
@@ -239,24 +239,49 @@ var TreeView = function (_super) {
 
 /***/ }),
 
-/***/ "./src/components/TreeView/reducer.ts":
-/*!********************************************!*\
-  !*** ./src/components/TreeView/reducer.ts ***!
-  \********************************************/
+/***/ "./src/components/TreeView/reducer/index.ts":
+/*!**************************************************!*\
+  !*** ./src/components/TreeView/reducer/index.ts ***!
+  \**************************************************/
 /*! exports provided: onParentClickActionReducer, onBackClickActionReducer, onTagClickActionReducer, setRootStateActionReducer */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onParentClickActionReducer", function() { return onParentClickActionReducer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onBackClickActionReducer", function() { return onBackClickActionReducer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onTagClickActionReducer", function() { return onTagClickActionReducer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setRootStateActionReducer", function() { return setRootStateActionReducer; });
+/* harmony import */ var _onParentClick__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./onParentClick */ "./src/components/TreeView/reducer/onParentClick/index.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "onParentClickActionReducer", function() { return _onParentClick__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+
+/* harmony import */ var _onBackClick__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./onBackClick */ "./src/components/TreeView/reducer/onBackClick/index.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "onBackClickActionReducer", function() { return _onBackClick__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
+/* harmony import */ var _onTagClick__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./onTagClick */ "./src/components/TreeView/reducer/onTagClick/index.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "onTagClickActionReducer", function() { return _onTagClick__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+
+/* harmony import */ var _setRootState__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./setRootState */ "./src/components/TreeView/reducer/setRootState/index.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "setRootStateActionReducer", function() { return _setRootState__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+
+
+
+
+
+
+
+/***/ }),
+
+/***/ "./src/components/TreeView/reducer/onBackClick/index.ts":
+/*!**************************************************************!*\
+  !*** ./src/components/TreeView/reducer/onBackClick/index.ts ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tquinlan92_typescript_redux_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tquinlan92-typescript-redux-utils */ "tquinlan92-typescript-redux-utils");
 /* harmony import */ var tquinlan92_typescript_redux_utils__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tquinlan92_typescript_redux_utils__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils */ "./src/components/TreeView/utils.ts");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils */ "./src/components/TreeView/utils.ts");
 var __assign = undefined && undefined.__assign || function () {
     __assign = Object.assign || function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -270,18 +295,70 @@ var __assign = undefined && undefined.__assign || function () {
 
 
 
-var onParentClickActionReducer = Object(tquinlan92_typescript_redux_utils__WEBPACK_IMPORTED_MODULE_0__["makeActionCreatorWithReducer"])('ON_PARENT_CLICK', function (state, _a) {
+/* harmony default export */ __webpack_exports__["default"] = (Object(tquinlan92_typescript_redux_utils__WEBPACK_IMPORTED_MODULE_0__["makeActionCreatorWithReducer"])('ON_BACK_CLICK', function (state, _a) {
+    var tagsFolders = _a.tagsFolders;
+    var newPath = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["tail"])(state.path);
+    var newParent = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["head"])(newPath) || null;
+    return __assign({}, state, { currentParent: newParent, currentTagsFolder: Object(_utils__WEBPACK_IMPORTED_MODULE_2__["getTagsFolderAtLevel"])({ tagsFolders: tagsFolders, parent: newParent }), path: newPath });
+}));
+
+/***/ }),
+
+/***/ "./src/components/TreeView/reducer/onParentClick/index.ts":
+/*!****************************************************************!*\
+  !*** ./src/components/TreeView/reducer/onParentClick/index.ts ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var tquinlan92_typescript_redux_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tquinlan92-typescript-redux-utils */ "tquinlan92-typescript-redux-utils");
+/* harmony import */ var tquinlan92_typescript_redux_utils__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tquinlan92_typescript_redux_utils__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils */ "./src/components/TreeView/utils.ts");
+var __assign = undefined && undefined.__assign || function () {
+    __assign = Object.assign || function (t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(tquinlan92_typescript_redux_utils__WEBPACK_IMPORTED_MODULE_0__["makeActionCreatorWithReducer"])('ON_PARENT_CLICK', function (state, _a) {
     var _id = _a._id,
         tagsFolders = _a.tagsFolders;
     return __assign({}, state, { currentParent: _id, currentTagsFolder: Object(_utils__WEBPACK_IMPORTED_MODULE_1__["getTagsFolderAtLevel"])({ tagsFolders: tagsFolders, parent: _id }), path: [_id].concat(state.path) });
-});
-var onBackClickActionReducer = Object(tquinlan92_typescript_redux_utils__WEBPACK_IMPORTED_MODULE_0__["makeActionCreatorWithReducer"])('ON_BACK_CLICK', function (state, _a) {
-    var tagsFolders = _a.tagsFolders;
-    var newPath = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["tail"])(state.path);
-    var newParent = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["head"])(newPath) || null;
-    return __assign({}, state, { currentParent: newParent, currentTagsFolder: Object(_utils__WEBPACK_IMPORTED_MODULE_1__["getTagsFolderAtLevel"])({ tagsFolders: tagsFolders, parent: newParent }), path: newPath });
-});
-var onTagClickActionReducer = Object(tquinlan92_typescript_redux_utils__WEBPACK_IMPORTED_MODULE_0__["makeActionCreatorWithReducer"])('ON_TAG_CLICK', function (state, _a) {
+}));
+
+/***/ }),
+
+/***/ "./src/components/TreeView/reducer/onTagClick/index.ts":
+/*!*************************************************************!*\
+  !*** ./src/components/TreeView/reducer/onTagClick/index.ts ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var tquinlan92_typescript_redux_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tquinlan92-typescript-redux-utils */ "tquinlan92-typescript-redux-utils");
+/* harmony import */ var tquinlan92_typescript_redux_utils__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tquinlan92_typescript_redux_utils__WEBPACK_IMPORTED_MODULE_0__);
+var __assign = undefined && undefined.__assign || function () {
+    __assign = Object.assign || function (t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(tquinlan92_typescript_redux_utils__WEBPACK_IMPORTED_MODULE_0__["makeActionCreatorWithReducer"])('ON_TAG_CLICK', function (state, _a) {
     var _id = _a._id,
         checked = _a.checked;
     if (checked && !state.currentlySelectedTags.includes(_id)) {
@@ -295,8 +372,25 @@ var onTagClickActionReducer = Object(tquinlan92_typescript_redux_utils__WEBPACK_
     } else {
         return state;
     }
-});
-var setRootStateActionReducer = Object(tquinlan92_typescript_redux_utils__WEBPACK_IMPORTED_MODULE_0__["makeActionCreatorWithReducer"])('SET_ROOT_STATE', function (state, _a) {
+}));
+
+/***/ }),
+
+/***/ "./src/components/TreeView/reducer/setRootState/index.ts":
+/*!***************************************************************!*\
+  !*** ./src/components/TreeView/reducer/setRootState/index.ts ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var tquinlan92_typescript_redux_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tquinlan92-typescript-redux-utils */ "tquinlan92-typescript-redux-utils");
+/* harmony import */ var tquinlan92_typescript_redux_utils__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tquinlan92_typescript_redux_utils__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils */ "./src/components/TreeView/utils.ts");
+
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(tquinlan92_typescript_redux_utils__WEBPACK_IMPORTED_MODULE_0__["makeActionCreatorWithReducer"])('SET_ROOT_STATE', function (state, _a) {
     var tagsFolders = _a.tagsFolders,
         selectedTags = _a.selectedTags;
     return {
@@ -305,7 +399,7 @@ var setRootStateActionReducer = Object(tquinlan92_typescript_redux_utils__WEBPAC
         currentTagsFolder: Object(_utils__WEBPACK_IMPORTED_MODULE_1__["getTagsFolderAtLevel"])({ tagsFolders: tagsFolders, parent: null }),
         path: []
     };
-});
+}));
 
 /***/ }),
 

@@ -2,11 +2,6 @@
 
 exports[`TreeView should render when given valid props 1`] = `
 <div>
-  <WithStyles(Button)
-    onClick={[Function]}
-  >
-    Test Button
-  </WithStyles(Button)>
   <WithStyles(List)
     component="nav"
     subheader={
