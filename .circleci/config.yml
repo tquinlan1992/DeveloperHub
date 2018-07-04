@@ -61,8 +61,7 @@ workflows:
       - deployTquinla92TypescriptReduxUtils:
           filters: 
             branches:
-              only: 
-                - master
+              ignore: /.*/
             tags:
               only: /-Tquinla92TypescriptReduxUtils$/
           requires: 
@@ -70,8 +69,7 @@ workflows:
       - deployDeveloperHubHeadless:
           filters: 
             branches:
-              only: 
-                - master
+              ignore: /.*/
             tags:
               only: /-developerHubHeadless$/
           requires: 
@@ -79,8 +77,7 @@ workflows:
       - deployTquinlan92MaterialCoreUi:
           filters: 
             branches:
-              only: 
-                - master
+              ignore: /.*/
             tags:
               only: /-Tquinlan92MaterialCoreUi$/
           requires: 
