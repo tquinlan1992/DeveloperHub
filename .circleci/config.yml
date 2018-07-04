@@ -72,7 +72,7 @@ workflows:
       - deployDeveloperHubHeadless:
           filters: 
             branches:
-              ignore: /.*/
+              only: master
             tags:
               only: /-developerHubHeadless$/
           requires: 
