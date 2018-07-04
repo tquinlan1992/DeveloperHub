@@ -27,31 +27,34 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > tquinlan92-typescript-redux-utils/.npmrc
-      - run:
-          name: Publish package
-          command: cd tquinlan92-typescript-redux-utils && npm publish
+          name: Publish tquinlan92-typescript-redux-utils
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > tquinlan92-material-core-ui/.npmrc
+              cd tquinlan92-typescript-redux-utils && npm publish
+            fi
   deployDeveloperHubHeadless:
     <<: *defaults
     steps:
       - checkout
       - run:
-          name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > developer-hub-headless/.npmrc
-      - run:
-          name: Publish package
-          command: cd developer-hub-headless && npm publish
+          name: Publish developer-hub-headless
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > tquinlan92-material-core-ui/.npmrc
+              cd developer-hub-headless && npm publish
+            fi
   deployTquinlan92MaterialCoreUi:
     <<: *defaults
     steps:
       - checkout
       - run:
-          name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > tquinlan92-material-core-ui/.npmrc
-      - run:
-          name: Publish package
-          command: cd tquinlan92-material-core-ui && npm publish
+          name: Publish tquinlan92-material-core-ui
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > tquinlan92-material-core-ui/.npmrc
+              cd tquinlan92-material-core-ui && npm publish
+            fi
 
 workflows:
   version: 2
