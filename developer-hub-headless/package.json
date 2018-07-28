@@ -48,7 +48,8 @@
     "tquinlan92-typescript-redux-utils": "file:../tquinlan92-typescript-redux-utils",
     "tquinlan92-webpack-utils": "file:../tquinlan92-webpack-utils",
     "ts-jest": "^22.4.6",
-    "typescript": "^2.9.2"
+    "typescript": "^2.9.2",
+    "url-join": "^4.0.0"
   },
   "peerDependencies": {
     "@types/lodash": "^4.14.108",
