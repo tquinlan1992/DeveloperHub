@@ -10,8 +10,9 @@
     "build": "webpack --mode development",
     "start": "webpack --watch --mode development",
     "test": "jest --coverage",
-    "test:watch": "node --inspect node_modules/.bin/jest --watch",
-    "webpack-dev-server": "webpack-dev-server"
+    "test:watch": "node --inspect node_modules/.bin/jest --watch --env=node",
+    "webpack-dev-server": "webpack-dev-server",
+    "tquinlan92-webpack": "tquinlan92-webpack"
   },
   "devDependencies": {
     "@types/enzyme": "^3.1.10",
@@ -29,16 +30,8 @@
     "@types/superagent": "^3.5.8",
     "@types/url-join": "^0.8.2",
     "@types/uuid": "^3.4.3",
-    "@types/webpack": "^4.4.0",
-    "awesome-typescript-loader": "^5.0.0",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.2",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
     "cors": "^2.8.4",
-    "css-loader": "^0.28.7",
     "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.4",
     "history": "^4.7.2",
     "jest": "^22.4.4",
@@ -55,17 +48,9 @@
     "source-map": "^0.6.1",
     "superagent": "^3.8.3",
     "tquinlan92-typescript-redux-utils": "file:../tquinlan92-typescript-redux-utils",
+    "tquinlan92-webpack-utils": "file:../tquinlan92-webpack-utils",
     "ts-jest": "^22.4.6",
-    "ts-lint": "^4.5.1",
-    "tslint": "^5.10.0",
-    "tslint-loader": "^3.6.0",
-    "typescript": "^3.0.0-dev.20180630",
-    "url-join": "^4.0.0",
-    "uuid": "^3.2.1",
-    "webpack": "^4.10.2",
-    "webpack-cli": "^2.1.4",
-    "webpack-dev-server": "^3.1.4",
-    "webpack-node-externals": "^1.7.2"
+    "typescript": "^2.9.2"
   },
   "peerDependencies": {
     "@types/lodash": "^4.14.108",
@@ -87,5 +72,9 @@
     "tquinlan92-typescript-redux-utils": "file:../tquinlan92-typescript-redux-utils",
     "url-join": "^4.0.0",
     "uuid": "^3.2.1"
+  },
+  "dependencies": {
+    "jest-environment-node": "^23.4.0",
+    "react-scripts": "^1.1.4"
   }
 }
