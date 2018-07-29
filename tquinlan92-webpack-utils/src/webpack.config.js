@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const path = require('path');
-const portfinder = require('portfinder');
 const nodeExternals = require('webpack-node-externals');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
