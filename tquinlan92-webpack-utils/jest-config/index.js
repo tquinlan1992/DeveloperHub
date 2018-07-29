@@ -18,5 +18,9 @@ module.exports = {
     ],
     "snapshotSerializers": [
         "enzyme-to-json/serializer"
-    ]
-}
+    ],
+    "globals": {
+        "window": true
+    },
+    testURL: 'http://localhost'
+};
