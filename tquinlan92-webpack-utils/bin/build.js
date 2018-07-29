@@ -2,5 +2,6 @@
 
 const compiler = require('./compiler');
 const compilerHandler = require('./compilerHandler');
+const webpackConfig = require('../src/webpack.config');
 
-compiler.run(compilerHandler);
+compiler(webpackConfig).run(compilerHandler);

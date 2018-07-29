@@ -6,8 +6,8 @@
   "author": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "start": "npm run webpack-dev-server -- --mode development",
+    "build": "tquinlan92-webpack-ui-build",
+    "start": "tquinlan92-webpack-ui",
     "test": "jest",
     "test:watch": "node --inspect node_modules/.bin/jest --watch",
     "webpack-dev-server": "webpack-dev-server",
