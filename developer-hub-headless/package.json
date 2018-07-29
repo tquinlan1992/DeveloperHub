@@ -10,7 +10,8 @@
     "build": "tquinlan92-webpack-build",
     "start": "tquinlan92-webpack",
     "test": "jest --coverage",
-    "test:watch": "node --inspect node_modules/.bin/jest --watch --env=node"
+    "test:watch": "node --inspect node_modules/.bin/jest --watch --env=node",
+    "preinstall": "cd ../tquinlan92-webpack-utils && npm ci"
   },
   "devDependencies": {
     "@types/enzyme": "^3.1.10",
