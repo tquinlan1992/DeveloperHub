@@ -4,7 +4,7 @@ interface OnParentClickAction {
     tagsFolders: TagsFolders;
 }
 declare const _default: {
-    actionCreator: import("../../../../../node_modules/tquinlan92-typescript-redux-utils/node_modules/typescript-fsa/lib").ActionCreator<OnParentClickAction>;
-    reducer: import("../../../../../node_modules/tquinlan92-typescript-redux-utils/dist").StateTypeReducer<TreeViewState, OnParentClickAction>;
+    actionCreator: import("tquinlan92-typescript-redux-utils/node_modules/typescript-fsa").ActionCreator<OnParentClickAction>;
+    reducer: import("tquinlan92-typescript-redux-utils").StateTypeReducer<TreeViewState, OnParentClickAction>;
 };
 export default _default;

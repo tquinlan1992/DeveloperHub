@@ -4,7 +4,7 @@ interface SetRootStateAction {
     selectedTags: SelectedTags;
 }
 declare const _default: {
-    actionCreator: import("../../../../../node_modules/tquinlan92-typescript-redux-utils/node_modules/typescript-fsa/lib").ActionCreator<SetRootStateAction>;
-    reducer: import("../../../../../node_modules/tquinlan92-typescript-redux-utils/dist").StateTypeReducer<TreeViewState | null, SetRootStateAction>;
+    actionCreator: import("tquinlan92-typescript-redux-utils/node_modules/typescript-fsa").ActionCreator<SetRootStateAction>;
+    reducer: import("tquinlan92-typescript-redux-utils").StateTypeReducer<TreeViewState | null, SetRootStateAction>;
 };
 export default _default;
