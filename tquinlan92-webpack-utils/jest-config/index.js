@@ -11,7 +11,7 @@ module.exports = {
         "json"
     ],
     "moduleNameMapper": {
-        "\\.(css|less)$": "<rootDir>/assetsTransformer.js"
+        "\\.(css|less)$": "./assetsTransformer.js"
     }, "collectCoverageFrom": [
         "src/**/*.{ts,tsx}",
         "!**/*.d.ts"
