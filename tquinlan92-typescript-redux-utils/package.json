@@ -11,7 +11,8 @@
   "scripts": {
     "build": "tquinlan92-webpack-build",
     "start": "tquinlan92-webpack",
-    "test:watch": "node --inspect node_modules/.bin/jest --watch"
+    "test:watch": "node --inspect node_modules/.bin/jest --watch",
+    "preinstall": "cd ../tquinlan92-webpack-utils && npm ci"
   },
   "author": "",
   "license": "ISC",

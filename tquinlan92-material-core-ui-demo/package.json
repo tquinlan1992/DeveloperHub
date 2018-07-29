@@ -11,7 +11,7 @@
     "test": "jest",
     "test:watch": "node --inspect node_modules/.bin/jest --watch",
     "webpack-dev-server": "webpack-dev-server",
-    "preinstall": "cd ../tquinlan92-material-core-ui && npm ci && npm run build"
+    "preinstall": "cd ../tquinlan92-webpack-utils && npm ci && cd ../tquinlan92-material-core-ui && npm ci && npm run build"
   },
   "devDependencies": {
     "@material-ui/core": "^1.0.0",
