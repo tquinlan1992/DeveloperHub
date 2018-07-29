@@ -9,14 +9,12 @@
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "declaration": true,
-        "declarationDir": "./dist",
         "noUnusedLocals": true,
         "noImplicitAny": true,
         "noImplicitReturns": true,
         "removeComments": true,
         "strictNullChecks": true,
         "keyofStringsOnly": true,
-        "outDir": "build",
         "watch": true,
         "lib": [
             "es6",
@@ -24,11 +22,5 @@
             "dom",
             "es2017"
         ]
-    },
-    "exclude": [
-        "dist",
-        "build",
-        "node_modules",
-        "**/*.test.ts"
-    ]
+    }
 }

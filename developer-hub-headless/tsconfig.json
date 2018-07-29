@@ -1,11 +1,10 @@
 {
     "extends": "./node_modules/tquinlan92-webpack-utils/tsconfig/library.json",
     "compilerOptions": {
-        "outDir": "build"
+        "outDir": "dist"
     },
     "exclude": [
         "dist",
-        "build",
         "node_modules",
         "**/*.test.ts"
     ]
