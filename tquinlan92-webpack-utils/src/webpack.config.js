@@ -2,14 +2,17 @@ const webpack = require('webpack');
 const path = require('path');
 const portfinder = require('portfinder');
 const nodeExternals = require('webpack-node-externals');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+
 
 module.exports = function(sourcePath) {
     console.log('sourcePath', sourcePath);
     return function (env) { // the default port to use
-
+        const mode = env ? env : development;
         const plugins = [
             new webpack.NamedModulesPlugin(),
-            new webpack.HotModuleReplacementPlugin()
+            new webpack.HotModuleReplacementPlugin(),
+            new FriendlyErrorsWebpackPlugin()
         ];
 
         return {
@@ -28,7 +31,14 @@ module.exports = function(sourcePath) {
                 externals: [nodeExternals()],
 
                 module: {
-                    rules: [{
+                    rules: [
+                        {
+                            test: /\.ts$/,
+                            exclude: /node_modules/,
+                            enforce: 'pre',
+                            loader: require.resolve('tslint-loader')
+                        },
+                        {
                             test: /\.(ts|tsx)$/,
                             exclude: /node_modules/,
                             use: [{
@@ -38,12 +48,6 @@ module.exports = function(sourcePath) {
                                     loader: require.resolve('awesome-typescript-loader')
                                 }
                             ]
-                        },
-                        {
-                            test: /\.ts$/,
-                            exclude: /node_modules/,
-                            enforce: 'pre',
-                            loader: require.resolve('tslint-loader')
                         }
                     ]
                 },
@@ -58,7 +62,8 @@ module.exports = function(sourcePath) {
                     colors: {
                         green: '\u001b[32m',
                     }
-                }
+                },
+                mode
             };
     }
 };

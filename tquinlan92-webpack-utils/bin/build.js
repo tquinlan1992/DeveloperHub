@@ -1,11 +1,6 @@
 #!/usr/bin/env node
 
 const compiler = require('./compiler');
+const compilerHandler = require('./compilerHandler');
 
-compiler.run((err, stats) => {
-    if (err || stats.hasErrors()) {
-      // Handle errors here
-      console.log('stats', stats);
-    }
-    // Done processing
-});
+compiler.run(compilerHandler);
