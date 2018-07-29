@@ -12,7 +12,7 @@
     "build": "tquinlan92-webpack-build",
     "preinstall": "cd ../tquinlan92-typescript-redux-utils && npm ci && npm run build && cd ../tquinlan92-webpack-utils && npm ci",
     "start": "tquinlan92-webpack",
-    "test": "jest",
+    "test": "jest --env=node",
     "test:watch": "node --inspect node_modules/.bin/jest --watch"
   },
   "author": "",
