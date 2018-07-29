@@ -16,11 +16,11 @@ jobs:
 
       - run: sudo npm i -g npm
 
-      - run: cd developer-hub-ui && npm ci && npm run build
+      - run: npm i
 
-      - run: cd tquinlan92-material-core-ui && npm ci && npm run build && npm test
+      - run: cd tquinlan92-material-core-ui && npm test
 
-      - run: cd tquinlan92-material-core-ui-demo && npm ci && npm run build && npm test
+      - run: cd tquinlan92-material-core-ui-demo && npm test
 
   deployTquinla92TypescriptReduxUtils:
     <<: *defaults
