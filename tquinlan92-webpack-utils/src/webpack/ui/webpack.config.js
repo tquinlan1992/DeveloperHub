@@ -8,7 +8,7 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 module.exports = function (sourcePath) {
 
         return function(env) {
-
+            const mode = env ? env : development;
             const plugins = [
                 new webpack.NamedModulesPlugin(),
                 new webpack.HotModuleReplacementPlugin(), 
@@ -28,7 +28,9 @@ module.exports = function (sourcePath) {
                 context: sourcePath,
 
                 entry: [
-                    './index.tsx'
+                    './index.tsx',
+                    'webpack/hot/dev-server',
+                    'webpack-dev-server/client?'
                 ],
 
                 output: {
@@ -65,7 +67,7 @@ module.exports = function (sourcePath) {
                 resolve: {
                     extensions: ['.ts', '.tsx', '.js']
                 },
-
+                mode,
                 plugins
             };
     };

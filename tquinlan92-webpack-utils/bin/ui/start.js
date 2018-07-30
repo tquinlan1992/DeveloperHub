@@ -10,8 +10,9 @@ const devServer = new WebpackDevServer(compiler(webpackConfig), {
   host: '0.0.0.0',
   disableHostCheck: true,
   port: 8080,
-  compress: false,
-  hot: true
+  compress: true,
+  hot: true,
+  watchContentBase: true
 });
 // Launch WebpackDevServer.
 devServer.listen(8080, '0.0.0.0', err => {
