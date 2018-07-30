@@ -1,0 +1,20 @@
+{
+  "name": "developer-hub",
+  "version": "0.0.1-beta",
+  "description": "developer hub and tools",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "preinstall": "./bin/install.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tquinlan1992/DeveloperHub.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tquinlan1992/DeveloperHub/issues"
+  },
+  "homepage": "https://github.com/tquinlan1992/DeveloperHub#readme"
+}

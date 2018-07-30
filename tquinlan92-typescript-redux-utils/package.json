@@ -9,8 +9,8 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "webpack --mode development",
-    "start": "webpack --watch --mode development",
+    "build": "tquinlan92-webpack-build",
+    "start": "tquinlan92-webpack",
     "test:watch": "node --inspect node_modules/.bin/jest --watch"
   },
   "author": "",
@@ -32,6 +32,7 @@
     "jest": "^23.0.1",
     "lodash": "^4.17.10",
     "redux": "^4.0.0",
+    "tquinlan92-webpack-utils": "file:../tquinlan92-webpack-utils",
     "ts-jest": "^22.4.6",
     "ts-loader": "^4.3.0",
     "tslint": "^5.10.0",

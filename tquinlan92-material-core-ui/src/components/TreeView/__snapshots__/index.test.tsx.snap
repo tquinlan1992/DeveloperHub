@@ -13,6 +13,7 @@ exports[`when TreeView is given no selectedTags should render with no selected t
     }
   >
     <WithStyles(ListItem)
+      button={true}
       key="id1"
       onClick={[Function]}
     >
@@ -54,6 +55,7 @@ exports[`when TreeView is given selectedTags should render with selected tags 1`
     }
   >
     <WithStyles(ListItem)
+      button={true}
       key="id1"
       onClick={[Function]}
     >

@@ -22,7 +22,7 @@ import { find } from 'lodash';
 
 function getFolderListItem({ folder, onParentClick }: GetFolderListItem) {
     return (
-        <ListItem key={folder._id} onClick={() => onParentClick({ _id: folder._id })}>
+        <ListItem key={folder._id} onClick={() => onParentClick({ _id: folder._id })} button>
             <ListItemIcon>
                 <FolderIcon />
             </ListItemIcon>

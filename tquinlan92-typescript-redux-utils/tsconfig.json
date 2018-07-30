@@ -1,31 +1,10 @@
 {
-    "compileOnSave": true,
+    "extends": "./node_modules/tquinlan92-webpack-utils/tsconfig/library.json",
     "compilerOptions": {
-        "sourceMap": true,
-        "target": "es5",
-        "module": "es2015",
-        "moduleResolution": "node",
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "declaration": true,
-        "declarationDir": "./dist",
-        "noUnusedLocals": true,
-        "noImplicitAny": true,
-        "noImplicitReturns": true,
-        "removeComments": true,
-        "strictNullChecks": true,
-        "outDir": "./dist",
-        "watch": true,
-        "lib": [
-            "es6",
-            "es7",
-            "dom",
-            "es2017"
-        ]
+        "outDir": "dist"
     },
     "exclude": [
         "dist",
-        "build",
         "node_modules",
         "**/*.test.ts"
     ]
