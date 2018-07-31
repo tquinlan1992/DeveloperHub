@@ -32,6 +32,7 @@ module.exports = class extends Generator {
     this._writingReadme();
     this._writingPackageJson();
     this._writingGitIgnore();
+    this._writingNvmrc();
     this._writingJestConfig();
     this._writingSrcIndex();
     this._writingSrcIndexTest();
@@ -70,6 +71,13 @@ module.exports = class extends Generator {
     this.fs.copy(
       this.templatePath('app/_.gitignore'),
       this.destinationPath('.gitignore')
+    );
+  }
+
+  _writingNvmrc() {
+    this.fs.copy(
+      this.templatePath('app/_.nvmrc'),
+      this.destinationPath('.nvmrc')
     );
   }
 
