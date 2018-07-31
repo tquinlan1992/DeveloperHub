@@ -1,6 +1,6 @@
 {
   "name": "tquinlan92-typescript-redux-utils",
-  "version": "0.0.11-beta",
+  "version": "0.0.12-beta",
   "repository": {
     "type": "git",
     "url": "https://github.com/tquinlan1992/DeveloperHub/tree/develop/tquinlan92-typescript-redux-utils"
@@ -22,28 +22,17 @@
     "redux": "^4.0.0"
   },
   "devDependencies": {
+  },
+  "dependencies": {
     "@types/jest": "^22.2.3",
     "@types/lodash": "^4.14.109",
     "@types/redux": "^3.6.0",
-    "awesome-typescript-loader": "^5.0.0",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.4",
-    "babel-preset-es2015": "^6.24.1",
     "jest": "^23.0.1",
     "lodash": "^4.17.10",
     "redux": "^4.0.0",
-    "tquinlan92-webpack-utils": "0.0.1-beta",
+    "tquinlan92-webpack-utils": "^0.0.4-beta",
     "ts-jest": "^22.4.6",
-    "ts-loader": "^4.3.0",
-    "tslint": "^5.10.0",
-    "tslint-loader": "^3.6.0",
-    "tslint-webpack-plugin": "^1.2.2",
     "typescript": "^2.9.2",
-    "typescript-fsa": "^2.5.0",
-    "webpack": "^4.9.1",
-    "webpack-cli": "^2.1.4"
-  },
-  "dependencies": {
-    "webpack-node-externals": "^1.7.2"
+    "typescript-fsa": "^2.5.0"
   }
 }
