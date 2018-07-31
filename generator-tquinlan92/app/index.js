@@ -33,7 +33,6 @@ module.exports = class extends Generator {
     this._writingPackageJson();
     this._writingGitIgnore();
     this._writingNvmrc();
-    this._writingJestConfig();
     this._writingSrcIndex();
     this._writingSrcIndexTest();
     this._writingVscode();
@@ -82,13 +81,6 @@ module.exports = class extends Generator {
     this.fs.copy(
       this.templatePath('app/_.nvmrc'),
       this.destinationPath('.nvmrc')
-    );
-  }
-
-  _writingJestConfig() {
-    this.fs.copy(
-      this.templatePath('app/jest.config.js'),
-      this.destinationPath('.jest.config.js')
     );
   }
 
