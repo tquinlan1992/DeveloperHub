@@ -1,6 +1,6 @@
 {
-  "name": "tquinlan92-typescript-redux-utils",
-  "version": "0.0.11-beta",
+  "name": "tquinlan92-app",
+  "version": "0.0.1-beta",
   "repository": {
     "type": "git",
     "url": "https://github.com/tquinlan1992/DeveloperHub/tree/develop/tquinlan92-typescript-redux-utils"
@@ -25,7 +25,7 @@
   "devDependencies": {
     "@types/jest": "^22.2.3",
     "jest": "^23.0.1",
-    "tquinlan92-webpack-utils": "^0.0.2-beta",
+    "tquinlan92-webpack-utils": "^0.0.4-beta",
     "ts-jest": "^22.4.6",
     "typescript": "^3.0.1"
   },
