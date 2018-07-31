@@ -39,6 +39,10 @@ module.exports = class extends Generator {
     this._writingVscode();
   }
 
+  install() {
+    this.npmInstall();
+  }
+
   _writingTslint() {
     this.fs.copy(
       this.templatePath('app/tslint.json'),
@@ -112,4 +116,5 @@ module.exports = class extends Generator {
   end() {
     this.log(`You're done!`);
   }
+
 };
