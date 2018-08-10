@@ -16,5 +16,6 @@
   "bugs": {
     "url": "https://github.com/tquinlan1992/DeveloperHub/issues"
   },
-  "homepage": "https://github.com/tquinlan1992/DeveloperHub#readme"
+  "homepage": "https://github.com/tquinlan1992/DeveloperHub#readme",
+  "devDependencies": {}
 }
