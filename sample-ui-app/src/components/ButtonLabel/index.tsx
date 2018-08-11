@@ -11,7 +11,7 @@ interface Actions {
     changeLabel: typeof actions.label.changeLabel;
 }
 
-export class TreeViewDemo extends React.Component<Props & Actions> {
+export class ButtonLabel extends React.Component<Props & Actions> {
 
     onButtonLabelClick() {
         this.props.changeLabel({value: 'newLabel'});
@@ -32,4 +32,4 @@ const mapDispatchToProps = {
     ...actions.label
 };
 
-export default connect<Props, Actions>(mapStateToProps, mapDispatchToProps)(TreeViewDemo);
+export default connect<Props, Actions>(mapStateToProps, mapDispatchToProps)(ButtonLabel);

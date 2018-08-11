@@ -2,7 +2,7 @@ import { combineReducers, AnyAction } from 'redux';
 export { AnyAction };
 import AppState from '../store/AppState';
 import label from './label';
-import { getActionsAndReducersFromCombinedActionReducer } from '../../../tquinlan92-typescript-redux-utils/dist';
+import { getActionsAndReducersFromCombinedActionReducer } from 'tquinlan92-typescript-redux-utils';
 
 const actionsReducersTree = {
     label

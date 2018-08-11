@@ -17,12 +17,11 @@ module.exports = class extends Generator {
   async prompting() {
     const answers = await this.prompt([{
       type: 'list',
-      name: 'features',
+      name: 'buildType',
       message: 'What do you want to make today?',
-          choices: [ projectTypes.library, projectTypes,uiProject ]
+          choices: [ projectTypes.library, projectTypes.uiProject ]
       }]);
-    this.projectType
-    this.log('app name', answers.name);
+    this.projectType = answers.buildType;
   }
 
   constructor(args, opts) {
@@ -45,7 +44,10 @@ module.exports = class extends Generator {
 
   writing() {
     if (this.projectType === projectTypes.library) {
-      this.libraryWriting();
+      this.fs.copy(
+        this.templatePath('library/**/*'),
+        this.destinationRoot('./')
+      );
     } else if (this.projectType === projectTypes.uiProject) {
       this.fs.copy(
         this.templatePath('ui/**/*'),
@@ -54,83 +56,8 @@ module.exports = class extends Generator {
     }
   }
 
-  libraryWriting() {
-    this._writingTslint();
-    this._writingTsconfig();
-    this._writingReadme();
-    this._writingPackageJson();
-    this._writingGitIgnore();
-    this._writingNvmrc();
-    this._writingSrcIndex();
-    this._writingSrcIndexTest();
-    this._writingVscode();
-  }
-
   install() {
     this.npmInstall();
-  }
-
-  _writingTslint() {
-    this.fs.copy(
-      this.templatePath('library/tslint.json'),
-      this.destinationPath('tslint.json')
-    );
-  }
-
-  _writingTsconfig() {
-    this.fs.copy(
-      this.templatePath('library/tsconfig.json'),
-      this.destinationPath('tsconfig.json')
-    );
-  }
-
-  _libraryWritingReadme() {
-    this.fs.copy(
-      this.templatePath('library/README.md'),
-      this.destinationPath('README.md')
-    );
-  }
-
-  _libraryWritingPackageJson() {
-    this.fs.copy(
-      this.templatePath('library/package.json'),
-      this.destinationPath('package.json')
-    );
-  }
-
-  _libraryWritingGitIgnore() {
-    this.fs.copy(
-      this.templatePath('library/_.gitignore'),
-      this.destinationPath('.gitignore')
-    );
-  }
-
-  _libraryWritingNvmrc() {
-    this.fs.copy(
-      this.templatePath('library/_.nvmrc'),
-      this.destinationPath('.nvmrc')
-    );
-  }
-
-  _libraryWritingSrcIndex() {
-    this.fs.copy(
-      this.templatePath('library/src/index.ts'),
-      this.destinationPath('src/index.ts')
-    );
-  }
-
-  _libraryWritingSrcIndexTest() {
-    this.fs.copy(
-      this.templatePath('library/src/index.test.ts'),
-      this.destinationPath('src/index.test.ts')
-    );
-  }
-
-  _libraryWritingVscode() {
-    this.fs.copy(
-      this.templatePath('library/_.vscode/launch.json'),
-      this.destinationPath('.vscode/launch.json')
-    );
   }
 
   end() {

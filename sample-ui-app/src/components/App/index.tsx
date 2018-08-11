@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import Theme from '../Theme';
-import TreeViewDemo from '../TreeViewDemo';
+import ButtonLabel from '../ButtonLabel';
 
 
 
@@ -11,7 +11,7 @@ export default (store: any) => {
         <Provider store={store}>
             <Theme>
                 <div>
-                <TreeViewDemo />
+                <ButtonLabel />
                 </div>
             </Theme>
         </Provider>

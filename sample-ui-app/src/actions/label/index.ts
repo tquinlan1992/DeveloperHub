@@ -1,6 +1,6 @@
 import simpleActions from './simpleActions';
 import { Label } from '../../store/AppState';
-import { createReducer, getCreators as getActions } from '../../../../tquinlan92-typescript-redux-utils/dist';
+import { createReducer, getCreators as getActions } from 'tquinlan92-typescript-redux-utils';
 
 const initialState = {
     label: 'testLabel'
