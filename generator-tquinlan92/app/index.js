@@ -1,11 +1,11 @@
 'use strict';
-const Generator = require('../../../../../Library/Caches/typescript/2.9/node_modules/@types/yeoman-generator');
+const Generator = require('yeoman-generator');
 const commandExists = require('command-exists').sync;
-const yosay = require('../../../../../Library/Caches/typescript/2.9/node_modules/@types/yosay');
+const yosay = require('yosay');
 const chalk = require('chalk');
-const wiredep = require('../../../../../Library/Caches/typescript/2.9/node_modules/@types/wiredep');
-const mkdirp = require('../../../../../Library/Caches/typescript/2.9/node_modules/@types/mkdirp');
-const _s = require('../../../../../Library/Caches/typescript/2.9/node_modules/@types/underscore.string');
+const wiredep = require('wiredep');
+const mkdirp = require('mkdirp');
+const _s = require('underscore.string');
 
 const projectTypes = {
   library: "Library",
