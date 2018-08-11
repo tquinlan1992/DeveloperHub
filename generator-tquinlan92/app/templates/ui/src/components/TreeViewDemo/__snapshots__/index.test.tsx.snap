@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TreeView should render when given valid props 1`] = `
+<div>
+  <WithStyles(Button)
+    onClick={[Function]}
+  >
+    Show Selected Tags
+    (
+    0
+    )
+  </WithStyles(Button)>
+  <TreeView
+    displaySelectedTags={false}
+    onTagSelectionChange={[Function]}
+    selectedTags={Array []}
+    setDisplaySelectedTags={[MockFunction]}
+    tagsFolders={Array []}
+  />
+</div>
+`;
