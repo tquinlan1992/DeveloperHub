@@ -46,7 +46,7 @@
     "tquinlan92-typescript-redux-utils": "^0.0.13-beta",
     "tquinlan92-webpack-utils": "^0.0.5-beta",
     "ts-jest": "^22.4.6",
-    "typescript": "^2.9.2"
+    "typescript": "^3.0.1"
   },
   "dependencies": {},
   "jest": {
