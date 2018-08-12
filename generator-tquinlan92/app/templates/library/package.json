@@ -17,17 +17,13 @@
   "author": "",
   "license": "ISC",
   "peerDependencies": {
-    "@types/lodash": "^4.14.109",
-    "@types/redux": "^3.6.0",
-    "lodash": "^4.17.10",
-    "redux": "^4.0.0"
   },
   "devDependencies": {
     "@types/jest": "^22.2.3",
     "jest": "^23.0.1",
     "tquinlan92-webpack-utils": "^0.0.4-beta",
     "ts-jest": "^22.4.6",
-    "typescript": "^2.9.2"
+    "typescript": "^3.0.1"
   },
   "dependencies": {
   },
