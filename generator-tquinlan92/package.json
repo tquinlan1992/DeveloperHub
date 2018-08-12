@@ -1,6 +1,6 @@
 {
   "name": "generator-tquinlan92",
-  "version": "0.0.14",
+  "version": "0.0.16",
   "description": "create a tquinlan92 app",
   "license": "BSD-2-Clause",
   "author": "",
@@ -18,18 +18,12 @@
     "yeoman-generator"
   ],
   "dependencies": {
-    "chalk": "^1.0.0",
-    "command-exists": "^1.2.2",
-    "generator-jasmine": "^1.0.0",
-    "generator-mocha": "^1.0.0",
-    "mkdirp": "^0.5.1",
-    "underscore.string": "^3.1.1",
-    "wiredep": "^4.0.0",
-    "yeoman-generator": "^1.1.1",
-    "yosay": "^2.0.0"
+    "generator-jasmine": "^2.0.1",
+    "generator-mocha": "^2.0.1",
+    "yeoman-generator": "^3.1.1"
   },
   "devDependencies": {
-    "mocha": "^3.1.0",
+    "mocha": "^5.2.0",
     "yeoman-assert": "^3.0.0",
     "yeoman-test": "^1.6.0"
   }

@@ -1,26 +1,28 @@
 'use strict';
 const Generator = require('yeoman-generator');
-const commandExists = require('command-exists').sync;
-const yosay = require('yosay');
-const chalk = require('chalk');
-const wiredep = require('wiredep');
-const mkdirp = require('mkdirp');
-const _s = require('underscore.string');
 
 const projectTypes = {
   library: "Library",
-  uiProject: "Ui Project"
+  uiProject: "Ui Project",
+  storybook: "Storybook"
 }
+
 
 module.exports = class extends Generator {
 
   async prompting() {
-    const answers = await this.prompt([{
+    const answers = await this.prompt([
+      {
       type: 'list',
       name: 'buildType',
       message: 'What do you want to make today?',
-          choices: [ projectTypes.library, projectTypes.uiProject ]
-      }]);
+      choices: [ 
+        projectTypes.library, 
+        projectTypes.uiProject, 
+        projectTypes.storybook 
+      ]
+      }
+    ]);
     this.projectType = answers.buildType;
   }
 
@@ -43,17 +45,47 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    if (this.projectType === projectTypes.library) {
-      this.fs.copy(
-        this.templatePath('library/**/*'),
-        this.destinationRoot('./')
-      );
-    } else if (this.projectType === projectTypes.uiProject) {
-      this.fs.copy(
-        this.templatePath('ui/**/*'),
-        this.destinationRoot('./')
-      );
+    switch(this.projectType) {
+      case (projectTypes.library):
+        this._writeLibrary();
+        break;
+      case (projectTypes.uiProject):
+        this._writeUiProject();
+        break;
+      case (projectTypes.storybook):
+        this._writeStorybook();
+        break;
     }
+  }
+
+  _writeLibrary() {
+    this.fs.copy(
+      [
+      this.templatePath('library/**/*'),
+      this.templatePath('library/.*')
+      ],
+      this.destinationRoot('./')
+    ); 
+  }
+  
+  _writeUiProject() {
+    this.fs.copy(
+      [
+      this.templatePath('ui/**/*'),
+      this.templatePath('ui/.*')
+      ],
+      this.destinationRoot('./')
+    );
+  }
+  
+  _writeStorybook() {
+    this.fs.copy([
+      this.templatePath('storybook/**/*'),
+      this.templatePath('storybook/.*'),
+      this.templatePath('storybook/.storybook/**/*')
+    ],
+      this.destinationRoot('./')
+    );
   }
 
   install() {
