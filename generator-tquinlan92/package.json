@@ -1,6 +1,6 @@
 {
   "name": "generator-tquinlan92",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "create a tquinlan92 app",
   "license": "BSD-2-Clause",
   "author": "",
@@ -20,6 +20,7 @@
   "dependencies": {
     "generator-jasmine": "^2.0.1",
     "generator-mocha": "^2.0.1",
+    "path": "^0.12.7",
     "yeoman-generator": "^3.1.1"
   },
   "devDependencies": {
