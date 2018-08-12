@@ -21,14 +21,9 @@ module.exports = class extends Generator {
         projectTypes.uiProject, 
         projectTypes.storybook 
       ]
-      },
-      {
-        name: 'appName',
-        message: 'What is your projects name (follow sample-poject-name pattern) name ?'
       }
     ]);
     this.projectType = answers.buildType;
-    this.appName = answers.appName;
   }
 
   constructor(args, opts) {
