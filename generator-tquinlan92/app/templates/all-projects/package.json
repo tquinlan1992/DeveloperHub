@@ -11,7 +11,7 @@
     "install-components": "cd components && npm ci",
     "install-storybook": "cd components && npm ci",
     "install-app": "cd app && npm ci",
-    "postinstall": "run-p install-components install-storybook install-app",
+    "installAll": "run-p install-components install-storybook install-app",
     "start-components-with-storybook": "run-p start-components start-storybook",
     "start-components-with-app": "rup-p start-components start-app"
   },
