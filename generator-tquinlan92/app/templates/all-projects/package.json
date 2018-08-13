@@ -13,7 +13,7 @@
     "install-app": "cd app && npm ci",
     "installAll": "run-p install-components install-storybook install-app",
     "start-components-with-storybook": "run-p start-components start-storybook",
-    "start-components-with-app": "rup-p start-components start-app"
+    "start-components-with-app": "run-p start-components start-app"
   },
   "dependencies": {
     "npm-run-all": "^4.1.3"
