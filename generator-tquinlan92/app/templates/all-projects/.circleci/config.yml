@@ -1,0 +1,15 @@
+version: 2
+
+defaults: &defaults
+  docker:
+    - image: circleci/node:8
+
+jobs:
+  build:
+    <<: *defaults 
+    steps:
+      - checkout
+      - run: sudo npm i -g npm
+      - run: npm ci
+      - run: npm run build-all
+      - run: npm run test-all

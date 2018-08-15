@@ -74,7 +74,8 @@ module.exports = class extends Generator {
     this.fs.copy(
       [
       this.templatePath('all-projects/**/*'),
-      this.templatePath('all-projects/.*')
+      this.templatePath('all-projects/.*'),
+      this.templatePath('all-projects/.circleci/*')
       ],
       this.destinationRoot('../')
     ); 

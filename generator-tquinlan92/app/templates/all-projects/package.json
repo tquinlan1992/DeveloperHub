@@ -4,16 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start-components": "cd components && npm start",
-    "start-storybook": "cd storybook && npm start",
+    "start": "run-p start-components start-app",
+    "install-app": "cd app && npm ci",
+    "build-app": "cd app && npm run build",
+    "test-app": "cd app && npm test",
     "start-app": "cd app && npm start",
     "install-components": "cd components && npm ci",
-    "install-storybook": "cd components && npm ci",
-    "install-app": "cd app && npm ci",
-    "installAll": "run-p install-components install-storybook install-app",
-    "start-components-with-storybook": "run-p start-components start-storybook",
-    "start-components-with-app": "run-p start-components start-app"
+    "build-components": "cd components && npm run build",
+    "test-components": "cd components && npm test",
+    "start-components": "cd components && npm start",
+    "install-storybook": "cd storybook && npm ci",
+    "build-storybook": "cd storybook && npm run build",
+    "start-storybook-pure": "cd storybook && npm start",
+    "postinstall": "run-s install-components install-app install-storybook",
+    "start-storybook": "run-p start-components start-storybook",
+    "build-all": "run-s build-components build-storybook build-app",
+    "test-all": "run-s test-components test-app"
   },
   "dependencies": {
     "npm-run-all": "^4.1.3"
