@@ -5,7 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "preinstall": "./bin/install.sh"
+    "preinstall": "./bin/install.sh",
+    "install-components": "cd tquinlan92-material-core-ui && npm ci",
+    "build-components": "cd tquinlan92-material-core-ui && npm run build",
+    "test-components": "cd tquinlan92-material-core-ui && npm test",
+    "start-components": "cd tquinlan92-material-core-ui && npm start",
+    "install-storybook": "cd storybook && npm ci",
+    "build-storybook": "cd storybook && npm run build",
+    "start-storybook-pure": "cd storybook && npm start",
+    "start-tquinaln92-storbyook": "run-p start-components start-storybook-pure"
   },
   "repository": {
     "type": "git",
@@ -17,5 +25,7 @@
     "url": "https://github.com/tquinlan1992/DeveloperHub/issues"
   },
   "homepage": "https://github.com/tquinlan1992/DeveloperHub#readme",
-  "devDependencies": {}
+  "devDependencies": {
+    "npm-run-all": "^4.1.3"
+  }
 }
