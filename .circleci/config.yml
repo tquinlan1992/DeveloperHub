@@ -16,7 +16,7 @@ jobs:
 
       - run: sudo npm i -g npm
 
-      - run: npm i
+      - run: npm ci
 
       - run: cd tquinlan92-material-core-ui && npm test
 
