@@ -1,7 +1,11 @@
 {
   "name": "generator-tquinlan92",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "description": "create a tquinlan92 app",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:tquinlan1992/DeveloperHub.git"
+  },
   "license": "BSD-2-Clause",
   "author": "",
   "main": "app/index.js",
