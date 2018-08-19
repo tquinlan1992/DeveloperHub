@@ -47,6 +47,11 @@ module.exports = function(sourcePath) {
                                     loader: require.resolve('awesome-typescript-loader')
                                 }
                             ]
+                        },
+                        {
+                            test: /\.js$/,
+                            use: ["source-map-loader"],
+                            enforce: "pre"
                         }
                     ]
                 },

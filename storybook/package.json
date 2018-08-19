@@ -20,7 +20,6 @@
   "license": "ISC",
   "peerDependencies": {
     "@types/lodash": "^4.14.109",
-    "@types/redux": "^3.6.0",
     "lodash": "^4.17.10",
     "redux": "^4.0.0"
   },
@@ -36,7 +35,6 @@
     "@types/jest": "^22.2.3",
     "@types/lodash": "^4.14.115",
     "@types/react": "^16.4.7",
-    "@types/redux": "^3.6.0",
     "@types/storybook__addon-actions": "^3.4.0",
     "@types/storybook__react": "^3.0.8",
     "awesome-typescript-loader": "^5.2.0",
@@ -48,6 +46,7 @@
     "react-docgen-typescript-webpack-plugin": "^1.1.0",
     "react-dom": "^16.4.1",
     "redux": "^4.0.0",
+    "source-map-loader": "^0.2.4",
     "tquinlan92-material-core-ui": "file:../tquinlan92-material-core-ui",
     "tquinlan92-webpack-utils": "^0.0.4-beta",
     "ts-jest": "^22.4.6",

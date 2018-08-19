@@ -58,6 +58,11 @@ module.exports = function (sourcePath) {
                             exclude: /node_modules/,
                             enforce: 'pre',
                             loader: require.resolve('tslint-loader')
+                        },
+                        {
+                            test: /\.js$/,
+                            use: ["source-map-loader"],
+                            enforce: "pre"
                         }
                     ]
                 },
