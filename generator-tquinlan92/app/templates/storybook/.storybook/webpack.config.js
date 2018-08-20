@@ -18,6 +18,11 @@ module.exports = (baseConfig, env, config) => {
         options: { parser: 'typescript' }
       }
     ]
+  },
+  {
+    test: /\.js$/,
+    use: ["source-map-loader"],
+    enforce: "pre"
   });
   config.plugins.push(new TSDocgenPlugin()); // optional
   config.resolve.extensions.push(".ts", ".tsx");
