@@ -25,7 +25,7 @@
     "redux": "^4.0.0"
   },
   "devDependencies": {
-    "@material-ui/core": "^1.3.0",
+    "@material-ui/core": "1.4.3",
     "@material-ui/icons": "^1.1.0",
     "@types/enzyme": "^3.1.11",
     "@types/enzyme-adapter-react-16": "^1.0.2",
@@ -44,7 +44,7 @@
     "tquinlan92-typescript-redux-utils": "file:../tquinlan92-typescript-redux-utils",
     "tquinlan92-webpack-utils": "file:../tquinlan92-webpack-utils",
     "ts-jest": "^22.4.6",
-    "typescript": "^2.9.2"
+    "typescript": "^3.0.1"
   },
   "dependencies": {
     "webpack-node-externals": "^1.7.2"
