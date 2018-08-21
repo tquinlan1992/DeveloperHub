@@ -1,6 +1,6 @@
 {
   "name": "tquinlan92-webpack-utils",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "",
   "main": "src/index.js",
   "scripts": {
@@ -14,6 +14,8 @@
   "bin": {
     "tquinlan92-webpack": "./bin/startGulp.js",
     "tquinlan92-webpack-build": "./bin/buildGulp.js",
+    "tquinlan92-webpack-root": "./bin/startGulpRoot.js",
+    "tquinlan92-webpack-root-build": "./bin/buildGulpRoot.js",
     "tquinlan92-webpack-ui": "./bin/ui/start.js",
     "tquinlan92-webpack-ui-build": "./bin/ui/build.js"
   },
