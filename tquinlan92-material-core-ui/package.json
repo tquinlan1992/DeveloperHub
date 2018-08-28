@@ -12,7 +12,8 @@
     "build": "tquinlan92-webpack-build",
     "start": "tquinlan92-webpack",
     "test": "jest",
-    "test:watch": "node --inspect node_modules/.bin/jest --watch"
+    "test:watch": "node --inspect node_modules/.bin/jest --watch",
+    "yo": "tsc"
   },
   "author": "",
   "license": "ISC",

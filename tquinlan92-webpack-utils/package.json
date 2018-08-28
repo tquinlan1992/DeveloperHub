@@ -1,6 +1,6 @@
 {
   "name": "tquinlan92-webpack-utils",
-  "version": "0.0.11",
+  "version": "0.0.13",
   "description": "",
   "main": "src/index.js",
   "scripts": {

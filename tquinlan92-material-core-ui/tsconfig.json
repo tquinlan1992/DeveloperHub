@@ -2,7 +2,8 @@
     "compileOnSave": true,
     "compilerOptions": {
         "declarationDir": "./dist",
-        "outDir": "./dist"
+        "outDir": "./dist",
+        "watch": false
     },
     "exclude": [
         "dist",
