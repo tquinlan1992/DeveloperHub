@@ -16,6 +16,8 @@ jobs:
 
       - run: sudo npm i -g npm
 
+      - run: npm ci
+
       - run: npm run ci
 
       - run: npm run build
