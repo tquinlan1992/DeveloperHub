@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "i": "lerna bootstrap --hoist",
-    "i-storybook": "lerna bootstrap --scope storybook*",
     "ci": "lerna bootstrap --hoist --ci",
     "start-storybook": "lerna run start --scope storybook",
     "build": "lerna run build"

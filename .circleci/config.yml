@@ -16,11 +16,9 @@ jobs:
 
       - run: sudo npm i -g npm
 
-      - run: npm ci
+      - run: npm run ci
 
-      - run: cd tquinlan92-material-core-ui && npm test
-
-      - run: cd tquinlan92-material-core-ui-demo && npm test
+      - run: npm run build
 
   deployTquinla92TypescriptReduxUtils:
     <<: *defaults
