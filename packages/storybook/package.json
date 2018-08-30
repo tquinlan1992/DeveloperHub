@@ -1,0 +1,58 @@
+{
+  "name": "storybook",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tquinlan1992/DeveloperHub/tree/develop/tquinlan92-typescript-redux-utils"
+  },
+  "description": "typescript redux and react utilities",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "start": "start-storybook -p 9001 -c .storybook",
+    "test": "jest",
+    "test:watch": "node --inspect node_modules/.bin/jest --watch --no-cache",
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "deploy-storybook": "storybook-to-ghpages"
+  },
+  "author": "",
+  "license": "ISC",
+  "peerDependencies": {
+    "@types/lodash": "^4.14.109",
+    "lodash": "^4.17.10",
+    "redux": "^4.0.0"
+  },
+  "devDependencies": {
+    "@material-ui/core": "1.4.3",
+    "@material-ui/icons": "^2.0.0",
+    "@storybook/addon-actions": "4.0.0-alpha.16",
+    "@storybook/addon-info": "4.0.0-alpha.16",
+    "@storybook/addon-storysource": "4.0.0-alpha.16",
+    "@storybook/addon-viewport": "4.0.0-alpha.16",
+    "@storybook/react": "4.0.0-alpha.16",
+    "@storybook/storybook-deployer": "^2.3.0",
+    "@types/jest": "^23.0.1",
+    "@types/lodash": "^4.14.110",
+    "@types/react": "^16.4.7",
+    "@types/storybook__addon-actions": "^3.4.0",
+    "@types/storybook__react": "^3.0.8",
+    "awesome-typescript-loader": "^5.2.0",
+    "babel-core": "^6.26.3",
+    "jest": "^23.0.1",
+    "lodash": "^4.17.10",
+    "path": "^0.12.7",
+    "react": "^16.4.1",
+    "react-docgen-typescript-webpack-plugin": "^1.1.0",
+    "react-dom": "^16.4.1",
+    "redux": "^4.0.0",
+    "source-map-loader": "^0.2.4",
+    "tquinlan92-material-core-ui": "^1.0.0",
+    "tquinlan92-webpack-utils":"^1.0.0",
+    "ts-jest": "^22.4.6",
+    "typescript": "^3.0.1"
+  },
+  "dependencies": {},
+  "jest": {
+    "preset": "./node_modules/tquinlan92-webpack-utils/jest-config/index.js"
+  }
+}

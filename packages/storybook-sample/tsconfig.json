@@ -1,0 +1,12 @@
+{
+    "extends": "../tquinlan92-webpack-utils/tsconfig/library.json",
+    "compilerOptions": {
+        "outDir": "dist",
+        "jsx": "react"
+    },
+    "exclude": [
+        "dist",
+        "node_modules",
+        "**/*.test.ts"
+    ]
+}

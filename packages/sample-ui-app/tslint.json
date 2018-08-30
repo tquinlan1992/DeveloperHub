@@ -1,0 +1,3 @@
+{
+    "extends": ".tquinlan92-webpack-utils/tslint/base.json"
+}
