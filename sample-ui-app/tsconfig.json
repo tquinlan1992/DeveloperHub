@@ -1,8 +1,0 @@
-{
-    "extends": "./node_modules/tquinlan92-webpack-utils/tsconfig/ui.json",
-    "exclude": [
-        "dist",
-        "node_modules",
-        "**/*.test.ts"
-    ]
-}

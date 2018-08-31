@@ -1,0 +1,33 @@
+{
+  "name": "tquinlan92-app-library",
+  "version": "0.0.1-beta",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tquinlan1992/DeveloperHub/tree/develop/tquinlan92-typescript-redux-utils"
+  },
+  "description": "typescript redux and react utilities",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tquinlan92-webpack-build",
+    "start": "tquinlan92-webpack",
+    "test": "jest",
+    "test:watch": "node --inspect node_modules/.bin/jest --watch --no-cache"
+  },
+  "author": "",
+  "license": "ISC",
+  "peerDependencies": {
+  },
+  "devDependencies": {
+    "@types/jest": "^23.0.1",
+    "jest": "^23.0.1",
+    "tquinlan92-webpack-utils": "^1.0.0",
+    "ts-jest": "^22.4.6",
+    "typescript": "^3.0.1"
+  },
+  "dependencies": {
+  },
+  "jest": {
+    "preset": "./node_modules/tquinlan92-webpack-utils/jest-config/index.js"
+  }
+}
