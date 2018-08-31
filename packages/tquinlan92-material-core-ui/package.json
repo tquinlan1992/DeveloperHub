@@ -49,8 +49,5 @@
   },
   "dependencies": {
     "webpack-node-externals": "^1.7.2"
-  },
-  "jest": {
-    "preset": "./node_modules/tquinlan92-webpack-utils/jest-config/index.js"
   }
 }
