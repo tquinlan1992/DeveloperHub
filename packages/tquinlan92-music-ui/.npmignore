@@ -1,0 +1,6 @@
+dist
+node_modules
+coverage
+
+# api file based on static/api.sample.json
+static/api.json

@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`when TreeView is given no selectedTags should render with no selected tags 1`] = `
+<div>
+  <WithStyles(List)
+    component="nav"
+    subheader={
+      <WithStyles(ListSubheader)
+        component="div"
+      >
+        Root:
+      </WithStyles(ListSubheader)>
+    }
+  >
+    <WithStyles(ListItem)
+      button={true}
+      key="id1"
+      onClick={[Function]}
+    >
+      <WithStyles(ListItemIcon)>
+        <pure(Folder) />
+      </WithStyles(ListItemIcon)>
+      <WithStyles(ListItemText)
+        primary="folder1"
+      />
+    </WithStyles(ListItem)>
+    <WithStyles(ListItem)
+      button={true}
+      key="id2"
+    >
+      <WithStyles(Checkbox)
+        checked={false}
+        disableRipple={true}
+        onChange={[Function]}
+        tabIndex={-1}
+      />
+      <WithStyles(ListItemText)
+        primary="tag2"
+      />
+    </WithStyles(ListItem)>
+  </WithStyles(List)>
+</div>
+`;
+
+exports[`when TreeView is given selectedTags should render with selected tags 1`] = `
+<div>
+  <WithStyles(List)
+    component="nav"
+    subheader={
+      <WithStyles(ListSubheader)
+        component="div"
+      >
+        Root:
+      </WithStyles(ListSubheader)>
+    }
+  >
+    <WithStyles(ListItem)
+      button={true}
+      key="id1"
+      onClick={[Function]}
+    >
+      <WithStyles(ListItemIcon)>
+        <pure(Folder) />
+      </WithStyles(ListItemIcon)>
+      <WithStyles(ListItemText)
+        primary="folder1"
+      />
+    </WithStyles(ListItem)>
+    <WithStyles(ListItem)
+      button={true}
+      key="id2"
+    >
+      <WithStyles(Checkbox)
+        checked={true}
+        disableRipple={true}
+        onChange={[Function]}
+        tabIndex={-1}
+      />
+      <WithStyles(ListItemText)
+        primary="tag2"
+      />
+    </WithStyles(ListItem)>
+  </WithStyles(List)>
+</div>
+`;
