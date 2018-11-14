@@ -14,14 +14,6 @@ interface ComponentActions {
     loadApp: typeof actions.loading.loadApp;
 }
 
-function Home(params: { match: any }) {
-    return (
-        <div>
-            <h1>Home</h1>
-        </div>
-    );
-}
-
 export class AddTicketDialog extends React.Component<StateProps & ComponentActions> {
     componentDidMount() {
         this.props.loadApp();
@@ -40,9 +32,8 @@ export class AddTicketDialog extends React.Component<StateProps & ComponentActio
                 </div>
                 <div style={{ float: 'left' }}>
                     <Switch>
-                        <Route exact path="/home" component={Home} />
                         <Route exact path={"/feed"} component={TicketList} />
-                        <Redirect from='*' to='/home' />
+                        <Redirect from='*' to='/feed' />
                     </Switch>
                 </div>
             </div>;
