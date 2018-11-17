@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Dialog, TextField, DialogTitle, DialogContent, DialogActions, Button, InputLabel, Select, MenuItem, FormControl } from "@material-ui/core";
 import { connect } from 'react-redux';
-import { AppStateCore } from "developer-hub-headless";
-import actions from '../../core/actions';
+import { AppStateCore, actions } from "../../headless";
 import { isNumber } from 'lodash';
 
 interface AddTicketDialogOwnProps {

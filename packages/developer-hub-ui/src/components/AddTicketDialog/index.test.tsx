@@ -6,7 +6,7 @@ import * as Adapter from 'enzyme-adapter-react-16';
 import AddTicketDialog from './';
 import { getAnyJestFn } from '../utils/testUtils';
 import * as _ from 'lodash';
-import actions from '../../core/actions';
+import { actions } from "../../headless";
 
 configure({ adapter: new Adapter() });
 

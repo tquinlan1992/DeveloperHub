@@ -58,6 +58,18 @@ class PouchWrapper {
         }
     }
 
+    async closeTicket(id: string) {
+        try {
+            const ticketDoc = await this.db.get(id);
+            return this.db.put({
+                ...ticketDoc,
+                closed: true
+            });
+        } catch (e) {
+            throw new Error('error deleting ticket');
+        }
+    }
+
 }
 
 export default PouchWrapper;

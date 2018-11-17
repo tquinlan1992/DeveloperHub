@@ -22,6 +22,7 @@ export interface Ticket {
     storyPoint: null | number;
     description: string;
     deleted: boolean;
+    closed?: boolean;
     _id: string;
 }
 

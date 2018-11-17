@@ -4,7 +4,7 @@ import * as React from 'react';
 import { shallow, configure } from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';
 import { TicketList } from './';
-import actions from '../../core/actions';
+import { actions } from "../../headless";
 import { getAnyJestFn } from '../utils/testUtils';
 import * as _ from 'lodash';
 
@@ -14,7 +14,7 @@ const mockActions = {
     setShowAddTicketDialog: getAnyJestFn(),
     fetchTickets: getAnyJestFn(),
     addTicket: getAnyJestFn(),
-    deleteTicket: getAnyJestFn()
+    closeTicket: getAnyJestFn()
 };
 
 function testShowAddTicketDialogValue(showAddTicketDialog: boolean) {
@@ -25,7 +25,7 @@ function testShowAddTicketDialogValue(showAddTicketDialog: boolean) {
                 setShowAddTicketDialog: mockActions.setShowAddTicketDialog as typeof actions.ticketList.setShowAddTicketDialog,
                 fetchTickets: mockActions.fetchTickets as typeof actions.thunkActions.database.fetchTickets,
                 addTicket: mockActions.addTicket as typeof actions.addTicket,
-                deleteTicket: mockActions.addTicket as typeof actions.thunkActions.database.deleteTicket,
+                closeTicket: mockActions.addTicket as typeof actions.thunkActions.database.closeTicket,
                 tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1', deleted: false}]
             };
             const result = shallow(<TicketList {...props} />);
@@ -52,7 +52,7 @@ describe('when a user', () => {
                 setShowAddTicketDialog: mockActions.setShowAddTicketDialog as typeof actions.ticketList.setShowAddTicketDialog,
                 fetchTickets: mockActions.fetchTickets as typeof actions.thunkActions.database.fetchTickets,
                 addTicket: mockActions.addTicket as typeof actions.addTicket,
-                deleteTicket: mockActions.addTicket as typeof actions.thunkActions.database.deleteTicket,
+                closeTicket: mockActions.addTicket as typeof actions.thunkActions.database.closeTicket,
                 tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1', deleted: false }]
             };
             const result = shallow(<TicketList {...props} />);
@@ -70,7 +70,7 @@ describe('when a user', () => {
                 setShowAddTicketDialog: mockActions.setShowAddTicketDialog as typeof actions.ticketList.setShowAddTicketDialog,
                 fetchTickets: mockActions.fetchTickets as typeof actions.thunkActions.database.fetchTickets,
                 addTicket: mockActions.addTicket as typeof actions.addTicket,
-                deleteTicket: mockActions.addTicket as typeof actions.thunkActions.database.deleteTicket,
+                closeTicket: mockActions.addTicket as typeof actions.thunkActions.database.closeTicket,
                 tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1', deleted: false }]
             };
             const result = shallow(<TicketList {...props} />);

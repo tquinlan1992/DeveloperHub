@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import actions from '../../core/actions';
-import { AppStateCore, Ticket } from "developer-hub-headless";
+import { AppStateCore, Ticket, actions } from "../../headless";
 import { Table, Button, TableHead, TableRow, TableBody, TableCell, TextField, IconButton } from "@material-ui/core";
 import AddTicketDialog from '../AddTicketDialog';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -9,7 +8,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 interface TicketListActions {
     setShowAddTicketDialog: typeof actions.ticketList.setShowAddTicketDialog;
     fetchTickets: typeof actions.ticketList.fetchTickets;
-    deleteTicket: typeof actions.ticketList.deleteTicket;
+    closeTicket: typeof actions.ticketList.closeTicket;
 }
 interface TicketListProps {
     showAddTicketDialog: boolean;
@@ -31,8 +30,8 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
         this.props.setShowAddTicketDialog({ value: false });
     }
 
-    onClickDelete(id: string) {
-        this.props.deleteTicket(id);
+    onClickClose(id: string) {
+        this.props.closeTicket(id);
     }
 
     render() {
@@ -43,9 +42,7 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
                     <TableHead>
                         <TableRow>
                             <TableCell>Ticket</TableCell>
-                            <TableCell>3/22</TableCell>
-                            <TableCell>3/23</TableCell>
-                            <TableCell>3/26</TableCell>
+                            <TableCell></TableCell>
                             <TableCell></TableCell>
                         </TableRow>
                     </TableHead>
@@ -57,20 +54,11 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
                                         defaultValue={ticket.title}
                                     />
                                 </TableCell>
-                                <TableCell><TextField
-                                    defaultValue={ticket.storyPoint || ''}
-                                />
-                                </TableCell>
-                                <TableCell><TextField
-                                    defaultValue={ticket.storyPoint || ''}
-                                />
-                                </TableCell>
-                                <TableCell><TextField
-                                    defaultValue={ticket.storyPoint || ''}
-                                />
+                                <TableCell>
+                                    {ticket.closed ? 'Closed' : ''}
                                 </TableCell>
                                 <TableCell>
-                                    <IconButton onClick={() => this.onClickDelete(ticket._id)} color="primary">
+                                    <IconButton onClick={() => this.onClickClose(ticket._id)} color="primary">
                                         <DeleteIcon />
                                     </IconButton>
                                 </TableCell>
