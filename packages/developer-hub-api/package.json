@@ -38,6 +38,6 @@
     "tslint-webpack-plugin": "^1.2.2",
     "typescript": "^3.0.1",
     "webpack": "^4.16.2",
-    "webpack-cli": "^2.1.4"
+    "webpack-cli": "^3.1.1"
   }
 }
