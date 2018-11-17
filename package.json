@@ -8,7 +8,9 @@
     "ci": "lerna bootstrap --hoist --ci",
     "start-storybook": "lerna run start --scope storybook --stream",
     "test": "lerna run test --scope tquinlan92-material-core-ui --scope developer-hub-headless --stream",
-    "build": "lerna run build"
+	"build": "lerna run build",
+	"start-developer-hub-ui": "cd packages/developer-hub-ui && npm start",
+	"start-pouchdb": "cd packages/pouchdb-mock && npm start"
   },
   "repository": {
     "type": "git",
