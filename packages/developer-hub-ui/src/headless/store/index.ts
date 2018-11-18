@@ -23,6 +23,7 @@ export interface Ticket {
     description: string;
     deleted: boolean;
     closed?: boolean;
+    sprint?: boolean;
     _id: string;
 }
 

@@ -11,6 +11,7 @@ interface TicketListActions {
     setShowAddTicketDialog: typeof actions.ticketList.setShowAddTicketDialog;
     fetchTickets: typeof actions.ticketList.fetchTickets;
     closeTicket: typeof actions.ticketList.closeTicket;
+    addTicketToSprint: typeof actions.ticketList.addTicketToSprint;
 }
 interface TicketListProps {
     showAddTicketDialog: boolean;
@@ -32,14 +33,17 @@ function DeleteIconWithMethod( { onDelete }: DeleteIconWithMethodParams) {
 interface TicketTableParams {
     tickets: Tickets;
     onDelete?: (id: string) => void;
+    onAddTicketToSprint?: (id: string) => void;
 }
 
-function TicketTable({ tickets, onDelete }: TicketTableParams) {
+function TicketTable({ tickets, onDelete, onAddTicketToSprint }: TicketTableParams) {
     return (
         <Table>
             <TableHead>
                 <TableRow>
                     <TableCell>Ticket</TableCell>
+                    <TableCell></TableCell>
+                    <TableCell></TableCell>
                     <TableCell></TableCell>
                     <TableCell></TableCell>
                 </TableRow>
@@ -56,7 +60,13 @@ function TicketTable({ tickets, onDelete }: TicketTableParams) {
                             {ticket.closed ? 'Closed' : ''}
                         </TableCell>
                         <TableCell>
+                            {ticket.sprint ? 'Sprint' : ''}
+                        </TableCell>
+                        <TableCell>
                             { onDelete ? <DeleteIconWithMethod onDelete={() => onDelete(ticket._id)} /> : null}
+                        </TableCell>
+                        <TableCell>
+                            { onAddTicketToSprint ? <DeleteIconWithMethod onDelete={() => onAddTicketToSprint(ticket._id)} /> : null}
                         </TableCell>
                     </TableRow>);
                 })}
@@ -95,7 +105,7 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
             <div>
                 <Button title='Add Ticket' onClick={this.openAddticketDialog.bind(this)}> Add Ticket </Button>
                 <h1>Open</h1>
-                <TicketTable tickets={openTickets} onDelete={this.onClickClose.bind(this)} />
+                <TicketTable tickets={openTickets} onDelete={this.onClickClose.bind(this)} onAddTicketToSprint={this.props.addTicketToSprint.bind(this)} />
                 <h1>Closed</h1>
                 <TicketTable tickets={closedTickets} />
 

@@ -28,6 +28,7 @@ function testShowAddTicketDialogValue(showAddTicketDialog: boolean) {
                 fetchTickets: mockActions.fetchTickets as any,
                 addTicket: mockActions.addTicket as any,
                 closeTicket: mockActions.addTicket as any,
+                addTicketToSprint: mockActions.addTicket as any,
                 tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1', deleted: false}]
             };
             const result = shallow(<TicketList {...props} />);
@@ -55,6 +56,7 @@ describe('when a user', () => {
                 fetchTickets: mockActions.fetchTickets as any,
                 addTicket: mockActions.addTicket as any,
                 closeTicket: mockActions.addTicket as any,
+                addTicketToSprint: mockActions.addTicket as any,
                 tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1', deleted: false }]
             };
             const result = shallow(<TicketList {...props} />);
@@ -73,6 +75,7 @@ describe('when a user', () => {
                 fetchTickets: mockActions.fetchTickets as any,
                 addTicket: mockActions.addTicket as any,
                 closeTicket: mockActions.addTicket as any,
+                addTicketToSprint: mockActions.addTicket as any,
                 tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1', deleted: false }]
             };
             const result = shallow(<TicketList {...props} />);

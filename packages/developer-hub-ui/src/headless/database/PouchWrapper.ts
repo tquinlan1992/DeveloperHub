@@ -58,6 +58,18 @@ class PouchWrapper {
         }
     }
 
+    async markTicketInSprint(id: string) {
+        try {
+            const ticketDoc = await this.db.get(id);
+            return this.db.put({
+                ...ticketDoc,
+                sprint: true
+            });
+        } catch (e) {
+            throw new Error('error including ticket');
+        }
+    }
+
     async closeTicket(id: string) {
         try {
             const ticketDoc = await this.db.get(id);
