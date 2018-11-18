@@ -3,12 +3,10 @@ export { AnyAction };
 import { AppStateCore, AppState } from '../store';
 import routing from './routing';
 import addTicket from './addTicket';
-import ticketList from './ticketList';
+import ticketList from '../../components/TicketList/redux';
 import loading from './loading';
 import { getReducersFromCombinedActionReducer, getActionsAndReducersFromCombinedActionReducer } from 'tquinlan92-typescript-redux-utils';
 import thunkActions from './thunkActions';
-import * as exportTypes from './exportTypes';
-exportTypes;
 
 const coreActionsReducersTree = {
     ticketList,

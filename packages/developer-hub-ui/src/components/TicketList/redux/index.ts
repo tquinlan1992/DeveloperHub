@@ -1,11 +1,10 @@
-import { TicketList, AppStateCore } from '../../store';
+import { TicketList, AppStateCore } from '../../../headless/store';
 import simpleActions from './simpleActions';
 import { createReducer, getCreators } from 'tquinlan92-typescript-redux-utils';
-import * as exportTypes from './exportTypes';
 import thunkActions from './thunkActions';
 
 export {
-    exportTypes, AppStateCore
+    AppStateCore
 };
 
 const initialState = {

@@ -1,8 +1,8 @@
 import { ThunkAction } from "redux-thunk";
-import { AppStateCore } from "../../../store";
+import { AppStateCore } from "../../../../headless/store";
 import ticketListActionReducers from "../";
 import { AnyAction } from "redux";
-import fetchTicketsThunk from '../../thunkActions/database/fetchTickets';
+import fetchTicketsThunk from '../../../../headless/actions/thunkActions/database/fetchTickets';
 
 export default function fetchTickets(): ThunkAction<void, AppStateCore, void, AnyAction> {
     return async function (dispatch) {
