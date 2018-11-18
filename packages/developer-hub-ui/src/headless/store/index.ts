@@ -4,6 +4,8 @@ import { omit } from 'lodash';
 import middleware from '../middleware';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { RouterState } from "react-router-redux";
+import { Ticket } from './AppState';
+export { Ticket }; 
 
 declare module 'redux' {
     export type GenericStoreEnhancer = any;
@@ -15,16 +17,6 @@ export interface Doc {
 
 export interface VoiceToCode {
     text: string;
-}
-
-export interface Ticket {
-    title: string;
-    storyPoint: null | number;
-    description: string;
-    deleted: boolean;
-    closed?: boolean;
-    sprint?: boolean;
-    _id: string;
 }
 
 export interface AddTicketState {

@@ -13,6 +13,8 @@ export interface Ticket {
     storyPoint: null | number;
     description: string;
     deleted: boolean;
+    closed?: boolean;
+    sprint?: boolean;
     _id: string;
 }
 
@@ -30,12 +32,12 @@ export interface TicketList {
 export type Loading = boolean;
 
 export interface AppState {
-    routing: RouterState,
+    routing: RouterState;
     ticketList: TicketList;
     addTicket: AddTicketState;
     loading: Loading;
 }
 
 export default interface AppStateCore {
-    core: AppState
+    core: AppState;
 }

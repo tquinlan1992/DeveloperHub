@@ -60,10 +60,10 @@ class PouchWrapper {
 
     async markTicketInSprint(id: string) {
         try {
-            const ticketDoc = await this.db.get(id);
+            const ticketDoc = await this.db.get<Ticket>(id);
             return this.db.put({
                 ...ticketDoc,
-                sprint: true
+                sprint: !ticketDoc.sprint
             });
         } catch (e) {
             throw new Error('error including ticket');

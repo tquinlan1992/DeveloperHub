@@ -1,4 +1,4 @@
-import { Ticket, TicketList } from "../../../store";
+import { Ticket, TicketList } from "../../../store/AppState";
 import { makeActionCreatorWithReducerWithPrefix } from "tquinlan92-typescript-redux-utils";
 import * as makeActionCreatorTypes from '../../utils/exportTypes';
 makeActionCreatorTypes;
