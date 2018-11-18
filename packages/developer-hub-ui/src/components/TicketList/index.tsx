@@ -5,6 +5,8 @@ import { Table, Button, TableHead, TableRow, TableBody, TableCell, TextField, Ic
 import AddTicketDialog from '../AddTicketDialog';
 import DeleteIcon from '@material-ui/icons/Delete';
 
+type Tickets = Ticket[];
+
 interface TicketListActions {
     setShowAddTicketDialog: typeof actions.ticketList.setShowAddTicketDialog;
     fetchTickets: typeof actions.ticketList.fetchTickets;
@@ -12,12 +14,60 @@ interface TicketListActions {
 }
 interface TicketListProps {
     showAddTicketDialog: boolean;
-    tickets: Ticket[];
+    tickets: Tickets;
 }
+
+interface DeleteIconWithMethodParams {
+    onDelete: () => void;
+}
+
+function DeleteIconWithMethod( { onDelete }: DeleteIconWithMethodParams) {
+    return (
+    <IconButton onClick={onDelete} color="primary">
+        <DeleteIcon />
+    </IconButton>
+    );
+}
+
+interface TicketTableParams {
+    tickets: Tickets;
+    onDelete?: (id: string) => void;
+}
+
+function TicketTable({ tickets, onDelete }: TicketTableParams) {
+    return (
+        <Table>
+            <TableHead>
+                <TableRow>
+                    <TableCell>Ticket</TableCell>
+                    <TableCell></TableCell>
+                    <TableCell></TableCell>
+                </TableRow>
+            </TableHead>
+            <TableBody>
+                {tickets.map(ticket => {
+                    return (<TableRow key={ticket._id}>
+                        <TableCell>
+                            <TextField
+                                defaultValue={ticket.title}
+                            />
+                        </TableCell>
+                        <TableCell>
+                            {ticket.closed ? 'Closed' : ''}
+                        </TableCell>
+                        <TableCell>
+                            { onDelete ? <DeleteIconWithMethod onDelete={() => onDelete(ticket._id)} /> : null}
+                        </TableCell>
+                    </TableRow>);
+                })}
+            </TableBody>
+        </Table>
+    );
+}
+
 export class TicketList extends React.Component<TicketListProps & TicketListActions> {
 
     componentDidMount() {
-        console.log('got here');
         this.props.fetchTickets();
     }
 
@@ -35,37 +85,20 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
     }
 
     render() {
+        const openTickets = this.props.tickets.filter(ticket => {
+            return !ticket.closed;
+        });
+        const closedTickets = this.props.tickets.filter(ticket => {
+            return ticket.closed;
+        });
         return (
             <div>
-                <Button onClick={this.openAddticketDialog.bind(this)}> Add Ticket </Button>
-                <Table>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Ticket</TableCell>
-                            <TableCell></TableCell>
-                            <TableCell></TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {this.props.tickets.map(ticket => {
-                            return (<TableRow key={ticket._id}>
-                                <TableCell>
-                                    <TextField
-                                        defaultValue={ticket.title}
-                                    />
-                                </TableCell>
-                                <TableCell>
-                                    {ticket.closed ? 'Closed' : ''}
-                                </TableCell>
-                                <TableCell>
-                                    <IconButton onClick={() => this.onClickClose(ticket._id)} color="primary">
-                                        <DeleteIcon />
-                                    </IconButton>
-                                </TableCell>
-                            </TableRow>);
-                        })}
-                    </TableBody>
-                </Table>
+                <Button title='Add Ticket' onClick={this.openAddticketDialog.bind(this)}> Add Ticket </Button>
+                <h1>Open</h1>
+                <TicketTable tickets={openTickets} onDelete={this.onClickClose.bind(this)} />
+                <h1>Closed</h1>
+                <TicketTable tickets={closedTickets} />
+
                 <AddTicketDialog
                     open={this.props.showAddTicketDialog}
                     onRequestClose={(this.closeAddticketDialog.bind(this))}
@@ -83,8 +116,8 @@ const mapStateToProps = ({ core }: AppStateCore, ownProps: any) => {
     };
 };
 
-const mapActionsToProps = { 
-    ...actions.ticketList, 
+const mapActionsToProps = {
+    ...actions.ticketList,
 };
 
 export default connect<TicketListProps, TicketListActions>(mapStateToProps, mapActionsToProps)(TicketList);

@@ -1,385 +1,1375 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`describe when the TicketList Component is given showAddTicketDialog as false TicketList should show the addTicketDialog open as false 1`] = `
-<div>
-  <RaisedButton
-    disabled={false}
-    fullWidth={false}
-    label="Add Ticket"
-    labelPosition="after"
-    onClick={[Function]}
-    primary={false}
-    secondary={false}
-  />
-  <Table
-    allRowsSelected={false}
-    fixedFooter={true}
-    fixedHeader={true}
-    height="inherit"
-    multiSelectable={false}
-    selectable={true}
-  >
-    <TableHeader
-      adjustForCheckbox={true}
-      displaySelectAll={true}
-      enableSelectAll={true}
-      selectAllSelected={false}
-    >
-      <TableRow
-        displayBorder={true}
-        hoverable={false}
-        hovered={false}
-        selectable={true}
-        striped={false}
-      >
-        <TableHeaderColumn>
-          Ticket
-        </TableHeaderColumn>
-        <TableHeaderColumn>
-          3/22
-        </TableHeaderColumn>
-        <TableHeaderColumn>
-          3/23
-        </TableHeaderColumn>
-        <TableHeaderColumn>
-          3/26
-        </TableHeaderColumn>
-      </TableRow>
-    </TableHeader>
-    <TableBody
-      allRowsSelected={false}
-      deselectOnClickaway={true}
-      displayRowCheckbox={true}
-      multiSelectable={false}
-      preScanRows={true}
-      selectable={true}
-      style={Object {}}
-    >
-      <TableRow
-        displayBorder={true}
-        hoverable={false}
-        hovered={false}
-        selectable={true}
-        striped={false}
-      >
-        <TableRowColumn
-          hoverable={false}
-        >
-          <TextField
-            defaultValue="OVC-523"
-            disabled={false}
-            floatingLabelFixed={false}
-            fullWidth={false}
-            multiLine={false}
-            rows={1}
-            type="text"
-            underlineShow={true}
-          />
-        </TableRowColumn>
-        <TableRowColumn
-          hoverable={false}
-        >
-          <TextField
-            defaultValue="5"
-            disabled={false}
-            floatingLabelFixed={false}
-            fullWidth={false}
-            multiLine={false}
-            rows={1}
-            type="text"
-            underlineShow={true}
-          />
-        </TableRowColumn>
-        <TableRowColumn
-          hoverable={false}
-        >
-          <TextField
-            defaultValue="3"
-            disabled={false}
-            floatingLabelFixed={false}
-            fullWidth={false}
-            multiLine={false}
-            rows={1}
-            type="text"
-            underlineShow={true}
-          />
-        </TableRowColumn>
-        <TableRowColumn
-          hoverable={false}
-        >
-          <TextField
-            defaultValue="0"
-            disabled={false}
-            floatingLabelFixed={false}
-            fullWidth={false}
-            multiLine={false}
-            rows={1}
-            type="text"
-            underlineShow={true}
-          />
-        </TableRowColumn>
-      </TableRow>
-      <TableRow
-        displayBorder={true}
-        hoverable={false}
-        hovered={false}
-        selectable={true}
-        striped={false}
-      >
-        <TableRowColumn
-          hoverable={false}
-        >
-          <TextField
-            defaultValue="ticketTitle"
-            disabled={false}
-            floatingLabelFixed={false}
-            fullWidth={false}
-            multiLine={false}
-            rows={1}
-            type="text"
-            underlineShow={true}
-          />
-        </TableRowColumn>
-        <TableRowColumn
-          hoverable={false}
-        >
-          <TextField
-            defaultValue="5"
-            disabled={false}
-            floatingLabelFixed={false}
-            fullWidth={false}
-            multiLine={false}
-            rows={1}
-            type="text"
-            underlineShow={true}
-          />
-        </TableRowColumn>
-        <TableRowColumn
-          hoverable={false}
-        >
-          <TextField
-            defaultValue="3"
-            disabled={false}
-            floatingLabelFixed={false}
-            fullWidth={false}
-            multiLine={false}
-            rows={1}
-            type="text"
-            underlineShow={true}
-          />
-        </TableRowColumn>
-        <TableRowColumn
-          hoverable={false}
-        >
-          <TextField
-            defaultValue="0"
-            disabled={false}
-            floatingLabelFixed={false}
-            fullWidth={false}
-            multiLine={false}
-            rows={1}
-            type="text"
-            underlineShow={true}
-          />
-        </TableRowColumn>
-      </TableRow>
-    </TableBody>
-  </Table>
-  <Connect(AddTicketDialog)
-    onRequestClose={[Function]}
-    open={false}
-  />
-</div>
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <TicketList
+    addTicket={[Function]}
+    closeTicket={[Function]}
+    fetchTickets={[Function]}
+    setShowAddTicketDialog={[Function]}
+    showAddTicketDialog={false}
+    tickets={
+        Array [
+            Object {
+              "_id": "id1",
+              "deleted": false,
+              "description": "description",
+              "storyPoint": 3,
+              "title": "ticketTitle",
+            },
+          ]
+    }
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <WithStyles(Button)
+          onClick={[Function]}
+          title="Add Ticket"
+>
+           Add Ticket 
+</WithStyles(Button)>,
+        <WithStyles(Table)>
+          <WithStyles(TableHead)>
+                    <WithStyles(TableRow)>
+                              <WithStyles(TableCell)>
+                                        Ticket
+                              </WithStyles(TableCell)>
+                              <WithStyles(TableCell) />
+                              <WithStyles(TableCell) />
+                    </WithStyles(TableRow)>
+          </WithStyles(TableHead)>
+          <WithStyles(TableBody)>
+                    <WithStyles(TableRow)>
+                              <WithStyles(TableCell)>
+                                        <TextField
+                                                  defaultValue="ticketTitle"
+                                                  required={false}
+                                                  select={false}
+                                        />
+                              </WithStyles(TableCell)>
+                              <WithStyles(TableCell) />
+                              <WithStyles(TableCell)>
+                                        <WithStyles(IconButton)
+                                                  color="primary"
+                                                  onClick={[Function]}
+                                        >
+                                                  <pure(Delete) />
+                                        </WithStyles(IconButton)>
+                              </WithStyles(TableCell)>
+                    </WithStyles(TableRow)>
+          </WithStyles(TableBody)>
+</WithStyles(Table)>,
+        <Connect(AddTicketDialog)
+          onRequestClose={[Function]}
+          open={false}
+/>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": " Add Ticket ",
+          "onClick": [Function],
+          "title": "Add Ticket",
+        },
+        "ref": null,
+        "rendered": " Add Ticket ",
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <WithStyles(TableHead)>
+              <WithStyles(TableRow)>
+                            <WithStyles(TableCell)>
+                                          Ticket
+                            </WithStyles(TableCell)>
+                            <WithStyles(TableCell) />
+                            <WithStyles(TableCell) />
+              </WithStyles(TableRow)>
+</WithStyles(TableHead)>,
+            <WithStyles(TableBody)>
+              <WithStyles(TableRow)>
+                            <WithStyles(TableCell)>
+                                          <TextField
+                                                        defaultValue="ticketTitle"
+                                                        required={false}
+                                                        select={false}
+                                          />
+                            </WithStyles(TableCell)>
+                            <WithStyles(TableCell) />
+                            <WithStyles(TableCell)>
+                                          <WithStyles(IconButton)
+                                                        color="primary"
+                                                        onClick={[Function]}
+                                          >
+                                                        <pure(Delete) />
+                                          </WithStyles(IconButton)>
+                            </WithStyles(TableCell)>
+              </WithStyles(TableRow)>
+</WithStyles(TableBody)>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <WithStyles(TableRow)>
+                <WithStyles(TableCell)>
+                                Ticket
+                </WithStyles(TableCell)>
+                <WithStyles(TableCell) />
+                <WithStyles(TableCell) />
+</WithStyles(TableRow)>,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <WithStyles(TableCell)>
+                    Ticket
+</WithStyles(TableCell)>,
+                  <WithStyles(TableCell) />,
+                  <WithStyles(TableCell) />,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "Ticket",
+                  },
+                  "ref": null,
+                  "rendered": "Ticket",
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <WithStyles(TableRow)>
+                  <WithStyles(TableCell)>
+                                    <TextField
+                                                      defaultValue="ticketTitle"
+                                                      required={false}
+                                                      select={false}
+                                    />
+                  </WithStyles(TableCell)>
+                  <WithStyles(TableCell) />
+                  <WithStyles(TableCell)>
+                                    <WithStyles(IconButton)
+                                                      color="primary"
+                                                      onClick={[Function]}
+                                    >
+                                                      <pure(Delete) />
+                                    </WithStyles(IconButton)>
+                  </WithStyles(TableCell)>
+</WithStyles(TableRow)>,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": "id1",
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    <WithStyles(TableCell)>
+                      <TextField
+                                            defaultValue="ticketTitle"
+                                            required={false}
+                                            select={false}
+                      />
+</WithStyles(TableCell)>,
+                    <WithStyles(TableCell) />,
+                    <WithStyles(TableCell)>
+                      <WithStyles(IconButton)
+                                            color="primary"
+                                            onClick={[Function]}
+                      >
+                                            <pure(Delete) />
+                      </WithStyles(IconButton)>
+</WithStyles(TableCell)>,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": <TextField
+                        defaultValue="ticketTitle"
+                        required={false}
+                        select={false}
+/>,
+                    },
+                    "ref": null,
+                    "rendered": Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "function",
+                      "props": Object {
+                        "defaultValue": "ticketTitle",
+                        "required": false,
+                        "select": false,
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "",
+                    },
+                    "ref": null,
+                    "rendered": "",
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": <WithStyles(IconButton)
+                        color="primary"
+                        onClick={[Function]}
+>
+                        <pure(Delete) />
+</WithStyles(IconButton)>,
+                    },
+                    "ref": null,
+                    "rendered": Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": <pure(Delete) />,
+                        "color": "primary",
+                        "onClick": [Function],
+                      },
+                      "ref": null,
+                      "rendered": Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {},
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                      "type": [Function],
+                    },
+                    "type": [Function],
+                  },
+                ],
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "onRequestClose": [Function],
+          "open": false,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <WithStyles(Button)
+            onClick={[Function]}
+            title="Add Ticket"
+>
+             Add Ticket 
+</WithStyles(Button)>,
+          <WithStyles(Table)>
+            <WithStyles(TableHead)>
+                        <WithStyles(TableRow)>
+                                    <WithStyles(TableCell)>
+                                                Ticket
+                                    </WithStyles(TableCell)>
+                                    <WithStyles(TableCell) />
+                                    <WithStyles(TableCell) />
+                        </WithStyles(TableRow)>
+            </WithStyles(TableHead)>
+            <WithStyles(TableBody)>
+                        <WithStyles(TableRow)>
+                                    <WithStyles(TableCell)>
+                                                <TextField
+                                                            defaultValue="ticketTitle"
+                                                            required={false}
+                                                            select={false}
+                                                />
+                                    </WithStyles(TableCell)>
+                                    <WithStyles(TableCell) />
+                                    <WithStyles(TableCell)>
+                                                <WithStyles(IconButton)
+                                                            color="primary"
+                                                            onClick={[Function]}
+                                                >
+                                                            <pure(Delete) />
+                                                </WithStyles(IconButton)>
+                                    </WithStyles(TableCell)>
+                        </WithStyles(TableRow)>
+            </WithStyles(TableBody)>
+</WithStyles(Table)>,
+          <Connect(AddTicketDialog)
+            onRequestClose={[Function]}
+            open={false}
+/>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": " Add Ticket ",
+            "onClick": [Function],
+            "title": "Add Ticket",
+          },
+          "ref": null,
+          "rendered": " Add Ticket ",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <WithStyles(TableHead)>
+                <WithStyles(TableRow)>
+                                <WithStyles(TableCell)>
+                                                Ticket
+                                </WithStyles(TableCell)>
+                                <WithStyles(TableCell) />
+                                <WithStyles(TableCell) />
+                </WithStyles(TableRow)>
+</WithStyles(TableHead)>,
+              <WithStyles(TableBody)>
+                <WithStyles(TableRow)>
+                                <WithStyles(TableCell)>
+                                                <TextField
+                                                                defaultValue="ticketTitle"
+                                                                required={false}
+                                                                select={false}
+                                                />
+                                </WithStyles(TableCell)>
+                                <WithStyles(TableCell) />
+                                <WithStyles(TableCell)>
+                                                <WithStyles(IconButton)
+                                                                color="primary"
+                                                                onClick={[Function]}
+                                                >
+                                                                <pure(Delete) />
+                                                </WithStyles(IconButton)>
+                                </WithStyles(TableCell)>
+                </WithStyles(TableRow)>
+</WithStyles(TableBody)>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <WithStyles(TableRow)>
+                  <WithStyles(TableCell)>
+                                    Ticket
+                  </WithStyles(TableCell)>
+                  <WithStyles(TableCell) />
+                  <WithStyles(TableCell) />
+</WithStyles(TableRow)>,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    <WithStyles(TableCell)>
+                      Ticket
+</WithStyles(TableCell)>,
+                    <WithStyles(TableCell) />,
+                    <WithStyles(TableCell) />,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "Ticket",
+                    },
+                    "ref": null,
+                    "rendered": "Ticket",
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {},
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {},
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                ],
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <WithStyles(TableRow)>
+                    <WithStyles(TableCell)>
+                                        <TextField
+                                                            defaultValue="ticketTitle"
+                                                            required={false}
+                                                            select={false}
+                                        />
+                    </WithStyles(TableCell)>
+                    <WithStyles(TableCell) />
+                    <WithStyles(TableCell)>
+                                        <WithStyles(IconButton)
+                                                            color="primary"
+                                                            onClick={[Function]}
+                                        >
+                                                            <pure(Delete) />
+                                        </WithStyles(IconButton)>
+                    </WithStyles(TableCell)>
+</WithStyles(TableRow)>,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": "id1",
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": Array [
+                      <WithStyles(TableCell)>
+                        <TextField
+                                                defaultValue="ticketTitle"
+                                                required={false}
+                                                select={false}
+                        />
+</WithStyles(TableCell)>,
+                      <WithStyles(TableCell) />,
+                      <WithStyles(TableCell)>
+                        <WithStyles(IconButton)
+                                                color="primary"
+                                                onClick={[Function]}
+                        >
+                                                <pure(Delete) />
+                        </WithStyles(IconButton)>
+</WithStyles(TableCell)>,
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": <TextField
+                          defaultValue="ticketTitle"
+                          required={false}
+                          select={false}
+/>,
+                      },
+                      "ref": null,
+                      "rendered": Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "function",
+                        "props": Object {
+                          "defaultValue": "ticketTitle",
+                          "required": false,
+                          "select": false,
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": "",
+                      },
+                      "ref": null,
+                      "rendered": "",
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": <WithStyles(IconButton)
+                          color="primary"
+                          onClick={[Function]}
+>
+                          <pure(Delete) />
+</WithStyles(IconButton)>,
+                      },
+                      "ref": null,
+                      "rendered": Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "children": <pure(Delete) />,
+                          "color": "primary",
+                          "onClick": [Function],
+                        },
+                        "ref": null,
+                        "rendered": Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "class",
+                          "props": Object {},
+                          "ref": null,
+                          "rendered": null,
+                          "type": [Function],
+                        },
+                        "type": [Function],
+                      },
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "onRequestClose": [Function],
+            "open": false,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
 `;
 
 exports[`describe when the TicketList Component is given showAddTicketDialog as true TicketList should show the addTicketDialog open as true 1`] = `
-<div>
-  <RaisedButton
-    disabled={false}
-    fullWidth={false}
-    label="Add Ticket"
-    labelPosition="after"
-    onClick={[Function]}
-    primary={false}
-    secondary={false}
-  />
-  <Table
-    allRowsSelected={false}
-    fixedFooter={true}
-    fixedHeader={true}
-    height="inherit"
-    multiSelectable={false}
-    selectable={true}
-  >
-    <TableHeader
-      adjustForCheckbox={true}
-      displaySelectAll={true}
-      enableSelectAll={true}
-      selectAllSelected={false}
-    >
-      <TableRow
-        displayBorder={true}
-        hoverable={false}
-        hovered={false}
-        selectable={true}
-        striped={false}
-      >
-        <TableHeaderColumn>
-          Ticket
-        </TableHeaderColumn>
-        <TableHeaderColumn>
-          3/22
-        </TableHeaderColumn>
-        <TableHeaderColumn>
-          3/23
-        </TableHeaderColumn>
-        <TableHeaderColumn>
-          3/26
-        </TableHeaderColumn>
-      </TableRow>
-    </TableHeader>
-    <TableBody
-      allRowsSelected={false}
-      deselectOnClickaway={true}
-      displayRowCheckbox={true}
-      multiSelectable={false}
-      preScanRows={true}
-      selectable={true}
-      style={Object {}}
-    >
-      <TableRow
-        displayBorder={true}
-        hoverable={false}
-        hovered={false}
-        selectable={true}
-        striped={false}
-      >
-        <TableRowColumn
-          hoverable={false}
-        >
-          <TextField
-            defaultValue="OVC-523"
-            disabled={false}
-            floatingLabelFixed={false}
-            fullWidth={false}
-            multiLine={false}
-            rows={1}
-            type="text"
-            underlineShow={true}
-          />
-        </TableRowColumn>
-        <TableRowColumn
-          hoverable={false}
-        >
-          <TextField
-            defaultValue="5"
-            disabled={false}
-            floatingLabelFixed={false}
-            fullWidth={false}
-            multiLine={false}
-            rows={1}
-            type="text"
-            underlineShow={true}
-          />
-        </TableRowColumn>
-        <TableRowColumn
-          hoverable={false}
-        >
-          <TextField
-            defaultValue="3"
-            disabled={false}
-            floatingLabelFixed={false}
-            fullWidth={false}
-            multiLine={false}
-            rows={1}
-            type="text"
-            underlineShow={true}
-          />
-        </TableRowColumn>
-        <TableRowColumn
-          hoverable={false}
-        >
-          <TextField
-            defaultValue="0"
-            disabled={false}
-            floatingLabelFixed={false}
-            fullWidth={false}
-            multiLine={false}
-            rows={1}
-            type="text"
-            underlineShow={true}
-          />
-        </TableRowColumn>
-      </TableRow>
-      <TableRow
-        displayBorder={true}
-        hoverable={false}
-        hovered={false}
-        selectable={true}
-        striped={false}
-      >
-        <TableRowColumn
-          hoverable={false}
-        >
-          <TextField
-            defaultValue="ticketTitle"
-            disabled={false}
-            floatingLabelFixed={false}
-            fullWidth={false}
-            multiLine={false}
-            rows={1}
-            type="text"
-            underlineShow={true}
-          />
-        </TableRowColumn>
-        <TableRowColumn
-          hoverable={false}
-        >
-          <TextField
-            defaultValue="5"
-            disabled={false}
-            floatingLabelFixed={false}
-            fullWidth={false}
-            multiLine={false}
-            rows={1}
-            type="text"
-            underlineShow={true}
-          />
-        </TableRowColumn>
-        <TableRowColumn
-          hoverable={false}
-        >
-          <TextField
-            defaultValue="3"
-            disabled={false}
-            floatingLabelFixed={false}
-            fullWidth={false}
-            multiLine={false}
-            rows={1}
-            type="text"
-            underlineShow={true}
-          />
-        </TableRowColumn>
-        <TableRowColumn
-          hoverable={false}
-        >
-          <TextField
-            defaultValue="0"
-            disabled={false}
-            floatingLabelFixed={false}
-            fullWidth={false}
-            multiLine={false}
-            rows={1}
-            type="text"
-            underlineShow={true}
-          />
-        </TableRowColumn>
-      </TableRow>
-    </TableBody>
-  </Table>
-  <Connect(AddTicketDialog)
-    onRequestClose={[Function]}
-    open={true}
-  />
-</div>
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <TicketList
+    addTicket={[Function]}
+    closeTicket={[Function]}
+    fetchTickets={[Function]}
+    setShowAddTicketDialog={[Function]}
+    showAddTicketDialog={true}
+    tickets={
+        Array [
+            Object {
+              "_id": "id1",
+              "deleted": false,
+              "description": "description",
+              "storyPoint": 3,
+              "title": "ticketTitle",
+            },
+          ]
+    }
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <WithStyles(Button)
+          onClick={[Function]}
+          title="Add Ticket"
+>
+           Add Ticket 
+</WithStyles(Button)>,
+        <WithStyles(Table)>
+          <WithStyles(TableHead)>
+                    <WithStyles(TableRow)>
+                              <WithStyles(TableCell)>
+                                        Ticket
+                              </WithStyles(TableCell)>
+                              <WithStyles(TableCell) />
+                              <WithStyles(TableCell) />
+                    </WithStyles(TableRow)>
+          </WithStyles(TableHead)>
+          <WithStyles(TableBody)>
+                    <WithStyles(TableRow)>
+                              <WithStyles(TableCell)>
+                                        <TextField
+                                                  defaultValue="ticketTitle"
+                                                  required={false}
+                                                  select={false}
+                                        />
+                              </WithStyles(TableCell)>
+                              <WithStyles(TableCell) />
+                              <WithStyles(TableCell)>
+                                        <WithStyles(IconButton)
+                                                  color="primary"
+                                                  onClick={[Function]}
+                                        >
+                                                  <pure(Delete) />
+                                        </WithStyles(IconButton)>
+                              </WithStyles(TableCell)>
+                    </WithStyles(TableRow)>
+          </WithStyles(TableBody)>
+</WithStyles(Table)>,
+        <Connect(AddTicketDialog)
+          onRequestClose={[Function]}
+          open={true}
+/>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": " Add Ticket ",
+          "onClick": [Function],
+          "title": "Add Ticket",
+        },
+        "ref": null,
+        "rendered": " Add Ticket ",
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <WithStyles(TableHead)>
+              <WithStyles(TableRow)>
+                            <WithStyles(TableCell)>
+                                          Ticket
+                            </WithStyles(TableCell)>
+                            <WithStyles(TableCell) />
+                            <WithStyles(TableCell) />
+              </WithStyles(TableRow)>
+</WithStyles(TableHead)>,
+            <WithStyles(TableBody)>
+              <WithStyles(TableRow)>
+                            <WithStyles(TableCell)>
+                                          <TextField
+                                                        defaultValue="ticketTitle"
+                                                        required={false}
+                                                        select={false}
+                                          />
+                            </WithStyles(TableCell)>
+                            <WithStyles(TableCell) />
+                            <WithStyles(TableCell)>
+                                          <WithStyles(IconButton)
+                                                        color="primary"
+                                                        onClick={[Function]}
+                                          >
+                                                        <pure(Delete) />
+                                          </WithStyles(IconButton)>
+                            </WithStyles(TableCell)>
+              </WithStyles(TableRow)>
+</WithStyles(TableBody)>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <WithStyles(TableRow)>
+                <WithStyles(TableCell)>
+                                Ticket
+                </WithStyles(TableCell)>
+                <WithStyles(TableCell) />
+                <WithStyles(TableCell) />
+</WithStyles(TableRow)>,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <WithStyles(TableCell)>
+                    Ticket
+</WithStyles(TableCell)>,
+                  <WithStyles(TableCell) />,
+                  <WithStyles(TableCell) />,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "Ticket",
+                  },
+                  "ref": null,
+                  "rendered": "Ticket",
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <WithStyles(TableRow)>
+                  <WithStyles(TableCell)>
+                                    <TextField
+                                                      defaultValue="ticketTitle"
+                                                      required={false}
+                                                      select={false}
+                                    />
+                  </WithStyles(TableCell)>
+                  <WithStyles(TableCell) />
+                  <WithStyles(TableCell)>
+                                    <WithStyles(IconButton)
+                                                      color="primary"
+                                                      onClick={[Function]}
+                                    >
+                                                      <pure(Delete) />
+                                    </WithStyles(IconButton)>
+                  </WithStyles(TableCell)>
+</WithStyles(TableRow)>,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": "id1",
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    <WithStyles(TableCell)>
+                      <TextField
+                                            defaultValue="ticketTitle"
+                                            required={false}
+                                            select={false}
+                      />
+</WithStyles(TableCell)>,
+                    <WithStyles(TableCell) />,
+                    <WithStyles(TableCell)>
+                      <WithStyles(IconButton)
+                                            color="primary"
+                                            onClick={[Function]}
+                      >
+                                            <pure(Delete) />
+                      </WithStyles(IconButton)>
+</WithStyles(TableCell)>,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": <TextField
+                        defaultValue="ticketTitle"
+                        required={false}
+                        select={false}
+/>,
+                    },
+                    "ref": null,
+                    "rendered": Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "function",
+                      "props": Object {
+                        "defaultValue": "ticketTitle",
+                        "required": false,
+                        "select": false,
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "",
+                    },
+                    "ref": null,
+                    "rendered": "",
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": <WithStyles(IconButton)
+                        color="primary"
+                        onClick={[Function]}
+>
+                        <pure(Delete) />
+</WithStyles(IconButton)>,
+                    },
+                    "ref": null,
+                    "rendered": Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": <pure(Delete) />,
+                        "color": "primary",
+                        "onClick": [Function],
+                      },
+                      "ref": null,
+                      "rendered": Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {},
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                      "type": [Function],
+                    },
+                    "type": [Function],
+                  },
+                ],
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "onRequestClose": [Function],
+          "open": true,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <WithStyles(Button)
+            onClick={[Function]}
+            title="Add Ticket"
+>
+             Add Ticket 
+</WithStyles(Button)>,
+          <WithStyles(Table)>
+            <WithStyles(TableHead)>
+                        <WithStyles(TableRow)>
+                                    <WithStyles(TableCell)>
+                                                Ticket
+                                    </WithStyles(TableCell)>
+                                    <WithStyles(TableCell) />
+                                    <WithStyles(TableCell) />
+                        </WithStyles(TableRow)>
+            </WithStyles(TableHead)>
+            <WithStyles(TableBody)>
+                        <WithStyles(TableRow)>
+                                    <WithStyles(TableCell)>
+                                                <TextField
+                                                            defaultValue="ticketTitle"
+                                                            required={false}
+                                                            select={false}
+                                                />
+                                    </WithStyles(TableCell)>
+                                    <WithStyles(TableCell) />
+                                    <WithStyles(TableCell)>
+                                                <WithStyles(IconButton)
+                                                            color="primary"
+                                                            onClick={[Function]}
+                                                >
+                                                            <pure(Delete) />
+                                                </WithStyles(IconButton)>
+                                    </WithStyles(TableCell)>
+                        </WithStyles(TableRow)>
+            </WithStyles(TableBody)>
+</WithStyles(Table)>,
+          <Connect(AddTicketDialog)
+            onRequestClose={[Function]}
+            open={true}
+/>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": " Add Ticket ",
+            "onClick": [Function],
+            "title": "Add Ticket",
+          },
+          "ref": null,
+          "rendered": " Add Ticket ",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <WithStyles(TableHead)>
+                <WithStyles(TableRow)>
+                                <WithStyles(TableCell)>
+                                                Ticket
+                                </WithStyles(TableCell)>
+                                <WithStyles(TableCell) />
+                                <WithStyles(TableCell) />
+                </WithStyles(TableRow)>
+</WithStyles(TableHead)>,
+              <WithStyles(TableBody)>
+                <WithStyles(TableRow)>
+                                <WithStyles(TableCell)>
+                                                <TextField
+                                                                defaultValue="ticketTitle"
+                                                                required={false}
+                                                                select={false}
+                                                />
+                                </WithStyles(TableCell)>
+                                <WithStyles(TableCell) />
+                                <WithStyles(TableCell)>
+                                                <WithStyles(IconButton)
+                                                                color="primary"
+                                                                onClick={[Function]}
+                                                >
+                                                                <pure(Delete) />
+                                                </WithStyles(IconButton)>
+                                </WithStyles(TableCell)>
+                </WithStyles(TableRow)>
+</WithStyles(TableBody)>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <WithStyles(TableRow)>
+                  <WithStyles(TableCell)>
+                                    Ticket
+                  </WithStyles(TableCell)>
+                  <WithStyles(TableCell) />
+                  <WithStyles(TableCell) />
+</WithStyles(TableRow)>,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    <WithStyles(TableCell)>
+                      Ticket
+</WithStyles(TableCell)>,
+                    <WithStyles(TableCell) />,
+                    <WithStyles(TableCell) />,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "Ticket",
+                    },
+                    "ref": null,
+                    "rendered": "Ticket",
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {},
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {},
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                ],
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <WithStyles(TableRow)>
+                    <WithStyles(TableCell)>
+                                        <TextField
+                                                            defaultValue="ticketTitle"
+                                                            required={false}
+                                                            select={false}
+                                        />
+                    </WithStyles(TableCell)>
+                    <WithStyles(TableCell) />
+                    <WithStyles(TableCell)>
+                                        <WithStyles(IconButton)
+                                                            color="primary"
+                                                            onClick={[Function]}
+                                        >
+                                                            <pure(Delete) />
+                                        </WithStyles(IconButton)>
+                    </WithStyles(TableCell)>
+</WithStyles(TableRow)>,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": "id1",
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": Array [
+                      <WithStyles(TableCell)>
+                        <TextField
+                                                defaultValue="ticketTitle"
+                                                required={false}
+                                                select={false}
+                        />
+</WithStyles(TableCell)>,
+                      <WithStyles(TableCell) />,
+                      <WithStyles(TableCell)>
+                        <WithStyles(IconButton)
+                                                color="primary"
+                                                onClick={[Function]}
+                        >
+                                                <pure(Delete) />
+                        </WithStyles(IconButton)>
+</WithStyles(TableCell)>,
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": <TextField
+                          defaultValue="ticketTitle"
+                          required={false}
+                          select={false}
+/>,
+                      },
+                      "ref": null,
+                      "rendered": Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "function",
+                        "props": Object {
+                          "defaultValue": "ticketTitle",
+                          "required": false,
+                          "select": false,
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": "",
+                      },
+                      "ref": null,
+                      "rendered": "",
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": <WithStyles(IconButton)
+                          color="primary"
+                          onClick={[Function]}
+>
+                          <pure(Delete) />
+</WithStyles(IconButton)>,
+                      },
+                      "ref": null,
+                      "rendered": Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "children": <pure(Delete) />,
+                          "color": "primary",
+                          "onClick": [Function],
+                        },
+                        "ref": null,
+                        "rendered": Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "class",
+                          "props": Object {},
+                          "ref": null,
+                          "rendered": null,
+                          "type": [Function],
+                        },
+                        "type": [Function],
+                      },
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "onRequestClose": [Function],
+            "open": true,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
 `;

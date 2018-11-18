@@ -1,10 +1,12 @@
-import { mockPouchDB } from '../../utils/testUtils';
-mockPouchDB();
+jest.mock('../../headless', () => {
+    return {
+        actions: {}
+    };
+});
 import * as React from 'react';
 import { shallow, configure } from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';
 import { TicketList } from './';
-import { actions } from "../../headless";
 import { getAnyJestFn } from '../utils/testUtils';
 import * as _ from 'lodash';
 
@@ -22,10 +24,10 @@ function testShowAddTicketDialogValue(showAddTicketDialog: boolean) {
         it(`TicketList should show the addTicketDialog open as ${showAddTicketDialog}`, () => {
             const props = {
                 showAddTicketDialog,
-                setShowAddTicketDialog: mockActions.setShowAddTicketDialog as typeof actions.ticketList.setShowAddTicketDialog,
-                fetchTickets: mockActions.fetchTickets as typeof actions.thunkActions.database.fetchTickets,
-                addTicket: mockActions.addTicket as typeof actions.addTicket,
-                closeTicket: mockActions.addTicket as typeof actions.thunkActions.database.closeTicket,
+                setShowAddTicketDialog: mockActions.setShowAddTicketDialog as any,
+                fetchTickets: mockActions.fetchTickets as any,
+                addTicket: mockActions.addTicket as any,
+                closeTicket: mockActions.addTicket as any,
                 tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1', deleted: false}]
             };
             const result = shallow(<TicketList {...props} />);
@@ -49,14 +51,14 @@ describe('when a user', () => {
         it('setShowAddTicketDialog should be called with true', () => {
             const props = {
                 showAddTicketDialog: false,
-                setShowAddTicketDialog: mockActions.setShowAddTicketDialog as typeof actions.ticketList.setShowAddTicketDialog,
-                fetchTickets: mockActions.fetchTickets as typeof actions.thunkActions.database.fetchTickets,
-                addTicket: mockActions.addTicket as typeof actions.addTicket,
-                closeTicket: mockActions.addTicket as typeof actions.thunkActions.database.closeTicket,
+                setShowAddTicketDialog: mockActions.setShowAddTicketDialog as any,
+                fetchTickets: mockActions.fetchTickets as any,
+                addTicket: mockActions.addTicket as any,
+                closeTicket: mockActions.addTicket as any,
                 tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1', deleted: false }]
             };
             const result = shallow(<TicketList {...props} />);
-            const elementToClick = result.find('[label="Add Ticket"]');
+            const elementToClick = result.find({title: "Add Ticket"});
             elementToClick.simulate('click');
             expect(mockActions.setShowAddTicketDialog.mock.calls).toMatchObject([
                 [{value: true}]
@@ -67,10 +69,10 @@ describe('when a user', () => {
         it('setShowAddTicketDialog should be called with false', () => {
             const props = {
                 showAddTicketDialog: false,
-                setShowAddTicketDialog: mockActions.setShowAddTicketDialog as typeof actions.ticketList.setShowAddTicketDialog,
-                fetchTickets: mockActions.fetchTickets as typeof actions.thunkActions.database.fetchTickets,
-                addTicket: mockActions.addTicket as typeof actions.addTicket,
-                closeTicket: mockActions.addTicket as typeof actions.thunkActions.database.closeTicket,
+                setShowAddTicketDialog: mockActions.setShowAddTicketDialog as any,
+                fetchTickets: mockActions.fetchTickets as any,
+                addTicket: mockActions.addTicket as any,
+                closeTicket: mockActions.addTicket as any,
                 tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1', deleted: false }]
             };
             const result = shallow(<TicketList {...props} />);

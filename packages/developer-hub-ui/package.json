@@ -8,8 +8,8 @@
   "scripts": {
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
-    "test": "react-scripts-ts test --env=jsdom",
-    "test-watch": "npm run test -- --watch",
+    "test": "react-scripts-ts react-scripts-ts test --env=jsdom",
+    "test-watch": "node ./node_modules/.bin/react-scripts-ts --inspect test --env=jsdom --runInBand",
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
@@ -85,8 +85,5 @@
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.5"
   },
-  "dependencies": {},
-  "jest": {
-    "preset": "./node_modules/tquinlan92-webpack-utils/jest-config/index.js"
-  }
+  "dependencies": {}
 }

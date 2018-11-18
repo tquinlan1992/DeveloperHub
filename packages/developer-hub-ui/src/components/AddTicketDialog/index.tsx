@@ -104,7 +104,7 @@ export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps & C
                     </form>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={(this.props.onRequestClose.bind(this))} color="primary">
+                    <Button onClick={(this.props.onRequestClose)} color="primary">
                         Cancel
                     </Button>
                     <Button onClick={this.onCreate.bind(this)} color="primary">
