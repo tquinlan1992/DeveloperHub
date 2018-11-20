@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { AppStateCore, Ticket, actions } from "../../headless";
-import { Table, Button, TableHead, TableRow, TableBody, TableCell, TextField, IconButton } from "@material-ui/core";
+import { Table, Button, TableHead, TableRow, TableBody, TableCell, TextField } from "@material-ui/core";
 import AddTicketDialog from '../AddTicketDialog';
-import DeleteIcon from '@material-ui/icons/Delete';
 
 type Tickets = Ticket[];
 
@@ -16,18 +15,6 @@ interface TicketListActions {
 interface TicketListProps {
     showAddTicketDialog: boolean;
     tickets: Tickets;
-}
-
-interface DeleteIconWithMethodParams {
-    onDelete: () => void;
-}
-
-function DeleteIconWithMethod( { onDelete }: DeleteIconWithMethodParams) {
-    return (
-    <IconButton onClick={onDelete} color="primary">
-        <DeleteIcon />
-    </IconButton>
-    );
 }
 
 interface TicketTableParams {
@@ -63,10 +50,10 @@ function TicketTable({ tickets, onDelete, onAddTicketToSprint }: TicketTablePara
                             {ticket.sprint ? 'Sprint' : ''}
                         </TableCell>
                         <TableCell>
-                            { onDelete ? <DeleteIconWithMethod onDelete={() => onDelete(ticket._id)} /> : null}
+                            { onAddTicketToSprint ? <Button title='Add To Sprint' onClick={() => onAddTicketToSprint(ticket._id)}> Add To Sprint </Button> : null}
                         </TableCell>
                         <TableCell>
-                            { onAddTicketToSprint ? <DeleteIconWithMethod onDelete={() => onAddTicketToSprint(ticket._id)} /> : null}
+                            { onDelete ? <Button title='Close Ticket' onClick={() => onDelete(ticket._id)}> Close Ticket </Button> : null}
                         </TableCell>
                     </TableRow>);
                 })}

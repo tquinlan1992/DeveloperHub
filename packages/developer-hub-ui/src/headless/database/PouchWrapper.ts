@@ -1,9 +1,20 @@
-import { Ticket } from "../store/AppState";
 import { v4 as uuid } from "uuid";
 import { Omit } from "../utils";
 
+export interface Ticket {
+    title: string;
+    storyPoint: null | number;
+    description: string;
+    deleted: boolean;
+    closed?: boolean;
+    sprint?: boolean;
+    _id: string;
+}
+
+export type Tickets = Ticket[];
+
 export interface TicketsDBConstructorParams {
-    pouchDB: PouchDB.Database<{}>;
+    pouchDB: PouchDB.Database<Ticket>;
 }
 
 export interface GetTicketsParams {
@@ -13,7 +24,7 @@ export interface GetTicketsParams {
 
 class PouchWrapper {
 
-    db: PouchDB.Database<{}>;
+    db: PouchDB.Database<Ticket>;
 
     constructor({ pouchDB }: TicketsDBConstructorParams) {
         this.db = pouchDB;
@@ -27,7 +38,7 @@ class PouchWrapper {
         });
     }
 
-    async getTickets() {
+    async getTickets(): Promise<Ticket[]> {
         try {
             const ticketsResult = await this.db.find({
                 selector: { Type: 0 }
@@ -60,7 +71,7 @@ class PouchWrapper {
 
     async markTicketInSprint(id: string) {
         try {
-            const ticketDoc = await this.db.get<Ticket>(id);
+            const ticketDoc = await this.db.get(id);
             return this.db.put({
                 ...ticketDoc,
                 sprint: !ticketDoc.sprint

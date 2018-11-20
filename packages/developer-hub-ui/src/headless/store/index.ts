@@ -4,8 +4,8 @@ import { omit } from 'lodash';
 import middleware from '../middleware';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { RouterState } from "react-router-redux";
-import { Ticket } from './AppState';
-export { Ticket }; 
+import { TicketList } from '@components/TicketList/redux';
+import { AddTicketState } from '../actions/addTicket';
 
 declare module 'redux' {
     export type GenericStoreEnhancer = any;
@@ -25,13 +25,6 @@ export interface AddTicketState {
     title: string;
 }
 
-export interface TicketList {
-    showAddTicketDialog: boolean;
-    tickets: Ticket[];
-}
-
-export type Loading = boolean;
-
 export interface AppState {
     routing: RouterState;
     ticketList: TicketList;
@@ -41,6 +34,15 @@ export interface AppState {
 
 export interface AppStateCore {
     core: AppState;
+}
+
+export type Loading = boolean;
+
+export interface AppState {
+    routing: RouterState;
+    ticketList: TicketList;
+    addTicket: AddTicketState;
+    loading: Loading;
 }
 
 const stateFromLocalStorage = JSON.parse(localStorage.getItem('state') || '{}') as AppStateCore;

@@ -1,5 +1,5 @@
 import simpleActions from './simpleActions';
-import { Loading } from "../../store/AppState";
+import { Loading } from "../../store";
 import { createReducer, getCreators } from 'tquinlan92-typescript-redux-utils';
 import thunkActions from './thunkActions';
 import * as exportTypes from './exportTypes';

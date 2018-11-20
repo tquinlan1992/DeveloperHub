@@ -1,4 +1,4 @@
-import { TicketList } from '../../../../headless/store';
+import { TicketList } from '../';
 import { makeActionCreatorWithReducerWithPrefix } from "tquinlan92-typescript-redux-utils";
 
 export interface SetShowAddTicketDialogParams {

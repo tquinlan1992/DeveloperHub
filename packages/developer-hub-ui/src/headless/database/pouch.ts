@@ -1,5 +1,5 @@
 import * as PouchDBRaw from 'pouchdb-browser';
-import PouchWrapper from './PouchWrapper';
+import PouchWrapper, { Ticket } from './PouchWrapper';
 import { ThunkDispatch } from 'redux-thunk';
 import { AppState } from '../store';
 import { AnyAction } from 'redux';
@@ -18,7 +18,7 @@ export async function getRemoteDB() {
 export function setupPouch(remoteUrl: string, dispatch: ThunkDispatch<AppState, void, AnyAction>) {
     if (!pouchDB) {
         const remoteDB = new PouchDB(remoteUrl);
-        const localDB = new PouchDB('mylocaldb');
+        const localDB = new PouchDB<Ticket>('mylocaldb');
         localDB.sync(remoteDB, {
         }).on('complete', function () {
             console.log('sync complete');

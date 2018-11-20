@@ -1,4 +1,5 @@
-import { Ticket, TicketList } from "../../../../headless/store/AppState";
+import { TicketList } from "../";
+import { Ticket } from '@database/PouchWrapper';
 import { makeActionCreatorWithReducerWithPrefix } from "tquinlan92-typescript-redux-utils";
 
 export interface SetTicketsAction {
