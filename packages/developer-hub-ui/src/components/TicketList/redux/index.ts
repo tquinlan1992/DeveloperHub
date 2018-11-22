@@ -1,8 +1,6 @@
-import { AppStateCore } from '@headless/store';
-import simpleActions from './simpleActions';
-import { createReducer, getCreators } from 'tquinlan92-typescript-redux-utils';
 import thunkActions from './thunkActions';
 import { Ticket } from '@database/PouchWrapper';
+import { makeSimpleReducer } from 'tquinlan92-typescript-redux-utils';
 
 export type Tickets = Ticket[];
 
@@ -11,21 +9,16 @@ export interface TicketList {
     tickets: Ticket[];
 }
 
-export {
-    AppStateCore
-};
-
 const initialState = {
     showAddTicketDialog: false,
     tickets: []
 };
 
-const ticketListActions = simpleActions('TicketList');
+const { actions: simpleActions, reducer } = makeSimpleReducer<TicketList>('TicketList', initialState);
 
-export default {
-    reducer: createReducer<TicketList>(initialState, ticketListActions),
-    actions: {
-        ...getCreators(ticketListActions),
-        ...thunkActions
-    }
+export const actions = {
+    ...simpleActions,
+    ...thunkActions
 };
+
+export default reducer;

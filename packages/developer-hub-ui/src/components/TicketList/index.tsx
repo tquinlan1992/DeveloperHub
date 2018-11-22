@@ -1,17 +1,19 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { AppStateCore, Ticket, actions } from "../../headless";
+import { AppStateCore, Ticket } from "../../headless";
 import { Table, Button, TableHead, TableRow, TableBody, TableCell, TextField } from "@material-ui/core";
 import AddTicketDialog from '../AddTicketDialog';
 import {actions as addTicketActions} from '@components/AddTicketDialog/redux';
+import { actions as ticketListActions } from './redux';
+import { pick } from 'lodash';
 
 type Tickets = Ticket[];
 
 interface TicketListActions {
-    setShowAddTicketDialog: typeof actions.ticketList.setShowAddTicketDialog;
-    fetchTickets: typeof actions.ticketList.fetchTickets;
-    closeTicket: typeof actions.ticketList.closeTicket;
-    addTicketToSprint: typeof actions.ticketList.addTicketToSprint;
+    setShowAddTicketDialog: typeof ticketListActions.showAddTicketDialog;
+    fetchTickets: typeof ticketListActions.fetchTickets;
+    closeTicket: typeof ticketListActions.closeTicket;
+    addTicketToSprint: typeof ticketListActions.addTicketToSprint;
     resetAddTicketDialog: typeof addTicketActions.reset;
 }
 interface TicketListProps {
@@ -71,12 +73,12 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
     }
 
     openAddticketDialog() {
-        this.props.setShowAddTicketDialog({ value: true });
+        this.props.setShowAddTicketDialog(true);
         this.props.resetAddTicketDialog({});
     }
 
     closeAddticketDialog() {
-        this.props.setShowAddTicketDialog({ value: false });
+        this.props.setShowAddTicketDialog(false);
     }
 
     onClickClose(id: string) {
@@ -116,7 +118,8 @@ const mapStateToProps = ({ core }: AppStateCore, ownProps: any) => {
 };
 
 const mapActionsToProps = {
-    ...actions.ticketList,
+    ...pick(ticketListActions, 'fetchTickets', 'closeTicket', 'addTicketToSprint'),
+    setShowAddTicketDialog: ticketListActions.showAddTicketDialog,
     resetAddTicketDialog: addTicketActions.reset
 };
 
