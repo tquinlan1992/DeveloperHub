@@ -1,7 +1,5 @@
 import { makeActionCreatorWithReducerWithPrefix } from "tquinlan92-typescript-redux-utils";
-import { AddTicketState } from "../../../store";
-import * as makeActionCreatorTypes from '../../utils/exportTypes';
-makeActionCreatorTypes;
+import { AddTicketState } from "@headless/store";
 
 export interface SetTitleAction {
     value: string;

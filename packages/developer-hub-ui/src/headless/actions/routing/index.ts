@@ -1,9 +1,4 @@
-import { AnyAction } from 'tquinlan92-typescript-redux-utils';
-export { AnyAction };
-import { AnyAction as AnyActionFromRedux } from 'redux';
-export { AnyActionFromRedux };
-import { routerReducer, RouterState } from 'react-router-redux';
-export { RouterState };
+import { routerReducer } from 'react-router-redux';
 import thunkActions from './thunkActions';
 
 export default {

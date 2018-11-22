@@ -11,7 +11,7 @@
     "build": "lerna run build",
     "start-developer-hub-ui": "cd packages/developer-hub-ui && npm start",
     "test-developer-hub-ui": "cd packages/developer-hub-ui && npm run test-watch",
-    "start-pouchdb": "cd packages/pouchdb-mock && npm start"
+    "start-pouchdb": "npx pouchdb-server --port 5984"
   },
   "repository": {
     "type": "git",

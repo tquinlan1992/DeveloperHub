@@ -2,9 +2,9 @@ import { combineReducers, AnyAction } from 'redux';
 export { AnyAction };
 import { AppStateCore, AppState } from '../store';
 import routing from './routing';
-import addTicket from './addTicket';
+import addTicket from '@components/AddTicketDialog/redux';
 import ticketList from '../../components/TicketList/redux';
-import loading from './loading';
+import loading from '@components/Loading/redux';
 import { getReducersFromCombinedActionReducer, getActionsAndReducersFromCombinedActionReducer } from 'tquinlan92-typescript-redux-utils';
 import thunkActions from './thunkActions';
 

@@ -1,9 +1,6 @@
 import simpleActions from './simpleActions';
-import { AppStateCore } from "../../store";
 import { createReducer, getCreators } from 'tquinlan92-typescript-redux-utils';
-import * as exportTypes from './exportTypes';
 import thunkActions from './thunkActions';
-export { exportTypes, AppStateCore };
 
 export interface AddTicketState {
     storyPoint: null | number;
