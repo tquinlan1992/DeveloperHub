@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Dialog, TextField, DialogTitle, DialogContent, DialogActions, Button, InputLabel, Select, MenuItem, FormControl } from "@material-ui/core";
 import { connect } from 'react-redux';
-import { AppStateCore, actions } from "../../headless";
+import { AppStateCore } from "../../headless";
 import { isNumber } from 'lodash';
+import { actions } from './redux';
 
 interface AddTicketDialogOwnProps {
     onRequestClose: () => void;
@@ -16,16 +17,16 @@ interface StateProps {
 }
 
 interface ComponentActions {
-    addTicket: typeof actions.addTicket.addTicket;
-    setDescription: typeof actions.addTicket.setDescription;
-    setTitle: typeof actions.addTicket.setTitle;
-    setStoryPoint: typeof actions.addTicket.setStoryPoint;
+    addTicket: typeof actions.addTicket;
+    setDescription: typeof actions.description;
+    setTitle: typeof actions.title;
+    setStoryPoint: typeof actions.storyPoint;
 }   
 
 export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps & ComponentActions & StateProps> {
 
     onStoryPointsChange(event: React.ChangeEvent<HTMLSelectElement>) {
-        this.props.setStoryPoint({ value: event.target.value });
+        this.props.setStoryPoint(Number(event.target.value));
     }
 
     onCreate() {
@@ -33,11 +34,11 @@ export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps & C
     }
 
     onDescriptionChange(event: React.ChangeEvent<HTMLSelectElement>) {
-        this.props.setDescription({ value: event.target.value });
+        this.props.setDescription(event.target.value);
     }
 
     onTitleChange(event: React.ChangeEvent<HTMLSelectElement>) {
-        this.props.setTitle({ value: event.target.value });
+        this.props.setTitle(event.target.value);
     }
 
     render() {
@@ -124,7 +125,10 @@ const mapStateToProps = ({ core }: AppStateCore, ownProps: AddTicketDialogOwnPro
 };
 
 const mapDispatchToProps = {
-    ...actions.addTicket
+    addTicket: actions.addTicket,
+    setTitle: actions.title,
+    setDescription: actions.description,
+    setStoryPoint: actions.storyPoint
 };
 
 export default connect<AddTicketDialogOwnProps & StateProps, ComponentActions, AddTicketDialogOwnProps>(mapStateToProps, mapDispatchToProps)(AddTicketDialog);
