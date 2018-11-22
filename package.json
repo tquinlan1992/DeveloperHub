@@ -11,7 +11,8 @@
     "build": "lerna run build",
     "start-developer-hub-ui": "cd packages/developer-hub-ui && npm start",
     "test-developer-hub-ui": "cd packages/developer-hub-ui && npm run test-watch",
-    "start-pouchdb": "npx pouchdb-server --port 5984"
+    "start-pouchdb": "npx pouchdb-server --port 5984",
+    "start-tquinlan92-typescript-redux-utils": "cd packages/tquinlan92-typescript-redux-utils && npm start"
   },
   "repository": {
     "type": "git",

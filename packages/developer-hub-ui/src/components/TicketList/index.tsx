@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { AppStateCore, Ticket, actions } from "../../headless";
 import { Table, Button, TableHead, TableRow, TableBody, TableCell, TextField } from "@material-ui/core";
 import AddTicketDialog from '../AddTicketDialog';
+import {actions as addTicketActions} from '@components/AddTicketDialog/redux';
 
 type Tickets = Ticket[];
 
@@ -11,6 +12,7 @@ interface TicketListActions {
     fetchTickets: typeof actions.ticketList.fetchTickets;
     closeTicket: typeof actions.ticketList.closeTicket;
     addTicketToSprint: typeof actions.ticketList.addTicketToSprint;
+    resetAddTicketDialog: typeof addTicketActions.reset;
 }
 interface TicketListProps {
     showAddTicketDialog: boolean;
@@ -70,6 +72,7 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
 
     openAddticketDialog() {
         this.props.setShowAddTicketDialog({ value: true });
+        this.props.resetAddTicketDialog({});
         //this.props.addTicket();
     }
 
@@ -115,6 +118,7 @@ const mapStateToProps = ({ core }: AppStateCore, ownProps: any) => {
 
 const mapActionsToProps = {
     ...actions.ticketList,
+    resetAddTicketDialog: addTicketActions.reset
 };
 
 export default connect<TicketListProps, TicketListActions>(mapStateToProps, mapActionsToProps)(TicketList);

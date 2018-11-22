@@ -1,4 +1,4 @@
-import { find, mapValues } from 'lodash';
+import { find, mapValues, assign } from 'lodash';
 import actionCreatorFactory, { isType, Action, AnyAction, ActionCreator } from "typescript-fsa";
 import { Reducer } from 'redux';
 
@@ -85,6 +85,34 @@ export function testRunner<ReducerState>(reducer: Reducer) {
     };
 }
 
-export default {
-
-};
+export function makeActionsFromState<State extends {}>(name: string, initialState: State) {
+    const reducerName = name ? name : 'random';
+    const actions = mapValues(initialState, (propertyFromState, key: keyof State) => {
+        const creatorReducer = makeActionCreatorWithReducerWithPrefix<State, State[typeof key]>(
+            `UPDATE_${key}`,
+            (state, newValue) => {
+                return assign({}, state,
+                    {[key]: newValue}
+                );
+            }
+        );
+        return creatorReducer(reducerName) as any;
+    }) as {
+        [P in keyof State]: {
+            actionCreator: ActionCreator<State[P]>;
+            reducer: StateTypeReducer<State, State[P]>;
+        }
+    };
+    const reset = makeActionCreatorWithReducerWithPrefix<State, {}>(
+        `RESET`,
+        () => {
+            return initialState;
+        }
+    )(reducerName);
+    return {
+        actions: assign({}, 
+            getCreators(assign({}, actions, {reset})),
+        ),
+        reducer: createReducer<State>(initialState, assign({}, actions, {reset}))
+    };
+}

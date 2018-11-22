@@ -16,7 +16,8 @@ const mockActions = {
     setShowAddTicketDialog: getAnyJestFn(),
     fetchTickets: getAnyJestFn(),
     addTicket: getAnyJestFn(),
-    closeTicket: getAnyJestFn()
+    closeTicket: getAnyJestFn(),
+    resetAddTicketDialog: getAnyJestFn(),
 };
 
 function testShowAddTicketDialogValue(showAddTicketDialog: boolean) {
@@ -29,6 +30,7 @@ function testShowAddTicketDialogValue(showAddTicketDialog: boolean) {
                 addTicket: mockActions.addTicket as any,
                 closeTicket: mockActions.addTicket as any,
                 addTicketToSprint: mockActions.addTicket as any,
+                resetAddTicketDialog: mockActions.resetAddTicketDialog,
                 tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1', deleted: false}]
             };
             const result = shallow(<TicketList {...props} />);
@@ -57,6 +59,7 @@ describe('when a user', () => {
                 addTicket: mockActions.addTicket as any,
                 closeTicket: mockActions.addTicket as any,
                 addTicketToSprint: mockActions.addTicket as any,
+                resetAddTicketDialog: mockActions.resetAddTicketDialog,
                 tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1', deleted: false }]
             };
             const result = shallow(<TicketList {...props} />);
@@ -76,6 +79,7 @@ describe('when a user', () => {
                 addTicket: mockActions.addTicket as any,
                 closeTicket: mockActions.addTicket as any,
                 addTicketToSprint: mockActions.addTicket as any,
+                resetAddTicketDialog: mockActions.resetAddTicketDialog,
                 tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1', deleted: false }]
             };
             const result = shallow(<TicketList {...props} />);

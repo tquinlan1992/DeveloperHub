@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, AnyAction, Store } from "redux";
-import { reducers }  from '../actions';
+import { reducer }  from '../actions';
 import { omit } from 'lodash';
 import middleware from '../middleware';
 import { composeWithDevTools } from 'redux-devtools-extension';
@@ -45,6 +45,6 @@ const state = {
     core: coreState
 };
 
-const reduxStore: Store<AppStateCore & void, AnyAction> & void = createStore<AppStateCore, AnyAction, void, void>(reducers, state, composeWithDevTools(applyMiddleware(...middleware)));
+const reduxStore: Store<AppStateCore & void, AnyAction> & void = createStore<AppStateCore, AnyAction, void, void>(reducer, state, composeWithDevTools(applyMiddleware(...middleware)));
 
 export default reduxStore;

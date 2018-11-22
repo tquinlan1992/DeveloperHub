@@ -21,6 +21,7 @@ interface ComponentActions {
     setDescription: typeof actions.description;
     setTitle: typeof actions.title;
     setStoryPoint: typeof actions.storyPoint;
+    reset: typeof actions.reset;
 }   
 
 export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps & ComponentActions & StateProps> {
@@ -128,7 +129,8 @@ const mapDispatchToProps = {
     addTicket: actions.addTicket,
     setTitle: actions.title,
     setDescription: actions.description,
-    setStoryPoint: actions.storyPoint
+    setStoryPoint: actions.storyPoint,
+    reset: actions.reset
 };
 
 export default connect<AddTicketDialogOwnProps & StateProps, ComponentActions, AddTicketDialogOwnProps>(mapStateToProps, mapDispatchToProps)(AddTicketDialog);

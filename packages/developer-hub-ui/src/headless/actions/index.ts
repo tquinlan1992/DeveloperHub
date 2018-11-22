@@ -5,32 +5,27 @@ import routing from './routing';
 import addTicket from '@components/AddTicketDialog/redux';
 import ticketList from '../../components/TicketList/redux';
 import loading from '@components/Loading/redux';
-import { getReducersFromCombinedActionReducer, getActionsAndReducersFromCombinedActionReducer } from 'tquinlan92-typescript-redux-utils';
+import { getActionsAndReducersFromCombinedActionReducer } from 'tquinlan92-typescript-redux-utils';
 import thunkActions from './thunkActions';
 
 const coreActionsReducersTree = {
     ticketList,
-    addTicket,
     loading,
     routing
 };
 
-// export const coreReducer = combineReducers<AppState>(getReducersFromCombinedActionReducer(coreActionsReducersTree));
-// const coreActions = getActionsFromCombinedActionReducer(coreActionsReducersTree);
+const { actions: coreActions, reducers: reducerNotCombined } = getActionsAndReducersFromCombinedActionReducer(coreActionsReducersTree);
 
-const { actions: coreActions, reducers: coreReducerNotCombined } = getActionsAndReducersFromCombinedActionReducer(coreActionsReducersTree);
+const coreReducer = combineReducers<AppState>({
+    ...reducerNotCombined,
+    addTicket
+});
 
-const coreReducer = combineReducers<AppState>(coreReducerNotCombined);
-const appActionReducersTree = {
-    core: {
-        reducer: coreReducer,
-        actions: coreActions
-    }
-};
+const reducer = combineReducers<AppStateCore>({
+    core: coreReducer
+});
 
-const reducers = combineReducers<AppStateCore>(getReducersFromCombinedActionReducer(appActionReducersTree));
-
-export { coreReducer, reducers };
+export { coreReducer, reducer };
 
 export default {
     thunkActions,
