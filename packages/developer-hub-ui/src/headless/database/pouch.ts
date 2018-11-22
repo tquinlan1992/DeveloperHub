@@ -7,7 +7,7 @@ const PouchDB: typeof PouchDBRaw = (PouchDBRaw as any).default;
 const pouchdbFindRaw = require('pouchdb-find');
 const pouchdbFind = pouchdbFindRaw.default as typeof pouchdbFindRaw;
 PouchDB.plugin(pouchdbFind);
-import actions from "../actions";
+import { actions as loadingActions } from '@components/Loading/redux';
 
 let pouchDB: null | PouchWrapper;
 
@@ -29,7 +29,7 @@ export function setupPouch(remoteUrl: string, dispatch: ThunkDispatch<AppState, 
             pouchDB = new PouchWrapper({
                 pouchDB: localDB
             });
-            dispatch(actions.loading.setValue({ value: false }));
+            dispatch(loadingActions.value(false));
         }).on('error', () => {
             console.log('error syncing');
         });

@@ -1,17 +1,19 @@
-import simpleActions from './simpleActions';
-import { createReducer, getCreators } from 'tquinlan92-typescript-redux-utils';
 import thunkActions from './thunkActions';
+import { makeSimpleReducer } from 'tquinlan92-typescript-redux-utils';
 
-export type LoadingState = boolean;
-
-const initialState = true;
-
-const loadingSimpleActions = simpleActions('Loading');
-
-export default {
-    reducer: createReducer<LoadingState>(initialState, loadingSimpleActions),
-    actions: {
-        ...getCreators(loadingSimpleActions),
-        ...thunkActions
-    }
+export type LoadingState = {
+    value: boolean
 };
+
+const initialState = {
+    value: true
+};
+
+const { actions: simpleActions, reducer } = makeSimpleReducer<LoadingState>('Loading', initialState);
+
+export const actions = {
+    ...simpleActions,
+    ...thunkActions
+};
+
+export default reducer;

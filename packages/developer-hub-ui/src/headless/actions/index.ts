@@ -9,7 +9,6 @@ import { getActionsAndReducersFromCombinedActionReducer } from 'tquinlan92-types
 import thunkActions from './thunkActions';
 
 const coreActionsReducersTree = {
-    loading,
     routing
 };
 
@@ -18,7 +17,8 @@ const { actions: coreActions, reducers: reducerNotCombined } = getActionsAndRedu
 const coreReducer = combineReducers<AppState>({
     ...reducerNotCombined,
     addTicket,
-    ticketList
+    ticketList,
+    loading
 });
 
 const reducer = combineReducers<AppStateCore>({
