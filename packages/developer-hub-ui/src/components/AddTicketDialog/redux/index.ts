@@ -13,9 +13,7 @@ const initialState = {
     title: ''
 };
 
-const creatorsReducers = makeSimpleReducer<AddTicketState>('AddTicketDialog', initialState);
-
-const { actions: simpleActions, reducer } = creatorsReducers;
+const { actions: simpleActions, reducer } = makeSimpleReducer<AddTicketState>('AddTicketDialog', initialState);
 
 export const actions = {
     ...simpleActions,
