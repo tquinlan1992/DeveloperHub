@@ -73,7 +73,6 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
     openAddticketDialog() {
         this.props.setShowAddTicketDialog({ value: true });
         this.props.resetAddTicketDialog({});
-        //this.props.addTicket();
     }
 
     closeAddticketDialog() {

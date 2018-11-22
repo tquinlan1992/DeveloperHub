@@ -55,7 +55,7 @@ export interface ActionsReducersFromCombinedActionReducer<ActionsReducersInstanc
 }
 export declare function getActionsAndReducersFromCombinedActionReducer<Creators extends ActionsAndReducerSetup>(creators: Creators): ActionsReducersFromCombinedActionReducer<Creators>;
 export declare function testRunner<ReducerState>(reducer: Reducer): (initalState: ReducerState, action: AnyAction) => any;
-export declare function makeActionsFromState<State extends {}>(name: string, initialState: State): {
+export declare function makeSimpleReducer<State extends {}>(name: string, initialState: State): {
     actions: { [P in keyof ({ [P in keyof State]: {
         actionCreator: ActionCreator<State[P]>;
         reducer: StateTypeReducer<State, State[P]>;
@@ -64,6 +64,10 @@ export declare function makeActionsFromState<State extends {}>(name: string, ini
             actionCreator: ActionCreator<{}>;
             reducer: StateTypeReducer<State, {}>;
         };
+        setAll: {
+            actionCreator: ActionCreator<State>;
+            reducer: StateTypeReducer<State, State>;
+        };
     })]: ({ [P in keyof State]: {
         actionCreator: ActionCreator<State[P]>;
         reducer: StateTypeReducer<State, State[P]>;
@@ -71,6 +75,10 @@ export declare function makeActionsFromState<State extends {}>(name: string, ini
         reset: {
             actionCreator: ActionCreator<{}>;
             reducer: StateTypeReducer<State, {}>;
+        };
+        setAll: {
+            actionCreator: ActionCreator<State>;
+            reducer: StateTypeReducer<State, State>;
         };
     })[P]["actionCreator"]; };
     reducer: (state: State | undefined, incomingAction: Action<AnyAction>) => State;

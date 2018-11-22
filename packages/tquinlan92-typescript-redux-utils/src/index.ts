@@ -85,11 +85,11 @@ export function testRunner<ReducerState>(reducer: Reducer) {
     };
 }
 
-export function makeActionsFromState<State extends {}>(name: string, initialState: State) {
+export function makeSimpleReducer<State extends {}>(name: string, initialState: State) {
     const reducerName = name ? name : 'random';
     const actions = mapValues(initialState, (propertyFromState, key: keyof State) => {
         const creatorReducer = makeActionCreatorWithReducerWithPrefix<State, State[typeof key]>(
-            `UPDATE_${key}`,
+            `UPDATE_${key.toUpperCase()}`,
             (state, newValue) => {
                 return assign({}, state,
                     {[key]: newValue}
@@ -109,10 +109,16 @@ export function makeActionsFromState<State extends {}>(name: string, initialStat
             return initialState;
         }
     )(reducerName);
+    const setAll = makeActionCreatorWithReducerWithPrefix<State, State>(
+        `SET_ALL`,
+        (state, newValue) => {
+            return newValue;
+        }
+    )(reducerName);
     return {
         actions: assign({}, 
-            getCreators(assign({}, actions, {reset})),
+            getCreators(assign({}, actions, {reset, setAll})),
         ),
-        reducer: createReducer<State>(initialState, assign({}, actions, {reset}))
+        reducer: createReducer<State>(initialState, assign({}, actions, {reset, setAll}))
     };
 }

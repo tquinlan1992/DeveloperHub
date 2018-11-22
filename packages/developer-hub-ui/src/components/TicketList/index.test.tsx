@@ -17,7 +17,7 @@ const mockActions = {
     fetchTickets: getAnyJestFn(),
     addTicket: getAnyJestFn(),
     closeTicket: getAnyJestFn(),
-    resetAddTicketDialog: getAnyJestFn(),
+    resetAddTicketDialog: getAnyJestFn()
 };
 
 function testShowAddTicketDialogValue(showAddTicketDialog: boolean) {
