@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { AppStateCore } from "../../headless";
+import { AppStateCore } from "@headless/store";
 import { Switch, Route, Redirect } from 'react-router';
 import TicketList from '../TicketList';
 import CircularProgress from '@material-ui/core/CircularProgress/CircularProgress';

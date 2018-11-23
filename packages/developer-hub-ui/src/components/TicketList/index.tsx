@@ -1,21 +1,15 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { AppStateCore, Ticket } from "../../headless";
+import { AppStateCore } from "@headless/store";
 import { Table, Button, TableHead, TableRow, TableBody, TableCell, TextField } from "@material-ui/core";
 import AddTicketDialog from '../AddTicketDialog';
 import {actions as addTicketActions} from '@components/AddTicketDialog/redux';
 import { actions as ticketListActions } from './redux';
 import { pick } from 'lodash';
+import { Ticket } from '@database/PouchWrapper';
 
 type Tickets = Ticket[];
 
-interface TicketListActions {
-    setShowAddTicketDialog: typeof ticketListActions.showAddTicketDialog;
-    fetchTickets: typeof ticketListActions.fetchTickets;
-    closeTicket: typeof ticketListActions.closeTicket;
-    addTicketToSprint: typeof ticketListActions.addTicketToSprint;
-    resetAddTicketDialog: typeof addTicketActions.reset;
-}
 interface TicketListProps {
     showAddTicketDialog: boolean;
     tickets: Tickets;
@@ -26,6 +20,22 @@ interface TicketTableParams {
     onDelete?: (id: string) => void;
     onAddTicketToSprint?: (id: string) => void;
 }
+
+const mapStateToProps = ({ core }: AppStateCore, ownProps: any) => {
+    const { showAddTicketDialog, tickets } = core.ticketList;
+    return {
+        showAddTicketDialog,
+        tickets
+    };
+};
+
+const mapActionsToProps = {
+    ...pick(ticketListActions, 'fetchTickets', 'closeTicket', 'addTicketToSprint'),
+    setTicketListState: ticketListActions.set,
+    resetAddTicketDialog: addTicketActions.reset
+};
+
+type TicketListActions = typeof mapActionsToProps;
 
 function TicketTable({ tickets, onDelete, onAddTicketToSprint }: TicketTableParams) {
     return (
@@ -73,12 +83,12 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
     }
 
     openAddticketDialog() {
-        this.props.setShowAddTicketDialog(true);
+        this.props.setTicketListState({showAddTicketDialog: true});
         this.props.resetAddTicketDialog({});
     }
 
     closeAddticketDialog() {
-        this.props.setShowAddTicketDialog(false);
+        this.props.setTicketListState({ showAddTicketDialog: false });
     }
 
     onClickClose(id: string) {
@@ -108,19 +118,5 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
         );
     }
 }
-
-const mapStateToProps = ({ core }: AppStateCore, ownProps: any) => {
-    const { showAddTicketDialog, tickets } = core.ticketList;
-    return {
-        showAddTicketDialog,
-        tickets
-    };
-};
-
-const mapActionsToProps = {
-    ...pick(ticketListActions, 'fetchTickets', 'closeTicket', 'addTicketToSprint'),
-    setShowAddTicketDialog: ticketListActions.showAddTicketDialog,
-    resetAddTicketDialog: addTicketActions.reset
-};
 
 export default connect<TicketListProps, TicketListActions>(mapStateToProps, mapActionsToProps)(TicketList);

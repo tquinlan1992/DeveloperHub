@@ -8,7 +8,7 @@ export default function fetchTickets(): ThunkAction<void, AppStateCore, void, An
     return async function (dispatch) {
         try {
             const tickets = await dispatch(fetchTicketsThunk());
-            dispatch(ticketListActions.tickets(tickets));
+            dispatch(ticketListActions.set({tickets}));
         } catch (e) {
             console.log('error');
             throw e;

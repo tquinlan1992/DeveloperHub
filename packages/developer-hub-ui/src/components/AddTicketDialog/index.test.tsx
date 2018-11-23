@@ -24,10 +24,8 @@ function testShowAddTicketDialogValue(open: boolean) {
                 open,
                 onRequestClose: mockActions.onRequestClose,
                 addTicket: mockActions.addTicket as any,
-                setDescription: jest.fn() as any,
-                setTitle: jest.fn() as any,
-                setStoryPoint: jest.fn() as any,
                 reset: jest.fn() as any,
+                setAddTicketState: jest.fn() as any,
                 storyPoint: 5,
                 description: 'description',
                 title: 'title'
@@ -55,10 +53,8 @@ describe('when a user', () => {
                 open: true,
                 onRequestClose: mockActions.onRequestClose,
                 addTicket: mockActions.addTicket as any,
-                setDescription: jest.fn() as any,
-                setTitle: jest.fn() as any,
-                setStoryPoint: jest.fn() as any,
                 reset: jest.fn() as any,
+                setAddTicketState: jest.fn() as any,
                 storyPoint: 5,
                 description: 'description',
                 title: 'title'

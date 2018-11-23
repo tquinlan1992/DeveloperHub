@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Dialog, TextField, DialogTitle, DialogContent, DialogActions, Button, InputLabel, Select, MenuItem, FormControl } from "@material-ui/core";
 import { connect } from 'react-redux';
-import { AppStateCore } from "../../headless";
+import { AppStateCore } from "@headless/store";
 import { isNumber } from 'lodash';
 import { actions } from './redux';
 
@@ -16,18 +16,25 @@ interface StateProps {
     title: string;
 }
 
-interface ComponentActions {
-    addTicket: typeof actions.addTicket;
-    setDescription: typeof actions.description;
-    setTitle: typeof actions.title;
-    setStoryPoint: typeof actions.storyPoint;
-    reset: typeof actions.reset;
-}   
+const mapStateToProps = ({ core }: AppStateCore, ownProps: AddTicketDialogOwnProps) => {
+    return {
+        ...core.addTicket,
+        ...ownProps
+    };
+};
+
+const mapDispatchToProps = {
+    addTicket: actions.addTicket,
+    setAddTicketState: actions.set,
+    reset: actions.reset
+};
+
+type ComponentActions = typeof mapDispatchToProps;
 
 export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps & ComponentActions & StateProps> {
 
     onStoryPointsChange(event: React.ChangeEvent<HTMLSelectElement>) {
-        this.props.setStoryPoint(Number(event.target.value));
+        this.props.setAddTicketState({storyPoint: Number(event.target.value) });
     }
 
     onCreate() {
@@ -35,11 +42,11 @@ export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps & C
     }
 
     onDescriptionChange(event: React.ChangeEvent<HTMLSelectElement>) {
-        this.props.setDescription(event.target.value);
+        this.props.setAddTicketState({ description: event.target.value });
     }
 
     onTitleChange(event: React.ChangeEvent<HTMLSelectElement>) {
-        this.props.setTitle(event.target.value);
+        this.props.setAddTicketState({ title: event.target.value });
     }
 
     render() {
@@ -117,20 +124,5 @@ export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps & C
         );
     }
 }
-
-const mapStateToProps = ({ core }: AppStateCore, ownProps: AddTicketDialogOwnProps) => {
-    return {
-        ...core.addTicket,
-        ...ownProps
-    };
-};
-
-const mapDispatchToProps = {
-    addTicket: actions.addTicket,
-    setTitle: actions.title,
-    setDescription: actions.description,
-    setStoryPoint: actions.storyPoint,
-    reset: actions.reset
-};
 
 export default connect<AddTicketDialogOwnProps & StateProps, ComponentActions, AddTicketDialogOwnProps>(mapStateToProps, mapDispatchToProps)(AddTicketDialog);

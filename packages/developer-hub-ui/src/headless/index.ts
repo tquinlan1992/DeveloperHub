@@ -1,7 +1,3 @@
-import reduxStore, { AppStateCore, AppState } from './store';
-import { Ticket } from '@database/PouchWrapper';
-import actions from './actions';
-
-export { AppStateCore, Ticket, AppState, actions };
+import reduxStore from './store';
 
 export default reduxStore;

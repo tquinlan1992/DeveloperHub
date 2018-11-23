@@ -17,7 +17,8 @@ const mockActions = {
     fetchTickets: getAnyJestFn(),
     addTicket: getAnyJestFn(),
     closeTicket: getAnyJestFn(),
-    resetAddTicketDialog: getAnyJestFn()
+    resetAddTicketDialog: getAnyJestFn(),
+    setTicketListState: getAnyJestFn(),
 };
 
 function testShowAddTicketDialogValue(showAddTicketDialog: boolean) {
@@ -30,6 +31,7 @@ function testShowAddTicketDialogValue(showAddTicketDialog: boolean) {
                 addTicket: mockActions.addTicket as any,
                 closeTicket: mockActions.addTicket as any,
                 addTicketToSprint: mockActions.addTicket as any,
+                setTicketListState: mockActions.setTicketListState as any,
                 resetAddTicketDialog: mockActions.resetAddTicketDialog,
                 tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1', deleted: false}]
             };
@@ -59,6 +61,7 @@ describe('when a user', () => {
                 addTicket: mockActions.addTicket as any,
                 closeTicket: mockActions.addTicket as any,
                 addTicketToSprint: mockActions.addTicket as any,
+                setTicketListState: mockActions.setTicketListState as any,
                 resetAddTicketDialog: mockActions.resetAddTicketDialog,
                 tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1', deleted: false }]
             };
@@ -79,6 +82,7 @@ describe('when a user', () => {
                 addTicket: mockActions.addTicket as any,
                 closeTicket: mockActions.addTicket as any,
                 addTicketToSprint: mockActions.addTicket as any,
+                setTicketListState: mockActions.setTicketListState as any,
                 resetAddTicketDialog: mockActions.resetAddTicketDialog,
                 tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1', deleted: false }]
             };

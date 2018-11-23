@@ -85,8 +85,11 @@ export function testRunner<ReducerState>(reducer: Reducer) {
     };
 }
 
-export function makeSimpleReducer<State extends {}>(name: string, initialState: State) {
-    const reducerName = name ? name : 'random';
+type Partial<T> = {
+    [P in keyof T]?: T[P];
+};
+
+export function makeSimpleReducer<State extends {}>(reducerName: string, initialState: State) {
     const actions = mapValues(initialState, (propertyFromState, key: keyof State) => {
         const creatorReducer = makeActionCreatorWithReducerWithPrefix<State, State[typeof key]>(
             `UPDATE_${key.toUpperCase()}`,
@@ -115,10 +118,19 @@ export function makeSimpleReducer<State extends {}>(name: string, initialState: 
             return newValue;
         }
     )(reducerName);
+    const set = makeActionCreatorWithReducerWithPrefix<State, Partial<State>>(
+        `SET`,
+        (state, newStateValues) => {
+            return assign({}, 
+                state,
+                newStateValues
+            );
+        }
+    )(reducerName);
     return {
         actions: assign({}, 
-            getCreators(assign({}, actions, {reset, setAll})),
+            getCreators(assign({}, actions, {reset, setAll, set})),
         ),
-        reducer: createReducer<State>(initialState, assign({}, actions, {reset, setAll}))
+        reducer: createReducer<State>(initialState, assign({}, actions, {reset, setAll, set})),
     };
 }
