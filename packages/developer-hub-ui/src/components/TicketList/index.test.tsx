@@ -40,7 +40,9 @@ function testShowAddTicketDialogValue(showAddTicketDialog: boolean) {
                 addTicketToSprint: mockActions.addTicket as any,
                 setTicketListState: mockActions.setTicketListState as any,
                 openAddTicketDialog: mockActions.openAddTicketDialog,
-                tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1', deleted: false}]
+                backlogTickets: [{ title: 'backlogTicketTitle', description: 'backlogDescription', storyPoint: 3, _id: 'id1', deleted: false} as any],
+                sprintTickets: [{ title: 'sprintTicketTitle', description: 'sprintDescription', storyPoint: 3, _id: 'id1', deleted: false} as any],
+                closedTickets: [{ title: 'closedTicketTitle', description: 'closedDescription', storyPoint: 3, _id: 'id1', deleted: false} as any]
             };
             const result = shallow(<TicketList {...props} />);
             expect(result).toMatchSnapshot();
@@ -69,14 +71,14 @@ describe('when a user', () => {
                 addTicketToSprint: mockActions.addTicket as any,
                 setTicketListState: mockActions.setTicketListState as any,
                 openAddTicketDialog: mockActions.openAddTicketDialog,
-                tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1', deleted: false }]
+                backlogTickets: [{ title: 'backlogTicketTitle', description: 'backlogDescription', storyPoint: 3, _id: 'id1', deleted: false} as any],
+                sprintTickets: [{ title: 'sprintTicketTitle', description: 'sprintDescription', storyPoint: 3, _id: 'id1', deleted: false} as any],
+                closedTickets: [{ title: 'closedTicketTitle', description: 'closedDescription', storyPoint: 3, _id: 'id1', deleted: false} as any]
             };
             const result = shallow(<TicketList {...props} />);
             const elementToClick = result.find({title: "Add Ticket"});
             elementToClick.simulate('click');
-            expect(mockActions.setTicketListState.mock.calls).toMatchObject([
-                [{showAddTicketDialog: true}]
-            ]);
+            expect(mockActions.openAddTicketDialog).toHaveBeenCalledTimes(1);
         });
  });
     describe('requests to close addTicket', () => {
@@ -90,7 +92,9 @@ describe('when a user', () => {
                 addTicketToSprint: mockActions.addTicket as any,
                 setTicketListState: mockActions.setTicketListState as any,
                 openAddTicketDialog: mockActions.openAddTicketDialog,
-                tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1', deleted: false }]
+                backlogTickets: [{ title: 'backlogTicketTitle', description: 'backlogDescription', storyPoint: 3, _id: 'id1', deleted: false} as any],
+                sprintTickets: [{ title: 'sprintTicketTitle', description: 'sprintDescription', storyPoint: 3, _id: 'id1', deleted: false} as any],
+                closedTickets: [{ title: 'closedTicketTitle', description: 'closedDescription', storyPoint: 3, _id: 'id1', deleted: false} as any]
             };
             const result = shallow(<TicketList {...props} />);
             const dialogProps: any = result.find('Connect(AddTicketDialog)').props();

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { AppStateCore } from "@headless/store";
 import { Table, Button, TableHead, TableRow, TableBody, TableCell, TextField } from "@material-ui/core";
 import AddTicketDialog from '../AddTicketDialog';
-import { actions as ticketListActions } from './redux';
+import { actions as ticketListActions, ClosedTicket, BacklogTicket, SprintTicket } from './redux';
 import { pick } from 'lodash';
 import { Ticket } from '@database/PouchWrapper';
 
@@ -11,20 +11,22 @@ type Tickets = Ticket[];
 
 interface TicketListProps {
     showAddTicketDialog: boolean;
-    tickets: Tickets;
+    backlogTickets: BacklogTicket[];
+    sprintTickets: SprintTicket[];
+    closedTickets: ClosedTicket[];
 }
 
 interface TicketTableParams {
     tickets: Tickets;
-    onDelete?: (id: string) => void;
+    onClose?: (id: string) => void;
     onAddTicketToSprint?: (id: string) => void;
 }
 
-const mapStateToProps = ({ core }: AppStateCore, ownProps: any) => {
-    const { showAddTicketDialog, tickets } = core.ticketList;
+const mapStateToProps = ({ core }: AppStateCore, ownProps: any): TicketListProps => {
+    const { showAddTicketDialog } = core.ticketList;
     return {
         showAddTicketDialog,
-        tickets
+        ...pick(core.ticketList, 'backlogTickets', 'sprintTickets', 'closedTickets')
     };
 };
 
@@ -36,7 +38,7 @@ const mapActionsToProps = {
 
 type TicketListActions = typeof mapActionsToProps;
 
-function TicketTable({ tickets, onDelete, onAddTicketToSprint }: TicketTableParams) {
+function TicketTable({ tickets, onClose, onAddTicketToSprint }: TicketTableParams) {
     return (
         <Table>
             <TableHead>
@@ -66,7 +68,7 @@ function TicketTable({ tickets, onDelete, onAddTicketToSprint }: TicketTablePara
                             { onAddTicketToSprint ? <Button title='Add To Sprint' onClick={() => onAddTicketToSprint(ticket._id)}> Add To Sprint </Button> : null}
                         </TableCell>
                         <TableCell>
-                            { onDelete ? <Button title='Close Ticket' onClick={() => onDelete(ticket._id)}> Close Ticket </Button> : null}
+                            { onClose ? <Button title='Close Ticket' onClick={() => onClose(ticket._id)}> Close Ticket </Button> : null}
                         </TableCell>
                     </TableRow>);
                 })}
@@ -94,19 +96,15 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
     }
 
     render() {
-        const openTickets = this.props.tickets.filter(ticket => {
-            return !ticket.closed;
-        });
-        const closedTickets = this.props.tickets.filter(ticket => {
-            return ticket.closed;
-        });
         return (
             <div>
-                <Button title='Add Ticket' onClick={this.openAddticketDialog.bind(this)}> Add Ticket </Button>
-                <h1>Open</h1>
-                <TicketTable tickets={openTickets} onDelete={this.onClickClose.bind(this)} onAddTicketToSprint={this.props.addTicketToSprint.bind(this)} />
                 <h1>Closed</h1>
-                <TicketTable tickets={closedTickets} />
+                <TicketTable tickets={this.props.closedTickets} />
+                <h1>Sprint</h1>
+                <TicketTable onClose={this.onClickClose.bind(this)} tickets={this.props.sprintTickets} />
+                <h1>Backlog</h1>
+                <Button title='Add Ticket' onClick={this.openAddticketDialog.bind(this)}> Add Ticket </Button>
+                <TicketTable tickets={this.props.backlogTickets} onClose={this.onClickClose.bind(this)} onAddTicketToSprint={this.props.addTicketToSprint.bind(this)} />
 
                 <AddTicketDialog
                     open={this.props.showAddTicketDialog}
