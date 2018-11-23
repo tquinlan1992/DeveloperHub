@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonLabel should render when given valid props 1`] = `
+<WithStyles(Button)
+  onClick={[Function]}
+>
+  sampleLabel
+</WithStyles(Button)>
+`;

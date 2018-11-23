@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { AppStateCore } from "developer-hub-headless";
+import { AppStateCore } from "@headless/store";
 import { Switch, Route, Redirect } from 'react-router';
 import TicketList from '../TicketList';
-import actions from '../../core/actions';
 import CircularProgress from '@material-ui/core/CircularProgress/CircularProgress';
+import { actions as loadingActions } from './redux';
 
 interface StateProps {
     loading: boolean;
 }
 
 interface ComponentActions {
-    loadApp: typeof actions.loading.loadApp;
+    loadApp: typeof loadingActions.loadApp;
 }
 
 export class AddTicketDialog extends React.Component<StateProps & ComponentActions> {
@@ -48,10 +48,10 @@ export class AddTicketDialog extends React.Component<StateProps & ComponentActio
 
 const mapStateToProps = ({ core }: AppStateCore) => {
     return {
-        loading: core.loading
+        loading: core.loading.value
     };
 };
 
-const mapDispatchToProps = actions.loading;
+const mapDispatchToProps = loadingActions;
 
 export default connect<StateProps, ComponentActions>(mapStateToProps, mapDispatchToProps)(AddTicketDialog);

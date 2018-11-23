@@ -5,7 +5,6 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import Theme from '../Theme';
 // import TopAppBar from '../TopAppbar';
 import Loading from '../Loading';
-console.log('got here');
 
 export default (store: any) => {
     return ReactDOM.render(

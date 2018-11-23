@@ -6,11 +6,11 @@
   "author": "",
   "main": "index.js",
   "scripts": {
-    "build": "tquinlan92-webpack-ui-build",
-    "start": "tquinlan92-webpack-ui",
-    "test": "jest",
-    "test:watch": "node --inspect node_modules/.bin/jest --watch",
-    "webpack-dev-server": "webpack-dev-server"
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "test": "react-scripts-ts react-scripts-ts test --env=jsdom",
+    "test-watch": "node ./node_modules/.bin/react-scripts-ts --inspect test --env=jsdom --runInBand",
+    "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
     "@material-ui/core": "1.4.3",
@@ -20,14 +20,19 @@
     "@types/inline-style-prefixer": "^3.0.1",
     "@types/jest": "^23.0.1",
     "@types/lodash": "^4.14.110",
+    "@types/pouchdb-browser": "^6.1.2",
     "@types/react": "^16.4.7",
     "@types/react-dom": "^16.0.5",
     "@types/react-redux": "^5.0.20",
     "@types/react-router": "^4.0.27",
     "@types/react-router-dom": "^4.2.7",
+    "@types/react-router-redux": "^5.0.16",
     "@types/redux": "^3.6.0",
+    "@types/redux-logger": "^3.0.6",
     "@types/redux-mock-store": "0.0.13",
     "@types/superagent": "^3.5.8",
+    "@types/url-join": "^0.8.2",
+    "@types/uuid": "^3.4.4",
     "@types/webpack": "^4.4.0",
     "awesome-typescript-loader": "^5.2.0",
     "babel-core": "^6.26.3",
@@ -37,10 +42,10 @@
     "copy-webpack-plugin": "^4.5.2",
     "cors": "^2.8.4",
     "css-loader": "^1.0.0",
-    "developer-hub-headless": "^1.0.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.4",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "history": "^4.7.2",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^23.0.1",
@@ -48,6 +53,8 @@
     "lodash": "^4.17.10",
     "open-browser-webpack-plugin": "0.0.5",
     "portfinder": "^1.0.13",
+    "pouchdb-browser": "^7.0.0",
+    "pouchdb-find": "^7.0.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-hot-loader": "^3.1.3",
@@ -56,9 +63,14 @@
     "react-router": "^4.3.1",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
+    "react-scripts-ts": "3.1.0",
     "react-split-pane": "^0.1.77",
     "react-test-renderer": "^16.3.2",
     "redux": "^4.0.0",
+    "redux-devtools-extension": "^2.13.5",
+    "redux-logger": "^3.0.6",
+    "redux-mock-store": "^1.5.3",
+    "redux-thunk": "^2.3.0",
     "source-map": "^0.6.1",
     "style-loader": "^0.21.0",
     "superagent": "^3.8.3",
@@ -69,12 +81,15 @@
     "tslint": "^5.10.0",
     "tslint-loader": "^3.6.0",
     "typescript": "^3.0.1",
-    "webpack": "^4.16.2",
-    "webpack-cli": "^2.1.4",
-    "webpack-dev-server": "^3.1.5"
+    "url-join": "^4.0.0"
   },
   "dependencies": {},
   "jest": {
-    "preset": "./node_modules/tquinlan92-webpack-utils/jest-config/index.js"
+    "moduleNameMapper": {
+      "^@headless/(.*)$": "<rootDir>/src/headless/$1",
+      "^@components/(.*)$": "<rootDir>/src/components/$1",
+      "^@database/(.*)$": "<rootDir>/src/headless/database/$1"
+    },
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
   }
 }

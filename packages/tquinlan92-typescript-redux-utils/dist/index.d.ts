@@ -55,6 +55,43 @@ export interface ActionsReducersFromCombinedActionReducer<ActionsReducersInstanc
 }
 export declare function getActionsAndReducersFromCombinedActionReducer<Creators extends ActionsAndReducerSetup>(creators: Creators): ActionsReducersFromCombinedActionReducer<Creators>;
 export declare function testRunner<ReducerState>(reducer: Reducer): (initalState: ReducerState, action: AnyAction) => any;
-declare const _default: {};
-export default _default;
+declare type Partial<T> = {
+    [P in keyof T]?: T[P];
+};
+export declare function makeSimpleReducer<State extends {}>(reducerName: string, initialState: State): {
+    actions: { [P in keyof ({ [P in keyof State]: {
+        actionCreator: ActionCreator<State[P]>;
+        reducer: StateTypeReducer<State, State[P]>;
+    }; } & {
+        reset: {
+            actionCreator: ActionCreator<{}>;
+            reducer: StateTypeReducer<State, {}>;
+        };
+        setAll: {
+            actionCreator: ActionCreator<State>;
+            reducer: StateTypeReducer<State, State>;
+        };
+        set: {
+            actionCreator: ActionCreator<Partial<State>>;
+            reducer: StateTypeReducer<State, Partial<State>>;
+        };
+    })]: ({ [P in keyof State]: {
+        actionCreator: ActionCreator<State[P]>;
+        reducer: StateTypeReducer<State, State[P]>;
+    }; } & {
+        reset: {
+            actionCreator: ActionCreator<{}>;
+            reducer: StateTypeReducer<State, {}>;
+        };
+        setAll: {
+            actionCreator: ActionCreator<State>;
+            reducer: StateTypeReducer<State, State>;
+        };
+        set: {
+            actionCreator: ActionCreator<Partial<State>>;
+            reducer: StateTypeReducer<State, Partial<State>>;
+        };
+    })[P]["actionCreator"]; };
+    reducer: (state: State | undefined, incomingAction: Action<AnyAction>) => State;
+};
 //# sourceMappingURL=index.d.ts.map

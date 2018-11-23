@@ -1,12 +1,14 @@
-import { mockPouchDB } from '../../utils/testUtils';
-mockPouchDB();
+jest.mock('./redux', () => {
+    return {
+        actions: {}
+    };
+});
 import * as React from 'react';
 import { shallow, configure } from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';
-import AddTicketDialog from './';
+import { AddTicketDialog } from './';
 import { getAnyJestFn } from '../utils/testUtils';
 import * as _ from 'lodash';
-import actions from '../../core/actions';
 
 configure({ adapter: new Adapter() });
 
@@ -21,7 +23,12 @@ function testShowAddTicketDialogValue(open: boolean) {
             const props = {
                 open,
                 onRequestClose: mockActions.onRequestClose,
-                addTicket: mockActions.addTicket as typeof actions.addTicket
+                addTicket: mockActions.addTicket as any,
+                reset: jest.fn() as any,
+                setAddTicketState: jest.fn() as any,
+                storyPoint: 5,
+                description: 'description',
+                title: 'title'
             };
             const result = shallow(<AddTicketDialog {...props} />);
             expect(result).toMatchSnapshot();
@@ -45,11 +52,16 @@ describe('when a user', () => {
             const props = {
                 open: true,
                 onRequestClose: mockActions.onRequestClose,
-                addTicket: mockActions.addTicket as typeof actions.addTicket
+                addTicket: mockActions.addTicket as any,
+                reset: jest.fn() as any,
+                setAddTicketState: jest.fn() as any,
+                storyPoint: 5,
+                description: 'description',
+                title: 'title'
             };
             const result = shallow(<AddTicketDialog {...props} />);
             const dialogProps: any = result.find('[title="Dialog With Actions"]').props();
-            dialogProps.onRequestClose();
+            dialogProps.onExit();
             expect(mockActions.onRequestClose.mock.calls).toMatchObject([
                 []
             ]);

@@ -47,6 +47,7 @@
     "redux": "^4.0.0",
     "source-map-loader": "^0.2.4",
     "tquinlan92-material-core-ui": "^1.0.0",
+    "tquinlan92-music-components": "^1.0.0",
     "tquinlan92-webpack-utils":"^1.0.0",
     "ts-jest": "^22.4.6",
     "typescript": "^3.0.1"

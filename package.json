@@ -6,9 +6,13 @@
   "scripts": {
     "i": "lerna bootstrap --hoist",
     "ci": "lerna bootstrap --hoist --ci",
-    "start-storybook": "lerna run start --scope storybook",
-    "test": "lerna run test --scope tquinlan92-material-core-ui --scope developer-hub-headless --stream",
-    "build": "lerna run build"
+    "start-storybook": "lerna run start --scope storybook --stream",
+    "test": "lerna run test --scope tquinlan92-material-core-ui developer-hub-ui --stream",
+    "build": "lerna run build",
+    "start-developer-hub-ui": "cd packages/developer-hub-ui && npm start",
+    "test-developer-hub-ui": "cd packages/developer-hub-ui && npm run test-watch",
+    "start-pouchdb": "npx pouchdb-server --port 5984",
+    "start-tquinlan92-typescript-redux-utils": "cd packages/tquinlan92-typescript-redux-utils && npm start"
   },
   "repository": {
     "type": "git",

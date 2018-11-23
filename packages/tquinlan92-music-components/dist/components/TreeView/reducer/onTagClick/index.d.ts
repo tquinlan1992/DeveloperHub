@@ -5,7 +5,7 @@ interface OnTagClickAction {
 }
 declare const _default: {
     actionCreator: import("typescript-fsa").ActionCreator<OnTagClickAction>;
-    reducer: import("tquinlan92-typescript-redux-utils").StateTypeReducer<TreeViewState, OnTagClickAction>;
+    reducer: import("../../../../../../tquinlan92-typescript-redux-utils/dist").StateTypeReducer<TreeViewState, OnTagClickAction>;
 };
 export default _default;
 //# sourceMappingURL=index.d.ts.map

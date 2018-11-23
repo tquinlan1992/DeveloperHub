@@ -1,4 +1,4 @@
-import { find, mapValues } from 'lodash';
+import { find, mapValues, assign } from 'lodash';
 import actionCreatorFactory, { isType, Action, AnyAction, ActionCreator } from "typescript-fsa";
 import { Reducer } from 'redux';
 
@@ -85,6 +85,52 @@ export function testRunner<ReducerState>(reducer: Reducer) {
     };
 }
 
-export default {
-
+type Partial<T> = {
+    [P in keyof T]?: T[P];
 };
+
+export function makeSimpleReducer<State extends {}>(reducerName: string, initialState: State) {
+    const actions = mapValues(initialState, (propertyFromState, key: keyof State) => {
+        const creatorReducer = makeActionCreatorWithReducerWithPrefix<State, State[typeof key]>(
+            `UPDATE_${key.toUpperCase()}`,
+            (state, newValue) => {
+                return assign({}, state,
+                    {[key]: newValue}
+                );
+            }
+        );
+        return creatorReducer(reducerName) as any;
+    }) as {
+        [P in keyof State]: {
+            actionCreator: ActionCreator<State[P]>;
+            reducer: StateTypeReducer<State, State[P]>;
+        }
+    };
+    const reset = makeActionCreatorWithReducerWithPrefix<State, {}>(
+        `RESET`,
+        () => {
+            return initialState;
+        }
+    )(reducerName);
+    const setAll = makeActionCreatorWithReducerWithPrefix<State, State>(
+        `SET_ALL`,
+        (state, newValue) => {
+            return newValue;
+        }
+    )(reducerName);
+    const set = makeActionCreatorWithReducerWithPrefix<State, Partial<State>>(
+        `SET`,
+        (state, newStateValues) => {
+            return assign({}, 
+                state,
+                newStateValues
+            );
+        }
+    )(reducerName);
+    return {
+        actions: assign({}, 
+            getCreators(assign({}, actions, {reset, setAll, set})),
+        ),
+        reducer: createReducer<State>(initialState, assign({}, actions, {reset, setAll, set})),
+    };
+}

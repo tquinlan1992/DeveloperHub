@@ -1,5 +1,13 @@
 {
     "extends": "../tquinlan92-webpack-utils/tsconfig/ui.json",
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@headless/*": ["src/headless/*"],
+            "@components/*": ["src/components/*"],
+            "@database/*": ["src/headless/database/*"]
+        },
+    },
     "exclude": [
         "dist",
         "node_modules",

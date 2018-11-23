@@ -2,8 +2,8 @@
 
 const compiler = require('../compiler');
 const webpackConfig = require('../../src/webpack/ui/webpack.config');
-const compilerHandler = require('../compilerHandler');
 const WebpackDevServer = require('webpack-dev-server');
+const opn = require('opn');
 
 const devServer = new WebpackDevServer(compiler(webpackConfig), {
   historyApiFallback: true,
@@ -12,11 +12,15 @@ const devServer = new WebpackDevServer(compiler(webpackConfig), {
   port: 8080,
   compress: true,
   hot: true,
-  watchContentBase: true
+  watchContentBase: true,
+  open: true
 });
 // Launch WebpackDevServer.
-devServer.listen(8080, '0.0.0.0', err => {
-  if (err) {
+devServer.listen(8080, '0.0.0.0', (err, stats) => {
+  console.log('stats', stats);
+  console.log('TQUINLAN92 WEBPACK SERVER STARTING ON PORT 8080')
+  if (err, stats) {
     return console.log(err);
   }
+  opn('http://localhost:8080');
 });
