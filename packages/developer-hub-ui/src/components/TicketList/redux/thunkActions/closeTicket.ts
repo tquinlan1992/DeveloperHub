@@ -2,14 +2,15 @@ import { ThunkAction } from "redux-thunk";
 import { AppStateCore } from "@headless/store";
 import { AnyAction } from "redux";
 import fetchTickets from "./fetchTickets";
-import closeTicketDb from '@headless/actions/thunkActions/database/closeTicket';
+import { getRemoteDB } from "@headless/database/pouch";
 
 export default function closeTicket(id: string): ThunkAction<void, AppStateCore, void, AnyAction> {
     return async function (dispatch) {
         try {
-        await dispatch(closeTicketDb(id));
-        await dispatch(fetchTickets());
-        } catch(e) {
+            const db = await getRemoteDB();
+            await db.closeTicket(id);
+            await dispatch(fetchTickets());
+        } catch (e) {
             console.log('error closing ticket');
             throw e;
         }

@@ -1,21 +1,13 @@
 import { combineReducers, AnyAction } from 'redux';
 export { AnyAction };
 import { AppStateCore, AppState } from '../store';
-import routing from './routing';
 import addTicket from '@components/AddTicketDialog/redux';
 import ticketList from '../../components/TicketList/redux';
 import loading from '@components/Loading/redux';
-import { getActionsAndReducersFromCombinedActionReducer } from 'tquinlan92-typescript-redux-utils';
-import thunkActions from './thunkActions';
-
-const coreActionsReducersTree = {
-    routing
-};
-
-const { actions: coreActions, reducers: reducerNotCombined } = getActionsAndReducersFromCombinedActionReducer(coreActionsReducersTree);
+import { routerReducer } from 'react-router-redux';
 
 const coreReducer = combineReducers<AppState>({
-    ...reducerNotCombined,
+    routing: routerReducer,
     addTicket,
     ticketList,
     loading
@@ -26,8 +18,3 @@ const reducer = combineReducers<AppStateCore>({
 });
 
 export { coreReducer, reducer };
-
-export default {
-    thunkActions,
-    ...coreActions
-};
