@@ -20,6 +20,7 @@ interface TicketTableParams {
     tickets: Tickets;
     onClose?: (id: string) => void;
     onAddTicketToSprint?: (id: string) => void;
+    onRemoveFromSprint?: (id: string) => void;
 }
 
 const mapStateToProps = ({ core }: AppStateCore, ownProps: any): TicketListProps => {
@@ -33,12 +34,13 @@ const mapStateToProps = ({ core }: AppStateCore, ownProps: any): TicketListProps
 const mapActionsToProps = {
     ...pick(ticketListActions, 'fetchTickets', 'closeTicket', 'addTicketToSprint'),
     setTicketListState: ticketListActions.set,
-    openAddTicketDialog: ticketListActions.openAddTicketDialog
+    openAddTicketDialog: ticketListActions.openAddTicketDialog,
+    onRemoveFromSprint: ticketListActions.removeFromSprint
 };
 
 type TicketListActions = typeof mapActionsToProps;
 
-function TicketTable({ tickets, onClose, onAddTicketToSprint }: TicketTableParams) {
+function TicketTable({ tickets, onClose, onAddTicketToSprint, onRemoveFromSprint }: TicketTableParams) {
     return (
         <Table>
             <TableHead>
@@ -66,8 +68,7 @@ function TicketTable({ tickets, onClose, onAddTicketToSprint }: TicketTableParam
                         </TableCell>
                         <TableCell>
                             { onAddTicketToSprint ? <Button title='Add To Sprint' onClick={() => onAddTicketToSprint(ticket._id)}> Add To Sprint </Button> : null}
-                        </TableCell>
-                        <TableCell>
+                            { onRemoveFromSprint ? <Button title='Open Ticket' onClick={() => onRemoveFromSprint(ticket._id)}> Remove From Sprint </Button> : null}
                             { onClose ? <Button title='Close Ticket' onClick={() => onClose(ticket._id)}> Close Ticket </Button> : null}
                         </TableCell>
                     </TableRow>);
@@ -101,7 +102,7 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
                 <h1>Closed</h1>
                 <TicketTable tickets={this.props.closedTickets} />
                 <h1>Sprint</h1>
-                <TicketTable onClose={this.onClickClose.bind(this)} tickets={this.props.sprintTickets} />
+                <TicketTable onClose={this.onClickClose.bind(this)} onRemoveFromSprint={this.props.onRemoveFromSprint.bind(this)} tickets={this.props.sprintTickets} />
                 <h1>Backlog</h1>
                 <Button title='Add Ticket' onClick={this.openAddticketDialog.bind(this)}> Add Ticket </Button>
                 <TicketTable tickets={this.props.backlogTickets} onClose={this.onClickClose.bind(this)} onAddTicketToSprint={this.props.addTicketToSprint.bind(this)} />

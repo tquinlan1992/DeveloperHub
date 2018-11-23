@@ -26,6 +26,7 @@ const mockActions = {
     closeTicket: getAnyJestFn(),
     openAddTicketDialog: getAnyJestFn(),
     setTicketListState: getAnyJestFn(),
+    onRemoveFromSprint: getAnyJestFn()
 };
 
 function testShowAddTicketDialogValue(showAddTicketDialog: boolean) {
@@ -40,6 +41,7 @@ function testShowAddTicketDialogValue(showAddTicketDialog: boolean) {
                 addTicketToSprint: mockActions.addTicket as any,
                 setTicketListState: mockActions.setTicketListState as any,
                 openAddTicketDialog: mockActions.openAddTicketDialog,
+                onRemoveFromSprint: mockActions.onRemoveFromSprint,
                 backlogTickets: [{ title: 'backlogTicketTitle', description: 'backlogDescription', storyPoint: 3, _id: 'id1', deleted: false} as any],
                 sprintTickets: [{ title: 'sprintTicketTitle', description: 'sprintDescription', storyPoint: 3, _id: 'id1', deleted: false} as any],
                 closedTickets: [{ title: 'closedTicketTitle', description: 'closedDescription', storyPoint: 3, _id: 'id1', deleted: false} as any]
@@ -71,6 +73,7 @@ describe('when a user', () => {
                 addTicketToSprint: mockActions.addTicket as any,
                 setTicketListState: mockActions.setTicketListState as any,
                 openAddTicketDialog: mockActions.openAddTicketDialog,
+                onRemoveFromSprint: mockActions.onRemoveFromSprint,
                 backlogTickets: [{ title: 'backlogTicketTitle', description: 'backlogDescription', storyPoint: 3, _id: 'id1', deleted: false} as any],
                 sprintTickets: [{ title: 'sprintTicketTitle', description: 'sprintDescription', storyPoint: 3, _id: 'id1', deleted: false} as any],
                 closedTickets: [{ title: 'closedTicketTitle', description: 'closedDescription', storyPoint: 3, _id: 'id1', deleted: false} as any]
@@ -92,6 +95,7 @@ describe('when a user', () => {
                 addTicketToSprint: mockActions.addTicket as any,
                 setTicketListState: mockActions.setTicketListState as any,
                 openAddTicketDialog: mockActions.openAddTicketDialog,
+                onRemoveFromSprint: mockActions.onRemoveFromSprint,
                 backlogTickets: [{ title: 'backlogTicketTitle', description: 'backlogDescription', storyPoint: 3, _id: 'id1', deleted: false} as any],
                 sprintTickets: [{ title: 'sprintTicketTitle', description: 'sprintDescription', storyPoint: 3, _id: 'id1', deleted: false} as any],
                 closedTickets: [{ title: 'closedTicketTitle', description: 'closedDescription', storyPoint: 3, _id: 'id1', deleted: false} as any]

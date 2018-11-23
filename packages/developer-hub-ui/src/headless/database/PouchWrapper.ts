@@ -89,7 +89,19 @@ class PouchWrapper {
                 closed: true
             });
         } catch (e) {
-            throw new Error('error deleting ticket');
+            throw new Error('error closing ticket');
+        }
+    }
+
+    async removeFromSprint(id: string) {
+        try {
+            const ticketDoc = await this.db.get(id);
+            return this.db.put({
+                ...ticketDoc,
+                sprint: false
+            });
+        } catch (e) {
+            throw new Error('error closing ticket');
         }
     }
 
