@@ -45,6 +45,7 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.4",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "history": "^4.7.2",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^23.0.1",
@@ -80,10 +81,15 @@
     "tslint": "^5.10.0",
     "tslint-loader": "^3.6.0",
     "typescript": "^3.0.1",
-    "url-join": "^4.0.0",
-    "webpack": "^4.16.2",
-    "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.5"
+    "url-join": "^4.0.0"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "jest": {
+    "moduleNameMapper": {
+      "^@headless/(.*)$": "<rootDir>/src/headless/$1",
+      "^@components/(.*)$": "<rootDir>/src/components/$1",
+      "^@database/(.*)$": "<rootDir>/src/headless/database/$1"
+    },
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
+  }
 }

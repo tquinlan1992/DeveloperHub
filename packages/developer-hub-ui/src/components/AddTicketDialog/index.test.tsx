@@ -1,4 +1,4 @@
-jest.mock('../../headless', () => {
+jest.mock('./redux', () => {
     return {
         actions: {}
     };

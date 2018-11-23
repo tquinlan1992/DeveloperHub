@@ -1,8 +1,15 @@
-jest.mock('../../headless', () => {
+jest.mock('./redux', () => {
     return {
         actions: {}
     };
 });
+
+jest.mock('@components/AddTicketDialog/redux', () => {
+    return {
+        actions: {}
+    };
+});
+
 import * as React from 'react';
 import { shallow, configure } from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';
@@ -56,7 +63,6 @@ describe('when a user', () => {
         it('setShowAddTicketDialog should be called with true', () => {
             const props = {
                 showAddTicketDialog: false,
-                setShowAddTicketDialog: mockActions.setShowAddTicketDialog as any,
                 fetchTickets: mockActions.fetchTickets as any,
                 addTicket: mockActions.addTicket as any,
                 closeTicket: mockActions.addTicket as any,
@@ -68,8 +74,8 @@ describe('when a user', () => {
             const result = shallow(<TicketList {...props} />);
             const elementToClick = result.find({title: "Add Ticket"});
             elementToClick.simulate('click');
-            expect(mockActions.setShowAddTicketDialog.mock.calls).toMatchObject([
-                [{value: true}]
+            expect(mockActions.setTicketListState.mock.calls).toMatchObject([
+                [{showAddTicketDialog: true}]
             ]);
         });
  });
@@ -89,8 +95,8 @@ describe('when a user', () => {
             const result = shallow(<TicketList {...props} />);
             const dialogProps: any = result.find('Connect(AddTicketDialog)').props();
             dialogProps.onRequestClose();
-            expect(mockActions.setShowAddTicketDialog.mock.calls).toMatchObject([
-                [{ value: false }]
+            expect(mockActions.setTicketListState.mock.calls).toMatchObject([
+                [{ showAddTicketDialog: false }]
             ]);
         });
     });
