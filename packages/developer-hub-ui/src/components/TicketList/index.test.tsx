@@ -24,7 +24,7 @@ const mockActions = {
     fetchTickets: getAnyJestFn(),
     addTicket: getAnyJestFn(),
     closeTicket: getAnyJestFn(),
-    resetAddTicketDialog: getAnyJestFn(),
+    openAddTicketDialog: getAnyJestFn(),
     setTicketListState: getAnyJestFn(),
 };
 
@@ -39,7 +39,7 @@ function testShowAddTicketDialogValue(showAddTicketDialog: boolean) {
                 closeTicket: mockActions.addTicket as any,
                 addTicketToSprint: mockActions.addTicket as any,
                 setTicketListState: mockActions.setTicketListState as any,
-                resetAddTicketDialog: mockActions.resetAddTicketDialog,
+                openAddTicketDialog: mockActions.openAddTicketDialog,
                 tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1', deleted: false}]
             };
             const result = shallow(<TicketList {...props} />);
@@ -68,7 +68,7 @@ describe('when a user', () => {
                 closeTicket: mockActions.addTicket as any,
                 addTicketToSprint: mockActions.addTicket as any,
                 setTicketListState: mockActions.setTicketListState as any,
-                resetAddTicketDialog: mockActions.resetAddTicketDialog,
+                openAddTicketDialog: mockActions.openAddTicketDialog,
                 tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1', deleted: false }]
             };
             const result = shallow(<TicketList {...props} />);
@@ -89,7 +89,7 @@ describe('when a user', () => {
                 closeTicket: mockActions.addTicket as any,
                 addTicketToSprint: mockActions.addTicket as any,
                 setTicketListState: mockActions.setTicketListState as any,
-                resetAddTicketDialog: mockActions.resetAddTicketDialog,
+                openAddTicketDialog: mockActions.openAddTicketDialog,
                 tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1', deleted: false }]
             };
             const result = shallow(<TicketList {...props} />);

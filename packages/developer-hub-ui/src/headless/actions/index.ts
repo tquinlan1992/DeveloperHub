@@ -13,8 +13,6 @@ const coreReducer = combineReducers<AppState>({
     loading
 });
 
-const reducer = combineReducers<AppStateCore>({
+export const reducer = combineReducers<AppStateCore>({
     core: coreReducer
 });
-
-export { coreReducer, reducer };

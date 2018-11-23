@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { AppStateCore } from "@headless/store";
 import { Table, Button, TableHead, TableRow, TableBody, TableCell, TextField } from "@material-ui/core";
 import AddTicketDialog from '../AddTicketDialog';
-import {actions as addTicketActions} from '@components/AddTicketDialog/redux';
 import { actions as ticketListActions } from './redux';
 import { pick } from 'lodash';
 import { Ticket } from '@database/PouchWrapper';
@@ -32,7 +31,7 @@ const mapStateToProps = ({ core }: AppStateCore, ownProps: any) => {
 const mapActionsToProps = {
     ...pick(ticketListActions, 'fetchTickets', 'closeTicket', 'addTicketToSprint'),
     setTicketListState: ticketListActions.set,
-    resetAddTicketDialog: addTicketActions.reset
+    openAddTicketDialog: ticketListActions.openAddTicketDialog
 };
 
 type TicketListActions = typeof mapActionsToProps;
@@ -83,8 +82,7 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
     }
 
     openAddticketDialog() {
-        this.props.setTicketListState({showAddTicketDialog: true});
-        this.props.resetAddTicketDialog({});
+        this.props.openAddTicketDialog();
     }
 
     closeAddticketDialog() {
