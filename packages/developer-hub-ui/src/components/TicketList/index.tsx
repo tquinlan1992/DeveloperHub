@@ -35,7 +35,8 @@ const mapActionsToProps = {
     ...pick(ticketListActions, 'fetchTickets', 'closeTicket', 'addTicketToSprint'),
     setTicketListState: ticketListActions.set,
     openAddTicketDialog: ticketListActions.openAddTicketDialog,
-    onRemoveFromSprint: ticketListActions.removeFromSprint
+    onRemoveFromSprint: ticketListActions.removeFromSprint,
+    closeSprint: ticketListActions.closeSrpint
 };
 
 type TicketListActions = typeof mapActionsToProps;
@@ -46,6 +47,7 @@ function TicketTable({ tickets, onClose, onAddTicketToSprint, onRemoveFromSprint
             <TableHead>
                 <TableRow>
                     <TableCell>Ticket</TableCell>
+                    <TableCell>Sprint ID</TableCell>
                     <TableCell></TableCell>
                     <TableCell></TableCell>
                     <TableCell></TableCell>
@@ -59,6 +61,9 @@ function TicketTable({ tickets, onClose, onAddTicketToSprint, onRemoveFromSprint
                             <TextField
                                 defaultValue={ticket.title}
                             />
+                        </TableCell>
+                        <TableCell>
+                            {ticket.sprintId}
                         </TableCell>
                         <TableCell>
                             {ticket.closed ? 'Closed' : ''}
@@ -102,6 +107,7 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
                 <h1>Closed</h1>
                 <TicketTable tickets={this.props.closedTickets} />
                 <h1>Sprint</h1>
+                <Button title='Close Sprint' onClick={this.props.closeSprint.bind(this)}> Close Sprint </Button>
                 <TicketTable onClose={this.onClickClose.bind(this)} onRemoveFromSprint={this.props.onRemoveFromSprint.bind(this)} tickets={this.props.sprintTickets} />
                 <h1>Backlog</h1>
                 <Button title='Add Ticket' onClick={this.openAddticketDialog.bind(this)}> Add Ticket </Button>

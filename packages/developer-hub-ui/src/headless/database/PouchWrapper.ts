@@ -8,6 +8,7 @@ export interface Ticket {
     deleted: boolean;
     closed?: boolean;
     sprint?: boolean;
+    sprintId?: string;
     _id: string;
 }
 
@@ -102,6 +103,30 @@ class PouchWrapper {
             });
         } catch (e) {
             throw new Error('error closing ticket');
+        }
+    }
+
+    async closeTicketsWithSprintID({ ids, sprintId }:{ ids: string[]; sprintId: string; }) {
+        try {
+            const ticketDocsPromises = ids.map(async (id) => {
+                return this.db.get(id);
+            });
+            const ticketDocsResolved = await Promise.all(ticketDocsPromises);
+            const closedTicketDocs = ticketDocsResolved.map(ticketDoc => {
+                return {
+                    ...ticketDoc,
+                    sprint: false,
+                    sprintId
+                };
+            });
+            const closedTicketDocsPromises = closedTicketDocs.map(async (closedTicket) => {
+                return this.db.put(closedTicket);
+            });
+            await Promise.all(closedTicketDocsPromises).then(() => {
+                return;
+            });
+        } catch (e) {
+            throw new Error('error closing sprint');
         }
     }
 

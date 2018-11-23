@@ -1,12 +1,25 @@
-import { createStore, applyMiddleware, AnyAction, Store } from "redux";
-import { reducer }  from '../actions';
+import { createStore, applyMiddleware, AnyAction, Store, combineReducers } from "redux";
 import { omit } from 'lodash';
-import middleware from '../middleware';
+import middleware from './middleware';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { RouterState } from "react-router-redux";
+import { routerReducer, RouterState } from "react-router-redux";
 import { TicketList } from '@components/TicketList/redux';
-import { AddTicketState } from '@components/AddTicketDialog/redux';
-import { LoadingState } from '@components/Loading/redux';
+import addTicket, { AddTicketState } from '@components/AddTicketDialog/redux';
+import loading, { LoadingState } from '@components/Loading/redux';
+export { AnyAction };
+import { AppStateCore, AppState } from '../store';
+import ticketList from '../../components/TicketList/redux';
+
+const coreReducer = combineReducers<AppState>({
+    routing: routerReducer,
+    addTicket,
+    ticketList,
+    loading
+});
+
+const reducer = combineReducers<AppStateCore>({
+    core: coreReducer
+});
 
 declare module 'redux' {
     export type GenericStoreEnhancer = any;
