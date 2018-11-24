@@ -27,7 +27,8 @@ const mockActions = {
     openAddTicketDialog: getAnyJestFn(),
     setTicketListState: getAnyJestFn(),
     onRemoveFromSprint: getAnyJestFn(),
-    closeSprint: getAnyJestFn()
+    closeSprint: getAnyJestFn(),
+    openCloseSprintDialog: getAnyJestFn()
 };
 
 function testShowAddTicketDialogValue(showAddTicketDialog: boolean) {
@@ -35,6 +36,7 @@ function testShowAddTicketDialogValue(showAddTicketDialog: boolean) {
         it(`TicketList should show the addTicketDialog open as ${showAddTicketDialog}`, () => {
             const props = {
                 showAddTicketDialog,
+                showCloseSprintDialog: false,
                 setShowAddTicketDialog: mockActions.setShowAddTicketDialog as any,
                 fetchTickets: mockActions.fetchTickets as any,
                 addTicket: mockActions.addTicket as any,
@@ -44,6 +46,7 @@ function testShowAddTicketDialogValue(showAddTicketDialog: boolean) {
                 openAddTicketDialog: mockActions.openAddTicketDialog,
                 onRemoveFromSprint: mockActions.onRemoveFromSprint,
                 closeSprint: mockActions.closeSprint,
+                openCloseSprintDialog: mockActions.openCloseSprintDialog,
                 backlogTickets: [{ title: 'backlogTicketTitle', description: 'backlogDescription', storyPoint: 3, _id: 'id1', deleted: false} as any],
                 sprintTickets: [{ title: 'sprintTicketTitle', description: 'sprintDescription', storyPoint: 3, _id: 'id1', deleted: false} as any],
                 closedTickets: [{ title: 'closedTicketTitle', description: 'closedDescription', storyPoint: 3, _id: 'id1', deleted: false} as any]
@@ -69,6 +72,7 @@ describe('when a user', () => {
         it('setShowAddTicketDialog should be called with true', () => {
             const props = {
                 showAddTicketDialog: false,
+                showCloseSprintDialog: false,
                 fetchTickets: mockActions.fetchTickets as any,
                 addTicket: mockActions.addTicket as any,
                 closeTicket: mockActions.addTicket as any,
@@ -77,6 +81,7 @@ describe('when a user', () => {
                 openAddTicketDialog: mockActions.openAddTicketDialog,
                 onRemoveFromSprint: mockActions.onRemoveFromSprint,
                 closeSprint: mockActions.closeSprint,
+                openCloseSprintDialog: mockActions.openCloseSprintDialog,
                 backlogTickets: [{ title: 'backlogTicketTitle', description: 'backlogDescription', storyPoint: 3, _id: 'id1', deleted: false} as any],
                 sprintTickets: [{ title: 'sprintTicketTitle', description: 'sprintDescription', storyPoint: 3, _id: 'id1', deleted: false} as any],
                 closedTickets: [{ title: 'closedTicketTitle', description: 'closedDescription', storyPoint: 3, _id: 'id1', deleted: false} as any]
@@ -91,6 +96,7 @@ describe('when a user', () => {
         it('setShowAddTicketDialog should be called with false', () => {
             const props = {
                 showAddTicketDialog: false,
+                showCloseSprintDialog: false,
                 setShowAddTicketDialog: mockActions.setShowAddTicketDialog as any,
                 fetchTickets: mockActions.fetchTickets as any,
                 addTicket: mockActions.addTicket as any,
@@ -100,6 +106,7 @@ describe('when a user', () => {
                 openAddTicketDialog: mockActions.openAddTicketDialog,
                 onRemoveFromSprint: mockActions.onRemoveFromSprint,
                 closeSprint: mockActions.closeSprint,
+                openCloseSprintDialog: mockActions.openCloseSprintDialog,
                 backlogTickets: [{ title: 'backlogTicketTitle', description: 'backlogDescription', storyPoint: 3, _id: 'id1', deleted: false} as any],
                 sprintTickets: [{ title: 'sprintTicketTitle', description: 'sprintDescription', storyPoint: 3, _id: 'id1', deleted: false} as any],
                 closedTickets: [{ title: 'closedTicketTitle', description: 'closedDescription', storyPoint: 3, _id: 'id1', deleted: false} as any]

@@ -6,7 +6,7 @@ import { actions as addTicketActions } from '@components/AddTicketDialog/redux';
 
 export default function addTicketToSprint(): ThunkAction<void, AppStateCore, void, AnyAction> {
     return function (dispatch) {
-        dispatch(addTicketActions.reset({}));
+        dispatch(addTicketActions.reset(null));
         dispatch(ticketListActions.set({ showAddTicketDialog: true }));
     };
 }

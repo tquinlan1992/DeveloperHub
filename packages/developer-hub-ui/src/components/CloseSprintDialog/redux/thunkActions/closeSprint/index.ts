@@ -1,10 +1,8 @@
-import { ThunkAction } from "redux-thunk";
-import { AppStateCore } from "@headless/store";
-import { AnyAction } from "redux";
+import { AppThunkAction } from "@headless/store";
 import { getRemoteDB } from "@headless/database/pouch";
-import fetchTickets from "../fetchTickets";
+import fetchTickets from "@components/TicketList/redux/thunkActions/fetchTickets";
 
-function closeSprintTickets(): ThunkAction<void, AppStateCore, void, AnyAction> {
+function closeSprintTickets(sprintName: string): AppThunkAction {
     return async function (dispatch, getState) {
         try {
             const db = await getRemoteDB();
@@ -15,7 +13,7 @@ function closeSprintTickets(): ThunkAction<void, AppStateCore, void, AnyAction> 
             const ids = closedSprintTickets.map(ticket => {
                 return ticket._id;
             });
-            await db.closeTicketsWithSprintID({ids, sprintId: 'sprintIdNew'});
+            await db.closeTicketsWithSprintID({ids, sprintName});
             return;
         } catch (e) {
             console.log('error closing sprint');
@@ -24,10 +22,12 @@ function closeSprintTickets(): ThunkAction<void, AppStateCore, void, AnyAction> 
     };
 }
 
-export default function closeSprint(): ThunkAction<void, AppStateCore, void, AnyAction> {
+export default function closeSprint(): AppThunkAction {
     return async function (dispatch, getState) {
         try {
-            await dispatch(closeSprintTickets());
+            const state = getState();
+            const sprintName = state.core.closeSprintDialog.sprintName;
+            await dispatch(closeSprintTickets(sprintName));
             await dispatch(fetchTickets());
         } catch (e) {
             console.log('error closing sprint');

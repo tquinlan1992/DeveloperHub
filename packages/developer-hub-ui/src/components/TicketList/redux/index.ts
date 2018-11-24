@@ -18,12 +18,13 @@ export interface BacklogTicket extends Ticket {
     closed: false;
 }
 
-export interface TicketList {
+export interface TicketListState {
     showAddTicketDialog: boolean;
     tickets: Ticket[];
     sprintTickets: SprintTicket[];
     closedTickets: ClosedTicket[];
     backlogTickets: BacklogTicket[];
+    showCloseSprintDialog: boolean;
 }
 
 const initialState = {
@@ -31,10 +32,11 @@ const initialState = {
     tickets: [],
     sprintTickets: [],
     closedTickets: [],
-    backlogTickets: []
+    backlogTickets: [],
+    showCloseSprintDialog: false
 };
 
-const { actions: simpleActions, reducer } = makeSimpleReducer<TicketList>('TicketList', initialState);
+const { actions: simpleActions, reducer } = makeSimpleReducer<TicketListState>('TicketList', initialState);
 
 export const actions = {
     ...simpleActions,

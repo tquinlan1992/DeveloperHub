@@ -8,7 +8,7 @@ export interface Ticket {
     deleted: boolean;
     closed?: boolean;
     sprint?: boolean;
-    sprintId?: string;
+    sprintName?: string;
     _id: string;
 }
 
@@ -106,7 +106,7 @@ class PouchWrapper {
         }
     }
 
-    async closeTicketsWithSprintID({ ids, sprintId }:{ ids: string[]; sprintId: string; }) {
+    async closeTicketsWithSprintID({ ids, sprintName }:{ ids: string[]; sprintName: string; }) {
         try {
             const ticketDocsPromises = ids.map(async (id) => {
                 return this.db.get(id);
@@ -116,7 +116,7 @@ class PouchWrapper {
                 return {
                     ...ticketDoc,
                     sprint: false,
-                    sprintId
+                    sprintName
                 };
             });
             const closedTicketDocsPromises = closedTicketDocs.map(async (closedTicket) => {

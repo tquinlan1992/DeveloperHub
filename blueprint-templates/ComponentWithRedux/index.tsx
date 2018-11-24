@@ -7,12 +7,12 @@ interface StateProps {
 }
 
 interface ComponentActions {
-    action: typeof stateActions.action;
+    sample: typeof stateActions.sample;
 }
 
 export class AddTicketDialog extends React.Component<StateProps & ComponentActions> {
     componentDidMount() {
-        this.props.action();
+        this.props.sample();
     }
 
     render() {
@@ -29,6 +29,6 @@ const mapStateToProps = ({ core }: AppStateCore) => {
     };
 };
 
-const mapDispatchToProps = loadingActions;
+const mapDispatchToProps = stateActions;
 
 export default connect<StateProps, ComponentActions>(mapStateToProps, mapDispatchToProps)(AddTicketDialog);
