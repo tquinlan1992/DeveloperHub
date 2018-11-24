@@ -10,6 +10,12 @@ jest.mock('@components/AddTicketDialog/redux', () => {
     };
 });
 
+jest.mock('@components/CloseSprintDialog/redux', () => {
+    return {
+        actions: {}
+    };
+});
+
 import * as React from 'react';
 import { shallow, configure } from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';

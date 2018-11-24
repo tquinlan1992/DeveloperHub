@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { AppStateCore } from "@headless/store";
 import { actions as closeSprintDialogActions } from './redux';
 
-interface AddTicketDialogOwnProps {
+interface OwnProps {
     onRequestClose: () => void;
     open: boolean;
     onSubmit: () => void;
@@ -14,7 +14,7 @@ interface StateProps {
     sprintName: string;
 }
 
-const mapStateToProps = ({ core }: AppStateCore, ownProps: AddTicketDialogOwnProps) => {
+const mapStateToProps = ({ core }: AppStateCore, ownProps: OwnProps) => {
     return {
         ...core.closeSprintDialog,
         ...ownProps
@@ -30,7 +30,7 @@ const mapDispatchToProps = {
 
 type ComponentActions = typeof mapDispatchToProps;
 
-export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps & ComponentActions & StateProps> {
+export class CloseSprintDialog extends React.Component<AddTicketDialogOwnProps & ComponentActions & StateProps> {
 
     onSprintNameChange(event: React.ChangeEvent<HTMLSelectElement>) {
         this.props.setCloseSprintDialogState({ sprintName: event.target.value });
@@ -84,4 +84,4 @@ export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps & C
     }
 }
 
-export default connect<AddTicketDialogOwnProps & StateProps, ComponentActions, AddTicketDialogOwnProps>(mapStateToProps, mapDispatchToProps)(AddTicketDialog);
+export default connect<OwnProps & StateProps, ComponentActions, OwnProps>(mapStateToProps, mapDispatchToProps)(CloseSprintDialog);
