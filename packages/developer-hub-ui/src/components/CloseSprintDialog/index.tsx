@@ -30,7 +30,7 @@ const mapDispatchToProps = {
 
 type ComponentActions = typeof mapDispatchToProps;
 
-export class CloseSprintDialog extends React.Component<AddTicketDialogOwnProps & ComponentActions & StateProps> {
+export class CloseSprintDialog extends React.Component<OwnProps & ComponentActions & StateProps> {
 
     onSprintNameChange(event: React.ChangeEvent<HTMLSelectElement>) {
         this.props.setCloseSprintDialogState({ sprintName: event.target.value });
