@@ -109,16 +109,19 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
             <div>
                 <h1>Closed</h1>
                 <TicketTable tickets={this.props.closedTickets} />
+
                 <h1>Sprint</h1>
                 <Button title='Close Sprint' onClick={() => this.props.openCloseSprintDialog()}> Close Sprint </Button>
                 <TicketTable onClose={this.onClickClose.bind(this)} onRemoveFromSprint={this.props.onRemoveFromSprint.bind(this)} tickets={this.props.sprintTickets} />
-                <h1>Backlog</h1>
-                <Button title='Add Ticket' onClick={this.openAddticketDialog.bind(this)}> Add Ticket </Button>
+
+                <h1>Backlog</h1>                
                 <TicketTable tickets={this.props.backlogTickets} onClose={this.onClickClose.bind(this)} onAddTicketToSprint={this.props.addTicketToSprint.bind(this)} />
+                <Button title='Add Ticket' onClick={this.openAddticketDialog.bind(this)}> Add Ticket </Button>
 
                 <AddTicketDialog
                     open={this.props.showAddTicketDialog}
                     onRequestClose={(this.closeAddticketDialog.bind(this))}
+                    onSubmit={() => {this.props.setTicketListState({showAddTicketDialog: false});}}
                 />
 
                 <CloseSprintDialog 

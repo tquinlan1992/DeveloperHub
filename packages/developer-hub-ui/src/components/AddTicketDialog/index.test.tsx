@@ -14,7 +14,8 @@ configure({ adapter: new Adapter() });
 
 const mockActions = {
     onRequestClose: getAnyJestFn(),
-    addTicket: getAnyJestFn()
+    addTicket: getAnyJestFn(),
+    onSubmit: getAnyJestFn()
 };
 
 function testShowAddTicketDialogValue(open: boolean) {
@@ -26,6 +27,7 @@ function testShowAddTicketDialogValue(open: boolean) {
                 addTicket: mockActions.addTicket as any,
                 reset: jest.fn() as any,
                 setAddTicketState: jest.fn() as any,
+                onSubmit: mockActions.onSubmit,
                 storyPoint: 5,
                 description: 'description',
                 title: 'title'
@@ -55,6 +57,7 @@ describe('when a user', () => {
                 addTicket: mockActions.addTicket as any,
                 reset: jest.fn() as any,
                 setAddTicketState: jest.fn() as any,
+                onSubmit: mockActions.onSubmit,
                 storyPoint: 5,
                 description: 'description',
                 title: 'title'

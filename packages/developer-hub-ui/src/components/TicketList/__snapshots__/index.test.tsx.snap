@@ -45,12 +45,6 @@ exports[`describe when the TicketList Component is given showAddTicketDialog as 
   <h1>
     Backlog
   </h1>
-  <WithStyles(Button)
-    onClick={[Function]}
-    title="Add Ticket"
-  >
-     Add Ticket 
-  </WithStyles(Button)>
   <TicketTable
     onAddTicketToSprint={[Function]}
     onClose={[Function]}
@@ -66,8 +60,15 @@ exports[`describe when the TicketList Component is given showAddTicketDialog as 
       ]
     }
   />
+  <WithStyles(Button)
+    onClick={[Function]}
+    title="Add Ticket"
+  >
+     Add Ticket 
+  </WithStyles(Button)>
   <Connect(AddTicketDialog)
     onRequestClose={[Function]}
+    onSubmit={[Function]}
     open={false}
   />
   <Connect(CloseSprintDialog)
@@ -123,12 +124,6 @@ exports[`describe when the TicketList Component is given showAddTicketDialog as 
   <h1>
     Backlog
   </h1>
-  <WithStyles(Button)
-    onClick={[Function]}
-    title="Add Ticket"
-  >
-     Add Ticket 
-  </WithStyles(Button)>
   <TicketTable
     onAddTicketToSprint={[Function]}
     onClose={[Function]}
@@ -144,8 +139,15 @@ exports[`describe when the TicketList Component is given showAddTicketDialog as 
       ]
     }
   />
+  <WithStyles(Button)
+    onClick={[Function]}
+    title="Add Ticket"
+  >
+     Add Ticket 
+  </WithStyles(Button)>
   <Connect(AddTicketDialog)
     onRequestClose={[Function]}
+    onSubmit={[Function]}
     open={true}
   />
   <Connect(CloseSprintDialog)

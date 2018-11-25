@@ -8,6 +8,7 @@ import { actions } from './redux';
 interface AddTicketDialogOwnProps {
     onRequestClose: () => void;
     open: boolean;
+    onSubmit: () => void;
 }
 
 interface StateProps {
@@ -39,6 +40,7 @@ export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps & C
 
     onCreate() {
         this.props.addTicket();
+        this.props.onSubmit();
     }
 
     onDescriptionChange(event: React.ChangeEvent<HTMLSelectElement>) {

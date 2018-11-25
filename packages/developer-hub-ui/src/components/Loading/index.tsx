@@ -5,6 +5,7 @@ import { Switch, Route, Redirect } from 'react-router';
 import TicketList from '../TicketList';
 import CircularProgress from '@material-ui/core/CircularProgress/CircularProgress';
 import { actions as loadingActions } from './redux';
+import AppBar from '../AppBar';
 
 interface StateProps {
     loading: boolean;
@@ -27,20 +28,17 @@ export class AddTicketDialog extends React.Component<StateProps & ComponentActio
             </div>;
 
         const app =
-            <div>
-                <div style={{ float: 'left' }}>
-                </div>
-                <div style={{ float: 'left' }}>
-                    <Switch>
-                        <Route exact path={"/feed"} component={TicketList} />
-                        <Redirect from='*' to='/feed' />
-                    </Switch>
-                </div>
-            </div>;
+            <React.Fragment>
+                <AppBar />
+                <Switch>
+                    <Route exact path={"/feed"} component={TicketList} />
+                    <Redirect from='*' to='/feed' />
+                </Switch>
+            </React.Fragment>;
         const loadingOrApp = this.props.loading ? loading : app;
         return (
             <div>
-                { loadingOrApp }
+                {loadingOrApp}
             </div>
         );
     }
