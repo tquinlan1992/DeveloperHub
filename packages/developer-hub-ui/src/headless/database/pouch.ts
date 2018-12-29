@@ -11,25 +11,20 @@ export async function getRemoteDB() {
     return pouchDB as PouchWrapper;
 }
 
-export function setupPouch(remoteUrl: string) {
+export function setupPouch({ remoteUrl, onChanges }: { remoteUrl: string; onChanges: () => void;}) {
     return new Promise((resolve, reject) => {
         if (!pouchDB) {
-            const remoteDB = new PouchDB(remoteUrl);
-            const localDB = new PouchDB<Ticket>('mylocaldb');
-            localDB.sync(remoteDB, {
-            }).on('complete', function () {
-                console.log('sync complete');
-                localDB.sync(remoteDB, {
-                    live: true,
-                    retry: true
-                });
-                pouchDB = new PouchWrapper({
-                    pouchDB: localDB
-                });
-                resolve();
-            }).on('error', () => {
+            const remoteDB = new PouchDB<Ticket>(remoteUrl);
+            remoteDB.changes({live: true, since: 'now'}).on('change', (changes) => {
+                console.log('got to changes');
+                onChanges();
+            }).catch(err => {
                 reject('error syncing');
             });
+            pouchDB = new PouchWrapper({
+                pouchDB: remoteDB
+            });
+            resolve();
         }
     });
 }

@@ -2,38 +2,78 @@
 
 exports[`describe when the TicketList Component is given showAddTicketDialog as false TicketList should show the addTicketDialog open as false 1`] = `
 <div>
+  <h1>
+    Closed
+  </h1>
+  <TicketTable
+    tickets={
+      Array [
+        Object {
+          "_id": "id1",
+          "deleted": false,
+          "description": "closedDescription",
+          "storyPoint": 3,
+          "title": "closedTicketTitle",
+        },
+      ]
+    }
+  />
+  <h1>
+    Sprint
+  </h1>
+  <WithStyles(Button)
+    onClick={[Function]}
+    title="Close Sprint"
+  >
+     Close Sprint 
+  </WithStyles(Button)>
+  <TicketTable
+    onClose={[Function]}
+    onRemoveFromSprint={[Function]}
+    tickets={
+      Array [
+        Object {
+          "_id": "id1",
+          "deleted": false,
+          "description": "sprintDescription",
+          "storyPoint": 3,
+          "title": "sprintTicketTitle",
+        },
+      ]
+    }
+  />
+  <h1>
+    Backlog
+  </h1>
+  <TicketTable
+    onAddTicketToSprint={[Function]}
+    onClose={[Function]}
+    tickets={
+      Array [
+        Object {
+          "_id": "id1",
+          "deleted": false,
+          "description": "backlogDescription",
+          "storyPoint": 3,
+          "title": "backlogTicketTitle",
+        },
+      ]
+    }
+  />
   <WithStyles(Button)
     onClick={[Function]}
     title="Add Ticket"
   >
      Add Ticket 
   </WithStyles(Button)>
-  <h1>
-    Open
-  </h1>
-  <TicketTable
-    onAddTicketToSprint={[Function]}
-    onDelete={[Function]}
-    tickets={
-      Array [
-        Object {
-          "_id": "id1",
-          "deleted": false,
-          "description": "description",
-          "storyPoint": 3,
-          "title": "ticketTitle",
-        },
-      ]
-    }
-  />
-  <h1>
-    Closed
-  </h1>
-  <TicketTable
-    tickets={Array []}
-  />
   <Connect(AddTicketDialog)
     onRequestClose={[Function]}
+    onSubmit={[Function]}
+    open={false}
+  />
+  <Connect(CloseSprintDialog)
+    onRequestClose={[Function]}
+    onSubmit={[Function]}
     open={false}
   />
 </div>
@@ -41,39 +81,79 @@ exports[`describe when the TicketList Component is given showAddTicketDialog as 
 
 exports[`describe when the TicketList Component is given showAddTicketDialog as true TicketList should show the addTicketDialog open as true 1`] = `
 <div>
+  <h1>
+    Closed
+  </h1>
+  <TicketTable
+    tickets={
+      Array [
+        Object {
+          "_id": "id1",
+          "deleted": false,
+          "description": "closedDescription",
+          "storyPoint": 3,
+          "title": "closedTicketTitle",
+        },
+      ]
+    }
+  />
+  <h1>
+    Sprint
+  </h1>
+  <WithStyles(Button)
+    onClick={[Function]}
+    title="Close Sprint"
+  >
+     Close Sprint 
+  </WithStyles(Button)>
+  <TicketTable
+    onClose={[Function]}
+    onRemoveFromSprint={[Function]}
+    tickets={
+      Array [
+        Object {
+          "_id": "id1",
+          "deleted": false,
+          "description": "sprintDescription",
+          "storyPoint": 3,
+          "title": "sprintTicketTitle",
+        },
+      ]
+    }
+  />
+  <h1>
+    Backlog
+  </h1>
+  <TicketTable
+    onAddTicketToSprint={[Function]}
+    onClose={[Function]}
+    tickets={
+      Array [
+        Object {
+          "_id": "id1",
+          "deleted": false,
+          "description": "backlogDescription",
+          "storyPoint": 3,
+          "title": "backlogTicketTitle",
+        },
+      ]
+    }
+  />
   <WithStyles(Button)
     onClick={[Function]}
     title="Add Ticket"
   >
      Add Ticket 
   </WithStyles(Button)>
-  <h1>
-    Open
-  </h1>
-  <TicketTable
-    onAddTicketToSprint={[Function]}
-    onDelete={[Function]}
-    tickets={
-      Array [
-        Object {
-          "_id": "id1",
-          "deleted": false,
-          "description": "description",
-          "storyPoint": 3,
-          "title": "ticketTitle",
-        },
-      ]
-    }
-  />
-  <h1>
-    Closed
-  </h1>
-  <TicketTable
-    tickets={Array []}
-  />
   <Connect(AddTicketDialog)
     onRequestClose={[Function]}
+    onSubmit={[Function]}
     open={true}
+  />
+  <Connect(CloseSprintDialog)
+    onRequestClose={[Function]}
+    onSubmit={[Function]}
+    open={false}
   />
 </div>
 `;

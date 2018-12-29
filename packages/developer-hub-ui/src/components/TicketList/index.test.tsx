@@ -10,6 +10,12 @@ jest.mock('@components/AddTicketDialog/redux', () => {
     };
 });
 
+jest.mock('@components/CloseSprintDialog/redux', () => {
+    return {
+        actions: {}
+    };
+});
+
 import * as React from 'react';
 import { shallow, configure } from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';
@@ -24,8 +30,11 @@ const mockActions = {
     fetchTickets: getAnyJestFn(),
     addTicket: getAnyJestFn(),
     closeTicket: getAnyJestFn(),
-    resetAddTicketDialog: getAnyJestFn(),
+    openAddTicketDialog: getAnyJestFn(),
     setTicketListState: getAnyJestFn(),
+    onRemoveFromSprint: getAnyJestFn(),
+    closeSprint: getAnyJestFn(),
+    openCloseSprintDialog: getAnyJestFn()
 };
 
 function testShowAddTicketDialogValue(showAddTicketDialog: boolean) {
@@ -33,14 +42,20 @@ function testShowAddTicketDialogValue(showAddTicketDialog: boolean) {
         it(`TicketList should show the addTicketDialog open as ${showAddTicketDialog}`, () => {
             const props = {
                 showAddTicketDialog,
+                showCloseSprintDialog: false,
                 setShowAddTicketDialog: mockActions.setShowAddTicketDialog as any,
                 fetchTickets: mockActions.fetchTickets as any,
                 addTicket: mockActions.addTicket as any,
                 closeTicket: mockActions.addTicket as any,
                 addTicketToSprint: mockActions.addTicket as any,
                 setTicketListState: mockActions.setTicketListState as any,
-                resetAddTicketDialog: mockActions.resetAddTicketDialog,
-                tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1', deleted: false}]
+                openAddTicketDialog: mockActions.openAddTicketDialog,
+                onRemoveFromSprint: mockActions.onRemoveFromSprint,
+                closeSprint: mockActions.closeSprint,
+                openCloseSprintDialog: mockActions.openCloseSprintDialog,
+                backlogTickets: [{ title: 'backlogTicketTitle', description: 'backlogDescription', storyPoint: 3, _id: 'id1', deleted: false} as any],
+                sprintTickets: [{ title: 'sprintTicketTitle', description: 'sprintDescription', storyPoint: 3, _id: 'id1', deleted: false} as any],
+                closedTickets: [{ title: 'closedTicketTitle', description: 'closedDescription', storyPoint: 3, _id: 'id1', deleted: false} as any]
             };
             const result = shallow(<TicketList {...props} />);
             expect(result).toMatchSnapshot();
@@ -63,34 +78,44 @@ describe('when a user', () => {
         it('setShowAddTicketDialog should be called with true', () => {
             const props = {
                 showAddTicketDialog: false,
+                showCloseSprintDialog: false,
                 fetchTickets: mockActions.fetchTickets as any,
                 addTicket: mockActions.addTicket as any,
                 closeTicket: mockActions.addTicket as any,
                 addTicketToSprint: mockActions.addTicket as any,
                 setTicketListState: mockActions.setTicketListState as any,
-                resetAddTicketDialog: mockActions.resetAddTicketDialog,
-                tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1', deleted: false }]
+                openAddTicketDialog: mockActions.openAddTicketDialog,
+                onRemoveFromSprint: mockActions.onRemoveFromSprint,
+                closeSprint: mockActions.closeSprint,
+                openCloseSprintDialog: mockActions.openCloseSprintDialog,
+                backlogTickets: [{ title: 'backlogTicketTitle', description: 'backlogDescription', storyPoint: 3, _id: 'id1', deleted: false} as any],
+                sprintTickets: [{ title: 'sprintTicketTitle', description: 'sprintDescription', storyPoint: 3, _id: 'id1', deleted: false} as any],
+                closedTickets: [{ title: 'closedTicketTitle', description: 'closedDescription', storyPoint: 3, _id: 'id1', deleted: false} as any]
             };
             const result = shallow(<TicketList {...props} />);
             const elementToClick = result.find({title: "Add Ticket"});
             elementToClick.simulate('click');
-            expect(mockActions.setTicketListState.mock.calls).toMatchObject([
-                [{showAddTicketDialog: true}]
-            ]);
+            expect(mockActions.openAddTicketDialog).toHaveBeenCalledTimes(1);
         });
  });
     describe('requests to close addTicket', () => {
         it('setShowAddTicketDialog should be called with false', () => {
             const props = {
                 showAddTicketDialog: false,
+                showCloseSprintDialog: false,
                 setShowAddTicketDialog: mockActions.setShowAddTicketDialog as any,
                 fetchTickets: mockActions.fetchTickets as any,
                 addTicket: mockActions.addTicket as any,
                 closeTicket: mockActions.addTicket as any,
                 addTicketToSprint: mockActions.addTicket as any,
                 setTicketListState: mockActions.setTicketListState as any,
-                resetAddTicketDialog: mockActions.resetAddTicketDialog,
-                tickets: [{ title: 'ticketTitle', description: 'description', storyPoint: 3, _id: 'id1', deleted: false }]
+                openAddTicketDialog: mockActions.openAddTicketDialog,
+                onRemoveFromSprint: mockActions.onRemoveFromSprint,
+                closeSprint: mockActions.closeSprint,
+                openCloseSprintDialog: mockActions.openCloseSprintDialog,
+                backlogTickets: [{ title: 'backlogTicketTitle', description: 'backlogDescription', storyPoint: 3, _id: 'id1', deleted: false} as any],
+                sprintTickets: [{ title: 'sprintTicketTitle', description: 'sprintDescription', storyPoint: 3, _id: 'id1', deleted: false} as any],
+                closedTickets: [{ title: 'closedTicketTitle', description: 'closedDescription', storyPoint: 3, _id: 'id1', deleted: false} as any]
             };
             const result = shallow(<TicketList {...props} />);
             const dialogProps: any = result.find('Connect(AddTicketDialog)').props();

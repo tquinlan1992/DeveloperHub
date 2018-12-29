@@ -106,7 +106,7 @@ export function makeSimpleReducer<State extends {}>(reducerName: string, initial
             reducer: StateTypeReducer<State, State[P]>;
         }
     };
-    const reset = makeActionCreatorWithReducerWithPrefix<State, {}>(
+    const reset = makeActionCreatorWithReducerWithPrefix<State, null>(
         `RESET`,
         () => {
             return initialState;

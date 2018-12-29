@@ -2,23 +2,27 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { AppStateCore } from "@headless/store";
 import { actions as stateActions } from './redux';
+import { AppBar, Toolbar, Button } from '@material-ui/core';
 
 interface StateProps {
 }
 
 interface ComponentActions {
-    sample: typeof stateActions.sample;
+    openAddTicketDialog: typeof stateActions.openAddTicketDialog;
 }
 
 export class AddTicketDialog extends React.Component<StateProps & ComponentActions> {
-    componentDidMount() {
-        this.props.sample();
+    addTicket() {
+        this.props.openAddTicketDialog();
     }
 
     render() {
         return (
-            <React.Fragment>
-            </React.Fragment>
+            <AppBar position="static">
+                <Toolbar>
+                    <Button onClick={this.addTicket.bind(this)}> Add Ticket </Button>
+                </Toolbar>
+            </AppBar>
         );
     }
 }

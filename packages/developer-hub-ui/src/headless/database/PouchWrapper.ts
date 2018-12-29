@@ -8,6 +8,7 @@ export interface Ticket {
     deleted: boolean;
     closed?: boolean;
     sprint?: boolean;
+    sprintName?: string;
     _id: string;
 }
 
@@ -89,7 +90,43 @@ class PouchWrapper {
                 closed: true
             });
         } catch (e) {
-            throw new Error('error deleting ticket');
+            throw new Error('error closing ticket');
+        }
+    }
+
+    async removeFromSprint(id: string) {
+        try {
+            const ticketDoc = await this.db.get(id);
+            return this.db.put({
+                ...ticketDoc,
+                sprint: false
+            });
+        } catch (e) {
+            throw new Error('error closing ticket');
+        }
+    }
+
+    async closeTicketsWithSprintID({ ids, sprintName }:{ ids: string[]; sprintName: string; }) {
+        try {
+            const ticketDocsPromises = ids.map(async (id) => {
+                return this.db.get(id);
+            });
+            const ticketDocsResolved = await Promise.all(ticketDocsPromises);
+            const closedTicketDocs = ticketDocsResolved.map(ticketDoc => {
+                return {
+                    ...ticketDoc,
+                    sprint: false,
+                    sprintName
+                };
+            });
+            const closedTicketDocsPromises = closedTicketDocs.map(async (closedTicket) => {
+                return this.db.put(closedTicket);
+            });
+            await Promise.all(closedTicketDocsPromises).then(() => {
+                return;
+            });
+        } catch (e) {
+            throw new Error('error closing sprint');
         }
     }
 

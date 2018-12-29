@@ -64,8 +64,8 @@ export declare function makeSimpleReducer<State extends {}>(reducerName: string,
         reducer: StateTypeReducer<State, State[P]>;
     }; } & {
         reset: {
-            actionCreator: ActionCreator<{}>;
-            reducer: StateTypeReducer<State, {}>;
+            actionCreator: ActionCreator<null>;
+            reducer: StateTypeReducer<State, null>;
         };
         setAll: {
             actionCreator: ActionCreator<State>;
@@ -80,8 +80,8 @@ export declare function makeSimpleReducer<State extends {}>(reducerName: string,
         reducer: StateTypeReducer<State, State[P]>;
     }; } & {
         reset: {
-            actionCreator: ActionCreator<{}>;
-            reducer: StateTypeReducer<State, {}>;
+            actionCreator: ActionCreator<null>;
+            reducer: StateTypeReducer<State, null>;
         };
         setAll: {
             actionCreator: ActionCreator<State>;
