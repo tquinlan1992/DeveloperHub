@@ -1,3 +1,4 @@
+import { Dictionary } from 'lodash';
 import { Action, AnyAction, ActionCreator } from "typescript-fsa";
 import { Reducer } from 'redux';
 export { Action, AnyAction, ActionCreator };
@@ -94,4 +95,12 @@ export declare function makeSimpleReducer<State extends {}>(reducerName: string,
     })[P]["actionCreator"]; };
     reducer: (state: State | undefined, incomingAction: Action<AnyAction>) => State;
 };
+export declare function makeNestedSimpleReducer<AState>(state: Dictionary<{}>): { [P in keyof AState]: {
+    reducer: Reducer<AState[P], AnyAction>;
+    actions: { [A in keyof AState[P]]: ActionCreator<AState[P][A]>; } & {
+        reset: ActionCreator<null>;
+        setAll: ActionCreator<AState[P]>;
+        set: ActionCreator<Partial<AState[P]>>;
+    };
+}; };
 //# sourceMappingURL=index.d.ts.map

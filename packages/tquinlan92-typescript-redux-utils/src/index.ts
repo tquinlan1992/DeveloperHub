@@ -1,4 +1,4 @@
-import { find, mapValues, assign } from 'lodash';
+import { find, mapValues, assign, Dictionary } from 'lodash';
 import actionCreatorFactory, { isType, Action, AnyAction, ActionCreator } from "typescript-fsa";
 import { Reducer } from 'redux';
 
@@ -133,4 +133,21 @@ export function makeSimpleReducer<State extends {}>(reducerName: string, initial
         ),
         reducer: createReducer<State>(initialState, assign({}, actions, {reset, setAll, set})),
     };
+}
+
+export function makeNestedSimpleReducer<AState>(state: Dictionary<{}>) {
+    return mapValues(state, (value, key) => {
+        return makeSimpleReducer(key, value) as any;
+    }) as {
+            [P in keyof AState]: {
+                reducer: Reducer<AState[P], AnyAction>,
+                actions: {
+                    [A in keyof AState[P]]: ActionCreator<AState[P][A]>
+                } & {
+                    reset: ActionCreator<null>;
+                    setAll: ActionCreator<AState[P]>;
+                    set: ActionCreator<Partial<AState[P]>>;
+                }
+            }
+        }
 }
