@@ -1,4 +1,4 @@
-import { find, mapValues, assign, Dictionary } from 'lodash';
+import { find, mapValues, assign, Dictionary, merge, omit } from 'lodash';
 import actionCreatorFactory, { isType, Action, AnyAction, ActionCreator } from "typescript-fsa";
 import { Reducer } from 'redux';
 
@@ -135,19 +135,43 @@ export function makeSimpleReducer<State extends {}>(reducerName: string, initial
     };
 }
 
-export function makeNestedSimpleReducer<AState>(state: Dictionary<{}>) {
-    return mapValues(state, (value, key) => {
-        return makeSimpleReducer(key, value) as any;
-    }) as {
-            [P in keyof AState]: {
-                reducer: Reducer<AState[P], AnyAction>,
-                actions: {
-                    [A in keyof AState[P]]: ActionCreator<AState[P][A]>
-                } & {
-                    reset: ActionCreator<null>;
-                    setAll: ActionCreator<AState[P]>;
-                    set: ActionCreator<Partial<AState[P]>>;
-                }
+export function getActions<T extends { [key: string]: {actions?: Dictionary<any>} }>(creators: T): { [P in keyof T]: T[P]['actions'] } {
+    return mapValues(creators, "actions") as { [P in keyof T]: T[P]['actions'] };
+} 
+
+export function makeNestedSimpleReducerSimpleActions<AppState>(state: any) {
+    const actionsReducers = mapValues(state, (value, key) => {
+        return makeSimpleReducer(key, omit(value, 'actions'));
+    });//{ [P in keyof T]: T[P]['actionCreator'] 
+    const reducers = mapValues(actionsReducers, 'reducer');
+    const actions = getActions(actionsReducers);
+
+    return {
+        actions,
+        reducers
+    } as {
+        reducers: {
+            [P in keyof AppState]: Reducer<AppState[P], AnyAction>
+        };
+        actions: {
+            [P in keyof AppState]: {
+                [A in keyof AppState[P]]: ActionCreator<AppState[P][A]>
+            } & {
+                reset: ActionCreator<null>;
+                setAll: ActionCreator<AppState[P]>;
+                set: ActionCreator<Partial<AppState[P]>>;
+            } & {
+                [A in keyof AppState[P]]: AppState[P][A]
             }
-        }
+        };
+    };
+}
+
+export function makeNestedSimpleStore<State, ThunkActions>(state: State, thunkActions?: ThunkActions) {
+    const { actions: actions1, reducers: reducers2 } = makeNestedSimpleReducerSimpleActions<State>(state);
+    const actionsWithThunks = merge(actions1, thunkActions);
+    return {
+        actions: actionsWithThunks,
+        reducers: reducers2
+    };
 }

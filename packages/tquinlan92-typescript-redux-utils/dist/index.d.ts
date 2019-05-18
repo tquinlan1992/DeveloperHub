@@ -95,12 +95,27 @@ export declare function makeSimpleReducer<State extends {}>(reducerName: string,
     })[P]["actionCreator"]; };
     reducer: (state: State | undefined, incomingAction: Action<AnyAction>) => State;
 };
-export declare function makeNestedSimpleReducer<AState>(state: Dictionary<{}>): { [P in keyof AState]: {
-    reducer: Reducer<AState[P], AnyAction>;
-    actions: { [A in keyof AState[P]]: ActionCreator<AState[P][A]>; } & {
-        reset: ActionCreator<null>;
-        setAll: ActionCreator<AState[P]>;
-        set: ActionCreator<Partial<AState[P]>>;
+export declare function getActions<T extends {
+    [key: string]: {
+        actions?: Dictionary<any>;
     };
-}; };
+}>(creators: T): {
+    [P in keyof T]: T[P]['actions'];
+};
+export declare function makeNestedSimpleReducerSimpleActions<AppState>(state: any): {
+    reducers: { [P in keyof AppState]: Reducer<AppState[P], AnyAction>; };
+    actions: { [P in keyof AppState]: { [A in keyof AppState[P]]: ActionCreator<AppState[P][A]>; } & {
+        reset: ActionCreator<null>;
+        setAll: ActionCreator<AppState[P]>;
+        set: ActionCreator<Partial<AppState[P]>>;
+    } & { [A in keyof AppState[P]]: AppState[P][A]; }; };
+};
+export declare function makeNestedSimpleStore<State, ThunkActions>(state: State, thunkActions?: ThunkActions): {
+    actions: { [P in keyof State]: { [A in keyof State[P]]: ActionCreator<State[P][A]>; } & {
+        reset: ActionCreator<null>;
+        setAll: ActionCreator<State[P]>;
+        set: ActionCreator<Partial<State[P]>>;
+    } & { [A in keyof State[P]]: State[P][A]; }; } & ThunkActions;
+    reducers: { [P in keyof State]: Reducer<State[P], AnyAction>; };
+};
 //# sourceMappingURL=index.d.ts.map
